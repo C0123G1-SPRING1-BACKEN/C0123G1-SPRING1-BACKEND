@@ -13,6 +13,7 @@ public class ProductTypeDTO {
 
     @Size(max = 100, message = "Name cannot be longer than 100 characters")
     @NotBlank(message = "Please insert value")
+    @Column(unique = true)
     private String name;
 
 

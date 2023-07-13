@@ -20,13 +20,11 @@ public class RegisterPawn {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
-    @NotNull
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String phone;
-    @NotNull
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String email;
 
     @Column(length = 500)

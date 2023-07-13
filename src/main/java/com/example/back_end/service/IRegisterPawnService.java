@@ -1,10 +1,10 @@
 package com.example.back_end.service;
 
-import com.example.back_end.model.Customers;
-import com.example.back_end.model.RegisterPawn;
+import com.example.back_end.dto.RegisterDTO;
+
 
 public interface IRegisterPawnService {
-    void createRegisterPawn(RegisterPawn registerPawn);
+    void createRegisterPawn(RegisterDTO registerDTO);
 
 
 

@@ -18,35 +18,34 @@ public class RegisterDTO {
 
     private Long id;
 
-    @Size(max = 100, message = "Name cannot be longer than 100 characters")
-    @Pattern(regexp = "^\\p{Lu}\\p{Ll}*(\\s\\p{Lu}\\p{Ll}*)*$", message = "Your name is not in the correct format")
-    @NotBlank(message = "Please insert value")
+    @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
+    @Pattern(regexp = "^\\p{Lu}\\p{Ll}*(\\s\\p{Lu}\\p{Ll}*)*$", message = "Tên Của Bạn Không Đúng Định Dạng ")
+    @NotBlank(message = "Bạn Cần Điền Đủ Thông Tin")
     private String name;
 
-    @Size(max = 11, message = "Phone number cannot 11 number !!!")
-    @Pattern(regexp = "^((\\+84)|0)[0-9]{9}$", message = "Invalid phone number")
-    @NotBlank(message = "Please insert value")
+    @Size(max = 11, message = "Số Điện Thoại Của Bạn Không Được Quá 11 Số !!!")
+    @Pattern(regexp = "^((\\+84)|0)[0-9]{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
+    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin ")
     private String phone;
 
-    @Email(message = "Email is incorrect . Please type abc@gmail.com ")
-    @NotBlank(message = "Please insert value")
-
+    @Email(message = "Email Của Bạn Không Đúng . Làm Ơn Nhập Kiều :  abc@gmail.com ")
+    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
     private String email;
 
 
-    @NotBlank(message = "Please insert value")
-    @Size(max = 500, message = "Phone number cannot 500 character !!!")
+    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
+    @Size(max = 500, message = "Địa Chỉ Của Bạn Không Được Quá 500 Ký Tự !!!")
     private String address;
 
-    @Size(max = 1000, message = "Phone number cannot 1000 character !!!")
-    @NotBlank(message = "Please insert value")
+    @Size(max = 1000, message = "Nội Dung Ghi Chú  Của Bạn Không Được Quá 1000 Ký Tự !!!")
+    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
     private String contendNote;
-
 
     private boolean status = false;
 
 
     private ProductType productType;
+
 
     public RegisterDTO() {
     }
