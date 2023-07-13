@@ -17,10 +17,10 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
      * Date create : 13/07/2023
      * Function : connect database to create customer
      *
-     * Param customerSaveDto)
+     * @param customerSaveDto
      */
     @Override
-    public void create(CustomerSaveDto customerSaveDto) {
+    public void createCustomer(CustomerSaveDto customerSaveDto) {
         Customers customers = new Customers();
         BeanUtils.copyProperties(customerSaveDto, customers);
         customerRepositoryCreateUpdate.addCustomer(customers.getName(),
@@ -42,10 +42,10 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
      * Date create : 13/07/2023
      * Function : connect database to update customer with corresponding id of customer
      *
-     * Param id, customerSaveDto)
+     * @param id, customerSaveDto
      */
     @Override
-    public void update(Long id,CustomerSaveDto customerSaveDto) {
+    public void updateCustomer(Long id,CustomerSaveDto customerSaveDto) {
         Customers customers = new Customers();
         BeanUtils.copyProperties(customerSaveDto, customers);
         customerRepositoryCreateUpdate.updateCustomer(
@@ -69,12 +69,12 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
      * Date create : 13/07/2023
      * Function : connect database to customer find by id customer
      *
-     * @Param id
-     * @Return customerSaveDto
+     * @param id
+     * @return customerSaveDto
      */
     @Override
-    public CustomerSaveDto findById(Long id) {
-        Customers customers = customerRepositoryCreateUpdate.findWithId(id);
+    public CustomerSaveDto findByIdCustomer(Long id) {
+        Customers customers = customerRepositoryCreateUpdate.findWithIdCustomer(id);
         CustomerSaveDto customerSaveDto =new CustomerSaveDto();
         BeanUtils.copyProperties(customers, customerSaveDto);
         return customerSaveDto;

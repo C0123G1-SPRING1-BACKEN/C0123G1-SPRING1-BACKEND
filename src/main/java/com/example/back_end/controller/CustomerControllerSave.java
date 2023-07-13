@@ -4,6 +4,7 @@ import com.example.back_end.dto.CustomerSaveDto;
 import com.example.back_end.service.customer.ICustomerServiceCreateUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -24,30 +25,35 @@ public class CustomerControllerSave {
      * Create by: DatNT,
      * Date create : 13/07/2023
      * Function : find customer with corresponding id of customer
-     *
-     * Param id
-     * Return CustomerSaveDto
+     * <p>
+     * @param id
+     * @return HttpStatus.NOT_FOUND if result= null else then return customerSaveDto and HttpStatus.OK
      */
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public CustomerSaveDto findId(@PathVariable Long id) {
-        return customerServiceCreateUpdate.findById(id);
+    public ResponseEntity<?> findIdCustomer(@PathVariable Long id) {
+        CustomerSaveDto customerSaveDto = customerServiceCreateUpdate.findByIdCustomer(id);
+        if (customerSaveDto == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(customerSaveDto, HttpStatus.OK);
     }
 
     /**
      * Create by: DatNT,
      * Date create : 13/07/2023
      * Function : create new customer
-     *
-     * Param customerSaveDto, bindingResult
+     * <p>
+     * @param customerSaveDto, bindingResult
+     * @return status Created
      */
     @PostMapping("/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult){
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
-            customerServiceCreateUpdate.create(customerSaveDto);
+            customerServiceCreateUpdate.createCustomer(customerSaveDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             getResponseEntity(bindingResult);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -56,18 +62,28 @@ public class CustomerControllerSave {
      * Date create : 13/07/2023
      * Function : update customer
      *
-     * Param id, customerSaveDto, bindingResult
+     * @return HttpStatus.EXPECTATION_FAILED if result is error else then return customerSaveDto object HttpStatus.OK
+     * @param id
+     * @requestBody CustomerSaveDto includes the customer object
      */
-    @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
-    public void update(@Validated @PathVariable Long id, @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult){
+    public ResponseEntity<?> updateCustomer(@Validated @PathVariable Long id, @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
-            customerServiceCreateUpdate.update(id,customerSaveDto);
+            customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             getResponseEntity(bindingResult);
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
     }
 
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : getResponseEntity
+     *
+     * @param bindingResult
+     */
     private void getResponseEntity(BindingResult bindingResult) {
         Map<String, String> map = new LinkedHashMap<>();
         List<FieldError> errors = bindingResult.getFieldErrors();

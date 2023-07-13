@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 public interface ICustomerRepositoryCreateUpdate extends JpaRepository<Customers, Long> {
     @Query(nativeQuery = true, value = "select * from customers where id = :id")
-    Customers findWithId(@Param("id") Long id);
+    Customers findWithIdCustomer(@Param("id") Long id);
 
     @Modifying
     @Transactional
