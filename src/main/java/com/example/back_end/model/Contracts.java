@@ -2,37 +2,38 @@ package com.example.back_end.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name = "contracts")
 public class Contracts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)")
+    @Column( columnDefinition = "VARCHAR(250)")
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
+    @Column( columnDefinition = "VARCHAR(250)")
     private String contractCode;
     private Long loans;
     private Long profit;
-    @Column(name = "image", columnDefinition = "TEXT")
+    @Column( columnDefinition = "TEXT")
     private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)")
+    @Column( columnDefinition = "VARCHAR(25)")
     private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)")
+    @Column( columnDefinition = "VARCHAR(25)")
     private String endDate;
-    @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     @CreationTimestamp
-    private LocalDateTime createDate;
-    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
+    @Column(name = "create_time", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
+    private LocalDateTime createTime;
     @UpdateTimestamp
-    private LocalDateTime updateDate;
+    @Column(name = "update_time", nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
+    private LocalDateTime updateTime;
 
-    @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
+    @Column( columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
     @ManyToOne
     @JoinColumn
@@ -71,8 +72,8 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createTime;
-        this.updateDate = updateTime;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
         this.isDelete = isDelete;
         this.productType = productType;
         this.customers = customers;
@@ -146,19 +147,19 @@ public class Contracts {
     }
 
     public LocalDateTime getCreateTime() {
-        return createDate;
+        return createTime;
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        this.createDate = createTime;
+        this.createTime = createTime;
     }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateDate(LocalDateTime updateTime) {
-        this.updateDate = updateTime;
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 
     public boolean isDelete() {
