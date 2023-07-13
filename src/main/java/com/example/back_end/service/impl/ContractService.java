@@ -9,6 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+/**
+ * Created by: DinhHD
+ * Date created: 13/07/2023
+ * Function: do about pawn interface, customer selection interface
+ *
+// * @param Contracts
+ * @return createContract()
+ */
 
 @Service
 public class ContractService implements IContractService {
@@ -31,8 +39,8 @@ public class ContractService implements IContractService {
                 contracts.getLoans(),
                 contracts.getStartDate(),
                 contracts.getEndDate(),
-                contracts.getProfit(),
                 contracts.getContractStatus().getId(),
+                contracts.getProfit(),
                 contracts.getContractType().getId(),
                 contracts.getEmployees().getId());
 

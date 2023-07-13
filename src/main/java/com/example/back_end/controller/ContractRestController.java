@@ -8,6 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+/**
+ * Created by: DinhHD
+ * Date created: 13/07/2023
+ * Function: do about pawn interface, customer selection interface
+ *
+// * @param Contracts
+ * @return createContracts()
+ */
 
 @RequestMapping("/api/contract")
 @RestController
