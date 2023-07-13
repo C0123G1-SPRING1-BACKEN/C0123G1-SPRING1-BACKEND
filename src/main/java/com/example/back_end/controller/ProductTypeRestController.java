@@ -28,11 +28,11 @@ public class ProductTypeRestController {
         List<ProductType> kindOfPawnsList = iProductTypeService.findAll();
         return new ResponseEntity<>(kindOfPawnsList, HttpStatus.OK);
     }
-    @GetMapping("/customer")
-    public ResponseEntity<List<Customers>> getAllCustomer() {
-        List<Customers> customerList=iProductTypeService.findAllCustomer();
-        return new ResponseEntity<>(customerList, HttpStatus.OK);
-    }
+//    @GetMapping("/customer")
+//    public ResponseEntity<List<Customers>> getAllCustomer() {
+//        List<Customers> customerList=iProductTypeService.findAllCustomer();
+//        return new ResponseEntity<>(customerList, HttpStatus.OK);
+//    }
     @GetMapping("/employee")
     public ResponseEntity<List<Employees>> getAllEmployee() {
         List<Employees> employeesList = iProductTypeService.findAllEmployee();

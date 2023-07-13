@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface IProductTypeService {
     List<ProductType> findAll();
-    List<Customers> findAllCustomer();
+//    List<Customers> findAllCustomer();
     List<Employees> findAllEmployee();
     List<ContractStatus> findAllContractStatus();
 

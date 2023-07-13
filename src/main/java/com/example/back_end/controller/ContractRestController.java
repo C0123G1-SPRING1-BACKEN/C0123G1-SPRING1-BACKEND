@@ -23,7 +23,7 @@ import java.util.List;
 public class ContractRestController {
     @Autowired
     private IContractService iContractService;
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Contracts>>getAllContract(){
         List<Contracts> contractsList=iContractService.findAll();
         return new ResponseEntity<>(contractsList, HttpStatus.OK);

@@ -32,10 +32,10 @@ public class ProductTypeService implements IProductTypeService {
         return iProductTypeRepository.findAll();
     }
 
-    @Override
-    public List<Customers> findAllCustomer() {
-        return iCustomerRepository.findAll();
-    }
+//    @Override
+//    public List<Customers> findAllCustomer() {
+//        return iCustomerRepository.findAll();
+//    }
 
     @Override
     public List<Employees> findAllEmployee() {
