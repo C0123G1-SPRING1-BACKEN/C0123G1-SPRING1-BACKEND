@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ICustomerRepository extends JpaRepository<CustomersDto, Long> {
-    @Query(value = "select c.id,c.name, c.phone_number, c.citizen_code, c.quantity_contract from customers c where is_delete=false", nativeQuery = true)
+    @Query(value = "select c.name, c.phone_number, c.citizen_code, c.quantity_contract from customers c where is_delete=false", nativeQuery = true)
     Page<CustomersDto> finAllCustomer(Pageable pageable);
 }

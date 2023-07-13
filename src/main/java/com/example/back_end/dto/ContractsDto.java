@@ -1,18 +1,21 @@
 package com.example.back_end.dto;
 
-public class ContractsDto {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class ContractsDto{
+    @Id
     private Long id;
     private String productName;
-    private Long totalCount;
     private Long loans;
 
     public ContractsDto() {
     }
 
-    public ContractsDto(Long id, String productName, Long totalCount, Long loans) {
+    public ContractsDto(Long id, String productName, Long loans) {
         this.id = id;
         this.productName = productName;
-        this.totalCount = totalCount;
         this.loans = loans;
     }
 
@@ -30,14 +33,6 @@ public class ContractsDto {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public Long getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(Long totalCount) {
-        this.totalCount = totalCount;
     }
 
     public Long getLoans() {

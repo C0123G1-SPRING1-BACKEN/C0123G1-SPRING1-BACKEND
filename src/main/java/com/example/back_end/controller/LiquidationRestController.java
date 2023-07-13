@@ -1,16 +1,18 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.dto.ContractsDto;
 import com.example.back_end.dto.CustomersDto;
+import com.example.back_end.model.Liquidations;
+import com.example.back_end.service.contracts.IContractsService;
 import com.example.back_end.service.customers.ICustomerService;
 import com.example.back_end.service.liquidations.ILiquidationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 import org.springframework.data.domain.Page;
-
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,20 +34,28 @@ public class LiquidationRestController {
     private ILiquidationsService liquidationsService;
     @Autowired
     private ICustomerService customerService;
+    @Autowired
+    private IContractsService contractsService;
 
-//    @PostMapping("")
-//    public void createLiquidation(@RequestBody Liquidations liquidations) {
-//        liquidationsService.save(liquidations);
-//    }
+    @PostMapping("")
+    public void createLiquidation(@RequestBody Liquidations liquidations) {
+        liquidationsService.save(liquidations);
+    }
 
     @GetMapping("/customers")
-    public ResponseEntity<Page<CustomersDto>> getList(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                   @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<CustomersDto> customersPage = customerService.findAllCustomer(pageable);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("customerPage", String.valueOf(customersPage.getTotalPages()));
-        headers.add("customerElement", String.valueOf(customersPage.getTotalElements()));
-        return ResponseEntity.ok().headers(headers).body(customersPage);
+    public ResponseEntity<Page<CustomersDto>> getListCustomer(@PageableDefault(size = 3)Pageable pageable){
+        Page<CustomersDto> customersDtoPage=customerService.findAllCustomer(pageable);
+        if(customersDtoPage.isEmpty()){
+            return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customersDtoPage,HttpStatus.OK);
+    }
+    @GetMapping("/contracts")
+    public ResponseEntity<Page<ContractsDto>> getListProduct(@PageableDefault(size = 3)Pageable pageable){
+        Page<ContractsDto> contractsDtoPage=contractsService.findAllProduct(pageable);
+        if(contractsDtoPage.isEmpty()){
+            return new ResponseEntity<>(contractsDtoPage, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(contractsDtoPage,HttpStatus.OK);
     }
 }
