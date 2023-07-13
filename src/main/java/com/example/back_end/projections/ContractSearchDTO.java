@@ -4,48 +4,30 @@ import com.example.back_end.model.ContractStatus;
 import com.example.back_end.model.ContractType;
 import com.example.back_end.model.Customers;
 
-public class ContractDTO {
-    private Long id;
+import java.time.LocalDate;
 
-    private String contractCode;
-
+public class ContractSearchDTO {
     private String productName;
 
     private Customers customers;
 
-    private String startDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     private ContractType contractType;
 
     private ContractStatus contractStatus;
 
-    public ContractDTO() {
+    public ContractSearchDTO() {
     }
 
-    public ContractDTO(Long id, String contractCode, String productName, Customers customers, String startDate, ContractType contractType, ContractStatus contractStatus) {
-        this.id = id;
-        this.contractCode = contractCode;
+    public ContractSearchDTO(String productName, Customers customers, LocalDate startDate, LocalDate endDate, ContractType contractType, ContractStatus contractStatus) {
         this.productName = productName;
         this.customers = customers;
         this.startDate = startDate;
+        this.endDate = endDate;
         this.contractType = contractType;
         this.contractStatus = contractStatus;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getContractCode() {
-        return contractCode;
-    }
-
-    public void setContractCode(String contractCode) {
-        this.contractCode = contractCode;
     }
 
     public String getProductName() {
@@ -64,12 +46,20 @@ public class ContractDTO {
         this.customers = customers;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public ContractType getContractType() {

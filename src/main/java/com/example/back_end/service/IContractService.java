@@ -1,12 +1,18 @@
 package com.example.back_end.service;
 
-import com.example.back_end.projections.ContractDTO;
+import com.example.back_end.model.Contracts;
+import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
 
+import java.util.Optional;
+
 public interface IContractService {
-    Page<ContractDTO> findAllContract(Integer page);
+    Page<IContractProjection> findAllTransactionHistory(Integer page);
 
-    Boolean deleteContractById(Integer id);
+    Boolean deleteTransactionHistoryById(Integer id);
 
-    ContractDTO findContractById(Integer id);
+    Page<IContractProjection> searchTransactionHistory(Integer page,ContractSearchDTO contractSearchDTO);
+
+    Optional<Contracts> findTransactionHistoryById(Integer id);
 }
