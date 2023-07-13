@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -38,7 +39,8 @@ public class Contracts {
     @JoinColumn
     private ProductType productType;
     @ManyToOne
-    @JoinColumn
+    @JsonBackReference
+    @JoinColumn(columnDefinition = "id")
     private Customers customers;
     @ManyToOne
     @JoinColumn

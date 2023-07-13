@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;
-
     //    @GetMapping("")
 //    public ResponseEntity<?> findByName(@RequestParam(value = "page", defaultValue = "0")Integer page) {
 //        return new ResponseEntity<>(customerService.findByNameProduct(PageRequest.of(page,3)),HttpStatus.OK);
@@ -38,7 +37,6 @@ public class CustomerController {
                                                 @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
         return new ResponseEntity<>(customerService.findByNameProduct(name, pageable), HttpStatus.OK);
     }
-
     @DeleteMapping("")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@RequestParam(required = false)Integer id){
