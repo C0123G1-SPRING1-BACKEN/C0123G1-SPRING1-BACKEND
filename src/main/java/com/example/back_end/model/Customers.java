@@ -49,7 +49,7 @@ public class Customers {
         this.note = note;
     }
 
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -61,10 +61,6 @@ public class Customers {
         this.image = image;
         this.frondCitizen = frondCitizen;
         this.backCitizen = backCitizen;
-        this.quantityContract = quantityContract;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
     }
 
     public String getNote() {
