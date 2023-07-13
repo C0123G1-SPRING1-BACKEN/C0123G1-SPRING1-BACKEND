@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  * Date created: 13/07/2023
  * Function: create liquidation
  *
- * @param
- * @return
+ * @param LiquidationDto
+ * @return Liquidation
  */
 
 @Service

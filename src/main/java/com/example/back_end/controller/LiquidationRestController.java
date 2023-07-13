@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.*;
  * Date created: 13/07/2023
  * Function: create liquidation
  *
- * @param
- * @return
+ * @param LiquidationDto
+ * @return Liquidation
  */
-
 
 @RestController
 @RequestMapping("/api/employee/liquidation")
