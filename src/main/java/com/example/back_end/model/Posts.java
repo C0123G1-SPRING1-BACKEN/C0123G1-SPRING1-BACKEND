@@ -16,18 +16,18 @@ public class Posts {
     private LocalDateTime createDate;
     @ManyToOne
     @JoinColumn(name = "posts_id", referencedColumnName = "id")
-    private Employees employees;
+    private Employee employee;
 
     public Posts() {
     }
 
-    public Posts(Long id, String title, String image, String content, LocalDateTime createDate, Employees employees) {
+    public Posts(Long id, String title, String image, String content, LocalDateTime createDate, Employee employee) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.content = content;
         this.createDate = createDate;
-        this.employees = employees;
+        this.employee = employee;
     }
 
     public Long getId() {
@@ -70,11 +70,11 @@ public class Posts {
         this.createDate = createDate;
     }
 
-    public Employees getEmployees() {
-        return employees;
+    public Employee getEmployees() {
+        return employee;
     }
 
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
+    public void setEmployees(Employee employee) {
+        this.employee = employee;
     }
 }

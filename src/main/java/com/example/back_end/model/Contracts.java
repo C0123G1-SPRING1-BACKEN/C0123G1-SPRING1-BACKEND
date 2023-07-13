@@ -45,7 +45,7 @@ public class Contracts {
     private ContractStatus contractStatus;
     @ManyToOne
     @JoinColumn
-    private Employees employees;
+    private Employee employee;
     @ManyToOne
     @JoinColumn
     private ContractType contractType;
@@ -62,7 +62,7 @@ public class Contracts {
         this.contractCode = contractCode;
     }
 
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employee employee, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -77,7 +77,7 @@ public class Contracts {
         this.productType = productType;
         this.customers = customers;
         this.contractStatus = contractStatus;
-        this.employees = employees;
+        this.employee = employee;
         this.contractType = contractType;
     }
 
@@ -193,12 +193,12 @@ public class Contracts {
         this.contractStatus = contractStatus;
     }
 
-    public Employees getEmployees() {
-        return employees;
+    public Employee getEmployees() {
+        return employee;
     }
 
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
+    public void setEmployees(Employee employee) {
+        this.employee = employee;
     }
 
     public ContractType getContractType() {
