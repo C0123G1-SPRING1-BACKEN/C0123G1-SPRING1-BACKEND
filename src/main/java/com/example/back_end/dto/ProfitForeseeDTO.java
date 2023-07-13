@@ -1,29 +1,14 @@
 package com.example.back_end.dto;
 
 public class ProfitForeseeDTO {
-    private Long id;
     private String contractCode;
-    private Long loans;
-    private Long totalPrice;
-    private Long profit;
+    private String loans;
+    private String interest;
+    private String startDate;
+    private String endDate;
+    private String profitForesee;
 
     public ProfitForeseeDTO() {
-    }
-
-    public ProfitForeseeDTO(Long id, String contractCode, Long loans, Long totalPrice, Long profit) {
-        this.id = id;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.totalPrice = totalPrice;
-        this.profit = profit;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getContractCode() {
@@ -34,27 +19,43 @@ public class ProfitForeseeDTO {
         this.contractCode = contractCode;
     }
 
-    public Long getLoans() {
+    public String getLoans() {
         return loans;
     }
 
-    public void setLoans(Long loans) {
+    public void setLoans(String loans) {
         this.loans = loans;
     }
 
-    public Long getTotalPrice() {
-        return totalPrice;
+    public String getInterest() {
+        return interest;
     }
 
-    public void setTotalPrice(Long totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 
-    public Long getProfit() {
-        return profit;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setProfit(Long profit) {
-        this.profit = profit;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getProfitForesee() {
+        return profitForesee;
+    }
+
+    public void setProfitForesee(String profitForesee) {
+        this.profitForesee = profitForesee;
     }
 }

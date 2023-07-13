@@ -25,32 +25,30 @@ public class ProfitServiceImpl implements IProfitService {
     private IProfitRepository iProfitRepository;
 
     @Override
-    public <T> Page<T> findAll(Pageable pageable, String profitType) {
+    public <T> Page<T> findAllContract(String startDate, String endDate,Pageable pageable, String profitType) {
         switch (profitType) {
             case "interest":
-                return (Page<T>) iProfitRepository.getAllContract(pageable,2L);
+                return (Page<T>) iProfitRepository.getAllContractInterest(startDate,endDate,pageable);
             case "liquidation":
-                break;
+                return (Page<T>) iProfitRepository.getAllLiquidation(startDate,endDate,pageable);
             case "foresee":
-                return (Page<T>) iProfitRepository.getAllContract(pageable,3L);
+                return (Page<T>) iProfitRepository.getAllContractForesee(startDate,endDate,pageable);
             default:
                 return null;
         }
-        return null;
     }
 
     @Override
     public Long getTotalProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
             case "interest":
-                return  iProfitRepository.getTotalContract(startDate,endDate,2L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
             case "liquidation":
-                break;
+                return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate);
             case "foresee":
-                return  iProfitRepository.getTotalContract(startDate,endDate,3L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
             default:
                 return null;
         }
-        return null;
     }
 }

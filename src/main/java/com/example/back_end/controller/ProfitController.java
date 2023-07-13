@@ -11,7 +11,6 @@
  */
 
 
-
 package com.example.back_end.controller;
 
 import com.example.back_end.model.Contracts;
@@ -32,21 +31,26 @@ public class ProfitController {
     private IProfitService iProfitService;
 
     @GetMapping("")
-    private <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "page", defaultValue = "0") Integer page,
+    private <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+                                                       @RequestParam(value = "endDate", defaultValue = "") String endDate,
+                                                       @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
         Pageable pageable = PageRequest.of(page, 8);
-        Page<T> contractPage = iProfitService.findAll(pageable, profitType);
+        Page<T> contractPage = iProfitService.findAllContract(startDate, endDate,pageable, profitType);
+        if(contractPage.getTotalElements() <= 0){
+            return new ResponseEntity<>(contractPage, HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(contractPage, HttpStatus.OK);
     }
 
     @GetMapping("/total-profit")
     private ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
-                                                        @RequestParam(value = "endDate", defaultValue = "") String endDate,
-                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-            Long total = iProfitService.getTotalProfit(startDate, endDate, profitType);
-            if (total == null) {
-                return new ResponseEntity<>(0L, HttpStatus.BAD_REQUEST);
-            }
-            return new ResponseEntity<>(total, HttpStatus.OK);
+                                                @RequestParam(value = "endDate", defaultValue = "") String endDate,
+                                                @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
+        Long total = iProfitService.getTotalProfit(startDate, endDate, profitType);
+        if (total == null) {
+            return new ResponseEntity<>(0L, HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<>(total, HttpStatus.OK);
     }
+}

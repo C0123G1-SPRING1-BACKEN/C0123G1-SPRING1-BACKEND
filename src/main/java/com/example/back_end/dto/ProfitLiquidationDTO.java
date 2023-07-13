@@ -1,12 +1,19 @@
 package com.example.back_end.dto;
 
-public class ProfitInterestDTO {
+public class ProfitLiquidationDTO {
     private String contractCode;
     private String loans;
-    private String interest;
+    private String proceedsOfSale;
     private String profit;
 
-    public ProfitInterestDTO() {
+    public ProfitLiquidationDTO() {
+    }
+
+    public ProfitLiquidationDTO( String contractCode, String loans, String proceedsOfSale, String profit) {
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.proceedsOfSale = proceedsOfSale;
+        this.profit = profit;
     }
 
     public String getContractCode() {
@@ -25,12 +32,12 @@ public class ProfitInterestDTO {
         this.loans = loans;
     }
 
-    public String getInterest() {
-        return interest;
+    public String getProceedsOfSale() {
+        return proceedsOfSale;
     }
 
-    public void setInterest(String interest) {
-        this.interest = interest;
+    public void setProceedsOfSale(String proceedsOfSale) {
+        this.proceedsOfSale = proceedsOfSale;
     }
 
     public String getProfit() {
