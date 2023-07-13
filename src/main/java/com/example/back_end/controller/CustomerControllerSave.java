@@ -20,13 +20,27 @@ public class CustomerControllerSave {
     @Autowired
     private ICustomerServiceCreateUpdate customerServiceCreateUpdate;
 
-
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : find customer with corresponding id of customer
+     *
+     * Param id
+     * Return CustomerSaveDto
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public CustomerSaveDto findId(@PathVariable Long id) {
         return customerServiceCreateUpdate.findById(id);
     }
 
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : create new customer
+     *
+     * Param customerSaveDto, bindingResult
+     */
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult){
@@ -37,6 +51,13 @@ public class CustomerControllerSave {
         }
     }
 
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : update customer
+     *
+     * Param id, customerSaveDto, bindingResult
+     */
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     public void update(@Validated @PathVariable Long id, @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult){
