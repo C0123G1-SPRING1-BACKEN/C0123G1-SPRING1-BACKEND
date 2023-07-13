@@ -1,3 +1,17 @@
+/**
+ * Created by: KhanhKQ
+ * Date created: 13/07/2023
+ * Function: display list contract/liquidation into Database, Calculate total profit
+ *
+ * @param page,
+ * @param profitType (Type of profit)
+ * @param startDate, endDate (The date range you want to calculate the profit)
+ * @return getAllContract() : Returns a list of contracts by statistical date range
+ * @return getTotalProfit() : Returns the total profit by the statistical date range
+ */
+
+
+
 package com.example.back_end.controller;
 
 import com.example.back_end.model.Contracts;
@@ -26,7 +40,7 @@ public class ProfitController {
     }
 
     @GetMapping("/total-profit")
-    private ResponseEntity<Long> getTotalProfitInterest(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+    private ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                         @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                         @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
             Long total = iProfitService.getTotalProfit(startDate, endDate, profitType);

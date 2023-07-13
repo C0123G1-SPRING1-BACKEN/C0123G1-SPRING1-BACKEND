@@ -1,3 +1,15 @@
+/**
+ * Created by: KhanhKQ
+ * Date created: 13/07/2023
+ * Function: display list contract/liquidation into Database, Calculate total profit
+ *
+ * @param pageable (Pagination for lists)
+ * @param profitType (Type of profit)
+ * @param startDate, endDate (The date range you want to calculate the profit)
+ * @return findAll() : Returns a list of contracts by statistical date range
+ * @return getTotalProfit() : Returns the total profit by the statistical date range
+ */
+
 package com.example.back_end.service;
 
 import com.example.back_end.model.Contracts;
@@ -28,7 +40,7 @@ public class ProfitServiceImpl implements IProfitService {
     }
 
     @Override
-    public Long getTotalProfit(String startDate, String endDate, String profitType,Pageable pageable) {
+    public Long getTotalProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
             case "interest":
                 return  iProfitRepository.getTotalContract(startDate,endDate,2L);
