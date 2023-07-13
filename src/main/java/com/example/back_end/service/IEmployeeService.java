@@ -12,7 +12,6 @@ public interface IEmployeeService {
      * Created by: DongPV
      * Date created: 13/07/2023
      * function: Create employee
-     *
      * @param employeeDTO
      */
     void createEmployee(EmployeeDTO employeeDTO);
