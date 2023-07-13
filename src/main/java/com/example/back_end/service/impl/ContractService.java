@@ -15,6 +15,8 @@ public class ContractService implements IContractService {
      * Create by : TriPD
      * Date created : 13/07/2023
      * Function : findContractById(),updateContract()
+     * @param : id
+     * return: new Contract
      */
     @Autowired
    private ContractRepository contractRepository;
