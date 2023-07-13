@@ -1,8 +1,7 @@
 package com.example.back_end.service.impl;
 
 import com.example.back_end.dto.EmployeeDTO;
-import com.example.back_end.model.Employee;
-import com.example.back_end.model.Users;
+import com.example.back_end.model.Employees;
 import com.example.back_end.repository.IEmployeeRepository;
 import com.example.back_end.service.IEmployeeService;
 import org.springframework.beans.BeanUtils;
@@ -24,11 +23,11 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public Page<EmployeeDTO> findAllByName(Pageable pageable, String search) {
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
-        Page<Employee> employeePage = iEmployeeRepository.findAllByNameContaining(pageable, search);
+        Page<Employees> employeePage = iEmployeeRepository.findAllByNameContaining(pageable, search);
         EmployeeDTO employeeDTO;
-        for (Employee employee : employeePage){
+        for (Employees employees : employeePage){
             employeeDTO = new EmployeeDTO();
-            BeanUtils.copyProperties(employee,employeeDTO);
+            BeanUtils.copyProperties(employees,employeeDTO);
             employeeDTOList.add(employeeDTO);
         }
         return new PageImpl<>(employeeDTOList, pageable, employeePage.getTotalElements());
@@ -42,18 +41,18 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public void createEmployee(EmployeeDTO employeeDTO) {
-        Employee employee = new Employee();
-        BeanUtils.copyProperties(employeeDTO,employee);
+        Employees employees = new Employees();
+        BeanUtils.copyProperties(employeeDTO, employees);
         iEmployeeRepository.createEmployee(
-                employee.getName(),
-                employee.getBirthDay(),
-                employee.getGender(),
-                employee.getEmail(),
-                employee.getPhoneNumber(),
-                employee.getAddress(),
-                employee.getSalary(),
-                employee.getCitizenCode(),
-                employee.getImage()
+                employees.getName(),
+                employees.getBirthDay(),
+                employees.getGender(),
+                employees.getEmail(),
+                employees.getPhoneNumber(),
+                employees.getAddress(),
+                employees.getSalary(),
+                employees.getCitizenCode(),
+                employees.getImage()
         );
     }
 }

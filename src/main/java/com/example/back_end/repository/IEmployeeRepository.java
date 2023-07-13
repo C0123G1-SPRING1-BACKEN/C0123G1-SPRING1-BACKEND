@@ -1,7 +1,6 @@
 package com.example.back_end.repository;
 
-import com.example.back_end.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.back_end.model.Employees;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,9 +11,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employee,Integer> {
+public interface IEmployeeRepository extends JpaRepository<Employees,Integer> {
     @Query(value = "select * from employee where name like concat('%', :search, '%') ", nativeQuery = true)
-    Page<Employee> findAllByNameContaining(Pageable pageable,@Param("search") String search);
+    Page<Employees> findAllByNameContaining(Pageable pageable, @Param("search") String search);
 
     @Modifying
     @Transactional

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Employee {
+public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,13 +15,13 @@ public class Employee {
     private String name;
     private String birthDay;
     private Integer gender;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String phoneNumber;
     private String address;
     private String salary;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String citizenCode;
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
@@ -35,10 +35,10 @@ public class Employee {
     @JoinColumn
     private Users users;
 
-    public Employee() {
+    public Employees() {
     }
 
-    public Employee(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
