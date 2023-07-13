@@ -39,7 +39,6 @@ public class EmployeeService implements IEmployeeService {
      * Created by: DongPV
      * Date created: 13/07/2023
      * function: Create employee
-     *
      */
     @Override
     public void createEmployee(EmployeeDTO employeeDTO) {
