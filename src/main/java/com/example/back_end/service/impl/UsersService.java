@@ -12,7 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
+/**
+ * Created by: VienH
+ * Date created: 13/07/2023
+ * Function: Login , Forgot Password
+ *
+ * @param
+ * @return
+ */
 @Service
 public class UsersService implements UserDetailsService, IUsersService {
     @Autowired

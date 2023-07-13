@@ -18,7 +18,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
-
+/**
+ * Created by: VienH
+ * Date created: 13/07/2023
+ * Function: Login , Forgot Password
+ *
+ * @param 
+ * @return
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
