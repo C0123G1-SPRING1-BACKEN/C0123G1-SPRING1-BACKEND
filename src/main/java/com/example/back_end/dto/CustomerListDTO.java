@@ -1,17 +1,14 @@
-package com.example.back_end.model;
+package com.example.back_end.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.back_end.model.Contracts;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "customers")
-public class Customers {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerListDTO {
     private Long id;
     private String name;
     private String birthday;
@@ -21,35 +18,20 @@ public class Customers {
     private String address;
     private String citizenCode;
     private String image;
-    private String frontCitizen;
-    private String backCitizen;
-    @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     private LocalDateTime createDate;
-    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
     private LocalDateTime updateDate;
-    private boolean isDelete;
-    @Column(name = "note", columnDefinition = "text")
     private String note;
-    @OneToMany(mappedBy = "customers")
-    private Set<Contracts> contractsSet = new HashSet<>();
+    private Integer quantityContract;
 
-    public Customers() {
+    public CustomerListDTO() {
     }
 
-    public Set<Contracts> getContractsSet() {
-        return contractsSet;
+    public Integer getQuantityContract() {
+        return quantityContract;
     }
 
-    public void setContractsSet(Set<Contracts> contractsSet) {
-        this.contractsSet = contractsSet;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
+    public void setQuantityContract(Integer quantityContract) {
+        this.quantityContract = quantityContract;
     }
 
     public Long getId() {
@@ -124,22 +106,6 @@ public class Customers {
         this.image = image;
     }
 
-    public String getFrontCitizen() {
-        return frontCitizen;
-    }
-
-    public void setFrontCitizen(String frontCitizen) {
-        this.frontCitizen = frontCitizen;
-    }
-
-    public String getBackCitizen() {
-        return backCitizen;
-    }
-
-    public void setBackCitizen(String backCitizen) {
-        this.backCitizen = backCitizen;
-    }
-
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -156,11 +122,12 @@ public class Customers {
         this.updateDate = updateDate;
     }
 
-    public boolean isDelete() {
-        return isDelete;
+    public String getNote() {
+        return note;
     }
 
-    public void setDelete(boolean delete) {
-        isDelete = delete;
+    public void setNote(String note) {
+        this.note = note;
     }
+
 }

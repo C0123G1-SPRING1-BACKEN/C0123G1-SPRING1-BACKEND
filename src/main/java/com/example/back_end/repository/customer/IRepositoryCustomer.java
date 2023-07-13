@@ -22,20 +22,10 @@ public interface IRepositoryCustomer extends JpaRepository<Customers,Integer> {
 //            "join contract on customer.id=contract.id_customer" +
 //            "where name like %:name% ",
 //            nativeQuery = true)
-//    Page<Customers> findByNameCustomer(@Param("name")String name, Pageable pageable);
-
-    @Query(value = "select c.`name`,c.birthday,c.gender,c.phone_number,c.email,c.address,c.front_citizen,c.image,c.back_citizen,c.create_date,c.update_date,count(ct.customers_id) \n" +
-            "           as quantityContract\n" +
-            "           from customers c\n" +
-            "           join contracts ct on c.id=ct.customers_id\n" +
-            "           where c.`name`  LIKE CONCAT('%', :name, '%')\n" +
-            "           group by ct.customers_id;", nativeQuery = true)
+//    Page<CustomerModel> findAllCustomer(Pageable pageable, @Param("name") String name);
+    @Query(value = "select * from customers where name LIKE CONCAT('%', :name, '%') and is_delete = false", nativeQuery = true)
     Page<Customers> findByNameCustomer(@Param("name")String name, Pageable pageable);
 //    @Query(value = "select * from customers", nativeQuery = true)
 //    Page<Customers> findByNameCustomer(Pageable pageable);
-
-
-    @Query(value = "delete from customers where id = :id",nativeQuery = true)
-    void deleteCustomers(int id);
 }
 
