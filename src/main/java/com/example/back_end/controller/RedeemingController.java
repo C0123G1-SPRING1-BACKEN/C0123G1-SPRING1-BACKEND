@@ -38,4 +38,6 @@ public class RedeemingController {
         }
         return new ResponseEntity<>(contractsPage,HttpStatus.OK);
     }
+
+    // em dang nghien cuu DTO de so ra list
 }
