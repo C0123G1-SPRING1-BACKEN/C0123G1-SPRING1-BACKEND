@@ -13,13 +13,12 @@ public class Users {
     @Column(name = "id")
     private Long id;
 
-    @UniqueElements
-    @Column(name = "username",nullable = false,unique = true)
+    @Column(name = "username",nullable = false,unique = false)
     private String username;
 
     @Column(name = "password",nullable = false)
     private String password;
-    @Column(name = "verification_code",unique = false)
+    @Column(name = "verification_code")
     private Integer verificationCode;
 
     @ManyToOne

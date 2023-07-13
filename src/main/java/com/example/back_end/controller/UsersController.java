@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
@@ -97,6 +98,7 @@ public class UsersController {
     }
     @PostMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestBody Users user){
+
         try {
             usersService.saveNewPassword(user);
             return ResponseEntity.ok("Đổi mật khẩu thành công!");
