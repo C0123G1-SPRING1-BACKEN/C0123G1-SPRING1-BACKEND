@@ -10,6 +10,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+/**
+ * Created by: DinhHD
+ * Date created: 13/07/2023
+ * Function: do about customer selection interface
+ *
+ // * @param Customer
+ * @return getAllCustomer(),searchCustomer()
+ */
 
 @RestController
     @RequestMapping("/api/customer")
