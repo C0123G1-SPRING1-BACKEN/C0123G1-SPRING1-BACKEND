@@ -16,7 +16,7 @@ public class Contracts {
 
     @Column( columnDefinition = "VARCHAR(250)")
     private String productName;
-    @Column( columnDefinition = "VARCHAR(250)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String contractCode;
     private Long loans;
     private Long profit;
