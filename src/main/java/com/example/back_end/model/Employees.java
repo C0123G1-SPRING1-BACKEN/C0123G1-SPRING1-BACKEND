@@ -30,6 +30,9 @@ public class Employees {
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
     private LocalDateTime updateTime;
+    @OneToOne
+    @JoinColumn
+    private Users users;
 
     public Employees() {
     }
@@ -47,6 +50,7 @@ public class Employees {
         this.image = image;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.users = users;
     }
 
     public Long getId() {
@@ -143,5 +147,21 @@ public class Employees {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
