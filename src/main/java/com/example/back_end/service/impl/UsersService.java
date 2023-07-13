@@ -49,6 +49,7 @@ public class UsersService implements UserDetailsService, IUsersService {
         return iUserRepository.findByEmail(email);
     }
 
+    @Transactional
     @Override
     public void editUser(Users users) {
         iUserRepository.save(users);
