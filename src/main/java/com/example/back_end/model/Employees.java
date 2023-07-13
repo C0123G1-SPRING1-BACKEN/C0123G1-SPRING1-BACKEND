@@ -12,7 +12,7 @@ public class Employees {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String employeeName;
+    private String name;
     private String birthDay;
     private Integer gender;
     @Column(nullable = false)
@@ -30,13 +30,16 @@ public class Employees {
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
     private LocalDateTime updateTime;
+    @OneToOne
+    @JoinColumn
+    private Users users;
 
     public Employees() {
     }
 
-    public Employees(Long id, String employeeName, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;
-        this.employeeName = employeeName;
+        this.name = name;
         this.birthDay = birthDay;
         this.gender = gender;
         this.email = email;
@@ -47,6 +50,7 @@ public class Employees {
         this.image = image;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.users = users;
     }
 
     public Long getId() {
@@ -58,11 +62,11 @@ public class Employees {
     }
 
     public String getEmployeeName() {
-        return employeeName;
+        return name;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setEmployeeName(String name) {
+        this.name = name;
     }
 
     public String getBirthDay() {
@@ -143,5 +147,21 @@ public class Employees {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
