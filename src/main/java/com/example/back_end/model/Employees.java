@@ -12,9 +12,12 @@ public class Employees {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String employeeName;
+    private String name;
     private String birthDay;
     private Integer gender;
+    @OneToOne
+    @JoinColumn
+    private Users users;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
@@ -34,11 +37,12 @@ public class Employees {
     public Employees() {
     }
 
-    public Employees(Long id, String employeeName, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
+    public Employees(Long id, String name, String birthDay, Integer gender, Users users, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
-        this.employeeName = employeeName;
+        this.name = name;
         this.birthDay = birthDay;
         this.gender = gender;
+        this.users = users;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -57,12 +61,12 @@ public class Employees {
         this.id = id;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public String getName() {
+        return name;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBirthDay() {
@@ -79,6 +83,14 @@ public class Employees {
 
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public String getEmail() {
