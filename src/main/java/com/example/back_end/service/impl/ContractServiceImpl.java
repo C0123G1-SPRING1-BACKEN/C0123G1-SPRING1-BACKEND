@@ -67,7 +67,7 @@ public class ContractServiceImpl implements IContractService {
 
     @Override
     public Page<IContractProjection> searchTransactionHistory(Integer page,ContractSearchDTO contractSearchDTO) {
-        return null;
+        return iContractRepository.searchTransactionHistory(PageRequest.of(page,5),contractSearchDTO.getCustomerName(),contractSearchDTO.getProductName(),contractSearchDTO.getStartDate(),contractSearchDTO.getEndDate(),contractSearchDTO.getContractType().getId(),contractSearchDTO.getContractStatus().getId());
     }
 
     /**

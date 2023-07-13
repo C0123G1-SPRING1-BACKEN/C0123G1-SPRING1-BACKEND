@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class ContractSearchDTO {
     private String productName;
 
-    private Customers customers;
+    private String customerName;
 
     private LocalDate startDate;
     private LocalDate endDate;
@@ -21,9 +21,9 @@ public class ContractSearchDTO {
     public ContractSearchDTO() {
     }
 
-    public ContractSearchDTO(String productName, Customers customers, LocalDate startDate, LocalDate endDate, ContractType contractType, ContractStatus contractStatus) {
+    public ContractSearchDTO(String productName, String customerName, LocalDate startDate, LocalDate endDate, ContractType contractType, ContractStatus contractStatus) {
         this.productName = productName;
-        this.customers = customers;
+        this.customerName = customerName;
         this.startDate = startDate;
         this.endDate = endDate;
         this.contractType = contractType;
@@ -38,12 +38,12 @@ public class ContractSearchDTO {
         this.productName = productName;
     }
 
-    public Customers getCustomers() {
-        return customers;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomers(Customers customers) {
-        this.customers = customers;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public LocalDate getStartDate() {
