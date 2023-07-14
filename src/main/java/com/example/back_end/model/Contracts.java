@@ -2,11 +2,10 @@ package com.example.back_end.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-@EntityListeners(AuditingEntityListener.class)
+
 @Entity
 @Table(name = "contracts")
 public class Contracts {
@@ -14,26 +13,24 @@ public class Contracts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)",nullable = false)
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)")
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
+    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
     private String contractCode;
-    @Column(nullable = false)
     private Long loans;
-    @Column(nullable = false)
     private Long profit;
-    @Column(name = "image", columnDefinition = "TEXT",nullable = false)
+    @Column(name = "image", columnDefinition = "TEXT")
     private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)",nullable = false)
+    @Column(name = "start_date",columnDefinition = "VARCHAR(25)")
     private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)",nullable = false)
+    @Column(name = "end_date",columnDefinition = "VARCHAR(25)")
     private String endDate;
+    @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     @CreationTimestamp
-    @Column(name = "create_time", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
-    private LocalDateTime createTime;
+    private LocalDateTime createDate;
+    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
-    @Column(name = "update_time", nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
-    private LocalDateTime updateTime;
+    private LocalDateTime updateDate;
 
     @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
@@ -54,7 +51,7 @@ public class Contracts {
     private ContractType contractType;
 
 
-    public Contracts(){
+    public Contracts() {
     }
 
     public Contracts(Long id) {
@@ -74,8 +71,8 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.createDate = createTime;
+        this.updateDate = updateTime;
         this.isDelete = isDelete;
         this.productType = productType;
         this.customers = customers;
@@ -149,19 +146,19 @@ public class Contracts {
     }
 
     public LocalDateTime getCreateTime() {
-        return createTime;
+        return createDate;
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
+        this.createDate = createTime;
     }
 
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdateDate(LocalDateTime updateTime) {
+        this.updateDate = updateTime;
     }
 
     public boolean isDelete() {

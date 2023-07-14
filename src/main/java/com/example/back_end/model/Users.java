@@ -1,8 +1,5 @@
 package com.example.back_end.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,14 +9,11 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @UniqueElements
-    @Column(name = "username",nullable = false,unique = true)
+    @Column(name = "username")
     private String username;
-
-    @Column(name = "password",nullable = false)
+    @Column(name = "password")
     private String password;
-    @Column(name = "verification_code",unique = false)
+    @Column(name = "verification_code")
     private Integer verificationCode;
 
     @ManyToOne
