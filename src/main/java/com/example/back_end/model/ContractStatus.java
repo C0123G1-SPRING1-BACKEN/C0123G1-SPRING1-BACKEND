@@ -7,23 +7,22 @@ import javax.persistence.*;
 public class ContractStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false,unique = false)
+    private Integer id;
     private String name;
 
     public ContractStatus() {
     }
 
-    public ContractStatus(Long id, String name) {
+    public ContractStatus(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

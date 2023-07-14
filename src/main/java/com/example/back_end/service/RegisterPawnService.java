@@ -30,7 +30,8 @@ public class RegisterPawnService implements IRegisterPawnService {
 
         RegisterPawn registerPawn = new RegisterPawn();
         BeanUtils.copyProperties(registerDTO, registerPawn);
-        registerPawnRepository.createRegisterPawn(registerPawn.getName(), registerPawn.getPhone(), registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContendNote(), registerPawn.getProductType().getId());
+        registerPawnRepository.createRegisterPawn(registerPawn.getName(), registerPawn.getPhone(),
+                registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContendNote(), registerPawn.getProductType().getId());
     }
 
 }
