@@ -1,8 +1,10 @@
 package com.example.back_end.dto;
 
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class ProductTypeDTO {
