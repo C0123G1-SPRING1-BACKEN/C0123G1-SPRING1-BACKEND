@@ -4,9 +4,12 @@ import com.example.back_end.model.Posts;
 import com.example.back_end.repository.IPostsRepository;
 import com.example.back_end.service.posts.IPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostsService implements IPostsService {
@@ -21,8 +24,8 @@ public class PostsService implements IPostsService {
     @Autowired
     private IPostsRepository iPostsRepository;
     @Override
-    public List<Posts> getAllPosts() {
-        return iPostsRepository.getAll();
+    public Page<Posts> getAllPosts(Pageable pageable) {
+        return iPostsRepository.getAll(pageable);
     }
 
     @Override
@@ -31,7 +34,12 @@ public class PostsService implements IPostsService {
     }
 
     @Override
-    public Posts findByIdPosts(Long id) {
-        return iPostsRepository.findById(id).get();
+    public Optional<Posts> findByIdPosts(Long id) {
+        return iPostsRepository.findById(id);
+    }
+
+    @Override
+    public List<Posts> findByNamePosts(String title) {
+        return iPostsRepository.findByName(title);
     }
 }
