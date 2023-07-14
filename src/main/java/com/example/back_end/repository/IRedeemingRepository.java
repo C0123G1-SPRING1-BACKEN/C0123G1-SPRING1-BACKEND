@@ -31,10 +31,10 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
     @Query(value = "SELECT *\n" +
             "FROM contracts\n" +
             "         INNER JOIN customers c ON contracts.customers_id = c.id\n" +
-            "WHERE contracts.id = 1\n" +
+            "WHERE contracts.id = :id\n" +
             "  AND contracts.is_delete = FALSE\n" +
             "  AND contracts.contract_status_id = 1", nativeQuery = true)
-    Contracts findOpenContractById(Long id);
+    Contracts findOpenContractById(@Param("id") Long id);
 
 
     @Query(value = "SELECT con.id            AS contractId,\n" +
@@ -50,5 +50,5 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "  AND con.contract_status_id = 1\n" +
             "  AND con.contract_code LIKE :contractCode AND c.name LIKE :customerName AND con.product_name LIKE :productName AND start_date LIKE :startDate\n" +
             "ORDER BY con.create_time DESC", nativeQuery = true)
-    Page<IOpenContractDTO> searchPageConTract(Pageable pageable,@Param("contractCode") String contractCode,@Param("customerName") String customerName,@Param("productName") String productName,@Param("startDate") String startDate);
+    Page<IOpenContractDTO> searchPageConTract(Pageable pageable, @Param("contractCode") String contractCode, @Param("customerName") String customerName, @Param("productName") String productName, @Param("startDate") String startDate);
 }
