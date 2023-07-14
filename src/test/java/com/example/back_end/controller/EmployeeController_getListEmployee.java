@@ -23,13 +23,6 @@ public class EmployeeController_getListEmployee {
      *
      * @throws Exception
      */
-//    @Test
-//    public void findAll_5() throws Exception {
-//        this.mockMvc.perform(
-//                MockMvcRequestBuilders.get("/api/employee"))
-//                .andDo(print())
-//                .andExpect(status().is4xxClientError());
-//    }
     @Test
     public void findAll_5() throws Exception {
         this.mockMvc.perform(
@@ -51,12 +44,12 @@ public class EmployeeController_getListEmployee {
                         MockMvcRequestBuilders.get("/api/employee?page=1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("totalPages").value(2))
-                .andExpect(jsonPath("totalElements").value(10))
-                .andExpect(jsonPath("content[0].name").value("Lê Thị Hoài"))
-                .andExpect(jsonPath("content[0].birthDay").value("14/10/2001"))
-                .andExpect(jsonPath("content[0].gender").value(2))
-                .andExpect(jsonPath("content[0].email").value("lethihoai@gmail.com"))
+                .andExpect(jsonPath("totalPages").value(3))
+                .andExpect(jsonPath("totalElements").value(15))
+                .andExpect(jsonPath("content[0].name").value("Lê Văn Hai"))
+                .andExpect(jsonPath("content[0].birthDay").value("17/10/2000"))
+                .andExpect(jsonPath("content[0].gender").value(1))
+                .andExpect(jsonPath("content[0].email").value("levanhai@gmail.com"))
                 .andExpect(jsonPath("content[0].phoneNumber").value("0964297433"))
                 .andExpect(jsonPath("content[0].address").value("15 Điện Biên Phủ"))
                 .andExpect(jsonPath("content[0].salary").value("15000000"))
