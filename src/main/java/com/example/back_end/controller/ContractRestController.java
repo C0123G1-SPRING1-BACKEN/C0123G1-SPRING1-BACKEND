@@ -38,30 +38,25 @@ public class ContractRestController {
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
     }
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@Valid @RequestBody ContractDto contractDto, BindingResult bindingResult){
+    public ResponseEntity<?> createContracts(@RequestBody @Valid ContractDto contractDto,BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Contracts contracts=new Contracts();
         BeanUtils.copyProperties(contractDto,contracts);
-        try {
             iContractService.createContract(contracts);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (Exception e){
-            return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
     }
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+//        Map<String, String> errors = new HashMap<>();
+//        ex.getBindingResult().getAllErrors().forEach((error) -> {
+//            String fieldName = ((FieldError) error).getField();
+//            String errorMessage = error.getDefaultMessage();
+//            errors.put(fieldName, errorMessage);
+//        });
+//        return errors;
+//    }
 
 }
 

@@ -13,7 +13,7 @@ public class Contracts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)" )
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)" ,nullable = false)
     private String productName;
     @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
     private String contractCode;

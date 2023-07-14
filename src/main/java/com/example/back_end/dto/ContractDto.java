@@ -5,6 +5,7 @@ import com.example.back_end.model.*;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ContractDto {
@@ -14,10 +15,12 @@ public class ContractDto {
     private String productName;
     @NotBlank(message = "Không được để trống !")
     private String contractCode;
-    @NotBlank(message = "Không được để trống !")
+    @NotNull(message = "Không được để trống !")
     private Long loans;
-    @NotBlank(message = "Không được để trống !")
+    @NotNull(message = "Không được để trống !")
     private Long profit;
+    @NotBlank(message = "Không được để trống !")
+
     private String image;
     @NotBlank(message = "Không được để trống !")
 
@@ -25,16 +28,13 @@ public class ContractDto {
     @NotBlank(message = "Không được để trống !")
 
     private String endDate;
-    private LocalDateTime createDate;
-
-    private LocalDateTime updateDate;
-
+@NotNull(message = "Không được để trống !")
     private ProductType productType;
-    @NotBlank(message = "Không được để trống !")
+    @NotNull(message = "Không được để trống !")
+
     private Customers customer;
 
     private ContractStatus contractStatus;
-
 
     private Employees employee;
 
@@ -43,7 +43,7 @@ public class ContractDto {
     public ContractDto() {
     }
 
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -52,8 +52,6 @@ public class ContractDto {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
         this.productType = productType;
         this.customer = customer;
         this.contractStatus = contractStatus;
@@ -123,22 +121,6 @@ public class ContractDto {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
     }
 
     public ProductType getProductType() {
