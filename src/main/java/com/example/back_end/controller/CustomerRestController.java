@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/employee/contract/customer")
 @CrossOrigin("*")
 public class CustomerRestController {
     @Autowired
@@ -37,7 +37,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/contract/search")
     public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
         Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
         if (iCustomerDtoPage.isEmpty()) {
@@ -46,7 +46,7 @@ public class CustomerRestController {
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/contract/{id}")
     public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
       ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
       if (iCustomerDto.equals(id)){

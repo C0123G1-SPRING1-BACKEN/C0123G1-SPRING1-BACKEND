@@ -26,7 +26,7 @@ import java.util.Map;
  * @return createContracts()
  */
 
-@RequestMapping("/api/contract")
+@RequestMapping("/api/employee/contract")
 @RestController
 @CrossOrigin("*")
 public class ContractRestController {

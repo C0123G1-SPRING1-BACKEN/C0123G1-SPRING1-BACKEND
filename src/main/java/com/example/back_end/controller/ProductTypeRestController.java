@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("/api")
+@RequestMapping("/api/employee/type")
 @RestController
 @CrossOrigin("*")
 public class ProductTypeRestController {
     @Autowired
     private IProductTypeService iProductTypeService;
 
-    @GetMapping("/productType")
+    @GetMapping("/contract/productType")
     public ResponseEntity<List<ProductType>> getAll() {
         List<ProductType> kindOfPawnsList = iProductTypeService.findAll();
         return new ResponseEntity<>(kindOfPawnsList, HttpStatus.OK);
@@ -33,7 +33,7 @@ public class ProductTypeRestController {
 //        List<Customers> customerList=iProductTypeService.findAllCustomer();
 //        return new ResponseEntity<>(customerList, HttpStatus.OK);
 //    }
-    @GetMapping("/employee")
+    @GetMapping("/contract/employee")
     public ResponseEntity<List<Employees>> getAllEmployee() {
         List<Employees> employeesList = iProductTypeService.findAllEmployee();
         return new ResponseEntity<>(employeesList, HttpStatus.OK);
