@@ -1,8 +1,5 @@
 package com.example.back_end.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,20 +9,16 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @UniqueElements
-    @Column(name = "username",nullable = false,unique = true)
+    @Column(name = "username")
     private String username;
-
-    @Column(name = "password",nullable = false)
+    @Column(name = "password")
     private String password;
-    @Column(name = "verification_code",unique = false)
+    @Column(name = "verification_code")
     private Integer verificationCode;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Roles roles;
-    private String email;
 
     public Users() {
     }
@@ -38,13 +31,11 @@ public class Users {
         this.roles = roles;
     }
 
-    public Users(Long id, String username, String password, Integer verificationCode, Roles roles, String email) {
+    public Users(Long id, String username, String password, Integer verificationCode) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.verificationCode = verificationCode;
-        this.roles = roles;
-        this.email = email;
     }
 
     public void setId(Long id) {
@@ -85,13 +76,5 @@ public class Users {
 
     public Integer getVerificationCode() {
         return verificationCode;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

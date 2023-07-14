@@ -1,60 +1,49 @@
-package com.example.back_end.model;
+package com.example.back_end.dto;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.example.back_end.model.*;
 
-import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "contracts")
-public class Contracts {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDto {
+
     private Long id;
-
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)" ,nullable = false)
+    @NotBlank(message = "Không được để trống !")
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
+    @NotBlank(message = "Không được để trống !")
     private String contractCode;
+    @NotNull(message = "Không được để trống !")
     private Long loans;
+    @NotNull(message = "Không được để trống !")
     private Long profit;
-    @Column(name = "image", columnDefinition = "TEXT")
-    private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)")
-    private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)")
-    private String endDate;
-    @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
-    @CreationTimestamp
-    private LocalDateTime createDate;
-    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
-    @UpdateTimestamp
-    private LocalDateTime updateDate;
+    @NotBlank(message = "Không được để trống !")
 
-    @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
-    private boolean isDelete;
-    @ManyToOne
-    @JoinColumn
+    private String image;
+    @NotBlank(message = "Không được để trống !")
+
+    private String startDate;
+    @NotBlank(message = "Không được để trống !")
+
+    private String endDate;
+@NotNull(message = "Không được để trống !")
     private ProductType productType;
-    @ManyToOne
-    @JoinColumn
+    @NotNull(message = "Không được để trống !")
+
     private Customers customer;
-    @ManyToOne
-    @JoinColumn
+
     private ContractStatus contractStatus;
-    @ManyToOne
-    @JoinColumn
+
     private Employees employee;
-    @ManyToOne
-    @JoinColumn
+
     private ContractType contractType;
 
-
-    public Contracts(){
+    public ContractDto() {
     }
 
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -63,9 +52,6 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
         this.productType = productType;
         this.customer = customer;
         this.contractStatus = contractStatus;
@@ -135,30 +121,6 @@ public class Contracts {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
     }
 
     public ProductType getProductType() {
