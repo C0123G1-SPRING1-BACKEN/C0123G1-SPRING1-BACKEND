@@ -1,6 +1,6 @@
 package com.example.back_end.service.contracts.impl;
 
-import com.example.back_end.dto.ContractsDto;
+import com.example.back_end.dto.IContractDto;
 import com.example.back_end.repository.IContractsRepository;
 import com.example.back_end.service.contracts.IContractsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class ContractsServiceImpl implements IContractsService {
     @Autowired
     private IContractsRepository contractsRepository;
     @Override
-    public Page<ContractsDto> findAllProduct(Pageable pageable) {
+    public Page<IContractDto> findAllProduct(Pageable pageable) {
         return contractsRepository.finAllProduct(pageable);
     }
 }
