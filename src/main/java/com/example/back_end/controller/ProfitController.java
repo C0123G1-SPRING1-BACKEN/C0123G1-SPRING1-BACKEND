@@ -47,10 +47,12 @@ public class ProfitController {
     private ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                 @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                 @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-        Long total = iProfitService.getTotalProfit(startDate, endDate, profitType);
-        if (total == null) {
-            return new ResponseEntity<>(0L, HttpStatus.NO_CONTENT);
+        Long totalProfit;
+        try{
+             totalProfit = iProfitService.getTotalProfit(startDate, endDate, profitType);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(total, HttpStatus.OK);
+        return new ResponseEntity<>(totalProfit, HttpStatus.OK);
     }
 }

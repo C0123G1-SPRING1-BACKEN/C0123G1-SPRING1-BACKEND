@@ -106,13 +106,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
 
     @Query(value = "select sum(c.profit) \n" +
             "from liquidations l \n" +
-            "inner join contracts c on l.contracts_id = c.id \n" +
-            "where CASE \n" +
-            "WHEN :startDate = '' and :endDate = '' THEN l.create_time LIKE '%%' \n" +
-            "WHEN :startDate = '' THEN l.create_time LIKE concat('%', :endDate, '%') \n" +
-            "WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%') \n" +
-            "WHEN :startDate != '' and :endDate != '' then (l.create_time >= :startDate and l.create_time <= :endDate) \n" +
-            "END", nativeQuery = true)
+            "         inner join contracts c on l.contracts_id = c.id \n" +
+            "where l.create_time between :startDate and :endDate", nativeQuery = true)
     Long getTotalProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate);
-
 }
