@@ -10,5 +10,5 @@ import java.util.List;
 public interface ICustomerService {
 
     Page<CustomerListDTO> findByNameProduct(String name, Pageable pageable);
-    void deleteById(int id);
+    void deleteById(Long id);
 }

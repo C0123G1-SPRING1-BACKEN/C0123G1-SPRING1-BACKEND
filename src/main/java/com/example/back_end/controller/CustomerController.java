@@ -37,9 +37,9 @@ public class CustomerController {
                                                 @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
         return new ResponseEntity<>(customerService.findByNameProduct(name, pageable), HttpStatus.OK);
     }
-    @DeleteMapping("")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@RequestParam(required = false)Integer id){
+    public void delete(@PathVariable("id")Long id){
         customerService.deleteById(id);
     }
 }

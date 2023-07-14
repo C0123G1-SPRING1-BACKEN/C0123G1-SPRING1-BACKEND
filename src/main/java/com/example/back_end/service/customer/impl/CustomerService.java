@@ -1,6 +1,7 @@
 package com.example.back_end.service.customer.impl;
 
 import com.example.back_end.dto.CustomerListDTO;
+import com.example.back_end.model.Contracts;
 import com.example.back_end.model.CustomerModel;
 import com.example.back_end.model.Customers;
 import com.example.back_end.repository.customer.IRepositoryCustomer;
@@ -25,19 +26,27 @@ public class CustomerService implements ICustomerService {
     @Override
     public Page<CustomerListDTO> findByNameProduct(String name, Pageable page) {
         List<CustomerListDTO> listDTOS = new ArrayList<>();
-        Page<Customers> customersPage = repositoryCustomer.findByNameCustomer(name,page);
+        Page<Customers> customersPage = repositoryCustomer.findByNameCustomer(name, page);
         CustomerListDTO customerListDTO;
-        for (Customers customers : customersPage){
+        for (Customers customers : customersPage) {
             customerListDTO = new CustomerListDTO();
-            BeanUtils.copyProperties(customers,customerListDTO);
-            customerListDTO.setQuantityContract(customers.getContractsSet().size());
+            BeanUtils.copyProperties(customers, customerListDTO);
+            int quantityContract = 0;
+            for (Contracts contract : customers.getContractsSet()) {
+                if (!contract.isDelete()) {
+                    quantityContract++;
+                }
+            }
+            customerListDTO.setQuantityContract(quantityContract);
             listDTOS.add(customerListDTO);
         }
-        return new PageImpl<>(listDTOS,page,customersPage.getTotalElements());
+        return new PageImpl<>(listDTOS, page, customersPage.getTotalElements());
     }
 
     @Override
-    public void deleteById(int id) {
-        repositoryCustomer.deleteById(id);
+    public void deleteById(Long id) {
+        Customers customers = repositoryCustomer.findById(id).get();
+        customers.setDelete(true);
+        repositoryCustomer.save(customers);
     }
 }

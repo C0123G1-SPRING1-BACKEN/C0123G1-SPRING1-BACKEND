@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 @Repository
-public interface IRepositoryCustomer extends JpaRepository<Customers,Integer> {
+public interface IRepositoryCustomer extends JpaRepository<Customers,Long> {
 
 //    @Query(value = "update ticket set is_delete = true where id_ticket = :id_ticket", nativeQuery = true)
 //    void cancelTicket(@Param("id_ticket") Integer id);
