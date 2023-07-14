@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/profit-interest")
+@RequestMapping("/api/employee/profit")
 public class ProfitController {
     @Autowired
     private IProfitService iProfitService;
@@ -36,9 +36,9 @@ public class ProfitController {
                                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
         Pageable pageable = PageRequest.of(page, 8);
-        Page<T> contractPage = iProfitService.findAllContract(startDate, endDate,pageable, profitType);
-        if(contractPage.getTotalElements() <= 0){
-            return new ResponseEntity<>(contractPage, HttpStatus.NO_CONTENT);
+        Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, pageable, profitType);
+        if (contractPage.getTotalElements() == 0) {
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractPage, HttpStatus.OK);
     }
@@ -47,12 +47,15 @@ public class ProfitController {
     private ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                 @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                 @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-        Long totalProfit;
-        try{
-             totalProfit = iProfitService.getTotalProfit(startDate, endDate, profitType);
-        }catch (Exception e){
+        Long totalProfit = iProfitService.getTotalProfit(startDate, endDate, profitType);
+        if(totalProfit == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(totalProfit, HttpStatus.OK);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Not Found");
     }
 }
