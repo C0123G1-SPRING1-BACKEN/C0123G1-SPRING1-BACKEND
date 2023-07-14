@@ -22,7 +22,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = null
+     * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = null
      * @return Trả về nội dung lỗi FieldError ở REST
      * @throws Exception
      */
@@ -36,7 +36,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = empty (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = empty (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -52,7 +52,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = tham số không tồn tại trong DB
+     * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = tham số không tồn tại trong DB
      * @return Trả về nội dung lỗi FieldError ở REST
      * @throws Exception
      */
@@ -66,7 +66,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Không có dữ liệu
      * @throws Exception
      */
@@ -80,7 +80,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -96,7 +96,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate có giá trị rỗng , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate có giá trị rỗng , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với endDate, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -112,7 +112,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate có giá trị đúng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate có giá trị đúng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với startDate, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -128,7 +128,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate có giá trị rỗng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate có giá trị rỗng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -144,7 +144,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate và endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate và endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với khoảng từ startDate đến endDate, đảm bảo các yếu tố:
      * - Tổng số phần tử.
      * - Số trang
@@ -160,7 +160,7 @@ public class ProfitController_getAllContract {
 
     /**
      * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
-     * @param startDate và endDate có giá trị đúng , page không đúng với số lượng trang , với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @ param startDate và endDate có giá trị đúng , page không đúng với số lượng trang , với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về nội dung lỗi FieldError ở REST
      * @throws Exception
      */
