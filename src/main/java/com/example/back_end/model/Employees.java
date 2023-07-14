@@ -11,137 +11,154 @@ public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 50)
     private String name;
     private String birthDay;
     private Integer gender;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false,length = 10)
     private String phoneNumber;
-    private String address;
-    private Long salary;
     @Column(nullable = false)
+    private String address;
+    private String salary;
+    @Column(nullable = false,unique = false)
     private String citizenCode;
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @CreationTimestamp
-    private LocalDateTime createDate;
+    private LocalDateTime createTime;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
-    private LocalDateTime updateDate;
+    private LocalDateTime updateTime;
+
+    @OneToOne
+    @JoinColumn
+    private Users users;
 
     public Employees() {
     }
 
-    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createDate, LocalDateTime updateDate) {
-        this.id = id;
-        this.name = name;
-        this.birthDay = birthDay;
-        this.gender = gender;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.salary = salary;
-        this.citizenCode = citizenCode;
-        this.image = image;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-    }
 
-    public Long getId() {
-        return id;
-    }
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
+            this.id = id;
+            this.name = name;
+            this.birthDay = birthDay;
+            this.gender = gender;
+            this.email = email;
+            this.phoneNumber = phoneNumber;
+            this.address = address;
+            this.salary = salary;
+            this.citizenCode = citizenCode;
+            this.image = image;
+            this.createTime = createTime;
+            this.updateTime = updateTime;
+            this.users = users;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public Long getId() {
+            return id;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public void setId(Long id) {
+            this.id = id;
+        }
 
-    public String getBirthDay() {
-        return birthDay;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public Integer getGender() {
-        return gender;
-    }
+        public String getBirthDay() {
+            return birthDay;
+        }
 
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
+        public void setBirthDay(String birthDay) {
+            this.birthDay = birthDay;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public Integer getGender() {
+            return gender;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public void setGender(Integer gender) {
+            this.gender = gender;
+        }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public String getAddress() {
-        return address;
-    }
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
 
-    public Long getSalary() {
-        return salary;
-    }
+        public String getAddress() {
+            return address;
+        }
 
-    public void setSalary(Long salary) {
-        this.salary = salary;
-    }
+        public void setAddress(String address) {
+            this.address = address;
+        }
 
-    public String getCitizenCode() {
-        return citizenCode;
-    }
+        public String getSalary() {
+            return salary;
+        }
 
-    public void setCitizenCode(String citizenCode) {
-        this.citizenCode = citizenCode;
-    }
+        public void setSalary(String salary) {
+            this.salary = salary;
+        }
 
-    public String getImage() {
-        return image;
-    }
+        public String getCitizenCode() {
+            return citizenCode;
+        }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+        public void setCitizenCode(String citizenCode) {
+            this.citizenCode = citizenCode;
+        }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
+        public String getImage() {
+            return image;
+        }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
+        public void setImage(String image) {
+            this.image = image;
+        }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
+        public LocalDateTime getCreateTime() {
+            return createTime;
+        }
 
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
+        public void setCreateTime(LocalDateTime createTime) {
+            this.createTime = createTime;
+        }
+
+        public LocalDateTime getUpdateTime() {
+            return updateTime;
+        }
+
+        public void setUpdateTime(LocalDateTime updateTime) {
+            this.updateTime = updateTime;
+        }
+
+        public Users getUsers() {
+            return users;
+        }
+
+        public void setUsers(Users users) {
+            this.users = users;
+        }
     }
-}
