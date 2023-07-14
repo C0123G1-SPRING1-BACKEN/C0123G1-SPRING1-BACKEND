@@ -22,9 +22,9 @@ public class RegisterPawn {
 
     @Column(nullable = false)
     private String name;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String phone;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(length = 500)
@@ -48,10 +48,11 @@ public class RegisterPawn {
     @Column(name = "update_time", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     @UpdateTimestamp
     private LocalDateTime updateTime;
+
     public RegisterPawn() {
     }
 
-    public RegisterPawn(Long id, String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime,LocalDateTime updateTime) {
+    public RegisterPawn(Long id, String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -64,7 +65,7 @@ public class RegisterPawn {
         this.updateTime = updateTime;
     }
 
-    public RegisterPawn(String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime,LocalDateTime updateTime) {
+    public RegisterPawn(String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -147,6 +148,7 @@ public class RegisterPawn {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+
     public LocalDateTime getUpdateTime() {
         return updateTime;
     }

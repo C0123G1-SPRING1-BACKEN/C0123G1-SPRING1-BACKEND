@@ -7,11 +7,13 @@ import com.example.back_end.service.IRegisterPawnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.BindingType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +39,10 @@ public class RegisterPawnController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> createRegisterPawn(@Validated @RequestBody RegisterDTO registerDTO) {
+    public ResponseEntity<?> createRegisterPawn(@Validated @RequestBody RegisterDTO registerDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.BAD_REQUEST);
+        }
         iRegisterPawnService.createRegisterPawn(registerDTO);
         return ResponseEntity.ok("register pawn is create ");
     }

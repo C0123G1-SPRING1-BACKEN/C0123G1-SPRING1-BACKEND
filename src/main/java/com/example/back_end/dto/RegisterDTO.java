@@ -28,7 +28,7 @@ public class RegisterDTO {
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin ")
     private String phone;
 
-    @Email(message = "Email Của Bạn Không Đúng . Làm Ơn Nhập Kiều :  abc@gmail.com ")
+    @Email(message = "Email Của Bạn Không Đúng . Làm Ơn Nhập Kiểu :  abc@gmail.com ")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
     private String email;
 
