@@ -41,6 +41,8 @@ public class RedeemContractRestController_search {
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/search")
                         .param("page", String.valueOf(page))
+
+
                         .param("contractCode", contractCode)
                         .param("customerName", customerName)
                         .param("productName", productName)

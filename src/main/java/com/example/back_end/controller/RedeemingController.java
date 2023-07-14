@@ -55,7 +55,7 @@ public class RedeemingController {
     /**
      * Created by: HoaTQ
      * Date created: 13/07/2023
-     * Function:  getOpenContractList(page)
+     * Function:  getOpenContractList(page
      * <p>
      * param: page (the page number that the user want to view)
      * return: the list of contract with the contractStatus is open
