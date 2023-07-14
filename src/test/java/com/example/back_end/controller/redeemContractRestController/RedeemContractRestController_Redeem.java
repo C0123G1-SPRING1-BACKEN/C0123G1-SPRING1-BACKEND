@@ -51,7 +51,7 @@ public class RedeemContractRestController_Redeem {
 
         contracts.setRedeemDate(String.valueOf(redeemDate));
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/pay/{id}", contracts.getId())
@@ -80,7 +80,7 @@ public class RedeemContractRestController_Redeem {
 
         contracts.setRedeemDate(String.valueOf(redeemDate));
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/pay/{id}", contracts.getId())
@@ -111,7 +111,7 @@ public class RedeemContractRestController_Redeem {
 
         contracts.setRedeemDate(String.valueOf(redeemDate));
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/pay/{id}", "")
