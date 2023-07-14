@@ -13,10 +13,10 @@ public class Users {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username",nullable = false,unique = true)
+    @Column(name = "username",nullable = false,unique = true,length = 20)
     private String username;
 
-    @Column(name = "password",nullable = false)
+    @Column(name = "password",nullable = false , length = 20)
     private String password;
     @Column(name = "verification_code")
     private Integer verificationCode;
@@ -24,6 +24,7 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Roles roles;
+    @Column(length = 50)
     private String email;
 
     public Users() {

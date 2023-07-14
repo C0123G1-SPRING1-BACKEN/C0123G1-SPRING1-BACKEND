@@ -11,15 +11,15 @@ public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 50)
     private String name;
     @Column(nullable = false)
     private String birthDay;
     @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,length = 50)
     private String email;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
