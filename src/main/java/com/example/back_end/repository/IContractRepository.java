@@ -10,14 +10,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 public interface IContractRepository extends JpaRepository<Contracts, Long> {
     @Query(value = "SELECT c.id AS id ,c.contract_code AS contractCode,c.product_name AS productName," +
-            "   c.customers_id AS customers, c.start_date AS startDate,c.contract_type_id AS contractType," +
-            "   c.contract_status_id AS contractStatus FROM contracts AS c" +
-            "    WHERE c.is_delete = false", nativeQuery = true)
+            "c.customers_id AS customers, c.start_date AS startDate,c.contract_type_id AS contractType," +
+            "c.contract_status_id AS contractStatus FROM contracts AS c" +
+            " WHERE c.is_delete = false", nativeQuery = true)
     Page<IContractProjection> findAllTransactionHistoryByDeleteIsFalse(Pageable pageable);
 
     @Query(value = "SELECT * FROM contracts AS c" +
@@ -31,16 +30,25 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
     void deleteContractById(@Param("id") Integer id);
 
 
-    @Query(value = "SELECT c.id AS id ,c.contract_code AS contractCode,c.product_name AS productName," +
-            "  ,c.customers_id AS customers, c.start_date AS startDate,c.contract_type_id AS contractType," +
-            "   c.contract_status_id AS contractStatus ,c2.name FROM contracts AS c" +
-            " INNER JOIN customers AS c2 ON c2.id = c.id"+
-            " WHERE c.is_delete = false AND c2.name like :customer_name OR c.product_name LIKE :product_names OR (c.start_date BETWEEN :from_date AND :to_date) " +
-            "OR c.contract_type_id =:type_id OR c.contract_status_id =:status_id", nativeQuery = true)
-    Page<IContractProjection> searchTransactionHistory(Pageable pageable,@Param("customer_name") String customerName,
+    @Query(value = "SELECT c.id                 AS id," +
+            "       c.contract_code      AS contractCode," +
+            "       c.product_name       AS productName," +
+            "       c.customers_id       AS customers," +
+            "       c.start_date         AS startDate," +
+            "       c.contract_type_id   AS contractType," +
+            "       c.contract_status_id AS contractStatus," +
+            "  c2.name" +
+            " FROM contracts AS c" +
+            "         INNER JOIN customers c2 ON c.customers_id = c2.id" +
+            " WHERE c.is_delete = false AND c.product_name like :product_names" +
+            "  OR (c.start_date BETWEEN :from_date AND :to_date)" +
+            "   AND c2.name LIKE :customer_name" +
+            "   AND c.contract_type_id = :type_id" +
+            "   AND c.contract_status_id = :status_id", nativeQuery = true)
+    Page<IContractProjection> searchTransactionHistory(Pageable pageable, @Param("customer_name") String customerName,
                                                        @Param("product_names") String productNames,
-                                                       @Param("from_date") LocalDate fromDate,
-                                                       @Param("to_date") LocalDate toDate,
+                                                       @Param("from_date") String fromDate,
+                                                       @Param("to_date") String toDate,
                                                        @Param("type_id") Long typeId,
                                                        @Param("status_id") Long statusId);
 }

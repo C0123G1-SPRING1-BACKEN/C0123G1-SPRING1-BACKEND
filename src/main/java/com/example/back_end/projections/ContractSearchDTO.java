@@ -1,27 +1,21 @@
 package com.example.back_end.projections;
 
-import com.example.back_end.model.ContractStatus;
-import com.example.back_end.model.ContractType;
-import com.example.back_end.model.Customers;
-
-import java.time.LocalDate;
-
 public class ContractSearchDTO {
     private String productName;
 
     private String customerName;
 
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
 
-    private ContractType contractType;
+    private Long contractType;
 
-    private ContractStatus contractStatus;
+    private Long contractStatus;
 
     public ContractSearchDTO() {
     }
 
-    public ContractSearchDTO(String productName, String customerName, LocalDate startDate, LocalDate endDate, ContractType contractType, ContractStatus contractStatus) {
+    public ContractSearchDTO(String productName, String customerName, String startDate, String endDate, Long contractType, Long contractStatus) {
         this.productName = productName;
         this.customerName = customerName;
         this.startDate = startDate;
@@ -46,35 +40,35 @@ public class ContractSearchDTO {
         this.customerName = customerName;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public ContractType getContractType() {
+    public Long getContractType() {
         return contractType;
     }
 
-    public void setContractType(ContractType contractType) {
+    public void setContractType(Long contractType) {
         this.contractType = contractType;
     }
 
-    public ContractStatus getContractStatus() {
+    public Long getContractStatus() {
         return contractStatus;
     }
 
-    public void setContractStatus(ContractStatus contractStatus) {
+    public void setContractStatus(Long contractStatus) {
         this.contractStatus = contractStatus;
     }
 }

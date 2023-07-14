@@ -8,6 +8,7 @@ import com.example.back_end.service.IContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +30,8 @@ public class ContractServiceImpl implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> findAllTransactionHistory(Integer page) {
-        return iContractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, 5));
+    public Page<IContractProjection> findAllTransactionHistory(Integer page, Integer limit) {
+        return iContractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit, Sort.by("startDate").descending()));
     }
 
     /**
@@ -66,8 +67,11 @@ public class ContractServiceImpl implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> searchTransactionHistory(Integer page,ContractSearchDTO contractSearchDTO) {
-        return iContractRepository.searchTransactionHistory(PageRequest.of(page,5),contractSearchDTO.getCustomerName(),contractSearchDTO.getProductName(),contractSearchDTO.getStartDate(),contractSearchDTO.getEndDate(),contractSearchDTO.getContractType().getId(),contractSearchDTO.getContractStatus().getId());
+    public Page<IContractProjection> searchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
+        Page<IContractProjection> projectionPage = iContractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
+                "%" + contractSearchDTO.getCustomerName() + "%", "%" + contractSearchDTO.getProductName() + "%",
+                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
+        return projectionPage;
     }
 
     /**

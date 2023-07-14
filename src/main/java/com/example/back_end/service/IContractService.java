@@ -8,11 +8,11 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface IContractService {
-    Page<IContractProjection> findAllTransactionHistory(Integer page);
+    Page<IContractProjection> findAllTransactionHistory(Integer page,Integer limit);
 
     Boolean deleteTransactionHistoryById(Integer id);
 
-    Page<IContractProjection> searchTransactionHistory(Integer page,ContractSearchDTO contractSearchDTO);
+    Page<IContractProjection> searchTransactionHistory(Integer page,Integer limit,ContractSearchDTO contractSearchDTO);
 
     Optional<Contracts> findTransactionHistoryById(Integer id);
 }

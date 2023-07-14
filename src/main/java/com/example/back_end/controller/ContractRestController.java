@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/employee/contract")
 @CrossOrigin("*")
-public class ContractController {
+public class ContractRestController {
     @Autowired
     private IContractService iContractService;
 
@@ -31,8 +31,9 @@ public class ContractController {
      */
 
     @GetMapping("")
-    public ResponseEntity<Page<IContractProjection>> getALlTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page) {
-        return new ResponseEntity<>(iContractService.findAllTransactionHistory(page), HttpStatus.OK);
+    public ResponseEntity<Page<IContractProjection>> getALlTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
+        return new ResponseEntity<>(iContractService.findAllTransactionHistory(page, limit), HttpStatus.OK);
     }
 
     /**
@@ -64,7 +65,7 @@ public class ContractController {
     @GetMapping("/detail/{id}")
     public ResponseEntity<Contracts> detailTransactionHistoryById(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
-        return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     /**
@@ -79,7 +80,10 @@ public class ContractController {
      */
 
     @GetMapping("/search")
-    public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page, @RequestBody ContractSearchDTO contractSearchDTO) {
-        return new ResponseEntity<>(iContractService.searchTransactionHistory(page, contractSearchDTO), HttpStatus.OK);
+    public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit,
+                                                                              @RequestBody ContractSearchDTO contractSearchDTO) {
+        Page<IContractProjection>contractProjectionsPage=iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
+        return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
 }

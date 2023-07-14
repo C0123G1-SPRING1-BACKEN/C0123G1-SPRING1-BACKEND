@@ -21,14 +21,14 @@ public class Contracts {
     private Long profit;
     @Column(name = "image", columnDefinition = "TEXT")
     private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)")
+    @Column(name = "start_date",columnDefinition = "VARCHAR(25)")
     private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)")
+    @Column(name = "end_date",columnDefinition = "VARCHAR(25)")
     private String endDate;
     @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     @CreationTimestamp
     private LocalDateTime createDate;
-    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
+    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
@@ -51,7 +51,7 @@ public class Contracts {
     private ContractType contractType;
 
 
-    public Contracts(){
+    public Contracts() {
     }
 
     public Contracts(Long id) {
