@@ -19,6 +19,7 @@ public class Employees {
     private String email;
     @Column(nullable = false,unique = false,length = 10)
     private String phoneNumber;
+    @Column(nullable = false)
     private String address;
     private String salary;
     @Column(nullable = false,unique = false)
@@ -51,6 +52,7 @@ public class Employees {
         this.image = image;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.users = users;
     }
 
     public Long getId() {
