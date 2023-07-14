@@ -9,7 +9,7 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "role_name",nullable = false,unique = false)
+    @Column(name = "role_name",nullable = false,unique = true)
     private String roleName;
 
     public Roles() {
