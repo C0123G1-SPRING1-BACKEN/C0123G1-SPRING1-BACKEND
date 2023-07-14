@@ -1,4 +1,4 @@
-package com.example.back_end.Controller;
+package com.example.back_end.controller;
 
 import com.example.back_end.dto.ProductTypeDTO;
 import com.example.back_end.dto.RegisterDTO;
