@@ -3,7 +3,7 @@ package com.example.back_end.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "contract_status")
+
 public class ContractStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

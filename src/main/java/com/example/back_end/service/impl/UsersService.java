@@ -8,10 +8,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+
 /**
  * Created by: VienH
  * Date created: 13/07/2023
@@ -24,8 +27,8 @@ import java.util.ArrayList;
 public class UsersService implements UserDetailsService, IUsersService {
     @Autowired
     private IUserRepository iUserRepository;
-
-    private  PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -46,6 +49,7 @@ public class UsersService implements UserDetailsService, IUsersService {
         return iUserRepository.findByEmail(email);
     }
 
+    @Transactional
     @Override
     public void editUser(Users users) {
         iUserRepository.save(users);
@@ -56,10 +60,12 @@ public class UsersService implements UserDetailsService, IUsersService {
         return iUserRepository.findById(id).get();
     }
 
+    @Transactional
     @Override
     public void saveNewPassword(Users user) {
-        Users users=findById(user.getId());
-        users.setPassword(passwordEncoder.encode(user.getPassword()));
-        iUserRepository.save(users);
+        Users users = findById(user.getId());
+        String password = passwordEncoder.encode(user.getPassword());
+        users.setPassword(password);
+        iUserRepository.saveNewPassword(users.getId(), users.getPassword());
     }
 }

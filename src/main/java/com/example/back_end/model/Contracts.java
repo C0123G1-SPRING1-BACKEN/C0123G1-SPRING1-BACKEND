@@ -18,9 +18,7 @@ public class Contracts {
     private String productName;
     @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
-    @Column(nullable = false)
     private Long loans;
-    @Column(nullable = false)
     private Long profit;
     @Column(name = "image", columnDefinition = "TEXT",nullable = false)
     private String image;
@@ -35,7 +33,7 @@ public class Contracts {
     @Column(name = "update_time", nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
     private LocalDateTime updateTime;
 
-    @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
+    @Column( columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
     @ManyToOne
     @JoinColumn
