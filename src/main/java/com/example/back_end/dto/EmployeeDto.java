@@ -1,42 +1,54 @@
-package com.example.back_end.model;
+package com.example.back_end.dto;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.example.back_end.model.Users;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-@Entity
-public class Employees {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EmployeeDTO {
+
     private Long id;
-    @Column(nullable = false,length = 50)
+    @Size(max = 50)
+    @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^[^!@#$%^&*()+=\\[\\]{};':\"\\\\|.<>?`~]+$", message = "Không chứa kí tự số và kí tự đặc biệt")
     private String name;
     private String birthDay;
     private Integer gender;
-    @Column(nullable = false,unique = false)
+    @NotBlank(message = "Không được để trống !")
+    @NotBlank(message = "Vui lòng nhập địa chỉ email")
+    @Email(message = "Nhập đúng định dạng abc@gmail.com")
     private String email;
-    @Column(nullable = false,unique = false,length = 10)
+    @Size(max = 10)
+    @NotBlank(message = "Không được để trống !")
     private String phoneNumber;
-    @Column(nullable = false)
+    @NotBlank(message = "Không được để trống !")
     private String address;
+    @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^\\d+$", message = "Tiền không được nhập số âm")
     private String salary;
-    @Column(nullable = false,unique = false)
+    @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^[0-9]{12}$", message = "Nhập không đúng định dạng CMND/Hộ chiếu")
     private String citizenCode;
     private String image;
-    @Column(columnDefinition = "DATETIME DEFAULT now()")
-    @CreationTimestamp
-    private LocalDateTime createTime;
-    @Column(columnDefinition = "DATETIME DEFAULT now()")
-    @UpdateTimestamp
-    private LocalDateTime updateTime;
-
-    @OneToOne
-    @JoinColumn
     private Users users;
 
-    public Employees() {
+    public EmployeeDTO() {
+    }
+
+    public EmployeeDTO(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, Users users) {
+        this.id = id;
+        this.name = name;
+        this.birthDay = birthDay;
+        this.gender = gender;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.salary = salary;
+        this.citizenCode = citizenCode;
+        this.image = image;
+        this.users = users;
     }
 
     public Long getId() {
@@ -117,22 +129,6 @@ public class Employees {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 
     public Users getUsers() {
