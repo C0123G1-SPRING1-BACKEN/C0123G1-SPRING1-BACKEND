@@ -12,16 +12,18 @@ import java.util.List;
 
 public interface IContractRepository extends JpaRepository<Contracts,Integer> {
     @Query(value = "SELECT p FROM Contracts AS p")
-    List<Contracts> findAll();
+    List<Contracts> findAllContracts();
     @Transactional
     @Modifying
-    @Query(value ="INSERT INTO contracts(customer_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employees_id) VALUES (:customerId,:contractCode,:productName,:productTypeId,:image,:loans ,:startDate,:endDate,:profit,:contractStatusId,:contractTypeId,:employeesId)",nativeQuery = true)
+    @Query(value ="INSERT INTO contracts(customer_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employee_id) " +
+            "VALUES (:customerId,:contractCode,:productName,:productTypeId,:image,:loans,:startDate,:endDate,:profit,:contractStatusId,:contractTypeId,:employeeId)",nativeQuery = true)
     void createContract(@Param("customerId")Long customerId,@Param("contractCode")String contractCode,
                       @Param("productName")String productName,@Param("productTypeId")Long productTypeId,
                       @Param("image")String image,@Param("loans")Long loans,@Param("startDate") String startDate,
                       @Param("endDate") String endDate,@Param("profit") Long profit,@Param("contractStatusId")Long contractStatusId,
-                      @Param("contractTypeId")Long contractTypeId,@Param("employeesId")Long employeesId);
+                      @Param("contractTypeId")Long contractTypeId,@Param("employeeId")Long employeeId);
 }
+
 
 //    double soTienVay = 10000000; // Số tiền vay
 //    double laiSuatNgay = 0.00065; // Lãi suất hàng ngày (0.065%)

@@ -10,17 +10,19 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 /**
  * Created by: DinhHD
  * Date created: 13/07/2023
  * Function: do about customer selection interface
+ * <p>
+ * // * @param Customer
  *
- // * @param Customer
- * @return getAllCustomer(),searchCustomer()
+ * @return getAllCustomer(), searchCustomer()
  */
 
 @RestController
-    @RequestMapping("/api/customer")
+@RequestMapping("/api/customer")
 @CrossOrigin("*")
 public class CustomerRestController {
     @Autowired
@@ -29,11 +31,27 @@ public class CustomerRestController {
     @GetMapping("")
     public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
         Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
+        if (iCustomerDtoPage.isEmpty()) {
+            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
+
     @GetMapping("/search")
-    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable,@RequestParam("name")String name) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable,name);
+    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
+        if (iCustomerDtoPage.isEmpty()) {
+            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
+      ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
+      if (iCustomerDto.equals(id)){
+          return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
+      }
+        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
     }
 }

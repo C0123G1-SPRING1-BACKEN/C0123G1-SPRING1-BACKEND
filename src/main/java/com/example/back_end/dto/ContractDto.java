@@ -1,10 +1,9 @@
 package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
@@ -31,20 +30,20 @@ public class ContractDto {
     private LocalDateTime updateDate;
 
     private ProductType productType;
-
-    private Customers customers;
+    @NotBlank(message = "Không được để trống !")
+    private Customers customer;
 
     private ContractStatus contractStatus;
 
-    private Employees employees;
+
+    private Employees employee;
 
     private ContractType contractType;
 
-    public ContractDto(Long id) {
-        this.id = id;
+    public ContractDto() {
     }
 
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -56,9 +55,9 @@ public class ContractDto {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.productType = productType;
-        this.customers = customers;
+        this.customer = customer;
         this.contractStatus = contractStatus;
-        this.employees = employees;
+        this.employee = employee;
         this.contractType = contractType;
     }
 
@@ -150,12 +149,12 @@ public class ContractDto {
         this.productType = productType;
     }
 
-    public Customers getCustomers() {
-        return customers;
+    public Customers getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(Customers customers) {
-        this.customers = customers;
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
     }
 
     public ContractStatus getContractStatus() {
@@ -166,12 +165,12 @@ public class ContractDto {
         this.contractStatus = contractStatus;
     }
 
-    public Employees getEmployees() {
-        return employees;
+    public Employees getEmployee() {
+        return employee;
     }
 
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
+    public void setEmployee(Employees employee) {
+        this.employee = employee;
     }
 
     public ContractType getContractType() {
