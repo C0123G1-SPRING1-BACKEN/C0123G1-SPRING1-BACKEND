@@ -17,14 +17,14 @@ public class Employees {
     private String birthDay;
     @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true)
     private String email;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true)
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
     private Long salary;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true)
     private String citizenCode;
     @Column(nullable = false)
     private String image;
