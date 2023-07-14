@@ -7,7 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class EmployeeDto {
+public class EmployeeDTO {
+
     private Long id;
     @Size(max = 50)
     @NotBlank(message = "Không được để trống !")
@@ -19,12 +20,13 @@ public class EmployeeDto {
     @NotBlank(message = "Vui lòng nhập địa chỉ email")
     @Email(message = "Nhập đúng định dạng abc@gmail.com")
     private String email;
-    @Size(max = 11)
+    @Size(max = 10)
     @NotBlank(message = "Không được để trống !")
     private String phoneNumber;
     @NotBlank(message = "Không được để trống !")
     private String address;
     @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^\\d+$", message = "Tiền không được nhập số âm")
     private String salary;
     @NotBlank(message = "Không được để trống !")
     @Pattern(regexp = "^[0-9]{12}$", message = "Nhập không đúng định dạng CMND/Hộ chiếu")
@@ -32,10 +34,10 @@ public class EmployeeDto {
     private String image;
     private Users users;
 
-    public EmployeeDto() {
+    public EmployeeDTO() {
     }
 
-    public EmployeeDto(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, Users users) {
+    public EmployeeDTO(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, Users users) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
