@@ -40,15 +40,15 @@ public class CustomerSaveDto {
     private String citizenCode;
     @NotBlank
     @Size(min = 10, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 50, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String image;
     @NotBlank
     @Size(min = 10, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 50, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String frontCitizen;
     @NotBlank
     @Size(min = 10, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 50, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String backCitizen;
     private boolean isDelete;
 

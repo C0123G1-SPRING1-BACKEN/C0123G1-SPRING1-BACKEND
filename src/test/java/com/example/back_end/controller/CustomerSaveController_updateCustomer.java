@@ -36,7 +36,6 @@ public class CustomerSaveController_updateCustomer {
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
         customerSaveDto.setId(customerId);
-        customerSaveDto.setId(customerId);
         customerSaveDto.setName("Nguyen Van Anh");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
@@ -44,9 +43,9 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setEmail("toan.nang@gmail.com");
         customerSaveDto.setAddress("19 Hai Chau, Da Nang");
         customerSaveDto.setCitizenCode("123456789012");
-        customerSaveDto.setImage("avatar.jpg");
-        customerSaveDto.setFrontCitizen("front.jpg");
-        customerSaveDto.setBackCitizen("back.jpg");
+        customerSaveDto.setImage("https://pvb.com/avatarr.jpg");
+        customerSaveDto.setFrontCitizen("https://pvb.com/mattruoc.jpg");
+        customerSaveDto.setBackCitizen("https://pvb.com/matsau.jpg");
         customerSaveDto.setDelete(false);
 
         this.mockMvc
