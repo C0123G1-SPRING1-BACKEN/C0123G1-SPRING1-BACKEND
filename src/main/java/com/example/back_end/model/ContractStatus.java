@@ -8,6 +8,7 @@ public class ContractStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false,unique = false)
     private String name;
 
     public ContractStatus() {
