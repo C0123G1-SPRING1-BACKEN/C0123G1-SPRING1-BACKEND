@@ -53,7 +53,7 @@ public class CustomerControllerSave {
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             getResponseEntity(bindingResult);
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -67,13 +67,13 @@ public class CustomerControllerSave {
      * @requestBody CustomerSaveDto includes the customer object
      */
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCustomer(@Validated @PathVariable Long id, @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult) {
+    public ResponseEntity<?> updateCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult,@PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             getResponseEntity(bindingResult);
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
     }
 

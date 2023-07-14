@@ -42,7 +42,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("0987678902");
         customerSaveDto.setEmail("toan.nang@gmail.com");
-        customerSaveDto.setAddress("19 Hai Chau, Hai Chau, Da Nang");
+        customerSaveDto.setAddress("19 Hai Chau, Da Nang");
         customerSaveDto.setCitizenCode("123456789012");
         customerSaveDto.setImage("avatar.jpg");
         customerSaveDto.setFrontCitizen("front.jpg");
