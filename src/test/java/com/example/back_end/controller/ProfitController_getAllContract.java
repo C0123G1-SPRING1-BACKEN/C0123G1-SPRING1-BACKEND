@@ -20,6 +20,12 @@ public class ProfitController_getAllContract {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = null
+     * @return Trả về nội dung lỗi FieldError ở REST
+     * @throws Exception
+     */
     @Test
     public void getAllContract_7() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -28,6 +34,14 @@ public class ProfitController_getAllContract {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = empty (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_8() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -35,6 +49,13 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType (loại lợi nhuận) = tham số không tồn tại trong DB
+     * @return Trả về nội dung lỗi FieldError ở REST
+     * @throws Exception
+     */
     @Test
     public void getAllContract_9() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -42,6 +63,13 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Không có dữ liệu
+     * @throws Exception
+     */
     @Test
     public void getAllContract_10() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -49,6 +77,15 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_11() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -56,6 +93,15 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate có giá trị rỗng , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với endDate, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_99() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -63,6 +109,15 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate có giá trị đúng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với startDate, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_98() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -70,6 +125,15 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate có giá trị rỗng , endDate có giá trị rỗng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_97() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -77,6 +141,15 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate và endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về mảng JSON, chứa đầy đủ các record trong table khớp với khoảng từ startDate đến endDate, đảm bảo các yếu tố:
+     * - Tổng số phần tử.
+     * - Số trang
+     * @throws Exception
+     */
     @Test
     public void getAllContract_96() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
@@ -84,6 +157,13 @@ public class ProfitController_getAllContract {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
+    /**
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * @param startDate và endDate có giá trị đúng , page không đúng với số lượng trang , với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
+     * @return Trả về nội dung lỗi FieldError ở REST
+     * @throws Exception
+     */
     @Test
     public void getAllContract_95() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
