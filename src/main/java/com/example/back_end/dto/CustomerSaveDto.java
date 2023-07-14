@@ -10,11 +10,11 @@ public class CustomerSaveDto {
     private Long id;
     @NotBlank(message = "Tên không đươc để trống.")
     @Size(min = 2, message = "Bạn cần nhập tối thiểu 2 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     @Pattern(regexp = "^[a-zA-ZÀ-ỹ\\s ]*$", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String name;
     @Size(min = 2, message = "Bạn cần nhập tối thiểu 2 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     @NotBlank(message = "Ngày sinh không đươc để trống")
     @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
             message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
@@ -25,30 +25,30 @@ public class CustomerSaveDto {
     @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(0[0-9]{9})$")
     private String phoneNumber;
     @Size(min = 2, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     @NotBlank(message = "Email không được để trống.")
     @Email(message = "Email không đúng định dạng")
     private String email;
     @NotBlank
     @Size(min = 2, message = "Bạn cần nhập tối thiểu 2 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String address;
     @NotBlank(message = "Số CCCD không được để trống.")
-    @Size(min = 10, max = 10, message = "Bạn cần nhập 12 ký tự")
+    @Size(min = 12, max = 12, message = "Bạn cần nhập 12 ký tự")
     @Pattern(regexp = "^(\\d{12})| *$",
             message = "Số CCCD không đúng định dạng.")
     private String citizenCode;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String image;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String frontCitizen;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 20, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
     private String backCitizen;
     private boolean isDelete;
 

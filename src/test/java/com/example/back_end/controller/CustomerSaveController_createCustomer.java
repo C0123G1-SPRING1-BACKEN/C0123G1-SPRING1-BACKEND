@@ -33,13 +33,13 @@ public class CustomerSaveController_createCustomer {
     @Test
     public void createCustomer_18() throws Exception {
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
-        customerSaveDto.setName("Nguyễn Tiến Đạt");
+        customerSaveDto.setName("Nguyen Van Anh");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("0987678902");
         customerSaveDto.setEmail("toan.nang@gmail.com");
-        customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("1234567890");
+        customerSaveDto.setAddress("19 Hai Chau, Hai Chau, Da Nang");
+        customerSaveDto.setCitizenCode("123456789012");
         customerSaveDto.setImage("avatar.jpg");
         customerSaveDto.setFrontCitizen("front.jpg");
         customerSaveDto.setBackCitizen("back.jpg");
