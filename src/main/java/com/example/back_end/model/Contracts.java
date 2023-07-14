@@ -2,10 +2,11 @@ package com.example.back_end.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name = "contracts")
 public class Contracts {
@@ -13,24 +14,26 @@ public class Contracts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)" ,nullable = false)
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)",nullable = false)
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
+    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
+    @Column(nullable = false)
     private Long loans;
+    @Column(nullable = false)
     private Long profit;
-    @Column(name = "image", columnDefinition = "TEXT")
+    @Column(name = "image", columnDefinition = "TEXT",nullable = false)
     private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)")
+    @Column(name = "start_date", columnDefinition = "VARCHAR(25)",nullable = false)
     private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)")
+    @Column(name = "end_date", columnDefinition = "VARCHAR(25)",nullable = false)
     private String endDate;
-    @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     @CreationTimestamp
-    private LocalDateTime createDate;
-    @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
+    @Column(name = "create_time", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
+    private LocalDateTime createTime;
     @UpdateTimestamp
-    private LocalDateTime updateDate;
+    @Column(name = "update_time", nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
+    private LocalDateTime updateTime;
 
     @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
@@ -39,13 +42,13 @@ public class Contracts {
     private ProductType productType;
     @ManyToOne
     @JoinColumn
-    private Customers customer;
+    private Customers customers;
     @ManyToOne
     @JoinColumn
     private ContractStatus contractStatus;
     @ManyToOne
     @JoinColumn
-    private Employees employee;
+    private Employees employees;
     @ManyToOne
     @JoinColumn
     private ContractType contractType;
@@ -54,7 +57,15 @@ public class Contracts {
     public Contracts(){
     }
 
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public Contracts(Long id) {
+        this.id = id;
+    }
+
+    public Contracts(String contractCode) {
+        this.contractCode = contractCode;
+    }
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -63,13 +74,13 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
         this.isDelete = isDelete;
         this.productType = productType;
-        this.customer = customer;
+        this.customers = customers;
         this.contractStatus = contractStatus;
-        this.employee = employee;
+        this.employees = employees;
         this.contractType = contractType;
     }
 
@@ -137,20 +148,20 @@ public class Contracts {
         this.endDate = endDate;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
+    public LocalDateTime getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 
     public boolean isDelete() {
@@ -169,12 +180,12 @@ public class Contracts {
         this.productType = productType;
     }
 
-    public Customers getCustomer() {
-        return customer;
+    public Customers getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customers customer) {
-        this.customer = customer;
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
     }
 
     public ContractStatus getContractStatus() {
@@ -185,12 +196,12 @@ public class Contracts {
         this.contractStatus = contractStatus;
     }
 
-    public Employees getEmployee() {
-        return employee;
+    public Employees getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(Employees employee) {
-        this.employee = employee;
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
     public ContractType getContractType() {
@@ -200,4 +211,6 @@ public class Contracts {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
+
+
 }
