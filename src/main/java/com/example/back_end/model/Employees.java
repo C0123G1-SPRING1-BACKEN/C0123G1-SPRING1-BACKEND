@@ -13,16 +13,20 @@ public class Employees {
     private Long id;
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String birthDay;
+    @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String phoneNumber;
+    @Column(nullable = false)
     private String address;
     private Long salary;
-    @Column(nullable = false)
+    @Column(nullable = false,unique = false)
     private String citizenCode;
+    @Column(nullable = false)
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @CreationTimestamp
