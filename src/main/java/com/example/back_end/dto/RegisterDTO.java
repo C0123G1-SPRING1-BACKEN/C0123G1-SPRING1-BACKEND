@@ -1,25 +1,19 @@
 package com.example.back_end.dto;
 
 import com.example.back_end.model.ProductType;
-import com.sun.istack.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.annotations.Where;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+
 
 public class RegisterDTO {
 
     private Long id;
 
     @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
-    @Pattern(regexp = "^\\p{Lu}\\p{Ll}*(\\s\\p{Lu}\\p{Ll}*)*$", message = "Tên Của Bạn Không Đúng Định Dạng ")
+    @Pattern(regexp = "^([A-Z][a-z]*\\s([A-Z][a-z]*\\s)*([A-Z][a-z]*))$", message = "Tên Của Bạn Không Đúng Định Dạng ")
     @NotBlank(message = "Bạn Cần Điền Đủ Thông Tin")
     private String name;
 
@@ -29,6 +23,7 @@ public class RegisterDTO {
     private String phone;
 
     @Email(message = "Email Của Bạn Không Đúng . Làm Ơn Nhập Kiểu :  abc@gmail.com ")
+    @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
     private String email;
 
