@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.ICustomersDto;
 import com.example.back_end.dto.IContractDto;
+import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 import com.example.back_end.model.Liquidations;
 import com.example.back_end.service.contracts.IContractsService;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * Date created: 13/07/2023
  * Function: create liquidation
  *
- * @param LiquidationDto
+ * @param LiquidaytionDto
  * @return Liquidation
  */
 
@@ -76,15 +77,14 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/contracts/{id}")
-    public ResponseEntity<IContractDto> findContractById(@PathVariable Long id) {
-        IContractDto  customers=contractsService.findContractById(id);
-        return new ResponseEntity<>(customers,HttpStatus.OK);
+    public Contracts findContractById(@PathVariable Long id) {
+        return contractsService.findContractById(id);
     }
 
     @GetMapping("/contracts/search")
     public ResponseEntity<Page<IContractDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("productName") String productName
             , @RequestParam("productType") String productType, @RequestParam("loans") Long loans) {
-        Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, productName, productType, loans);
+        Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, "%"+productName+"%", productType, ("%"+loans+"%"));
         if (contractDtoPage.isEmpty()) {
             return new ResponseEntity<>(contractDtoPage, HttpStatus.NOT_FOUND);
         }
