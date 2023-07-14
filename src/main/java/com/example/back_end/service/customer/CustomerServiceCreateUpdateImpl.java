@@ -23,7 +23,8 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
     public void createCustomer(CustomerSaveDto customerSaveDto) {
         Customers customers = new Customers();
         BeanUtils.copyProperties(customerSaveDto, customers);
-        customerRepositoryCreateUpdate.addCustomer(customers.getName(),
+        customerRepositoryCreateUpdate.addCustomer(
+                customers.getName(),
                 customers.getBirthday(),
                 customers.getGender(),
                 customers.getPhoneNumber(),
@@ -31,7 +32,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getAddress(),
                 customers.getCitizenCode(),
                 customers.getImage(),
-                customers.getFrondCitizen(),
+                customers.getFrontCitizen(),
                 customers.getBackCitizen(),
                 customers.isDelete()
                 );
@@ -58,7 +59,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getAddress(),
                 customers.getCitizenCode(),
                 customers.getImage(),
-                customers.getFrondCitizen(),
+                customers.getFrontCitizen(),
                 customers.getBackCitizen(),
                 customers.isDelete()
                 );
