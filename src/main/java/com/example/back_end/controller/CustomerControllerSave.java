@@ -66,7 +66,9 @@ public class CustomerControllerSave {
      * @param id
      * @requestBody CustomerSaveDto includes the customer object
      */
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
+
+//    @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult,@PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);

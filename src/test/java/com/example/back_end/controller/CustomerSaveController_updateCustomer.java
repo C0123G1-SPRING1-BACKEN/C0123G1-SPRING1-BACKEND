@@ -31,7 +31,7 @@ public class CustomerSaveController_updateCustomer {
      * @throws Exception
      */
     @Test
-    public void updateCustomer_18() throws Exception {
+    public void updateCustomer_24() throws Exception {
         Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -50,7 +50,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -65,7 +65,7 @@ public class CustomerSaveController_updateCustomer {
      * @throws Exception
      */
     @Test
-    public void updateCustomer_name_13() throws Exception {
+    public void updateCustomer_name_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -83,7 +83,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -91,7 +91,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_birthday_13() throws Exception {
+    public void updateCustomer_birthday_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -109,7 +109,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -117,34 +117,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_gender_13() throws Exception {
-         Long customerId = 1L; // ID của khách hàng cần cập nhật
-
-        CustomerSaveDto customerSaveDto = new CustomerSaveDto();
-        customerSaveDto.setId(customerId);
-        customerSaveDto.setName("Nguyễn Tiến Đạt");
-        customerSaveDto.setBirthday("2000-10-05");
-        customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
-        customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
-        customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("mattruoc_img1");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
-                        .content(this.objectMapper.writeValueAsString(customerSaveDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    @Test
-    public void updateCustomer_phoneNumber_13() throws Exception {
+    public void updateCustomer_gender_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -163,7 +136,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -171,7 +144,34 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_email_13() throws Exception {
+    public void updateCustomer_phoneNumber_19() throws Exception {
+         Long customerId = 1L; // ID của khách hàng cần cập nhật
+
+        CustomerSaveDto customerSaveDto = new CustomerSaveDto();
+        customerSaveDto.setId(customerId);
+        customerSaveDto.setName("Nguyễn Tiến Đạt");
+        customerSaveDto.setBirthday("2000-10-05");
+        customerSaveDto.setGender(1);
+        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
+        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
+        customerSaveDto.setFrontCitizen("mattruoc_img1");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setDelete(false);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/customer/api/{id}null", customerId)
+                        .content(this.objectMapper.writeValueAsString(customerSaveDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void updateCustomer_email_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -189,7 +189,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -197,7 +197,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_address_13() throws Exception {
+    public void updateCustomer_address_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -215,7 +215,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -223,7 +223,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_citizenCode_13() throws Exception {
+    public void updateCustomer_citizenCode_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -241,7 +241,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -249,7 +249,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_image_13() throws Exception {
+    public void updateCustomer_image_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -267,7 +267,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -275,7 +275,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_frontCitizen_13() throws Exception {
+    public void updateCustomer_frontCitizen_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -293,7 +293,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -301,7 +301,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_backCitizen_13() throws Exception {
+    public void updateCustomer_backCitizen_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -319,7 +319,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -327,7 +327,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_delete_13() throws Exception {
+    public void updateCustomer_delete_19() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -345,7 +345,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}null", customerId)
+                        .patch("/customer/api/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -361,7 +361,7 @@ public class CustomerSaveController_updateCustomer {
      */
 
     @Test
-    public void updateCustomer_name_14() throws Exception {
+    public void updateCustomer_name_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -380,7 +380,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -388,7 +388,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_birthday_14() throws Exception {
+    public void updateCustomer_birthday_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -407,7 +407,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -415,7 +415,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_phoneNumber_14() throws Exception {
+    public void updateCustomer_phoneNumber_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -434,7 +434,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -442,7 +442,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_email_14() throws Exception {
+    public void updateCustomer_email_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -461,7 +461,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -469,7 +469,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_address_14() throws Exception {
+    public void updateCustomer_address_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -488,7 +488,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -496,7 +496,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_citizenCode_14() throws Exception {
+    public void updateCustomer_citizenCode_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -515,7 +515,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -523,7 +523,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_image_14() throws Exception {
+    public void updateCustomer_image_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -542,7 +542,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -550,7 +550,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_frontCitizen_14() throws Exception {
+    public void updateCustomer_frontCitizen_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -569,7 +569,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -577,7 +577,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_backCitizen_14() throws Exception {
+    public void updateCustomer_backCitizen_20() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -596,7 +596,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}''", customerId)
+                        .patch("/customer/api/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -611,7 +611,7 @@ public class CustomerSaveController_updateCustomer {
      */
 
     @Test
-    public void updateCustomer_name_15() throws Exception {
+    public void updateCustomer_name_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -630,7 +630,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -638,7 +638,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_birthday_15() throws Exception {
+    public void updateCustomer_birthday_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -657,7 +657,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -665,7 +665,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_phoneNumber_15() throws Exception {
+    public void updateCustomer_phoneNumber_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -684,7 +684,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -692,7 +692,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_email_15() throws Exception {
+    public void updateCustomer_email_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -711,7 +711,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -719,7 +719,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_address_15() throws Exception {
+    public void updateCustomer_address_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -738,7 +738,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -746,7 +746,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_citizenCode_15() throws Exception {
+    public void updateCustomer_citizenCode_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -765,7 +765,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -773,7 +773,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_image_15() throws Exception {
+    public void updateCustomer_image_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -792,7 +792,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -800,7 +800,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_frontCitizen_15() throws Exception {
+    public void updateCustomer_frontCitizen_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -819,7 +819,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -827,7 +827,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_backCitizen_15() throws Exception {
+    public void updateCustomer_backCitizen_21() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -846,7 +846,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -862,7 +862,7 @@ public class CustomerSaveController_updateCustomer {
      */
 
     @Test
-    public void updateCustomer_name_16() throws Exception {
+    public void updateCustomer_name_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -881,7 +881,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -889,7 +889,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_birthday_16() throws Exception {
+    public void updateCustomer_birthday_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -908,7 +908,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -916,7 +916,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_phoneNumber_16() throws Exception {
+    public void updateCustomer_phoneNumber_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -935,7 +935,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -943,7 +943,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_email_16() throws Exception {
+    public void updateCustomer_email_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -962,7 +962,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -970,7 +970,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_address_16() throws Exception {
+    public void updateCustomer_address_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -989,7 +989,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -997,7 +997,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_citizenCode_16() throws Exception {
+    public void updateCustomer_citizenCode_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1016,7 +1016,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1024,7 +1024,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_image_16() throws Exception {
+    public void updateCustomer_image_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1043,7 +1043,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1051,7 +1051,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_frontCitizen_16() throws Exception {
+    public void updateCustomer_frontCitizen_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1070,7 +1070,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1078,7 +1078,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_backCitizen_16() throws Exception {
+    public void updateCustomer_backCitizen_22() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1097,7 +1097,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1113,7 +1113,7 @@ public class CustomerSaveController_updateCustomer {
      */
 
     @Test
-    public void updateCustomer_name_17() throws Exception {
+    public void updateCustomer_name_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1132,7 +1132,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1140,7 +1140,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_phoneNumber_17() throws Exception {
+    public void updateCustomer_phoneNumber_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1159,7 +1159,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1167,7 +1167,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_email_17() throws Exception {
+    public void updateCustomer_email_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1186,7 +1186,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1194,7 +1194,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_address_17() throws Exception {
+    public void updateCustomer_address_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1213,7 +1213,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1221,7 +1221,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_citizenCode_17() throws Exception {
+    public void updateCustomer_citizenCode_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1240,7 +1240,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1248,7 +1248,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_image_17() throws Exception {
+    public void updateCustomer_image_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1267,7 +1267,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1275,7 +1275,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_frontCitizen_17() throws Exception {
+    public void updateCustomer_frontCitizen_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1294,7 +1294,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1302,7 +1302,7 @@ public class CustomerSaveController_updateCustomer {
     }
 
     @Test
-    public void updateCustomer_backCitizen_17() throws Exception {
+    public void updateCustomer_backCitizen_23() throws Exception {
          Long customerId = 1L; // ID của khách hàng cần cập nhật
 
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
@@ -1321,7 +1321,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/customer/api/{id}", customerId)
+                        .patch("/customer/api/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
