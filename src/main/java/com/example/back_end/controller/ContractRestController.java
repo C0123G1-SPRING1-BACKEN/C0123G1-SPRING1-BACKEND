@@ -33,7 +33,15 @@ public class ContractRestController {
     @GetMapping("")
     public ResponseEntity<Page<IContractProjection>> getALlTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                               @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-        return new ResponseEntity<>(iContractService.findAllTransactionHistory(page, limit), HttpStatus.OK);
+        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
+        int totalPage = contractProjectionPage.getTotalPages();
+        if (page >= totalPage) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (contractProjectionPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
     }
 
     /**
@@ -63,7 +71,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Contracts> detailTransactionHistoryById(@PathVariable("id") Integer id) {
+    public ResponseEntity<Contracts> getTransactionHistoryDetail(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
@@ -83,7 +91,7 @@ public class ContractRestController {
     public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                               @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                               @RequestBody ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection>contractProjectionsPage=iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
+        Page<IContractProjection> contractProjectionsPage = iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
 }
