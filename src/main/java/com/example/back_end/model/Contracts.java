@@ -6,25 +6,25 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
 @EntityListeners(AuditingEntityListener.class)
 @Entity
+@Table(name = "contracts")
 public class Contracts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column( columnDefinition = "VARCHAR(250)")
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)",nullable = false)
     private String productName;
-    @Column(nullable = false, columnDefinition = "VARCHAR(250)")
+    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
     private Long loans;
     private Long profit;
-    @Column( columnDefinition = "TEXT")
+    @Column(name = "image", columnDefinition = "TEXT",nullable = false)
     private String image;
-    @Column( columnDefinition = "VARCHAR(25)")
+    @Column(name = "start_date", columnDefinition = "VARCHAR(25)",nullable = false)
     private String startDate;
-    @Column( columnDefinition = "VARCHAR(25)")
+    @Column(name = "end_date", columnDefinition = "VARCHAR(25)",nullable = false)
     private String endDate;
     @CreationTimestamp
     @Column(name = "create_time", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
@@ -51,8 +51,6 @@ public class Contracts {
     @JoinColumn
     private ContractType contractType;
 
-    private String redeemDate;
-
 
     public Contracts(){
     }
@@ -63,34 +61,6 @@ public class Contracts {
 
     public Contracts(String contractCode) {
         this.contractCode = contractCode;
-    }
-
-    public String getRedeemDate() {
-        return redeemDate;
-    }
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType, String redeemDate) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
-        this.redeemDate = redeemDate;
-    }
-
-    public void setRedeemDate(String redeemDate) {
-        this.redeemDate = redeemDate;
     }
 
     public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
