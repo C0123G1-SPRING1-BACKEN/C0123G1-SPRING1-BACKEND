@@ -22,7 +22,7 @@ public class UsersRestController_login {
     @Autowired
     private ObjectMapper objectMapper;
     /**
-     *
+     * login null
      * @throws Exception
      */
     @Test
@@ -41,7 +41,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login wrong username
+     * @throws Exception
+     */
     @Test
     public void login_98() throws Exception {
 
@@ -58,7 +61,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login wrong password
+     * @throws Exception
+     */
     @Test
     public void login_97() throws Exception {
 
@@ -75,7 +81,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login success
+     * @throws Exception
+     */
     @Test
     public void login_96() throws Exception {
 
