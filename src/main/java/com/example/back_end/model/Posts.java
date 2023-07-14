@@ -18,7 +18,7 @@ public class Posts {
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     private LocalDateTime createDate;
     @ManyToOne
-    @JoinColumn(name = "posts_id", referencedColumnName = "id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employees employees;
 
     public Posts() {
