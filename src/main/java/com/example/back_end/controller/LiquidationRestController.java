@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.ICustomersDto;
 import com.example.back_end.dto.IContractDto;
+import com.example.back_end.model.Customers;
 import com.example.back_end.model.Liquidations;
 import com.example.back_end.service.contracts.IContractsService;
 import com.example.back_end.service.customers.ICustomerService;
@@ -43,32 +44,50 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<Page<ICustomersDto>> getListCustomer(@PageableDefault(size = 3)Pageable pageable){
-        Page<ICustomersDto> customersDtoPage=customerService.findAllCustomer(pageable);
-        if(customersDtoPage.isEmpty()){
+    public ResponseEntity<Page<ICustomersDto>> getListCustomer(@PageableDefault(size = 3) Pageable pageable) {
+        Page<ICustomersDto> customersDtoPage = customerService.findAllCustomer(pageable);
+        if (customersDtoPage.isEmpty()) {
             return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(customersDtoPage,HttpStatus.OK);
+        return new ResponseEntity<>(customersDtoPage, HttpStatus.OK);
     }
+
     @GetMapping("/contracts")
-    public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 3)Pageable pageable){
-        Page<IContractDto> contractsDtoPage=contractsService.findAllProduct(pageable);
-        if(contractsDtoPage.isEmpty()){
+    public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 3) Pageable pageable) {
+        Page<IContractDto> contractsDtoPage = contractsService.findAllProduct(pageable);
+        if (contractsDtoPage.isEmpty()) {
             return new ResponseEntity<>(contractsDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(contractsDtoPage,HttpStatus.OK);
+        return new ResponseEntity<>(contractsDtoPage, HttpStatus.OK);
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<ICustomersDto> findCustomerById(@PathVariable String id){
-        customerService.findByIdCustomer(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+
+    @GetMapping("/customers/{id}")
+        public Customers findById(Long id){
+       return customerService.findByIdCustomer(id);
     }
-    @GetMapping("/search")
-    public ResponseEntity<Page<ICustomersDto>> getCustomer(@PageableDefault(size = 3)Pageable pageable,@RequestParam("name")String name){
-        Page<ICustomersDto> customersDtoPage=customerService.searchCustomer(pageable,name);
-        if(customersDtoPage.isEmpty()){
+
+    @GetMapping("/customers/search")
+    public ResponseEntity<Page<ICustomersDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomersDto> customersDtoPage = customerService.searchCustomer(pageable, name);
+        if (customersDtoPage.isEmpty()) {
             return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(customersDtoPage,HttpStatus.OK);
+        return new ResponseEntity<>(customersDtoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/contracts/{id}")
+    public ResponseEntity<IContractDto> findContractById(@PathVariable Long id) {
+        IContractDto  customers=contractsService.findContractById(id);
+        return new ResponseEntity<>(customers,HttpStatus.OK);
+    }
+
+    @GetMapping("/contracts/search")
+    public ResponseEntity<Page<IContractDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("productName") String productName
+            , @RequestParam("productType") String productType, @RequestParam("loans") Long loans) {
+        Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, productName, productType, loans);
+        if (contractDtoPage.isEmpty()) {
+            return new ResponseEntity<>(contractDtoPage, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(contractDtoPage, HttpStatus.OK);
     }
 }

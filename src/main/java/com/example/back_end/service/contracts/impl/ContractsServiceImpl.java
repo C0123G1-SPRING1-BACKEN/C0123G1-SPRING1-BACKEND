@@ -16,4 +16,15 @@ public class ContractsServiceImpl implements IContractsService {
     public Page<IContractDto> findAllProduct(Pageable pageable) {
         return contractsRepository.finAllProduct(pageable);
     }
+
+    @Override
+    public IContractDto findContractById(Long id) {
+        return contractsRepository.findContractById(id);
+    }
+
+    @Override
+    public Page<IContractDto> searchProduct(Pageable pageable, String productName, String productType, Long loans) {
+        return contractsRepository.searchProduct(pageable,productName,productType,loans);
+    }
+
 }

@@ -18,8 +18,8 @@ public interface ICustomerRepository extends JpaRepository<Customers, Long> {
             "WHERE c.id = :id\n" +
             "  AND c.is_delete = FALSE\n" +
             "  AND contracts.contract_status_id = 3", nativeQuery = true)
-    ICustomersDto findCustomersById(String id);
+    Customers findCustomersById(Long id);
 
-    @Query(value = "select c.name,c.phone_number,c.citizen_code,c.quantity_contract from customers c where c.name like :%name%",nativeQuery = true)
+    @Query(value = "select c.name,c.phone_number,c.citizen_code,c.quantity_contract from customers c where c.name like :name",nativeQuery = true)
     Page<ICustomersDto> searchCustomer(Pageable pageable, @Param("name")String name);
 }
