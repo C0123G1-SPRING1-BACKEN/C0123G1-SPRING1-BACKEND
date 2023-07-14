@@ -49,6 +49,9 @@ public class Employees {
         this.updateTime = updateTime;
     }
 
+    public Employees(Employees employees) {
+    }
+
     public Long getId() {
         return id;
     }

@@ -4,9 +4,7 @@ import com.example.back_end.model.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,53 +12,78 @@ import java.time.LocalDateTime;
 
 public class ContractDto {
 
+
     private Long id;
-    @NotBlank
+
+
     private String productName;
-    @NotBlank
+
     private String contractCode;
-    @NotNull
-    @Min(1000)
+
     private Long loans;
-    @NotNull
-    @Min(1000)
     private Long profit;
-    @NotBlank
+
     private String image;
-    @NotBlank
 
     private String startDate;
-    @NotBlank
 
     private String endDate;
-    @NotBlank
 
     private LocalDateTime createDate;
-    @NotBlank
 
     private LocalDateTime updateDate;
 
-    @ManyToOne
-    @JoinColumn
+
+    private boolean isDelete;
+
     private ProductType productType;
-    @ManyToOne
-    @JoinColumn
+
     private Customers customers;
-    @ManyToOne
-    @JoinColumn
+
     private ContractStatus contractStatus;
-    @ManyToOne
-    @JoinColumn
+
     private Employees employees;
-    @ManyToOne
-    @JoinColumn
+
     private ContractType contractType;
 
     public ContractDto() {
     }
 
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
     }
 
     public void setId(Long id) {
@@ -139,6 +162,14 @@ public class ContractDto {
         this.updateDate = updateDate;
     }
 
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
+
     public ProductType getProductType() {
         return productType;
     }
@@ -178,4 +209,5 @@ public class ContractDto {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
+
 }

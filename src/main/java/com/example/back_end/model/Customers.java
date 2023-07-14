@@ -67,6 +67,9 @@ public class Customers {
         this.isDelete = isDelete;
     }
 
+    public Customers(Customers customers) {
+    }
+
     public String getNote() {
         return note;
     }

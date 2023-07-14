@@ -18,6 +18,9 @@ public class ContractType {
     public ContractType() {
     }
 
+    public ContractType(ContractType contractType) {
+    }
+
     public Long getId() {
         return id;
     }

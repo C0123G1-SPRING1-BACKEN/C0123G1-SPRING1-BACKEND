@@ -17,6 +17,7 @@ public class Contracts {
     private String productName;
     @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
     private String contractCode;
+
     private Long loans;
     private Long profit;
     @Column(name = "image", columnDefinition = "TEXT")
@@ -60,6 +61,20 @@ public class Contracts {
 
     public Contracts(String contractCode) {
         this.contractCode = contractCode;
+    }
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
     }
 
     public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
@@ -176,6 +191,7 @@ public class Contracts {
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
+
 
     public Customers getCustomers() {
         return customers;
