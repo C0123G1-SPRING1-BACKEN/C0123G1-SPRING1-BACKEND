@@ -25,9 +25,9 @@ public class EmployeeService implements IEmployeeService {
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         Page<Employees> employeePage = iEmployeeRepository.findAllByNameContaining(pageable, search);
         EmployeeDTO employeeDTO;
-        for (Employees employees : employeePage){
+        for (Employees employees : employeePage) {
             employeeDTO = new EmployeeDTO();
-            BeanUtils.copyProperties(employees,employeeDTO);
+            BeanUtils.copyProperties(employees, employeeDTO);
             employeeDTOList.add(employeeDTO);
         }
         return new PageImpl<>(employeeDTOList, pageable, employeePage.getTotalElements());

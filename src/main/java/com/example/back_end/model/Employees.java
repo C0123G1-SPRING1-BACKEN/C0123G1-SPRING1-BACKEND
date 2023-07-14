@@ -11,13 +11,13 @@ public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 50)
     private String name;
     private String birthDay;
     private Integer gender;
     @Column(nullable = false,unique = false)
     private String email;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = false,length = 10)
     private String phoneNumber;
     private String address;
     private String salary;

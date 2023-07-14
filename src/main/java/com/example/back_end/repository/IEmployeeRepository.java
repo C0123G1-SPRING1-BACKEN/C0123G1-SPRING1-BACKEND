@@ -11,22 +11,22 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employees,Integer> {
-    @Query(value = "select * from employee where name like concat('%', :search, '%') ", nativeQuery = true)
+public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
+    @Query(value = "select * from employees where name like concat('%', :search, '%') ", nativeQuery = true)
     Page<Employees> findAllByNameContaining(Pageable pageable, @Param("search") String search);
 
     @Modifying
     @Transactional
-    @Query(value = "insert into employee (name, birth_day, gender, email, phone_number, address, salary, citizen_code, image) " +
-            "value(:name, :birth_day, :gender, :email, :phone_number, :address, :salary, :citizen_code, :image)",nativeQuery = true)
-    void createEmployee(@Param("name") String name ,
-                        @Param("birth_day") String birthDay ,
-                        @Param("gender") Integer gender ,
-                        @Param("email") String email ,
-                        @Param("phone_number") String phoneNumber ,
-                        @Param("address") String address ,
-                        @Param("salary") String salary ,
-                        @Param("citizen_code") String citizenCode ,
+    @Query(value = "insert into employees (name, birth_day, gender, email, phone_number, address, salary, citizen_code, image) " +
+            "value(:name, :birth_day, :gender, :email, :phone_number, :address, :salary, :citizen_code, :image)", nativeQuery = true)
+    void createEmployee(@Param("name") String name,
+                        @Param("birth_day") String birthDay,
+                        @Param("gender") Integer gender,
+                        @Param("email") String email,
+                        @Param("phone_number") String phoneNumber,
+                        @Param("address") String address,
+                        @Param("salary") String salary,
+                        @Param("citizen_code") String citizenCode,
                         @Param("image") String image);
 
 }

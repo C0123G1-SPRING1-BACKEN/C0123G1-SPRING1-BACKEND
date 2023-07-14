@@ -20,11 +20,13 @@ public class EmployeeDTO {
     @NotBlank(message = "Vui lòng nhập địa chỉ email")
     @Email(message = "Nhập đúng định dạng abc@gmail.com")
     private String email;
+    @Size(max = 10)
     @NotBlank(message = "Không được để trống !")
     private String phoneNumber;
     @NotBlank(message = "Không được để trống !")
     private String address;
     @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^\\d+$", message = "Tiền không được nhập số âm")
     private String salary;
     @NotBlank(message = "Không được để trống !")
     @Pattern(regexp = "^[0-9]{12}$", message = "Nhập không đúng định dạng CMND/Hộ chiếu")
