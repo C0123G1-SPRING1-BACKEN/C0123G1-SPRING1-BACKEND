@@ -1,15 +1,20 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.service.IContractService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -93,5 +98,22 @@ public class ContractRestController {
                                                                               @RequestBody ContractSearchDTO contractSearchDTO) {
         Page<IContractProjection> contractProjectionsPage = iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Contracts>> getAllContract() {
+        List<Contracts> contractsList = iContractService.findAll();
+        return new ResponseEntity<>(contractsList, HttpStatus.OK);
+    }
+
+    @PostMapping("/createContract")
+    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Contracts contracts = new Contracts();
+        BeanUtils.copyProperties(contractDto, contracts);
+        iContractService.createContract(contracts);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
