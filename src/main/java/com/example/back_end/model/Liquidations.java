@@ -16,6 +16,7 @@ public class Liquidations {
     @ManyToOne
     @JoinColumn
     private Contracts contracts;
+    @Column(nullable = false)
     private Long totalPrice;
     @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT now()",updatable = false)
     @CreationTimestamp
