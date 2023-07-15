@@ -16,8 +16,18 @@ public class UsersDto implements Validator {
     private String password;
     private Integer verificationCode;
     private Roles roles;
+    private String email;
 
     public UsersDto() {
+    }
+
+    public UsersDto(Long id, String username, String password, Integer verificationCode, Roles roles, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.verificationCode = verificationCode;
+        this.roles = roles;
+        this.email = email;
     }
 
     public UsersDto(Long id, String username, String password, Integer verificationCode, Roles roles) {
@@ -26,6 +36,14 @@ public class UsersDto implements Validator {
         this.password = password;
         this.verificationCode = verificationCode;
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
