@@ -9,13 +9,10 @@ public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+
     private String title;
-    @Column(nullable = false)
     private String image;
-    @Column(nullable = false)
     private String content;
-    @Column(columnDefinition = "DATETIME DEFAULT now()")
     private LocalDateTime createDate;
     @ManyToOne
     @JoinColumn(name = "posts_id", referencedColumnName = "id")

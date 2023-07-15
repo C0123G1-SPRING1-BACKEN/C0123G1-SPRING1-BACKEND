@@ -8,27 +8,16 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,length = 50)
     private String name;
-    @Column(nullable = false)
     private String birthday;
-    @Column(nullable = false)
     private int gender;
-    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
-    @Column(nullable = false,unique = true,length = 50)
     private String email;
-    @Column(nullable = false)
     private String address;
-    @Column(nullable = false,unique = true)
     private String citizenCode;
-    @Column(nullable = false)
     private String image;
-    @Column(nullable = false)
-    private String frontCitizen;
-    @Column(nullable = false)
+    private String frondCitizen;
     private String backCitizen;
-
     private String quantityContract;
     @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     private LocalDateTime createDate;
@@ -41,7 +30,7 @@ public class Customers {
     public Customers() {
     }
 
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
+    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -51,7 +40,7 @@ public class Customers {
         this.address = address;
         this.citizenCode = citizenCode;
         this.image = image;
-        this.frontCitizen = frontCitizen;
+        this.frondCitizen = frondCitizen;
         this.backCitizen = backCitizen;
         this.quantityContract = quantityContract;
         this.createDate = createDate;
@@ -70,7 +59,7 @@ public class Customers {
         this.address = address;
         this.citizenCode = citizenCode;
         this.image = image;
-        this.frontCitizen = frondCitizen;
+        this.frondCitizen = frondCitizen;
         this.backCitizen = backCitizen;
         this.quantityContract = quantityContract;
         this.createDate = createDate;
@@ -158,12 +147,12 @@ public class Customers {
         this.image = image;
     }
 
-    public String getFrontCitizen() {
-        return frontCitizen;
+    public String getFrondCitizen() {
+        return frondCitizen;
     }
 
-    public void setFrontCitizen(String frontCitizen) {
-        this.frontCitizen = frontCitizen;
+    public void setFrondCitizen(String frondCitizen) {
+        this.frondCitizen = frondCitizen;
     }
 
     public String getBackCitizen() {
