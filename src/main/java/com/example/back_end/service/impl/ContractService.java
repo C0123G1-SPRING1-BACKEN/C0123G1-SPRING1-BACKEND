@@ -1,16 +1,12 @@
 package com.example.back_end.service.impl;
 
 
-import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.repository.IContractRepository;
+import com.example.back_end.repository.ICreateContractRepository;
 import com.example.back_end.service.IContractService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -27,7 +23,7 @@ import java.util.List;
 @Service
 public class ContractService implements IContractService {
     @Autowired
-    private IContractRepository iContractRepository;
+    private ICreateContractRepository iContractRepository;
 
     @Override
     public List<Contracts> findAll() {

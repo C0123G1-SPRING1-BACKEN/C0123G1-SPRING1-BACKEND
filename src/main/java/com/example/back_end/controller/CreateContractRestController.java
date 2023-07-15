@@ -1,6 +1,6 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.ContractDto;
+import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.BeanUtils;
@@ -8,14 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by: DinhHD
@@ -29,7 +25,7 @@ import java.util.Map;
 @RequestMapping("/api/employee/contract")
 @RestController
 @CrossOrigin("*")
-public class ContractRestController {
+public class CreateContractRestController {
     @Autowired
     private IContractService iContractService;
     @GetMapping("")
@@ -38,7 +34,7 @@ public class ContractRestController {
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
     }
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid ContractDto contractDto,BindingResult bindingResult){
+    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface IContractRepository extends JpaRepository<Contracts,Integer> {
+public interface ICreateContractRepository extends JpaRepository<Contracts,Integer> {
     @Query(value = "SELECT p FROM Contracts AS p")
     List<Contracts> findAllContracts();
     @Transactional

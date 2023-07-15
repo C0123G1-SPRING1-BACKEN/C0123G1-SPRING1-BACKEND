@@ -2,13 +2,12 @@ package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Size;
 
-public class ContractDto {
+public class CreateContractDto {
 
     private Long id;
     @NotBlank(message = "Không được để trống !")
@@ -16,6 +15,7 @@ public class ContractDto {
     @NotBlank(message = "Không được để trống !")
     private String contractCode;
     @NotNull(message = "Không được để trống !")
+    @Min(value = 0 , message = "Lớn hơn 0")
     private Long loans;
     @NotNull(message = "Không được để trống !")
     private Long profit;
@@ -28,22 +28,25 @@ public class ContractDto {
     @NotBlank(message = "Không được để trống !")
 
     private String endDate;
-@NotNull(message = "Không được để trống !")
+
     private ProductType productType;
-    @NotNull(message = "Không được để trống !")
+
 
     private Customers customer;
 
+
     private ContractStatus contractStatus;
+
 
     private Employees employee;
 
+
     private ContractType contractType;
 
-    public ContractDto() {
+    public CreateContractDto() {
     }
 
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public CreateContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
