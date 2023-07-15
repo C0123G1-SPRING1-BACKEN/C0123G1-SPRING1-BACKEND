@@ -1,20 +1,14 @@
-package com.example.back_end.model;
+package com.example.back_end.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "contract_status")
-public class ContractStatus {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractTypeDto {
     private Long id;
-    @Column(nullable = false,unique = true)
+
     private String name;
 
-    public ContractStatus() {
+    public ContractTypeDto() {
     }
 
-    public ContractStatus(Long id, String name) {
+    public ContractTypeDto(Long id, String name) {
         this.id = id;
         this.name = name;
     }

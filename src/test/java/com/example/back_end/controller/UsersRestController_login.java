@@ -1,7 +1,6 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.UsersDto;
-import com.example.back_end.model.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
