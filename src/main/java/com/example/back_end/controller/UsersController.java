@@ -120,10 +120,8 @@ public class UsersController {
     }
 
     @PatchMapping("/newPassword")
-    public ResponseEntity<?> createNewPassword(@RequestBody Users user,@RequestHeader("Authorization") String authorizationHeader) {
-        if (!ijwtAuthorization.isAdminUserE(authorizationHeader)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Bạn không có quyền truy cập!");
-        }
+    public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
+
         if (user.getPassword().length() < 8 || user.getPassword().length() > 20) {
             ErrorInfo errorInfo=new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!",user.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);

@@ -71,7 +71,6 @@ public class UsersRestController_login {
         usersDto.setUsername("thangfa");
         usersDto.setPassword("123456");
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/authenticate")
