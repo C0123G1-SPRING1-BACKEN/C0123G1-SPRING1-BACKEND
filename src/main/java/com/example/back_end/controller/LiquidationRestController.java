@@ -5,8 +5,8 @@ import com.example.back_end.dto.IContractDto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 import com.example.back_end.model.Liquidations;
+import com.example.back_end.service.ICustomerService;
 import com.example.back_end.service.contracts.IContractsService;
-import com.example.back_end.service.customers.ICustomerService;
 import com.example.back_end.service.liquidations.ILiquidationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -69,7 +69,7 @@ public class LiquidationRestController {
 
     @GetMapping("/customers/search")
     public ResponseEntity<Page<ICustomersDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomersDto> customersDtoPage = customerService.searchCustomer(pageable, name);
+        Page<ICustomersDto> customersDtoPage = customerService.searchCustomers(pageable, name);
         if (customersDtoPage.isEmpty()) {
             return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
         }

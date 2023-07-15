@@ -21,6 +21,8 @@ public class UsersDto implements Validator {
     public UsersDto() {
     }
 
+
+
     public UsersDto(Long id, String username, String password, Integer verificationCode, Roles roles, String email) {
         this.id = id;
         this.username = username;

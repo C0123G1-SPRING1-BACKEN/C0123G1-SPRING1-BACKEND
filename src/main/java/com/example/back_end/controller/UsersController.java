@@ -1,5 +1,7 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.service.IJWTAuthorization;
+import com.example.back_end.service.impl.JWTAuthorization;
 import com.example.back_end.config.JwtTokenUtil;
 import com.example.back_end.model.Users;
 import com.example.back_end.reponse.JwtRequest;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
+import static org.springframework.web.servlet.function.ServerResponse.status;
+
 /**
  * Created by: VienH
  * Date created: 13/07/2023
@@ -31,6 +35,8 @@ import java.util.Random;
 @RestController
 @RequestMapping("/api/user")
 public class UsersController {
+    @Autowired
+    private IJWTAuthorization ijwtAuthorization;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -114,7 +120,10 @@ public class UsersController {
     }
 
     @PatchMapping("/newPassword")
-    public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
+    public ResponseEntity<?> createNewPassword(@RequestBody Users user,@RequestHeader("Authorization") String authorizationHeader) {
+        if (!ijwtAuthorization.isAdminUserE(authorizationHeader)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Bạn không có quyền truy cập!");
+        }
         if (user.getPassword().length() < 8 || user.getPassword().length() > 20) {
             ErrorInfo errorInfo=new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!",user.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
