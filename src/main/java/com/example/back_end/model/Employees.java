@@ -11,25 +11,18 @@ public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,length = 50)
-    private String name;
     @Column(nullable = false)
+    private String employeeName;
     private String birthDay;
-    @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false,unique = true,length = 50)
-    private String email;
-    @Column(nullable = false,unique = true,length = 10)
-    private String phoneNumber;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String phoneNumber;
     private String address;
-    private String salary;
-    @Column(nullable = false,unique = true)
-    private String citizenCode;
+    private Long salary;
     @Column(nullable = false)
+    private String citizenCode;
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @CreationTimestamp
@@ -37,14 +30,11 @@ public class Employees {
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
     private LocalDateTime updateTime;
-    @OneToOne
-    @JoinColumn
-    private Users users;
 
     public Employees() {
     }
 
-    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
+    public Employees(Long id, String employeeName, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.employeeName = employeeName;
         this.birthDay = birthDay;
@@ -68,11 +58,11 @@ public class Employees {
     }
 
     public String getEmployeeName() {
-        return name;
+        return employeeName;
     }
 
-    public void setEmployeeName(String name) {
-        this.name = name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     public String getBirthDay() {
@@ -153,21 +143,5 @@ public class Employees {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
     }
 }
