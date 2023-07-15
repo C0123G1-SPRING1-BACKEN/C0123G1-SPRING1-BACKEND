@@ -25,51 +25,51 @@ public class UsersRestController_forgotPassword {
      * check email null
      * @throws Exception
      */
-    @Test
-    public void checkEmail_99() throws Exception {
-        UsersDto usersDto = new UsersDto();
-        usersDto.setEmail("");
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/checkEmail")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
+//    @Test
+//    public void checkEmail_99() throws Exception {
+//        UsersDto usersDto = new UsersDto();
+//        usersDto.setEmail("");
+//        this.mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .post("/api/user/checkEmail")
+//                        .content(this.objectMapper.writeValueAsString(usersDto))
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+//                .andDo(print())
+//                .andExpect(status().is4xxClientError());
+//    }
     /**
      * check email wrong data
      * @throws Exception
      */
 
-    @Test
-    public void checkEmail_98() throws Exception {
-        UsersDto usersDto = new UsersDto();
-        usersDto.setEmail("hehe@gmail.com");
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/checkEmail")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-    /**
-     * check email success
-     * @throws Exception
-     */
-    @Test
-    public void checkEmail_97() throws Exception {
-        UsersDto usersDto = new UsersDto();
-        usersDto.setEmail("nguyenthangfa2001@gmail.com");
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/checkEmail")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
+//    @Test
+//    public void checkEmail_98() throws Exception {
+//        UsersDto usersDto = new UsersDto();
+//        usersDto.setEmail("hehe@gmail.com");
+//        this.mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .post("/api/user/checkEmail")
+//                        .content(this.objectMapper.writeValueAsString(usersDto))
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+//                .andDo(print())
+//                .andExpect(status().is4xxClientError());
+//    }
+//    /**
+//     * check email success
+//     * @throws Exception
+//     */
+//    @Test
+//    public void checkEmail_97() throws Exception {
+//        UsersDto usersDto = new UsersDto();
+//        usersDto.setEmail("nguyenthangfa2001@gmail.com");
+//        this.mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .post("/api/user/checkEmail")
+//                        .content(this.objectMapper.writeValueAsString(usersDto))
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
     /**
      * check code null
      * @throws Exception

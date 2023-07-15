@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ProductTypeService implements IProductTypeService {
-
-    @Autowired
-    private IProductTypeRepository productTypeRepository;
-
-    @Override
-    public List<ProductType> getAll() {
-        return productTypeRepository.getAll();
-    }
-}
+//@Service
+//public class ProductTypeService implements IProductTypeService {
+//
+//    @Autowired
+//    private IProductTypeRepository productTypeRepository;
+//
+//    @Override
+//    public List<ProductType> getAll() {
+//        return productTypeRepository.getAll();
+//    }
+//}

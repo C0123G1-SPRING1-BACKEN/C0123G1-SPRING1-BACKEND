@@ -25,33 +25,33 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/employee/contract/customer")
 @CrossOrigin("*")
 public class CustomerRestController {
-    @Autowired
-    private ICustomerService iCustomerService;
-
-    @GetMapping("")
-    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
-        if (iCustomerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/contract/search")
-    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
-        if (iCustomerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/contract/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
-      ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
-      if (iCustomerDto.equals(id)){
-          return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
-      }
-        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
-    }
+//    @Autowired
+//    private ICustomerService iCustomerService;
+//
+//    @GetMapping("")
+//    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
+//        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
+//        if (iCustomerDtoPage.isEmpty()) {
+//            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/contract/search")
+//    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+//        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
+//        if (iCustomerDtoPage.isEmpty()) {
+//            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/contract/{id}")
+//    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
+//      ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
+//      if (iCustomerDto.equals(id)){
+//          return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
+//      }
+//        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
+//    }
 }

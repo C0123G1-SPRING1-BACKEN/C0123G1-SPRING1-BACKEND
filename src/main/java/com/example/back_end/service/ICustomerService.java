@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 public interface ICustomerService {
     Page<ICustomerDto> findByCustomer(Pageable pageable);
 
-    Page<ICustomerDto> searchCustomer(Pageable pageable, String name);
+//    Page<ICustomerDto> searchCustomer(Pageable pageable, String name);
     ICustomerDto findByIdCustomer(String id);
 }

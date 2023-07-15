@@ -22,7 +22,7 @@ public class ContractController_getTransactionHistoryDetail {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param id
+     * @param
      * @throws Exception
      */
 
@@ -41,7 +41,7 @@ public class ContractController_getTransactionHistoryDetail {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param id
+     * @param
      * @throws Exception
      */
 
@@ -60,7 +60,7 @@ public class ContractController_getTransactionHistoryDetail {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param id
+     * @param
      * @throws Exception
      */
 
@@ -73,4 +73,41 @@ public class ContractController_getTransactionHistoryDetail {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    /**
+     * Tìm đối tượng có tham số [id] = có trong database
+     * Create by :ThienNT
+     * Date create: 14/07/2023
+     *
+     * @param
+     */
+
+    @Test
+    public void getTransactionHistoryDetail_4() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/contract/detail/{id}", "1")
+                )
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    /**
+     * Tìm đối tượng có tham số [id] = không đúng định dạng là số nguyên
+     * Create by :ThienNT
+     * Date create: 14/07/2023
+     *
+     * @param
+     */
+
+    @Test
+    public void getTransactionHistoryDetail_99() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/contract/detail/{id}", "dasadx")
+                )
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
 }

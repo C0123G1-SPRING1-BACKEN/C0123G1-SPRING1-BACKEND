@@ -26,24 +26,30 @@ public class ProductTypeService implements IProductTypeService {
     @Autowired
     private IContractStatusRepository iContractStatusRepository;
 
-
     @Override
-    public List<ProductType> findAll() {
-        return iProductTypeRepository.findAll();
+    public List<ProductType> getAll() {
+        return null;
     }
+
+
+//
+//    @Override
+//    public List<ProductType> findAll() {
+//        return iProductTypeRepository.findAll();
+//    }
 
 //    @Override
 //    public List<Customers> findAllCustomer() {
 //        return iCustomerRepository.findAll();
 //    }
 
-    @Override
-    public List<Employees> findAllEmployee() {
-        return iEmployeeRepository.findAll();
-    }
-
-    @Override
-    public List<ContractStatus> findAllContractStatus() {
-        return iContractStatusRepository.findAll();
-    }
+//    @Override
+//    public List<Employees> findAllEmployee() {
+//        return iEmployeeRepository.findAll();
+//    }
+//
+//    @Override
+//    public List<ContractStatus> findAllContractStatus() {
+//        return iContractStatusRepository.findAll();
+//    }
 }
