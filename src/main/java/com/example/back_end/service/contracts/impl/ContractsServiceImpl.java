@@ -19,7 +19,7 @@ public class ContractsServiceImpl implements IContractsService {
     }
 
     @Override
-    public Contracts findContractById(Long id) {
+    public IContractDto findContractById(Long id) {
         return contractsRepository.findContractById(id);
     }
 
