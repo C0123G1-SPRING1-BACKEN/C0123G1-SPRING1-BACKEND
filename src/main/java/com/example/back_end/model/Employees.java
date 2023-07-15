@@ -23,7 +23,7 @@ public class Employees {
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
-    private Long salary;
+    private String salary;
     @Column(nullable = false,unique = true)
     private String citizenCode;
     @Column(nullable = false)
@@ -41,7 +41,7 @@ public class Employees {
     public Employees() {
     }
 
-    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
@@ -113,11 +113,11 @@ public class Employees {
         this.address = address;
     }
 
-    public Long getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Long salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
