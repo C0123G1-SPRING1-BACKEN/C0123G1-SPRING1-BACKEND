@@ -77,4 +77,7 @@ public class UsersDto implements Validator {
     public void validate(Object target, Errors errors) {
 
     }
+
+    public void setEmail(String s) {
+    }
 }

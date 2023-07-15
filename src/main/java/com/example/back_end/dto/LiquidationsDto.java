@@ -13,6 +13,7 @@ public class LiquidationsDto {
     private Customers customers;
     @NotNull(message = "Vui lòng chọn sản phẩm.")
     private Contracts contracts;
+    @NotNull
     private Long totalPrice;
     private LocalDateTime createTime;
 
