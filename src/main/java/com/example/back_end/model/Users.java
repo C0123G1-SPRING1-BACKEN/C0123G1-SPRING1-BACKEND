@@ -19,7 +19,6 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Roles roles;
-    private String email;
 
     public Users() {
     }
@@ -32,13 +31,11 @@ public class Users {
         this.roles = roles;
     }
 
-    public Users(Long id, String username, String password, Integer verificationCode, Roles roles, String email) {
+    public Users(Long id, String username, String password, Integer verificationCode) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.verificationCode = verificationCode;
-        this.roles = roles;
-        this.email = email;
     }
 
     public void setId(Long id) {
@@ -79,13 +76,5 @@ public class Users {
 
     public Integer getVerificationCode() {
         return verificationCode;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
