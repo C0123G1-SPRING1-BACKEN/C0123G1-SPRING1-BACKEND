@@ -8,16 +8,27 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false,length = 50)
     private String name;
+    @Column(nullable = false)
     private String birthday;
+    @Column(nullable = false)
     private int gender;
+    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
+    @Column(nullable = false,unique = true,length = 50)
     private String email;
+    @Column(nullable = false)
     private String address;
+    @Column(nullable = false,unique = true)
     private String citizenCode;
+    @Column(nullable = false)
     private String image;
+    @Column(nullable = false)
     private String frontCitizen;
+    @Column(nullable = false)
     private String backCitizen;
+
     private String quantityContract;
     @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     private LocalDateTime createDate;
