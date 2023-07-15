@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface IContractsService {
     Page<IContractDto> findAllProduct(Pageable pageable);
-    Contracts findContractById(Long id);
+    IContractDto findContractById(Long id);
     Page<IContractDto> searchProduct(Pageable pageable,String productName,String productType,String loans);
 }
