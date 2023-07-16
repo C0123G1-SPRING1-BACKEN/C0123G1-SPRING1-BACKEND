@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("customer/api")
+@RequestMapping("api/customer")
 @CrossOrigin("*")
 public class CustomerControllerSave {
     @Autowired

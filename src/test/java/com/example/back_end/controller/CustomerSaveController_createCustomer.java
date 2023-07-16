@@ -47,7 +47,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -77,7 +77,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -100,7 +100,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -124,7 +124,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -148,7 +148,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -171,7 +171,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -194,7 +194,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -217,7 +217,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -240,7 +240,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -263,7 +263,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -286,7 +286,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -309,7 +309,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/null")
+                        .post("/api/customer/null")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -341,7 +341,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -365,7 +365,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -389,7 +389,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -413,7 +413,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -437,7 +437,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -461,7 +461,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -485,7 +485,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -509,7 +509,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -533,7 +533,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/''")
+                        .post("/api/customer/''")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -564,7 +564,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -588,7 +588,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -612,7 +612,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -636,7 +636,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -660,7 +660,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -684,7 +684,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -708,7 +708,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -732,7 +732,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -756,7 +756,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -788,7 +788,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -812,7 +812,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -836,7 +836,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -860,7 +860,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -884,7 +884,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -908,7 +908,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -932,7 +932,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -956,7 +956,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -980,7 +980,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1012,7 +1012,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1036,7 +1036,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1060,7 +1060,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1084,7 +1084,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1108,7 +1108,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1132,7 +1132,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1156,7 +1156,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1180,7 +1180,7 @@ public class CustomerSaveController_createCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/customer/api/")
+                        .post("/api/customer/")
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

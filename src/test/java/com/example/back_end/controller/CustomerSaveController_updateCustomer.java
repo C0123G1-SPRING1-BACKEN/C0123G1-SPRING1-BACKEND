@@ -50,7 +50,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -83,7 +83,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -109,7 +109,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -136,7 +136,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -163,7 +163,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -189,7 +189,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -215,7 +215,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -241,7 +241,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -267,7 +267,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -293,7 +293,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -319,7 +319,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -345,7 +345,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}null", customerId)
+                        .patch("/api/customer/{id}null", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -380,7 +380,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -407,7 +407,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -434,7 +434,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -461,7 +461,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -488,7 +488,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -515,7 +515,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -542,7 +542,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -569,7 +569,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -596,7 +596,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}''", customerId)
+                        .patch("/api/customer/{id}''", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -630,7 +630,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -657,7 +657,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -684,7 +684,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -711,7 +711,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -738,7 +738,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -765,7 +765,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -792,7 +792,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -819,7 +819,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -846,7 +846,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -881,7 +881,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -908,7 +908,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -935,7 +935,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -962,7 +962,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -989,7 +989,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1016,7 +1016,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1043,7 +1043,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1070,7 +1070,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1097,7 +1097,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1132,7 +1132,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1159,7 +1159,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1186,7 +1186,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1213,7 +1213,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1240,7 +1240,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1267,7 +1267,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1294,7 +1294,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -1321,7 +1321,7 @@ public class CustomerSaveController_updateCustomer {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/customer/api/{id}", customerId)
+                        .patch("/api/customer/{id}", customerId)
                         .content(this.objectMapper.writeValueAsString(customerSaveDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
