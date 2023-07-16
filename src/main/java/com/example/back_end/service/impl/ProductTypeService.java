@@ -2,11 +2,10 @@ package com.example.back_end.service.impl;
 
 
 import com.example.back_end.model.ContractStatus;
-import com.example.back_end.model.Customers;
 import com.example.back_end.model.Employees;
 import com.example.back_end.model.ProductType;
 import com.example.back_end.repository.IContractStatusRepository;
-import com.example.back_end.repository.ICustomerRepository;
+import com.example.back_end.repository.IPageCustomerRepository;
 import com.example.back_end.repository.IEmployeeRepository;
 import com.example.back_end.repository.IProductTypeRepository;
 import com.example.back_end.service.IProductTypeService;
@@ -20,7 +19,7 @@ public class ProductTypeService implements IProductTypeService {
     @Autowired
     private IProductTypeRepository iProductTypeRepository;
     @Autowired
-    private ICustomerRepository iCustomerRepository;
+    private IPageCustomerRepository iCustomerRepository;
     @Autowired
     private IEmployeeRepository iEmployeeRepository;
     @Autowired

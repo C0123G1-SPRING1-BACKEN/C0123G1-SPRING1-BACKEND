@@ -2,8 +2,10 @@ package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class CreateContractDto {
 
@@ -13,6 +15,7 @@ public class CreateContractDto {
     @NotBlank(message = "Không được để trống !")
     private String contractCode;
     @NotNull(message = "Không được để trống !")
+    @Min(value = 0 , message = "Lớn hơn 0")
     private Long loans;
     @NotNull(message = "Không được để trống !")
     private Long profit;
@@ -25,15 +28,18 @@ public class CreateContractDto {
     @NotBlank(message = "Không được để trống !")
 
     private String endDate;
-@NotNull(message = "Không được để trống !")
+
     private ProductType productType;
-    @NotNull(message = "Không được để trống !")
+
 
     private Customers customer;
 
+
     private ContractStatus contractStatus;
 
+
     private Employees employee;
+
 
     private ContractType contractType;
 

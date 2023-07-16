@@ -1,7 +1,6 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.ICustomerDto;
-import com.example.back_end.model.Customers;
+import com.example.back_end.dto.IPageCustomerDto;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,13 +23,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/employee/contract/customer")
 @CrossOrigin("*")
-public class CustomerRestController {
+public class PageCustomerRestController {
     @Autowired
     private ICustomerService iCustomerService;
 
+
     @GetMapping("")
-    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
+    public ResponseEntity<Page<IPageCustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
+        Page<IPageCustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
         if (iCustomerDtoPage.isEmpty()) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
@@ -38,8 +38,8 @@ public class CustomerRestController {
     }
 
     @GetMapping("/contract/search")
-    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
+    public ResponseEntity<Page<IPageCustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+        Page<IPageCustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
         if (iCustomerDtoPage.isEmpty()) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
@@ -47,8 +47,8 @@ public class CustomerRestController {
     }
 
     @GetMapping("/contract/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
-      ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
+    public ResponseEntity<IPageCustomerDto> getByIdCustomer(@PathVariable("id") String id) {
+      IPageCustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
       if (iCustomerDto.equals(id)){
           return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
       }
