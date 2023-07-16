@@ -32,13 +32,13 @@ public class CreateContractDto {
     private ProductType productType;
 
 
-    private Customers customer;
+    private Customers customers;
 
 
     private ContractStatus contractStatus;
 
 
-    private Employees employee;
+    private Employees employees;
 
 
     private ContractType contractType;
@@ -46,7 +46,7 @@ public class CreateContractDto {
     public CreateContractDto() {
     }
 
-    public CreateContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public CreateContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -56,9 +56,9 @@ public class CreateContractDto {
         this.startDate = startDate;
         this.endDate = endDate;
         this.productType = productType;
-        this.customer = customer;
+        this.customers = customers;
         this.contractStatus = contractStatus;
-        this.employee = employee;
+        this.employees = employees;
         this.contractType = contractType;
     }
 
@@ -134,12 +134,12 @@ public class CreateContractDto {
         this.productType = productType;
     }
 
-    public Customers getCustomer() {
-        return customer;
+    public Customers getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customers customer) {
-        this.customer = customer;
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
     }
 
     public ContractStatus getContractStatus() {
@@ -150,12 +150,12 @@ public class CreateContractDto {
         this.contractStatus = contractStatus;
     }
 
-    public Employees getEmployee() {
-        return employee;
+    public Employees getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(Employees employee) {
-        this.employee = employee;
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
     public ContractType getContractType() {

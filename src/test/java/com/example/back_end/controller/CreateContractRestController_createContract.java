@@ -43,11 +43,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -88,11 +88,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -133,11 +133,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -178,11 +178,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -224,11 +224,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -271,11 +271,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -316,11 +316,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -361,11 +361,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -406,11 +406,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -451,11 +451,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -496,11 +496,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -541,11 +541,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -590,11 +590,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));
@@ -635,11 +635,11 @@ public class CreateContractRestController_createContract {
 
         Employees employee=new Employees();
         employee.setId(Long.valueOf(1));
-        contractDto.setEmployee(employee);
+        contractDto.setEmployees(employee);
 
         Customers customer = new Customers();
         customer.setId(Long.valueOf(1));
-        contractDto.setCustomer(customer);
+        contractDto.setCustomers(customer);
 
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(Long.valueOf(1));

@@ -1,12 +1,12 @@
 package com.example.back_end.service;
 
-import com.example.back_end.dto.IPageCustomerDto;
+import com.example.back_end.dto.ICustomerDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ICustomerService {
-    Page<IPageCustomerDto> findByCustomer(Pageable pageable);
+    Page<ICustomerDto> findByCustomer(Pageable pageable);
 
-    Page<IPageCustomerDto> searchCustomer(Pageable pageable, String name);
-    IPageCustomerDto findByIdCustomer(String id);
+    Page<ICustomerDto> searchCustomer(Pageable pageable, String name);
+    ICustomerDto findByIdCustomer(String id);
 }

@@ -1,7 +1,7 @@
 package com.example.back_end.service.impl;
 
-import com.example.back_end.dto.IPageCustomerDto;
 
+import com.example.back_end.dto.ICustomerDto;
 import com.example.back_end.repository.IPageCustomerRepository;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ public class CustomerService implements ICustomerService {
     private IPageCustomerRepository iCustomerRepository;
 
     @Override
-    public Page<IPageCustomerDto> findByCustomer(Pageable pageable) {
+    public Page<ICustomerDto> findByCustomer(Pageable pageable) {
         return iCustomerRepository.findByCustomer(pageable);
     }
 
     @Override
-    public Page<IPageCustomerDto> searchCustomer(Pageable pageable, String name ) {
+    public Page<ICustomerDto> searchCustomer(Pageable pageable, String name ) {
         return iCustomerRepository.searchCustomer(pageable,name);
     }
 
     @Override
-    public IPageCustomerDto findByIdCustomer(String id) {
+    public ICustomerDto findByIdCustomer(String id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
 }
