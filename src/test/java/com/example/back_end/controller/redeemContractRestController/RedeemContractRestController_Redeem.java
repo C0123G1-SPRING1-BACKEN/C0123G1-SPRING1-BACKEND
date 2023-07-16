@@ -3,7 +3,6 @@ package com.example.back_end.controller.redeemContractRestController;
 import com.example.back_end.model.ContractStatus;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.service.IRedeemingService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 
 import java.time.LocalDate;
 
@@ -36,6 +34,7 @@ public class RedeemContractRestController_Redeem {
 
 
     /**
+     * Created by HoaTQ
      * Chức năng chuộc đồ thành công
      * Chức năng chuộc đồ chỉ thay đổi status của hợp đồng nên không có trường hợp test với các ô input
      *
@@ -65,6 +64,7 @@ public class RedeemContractRestController_Redeem {
 
 
     /**
+     * Created by HoaTQ
      * Chức năng chuộc đồ chỉ thay đổi status của hợp đồng nên không có trường hợp test với các ô input
      * ở test case này em chỉ test trường hợp là nếu như id là null
      *
@@ -97,6 +97,7 @@ public class RedeemContractRestController_Redeem {
 
 
     /**
+     * Created by HoaTQ
      * Chức năng chuộc đồ chỉ thay đổi status của hợp đồng nên không có trường hợp test với các ô input
      * ở test case này em chỉ test trường hợp là nếu như id là rỗng
      *

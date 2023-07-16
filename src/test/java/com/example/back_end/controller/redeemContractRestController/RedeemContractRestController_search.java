@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
@@ -36,11 +35,11 @@ public class RedeemContractRestController_search {
         String customerName = "";
         String productName = "";
         String startDate = "";
-        int page = 0;
+//        int page = null;
 
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/search")
-                        .param("page", String.valueOf(page))
+//                        .param("page", String.valueOf(page))
 
 
                         .param("contractCode", contractCode)

@@ -7,4 +7,7 @@ public interface IOpenContractDTO {
     String getProductName();
     Long getLoans();
     String getStartDate();
+    Long getProfit();
+    String getEndDate();
+    String getRedeemDate();
 }

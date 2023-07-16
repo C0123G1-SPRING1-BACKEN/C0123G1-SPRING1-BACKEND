@@ -18,12 +18,24 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
     void redeem(@Param("id") Long id, @Param("redeemDate") String redeemDate);
 
 
-    @Query(value = "SELECT con.id AS contractId,con.contract_code AS contractCode, c.name AS customerName, con.product_name AS productName, con.start_date AS startDate, con.loans AS loans\n" +
+    @Query(value = "SELECT con.id            AS contractId,\n" +
+            "       con.contract_code AS contractCode,\n" +
+            "       c.name            AS customerName,\n" +
+            "       con.product_name  AS productName,\n" +
+            "       con.start_date    AS startDate,\n" +
+            "       con.loans         AS loans,\n" +
+            "       con.profit        AS profit,\n" +
+            "       con.end_date      AS endDate,\n" +
+            "       con.redeem_date   AS redeemDate\n" +
+            "\n" +
             "FROM contracts AS con\n" +
-            "         INNER JOIN contract_status cs ON con.contract_status_id = cs.id\n" +
+            "         INNER JOIN contract_status cs\n" +
+            "                    ON con.contract_status_id = cs.id\n" +
             "         INNER JOIN customers c ON con.customers_id = c.id\n" +
+            "\n" +
             "WHERE con.is_delete = FALSE\n" +
-            "  AND con.contract_status_id = 1 ORDER BY con.create_time DESC"
+            "  AND con.contract_status_id = 1\n" +
+            "ORDER BY con.create_time DESC"
             , nativeQuery = true)
     Page<IOpenContractDTO> findPageConTract(@Param("page") Pageable page);
 

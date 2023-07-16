@@ -49,6 +49,9 @@ public class RedeemingService implements IRedeemingService {
             dto.setStartDate(projection.getStartDate());
             dto.setContractCode(projection.getContractCode());
             dto.setProductName(projection.getProductName());
+            dto.setProfit(projection.getProfit());
+            dto.setEndDate(projection.getEndDate());
+            dto.setRedeemDate(projection.getRedeemDate());
             return dto;
         });
     }

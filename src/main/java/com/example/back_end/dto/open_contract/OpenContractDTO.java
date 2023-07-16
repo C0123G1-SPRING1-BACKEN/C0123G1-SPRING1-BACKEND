@@ -7,6 +7,33 @@ public class OpenContractDTO {
     private String productName;
     private Long loans;
     private String startDate;
+    private Long profit;
+    private String endDate;
+    private String redeemDate;
+
+    public Long getProfit() {
+        return profit;
+    }
+
+    public void setProfit(Long profit) {
+        this.profit = profit;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getRedeemDate() {
+        return redeemDate;
+    }
+
+    public void setRedeemDate(String redeemDate) {
+        this.redeemDate = redeemDate;
+    }
 
     public Long getContractCode() {
         return contractCode;
