@@ -46,7 +46,7 @@ public class RedeemContractController_findOpenContractById {
         contracts.setId(2L);
 
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/chose/{id}", contracts.getId())
@@ -75,7 +75,7 @@ public class RedeemContractController_findOpenContractById {
         contracts.setId(null);
 
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/chose/{id}", contracts.getId())
@@ -106,7 +106,7 @@ public class RedeemContractController_findOpenContractById {
         Contracts contracts = new Contracts();
 
         ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2);
+        contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
 
         mockMvc.perform(patch("/api/employee/redeem/chose/{id}", "")
