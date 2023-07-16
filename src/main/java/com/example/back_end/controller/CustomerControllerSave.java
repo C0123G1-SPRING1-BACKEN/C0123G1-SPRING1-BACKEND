@@ -30,7 +30,7 @@ public class CustomerControllerSave {
      * @return HttpStatus.NOT_FOUND if result= null else then return customerSaveDto and HttpStatus.OK
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> findIdCustomer(@PathVariable Long id) {
+    public ResponseEntity<?> findByIdCustomer(@PathVariable Long id) {
         CustomerSaveDto customerSaveDto = customerServiceCreateUpdate.findByIdCustomer(id);
         if (customerSaveDto == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,8 +67,6 @@ public class CustomerControllerSave {
      * @requestBody CustomerSaveDto includes the customer object
      */
     @PatchMapping("/{id}")
-
-//    @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult,@PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);
