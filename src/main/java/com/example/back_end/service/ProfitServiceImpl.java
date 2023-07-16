@@ -45,11 +45,11 @@ public class ProfitServiceImpl implements IProfitService {
     public Long getTotalProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
             case "interest":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
             case "liquidation":
                 return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate);
             case "foresee":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
             default:
                 return null;
         }

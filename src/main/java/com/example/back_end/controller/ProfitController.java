@@ -39,7 +39,7 @@ public class ProfitController {
                                                        @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-        Pageable pageable = PageRequest.of(page, 8);
+        Pageable pageable = PageRequest.of(page, 2);
         Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, pageable, profitType);
         if (contractPage.getTotalElements() == 0) {
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
@@ -65,9 +65,6 @@ public class ProfitController {
         List<IStatistics> statisticsList = iProfitService.statisticsProfit(startDate,endDate,profitType);
         return new ResponseEntity<>(statisticsList,HttpStatus.OK);
     }
-
-
-
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
