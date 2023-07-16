@@ -30,7 +30,7 @@ import java.util.Optional;
 @RestController
 
 @CrossOrigin("*")
-public class CreateContractRestController {
+public class ContractRestController {
     @Autowired
     private IContractService iContractService;
 
@@ -106,6 +106,13 @@ public class CreateContractRestController {
                                                                               @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                               @RequestBody ContractSearchDTO contractSearchDTO) {
         Page<IContractProjection> contractProjectionsPage = iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
+        int totalPage = contractProjectionsPage.getTotalPages();
+        if (page >= totalPage) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (contractProjectionsPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
 
