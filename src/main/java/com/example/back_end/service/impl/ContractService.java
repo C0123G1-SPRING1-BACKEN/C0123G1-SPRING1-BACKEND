@@ -111,7 +111,7 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         iContractRepository.createContract(
-                contracts.getCustomers().getId(),
+               contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),

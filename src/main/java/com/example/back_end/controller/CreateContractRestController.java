@@ -17,11 +17,20 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Created by: DinhHD
+ * Date created: 13/07/2023
+ * Function: do about pawn interface, customer selection interface
+ *
+// * @param Contracts
+ * @return createContracts()
+ */
 
-@RestController
 @RequestMapping("/api/employee/contract")
+@RestController
+
 @CrossOrigin("*")
-public class ContractRestController {
+public class CreateContractRestController {
     @Autowired
     private IContractService iContractService;
 
@@ -107,13 +116,13 @@ public class ContractRestController {
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
+    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Contracts contracts = new Contracts();
-        BeanUtils.copyProperties(contractDto, contracts);
-        iContractService.createContract(contracts);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        Contracts contracts=new Contracts();
+        BeanUtils.copyProperties(contractDto,contracts);
+            iContractService.createContract(contracts);
+            return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
