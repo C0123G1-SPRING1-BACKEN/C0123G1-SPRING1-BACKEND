@@ -21,7 +21,7 @@ public class ContractController_getALlTransactionHistory {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param page ,limit
+     * @param
      * @throws Exception
      */
 
@@ -39,7 +39,7 @@ public class ContractController_getALlTransactionHistory {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param page,limit
+     * @param
      * @throws Exception
      */
 
@@ -57,7 +57,7 @@ public class ContractController_getALlTransactionHistory {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param page,limit
+     * @param
      * @throws Exception
      */
 
@@ -75,7 +75,7 @@ public class ContractController_getALlTransactionHistory {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param page,limit
+     * @param
      * @throws Exception
      */
 
@@ -93,7 +93,7 @@ public class ContractController_getALlTransactionHistory {
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
-     * @param page,limit
+     * @param
      * @throws
      */
 
@@ -104,5 +104,23 @@ public class ContractController_getALlTransactionHistory {
                                 .get("/api/employee/contract?page=0&limit=5"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
+    }
+
+    /**
+     * Danh sách có tham số không dinh dang
+     * Create by :ThienNT
+     * Date create: 14/07/2023
+     *
+     * @param
+     * @throws
+     */
+
+    @Test
+    public void getALlTransactionHistory_99() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/contract?page=xvca&limit=5"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 }
