@@ -10,11 +10,12 @@ import java.util.Optional;
 public interface IContractService {
 
 
-   Optional<Contracts> findContractById(Long id);
+   Contracts findContractById(Long id);
 
-   void saveContract(Long id,ContractDto contractDto);
+   
 
    List<Contracts> showTop10NewContract();
 
 
+   Contracts saveContract(ContractDto contractDto);
 }

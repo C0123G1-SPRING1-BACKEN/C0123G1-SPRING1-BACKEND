@@ -13,12 +13,14 @@ public class Contracts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)")
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)",nullable = false)
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)")
+    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
+    @Column(nullable = false)
 
     private Long loans;
+    @Column(nullable = false)
     private Long profit;
     @Column(name = "image", columnDefinition = "TEXT")
     private String image;
@@ -55,15 +57,7 @@ public class Contracts {
     public Contracts(){
     }
 
-    public Contracts(Long id) {
-        this.id = id;
-    }
-
-    public Contracts(String contractCode) {
-        this.contractCode = contractCode;
-    }
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -75,9 +69,14 @@ public class Contracts {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
     }
 
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -86,8 +85,6 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createTime;
-        this.updateDate = updateTime;
         this.isDelete = isDelete;
         this.productType = productType;
         this.customers = customers;
@@ -160,20 +157,20 @@ public class Contracts {
         this.endDate = endDate;
     }
 
-    public LocalDateTime getCreateTime() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createDate = createTime;
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 
     public LocalDateTime getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(LocalDateTime updateTime) {
-        this.updateDate = updateTime;
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 
     public boolean isDelete() {
@@ -191,7 +188,6 @@ public class Contracts {
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
-
 
     public Customers getCustomers() {
         return customers;
@@ -224,6 +220,4 @@ public class Contracts {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
-
-
 }

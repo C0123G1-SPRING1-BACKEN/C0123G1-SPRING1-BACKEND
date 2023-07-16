@@ -15,19 +15,25 @@ public class ContractDto {
 
     private Long id;
 
-
+    @NotBlank
     private String productName;
+
 
     private String contractCode;
 
     private Long loans;
+
     private Long profit;
 
+
     private String image;
+
 
     private String startDate;
 
     private String endDate;
+
+
 
     private LocalDateTime createDate;
 
@@ -36,13 +42,18 @@ public class ContractDto {
 
     private boolean isDelete;
 
+
     private ProductType productType;
+
 
     private Customers customers;
 
+
     private ContractStatus contractStatus;
 
+
     private Employees employees;
+
 
     private ContractType contractType;
 
@@ -84,6 +95,23 @@ public class ContractDto {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isDelete = isDelete;
+    }
+
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
     }
 
     public void setId(Long id) {

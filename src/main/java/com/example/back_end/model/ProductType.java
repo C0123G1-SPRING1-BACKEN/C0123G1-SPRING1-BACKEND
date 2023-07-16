@@ -24,6 +24,9 @@ public class ProductType {
     public ProductType(ProductType productType) {
     }
 
+    public ProductType(Long productTypeId) {
+    }
+
     public Long getId() {
         return id;
     }

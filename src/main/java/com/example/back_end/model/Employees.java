@@ -52,6 +52,9 @@ public class Employees {
     public Employees(Employees employees) {
     }
 
+    public Employees(Long employeeId) {
+    }
+
     public Long getId() {
         return id;
     }

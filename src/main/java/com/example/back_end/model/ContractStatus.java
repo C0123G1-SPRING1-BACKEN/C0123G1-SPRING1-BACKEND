@@ -21,6 +21,9 @@ public class ContractStatus {
     public ContractStatus(ContractStatus contractStatus) {
     }
 
+    public ContractStatus(Long contractStatusId) {
+    }
+
     public Long getId() {
         return id;
     }

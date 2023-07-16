@@ -70,6 +70,9 @@ public class Customers {
     public Customers(Customers customers) {
     }
 
+    public Customers(Long customerId) {
+    }
+
     public String getNote() {
         return note;
     }
