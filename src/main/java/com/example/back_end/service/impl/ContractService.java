@@ -30,7 +30,7 @@ import java.util.Optional;
 @Service
 public class ContractService implements IContractService {
     @Autowired
-    private ICreateContractRepository iContractRepository;
+    private IContractRepository iContractRepository;
 
     /**
      * Created by: ThienNT
@@ -111,7 +111,7 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         iContractRepository.createContract(
-                contracts.getCustomer().getId(),
+               contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),
@@ -122,6 +122,6 @@ public class ContractService implements IContractService {
                 contracts.getProfit(),
                 contracts.getContractStatus().getId(),
                 contracts.getContractType().getId(),
-                contracts.getEmployee().getId());
+                contracts.getEmployees().getId());
     }
 }

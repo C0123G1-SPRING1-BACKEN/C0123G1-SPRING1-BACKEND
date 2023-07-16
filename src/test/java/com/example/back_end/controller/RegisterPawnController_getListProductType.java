@@ -1,4 +1,4 @@
-package com.example.back_end.Controller;
+package com.example.back_end.controller;
 
 
 import org.junit.jupiter.api.Test;
