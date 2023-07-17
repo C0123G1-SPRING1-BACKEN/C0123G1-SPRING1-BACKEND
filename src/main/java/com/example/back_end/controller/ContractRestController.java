@@ -22,8 +22,9 @@ import java.util.Optional;
  * Created by: DinhHD
  * Date created: 13/07/2023
  * Function: do about pawn interface, customer selection interface
+ * <p>
+ * // * @param Contracts
  *
-// * @param Contracts
  * @return createContracts()
  */
 
@@ -45,19 +46,16 @@ public class ContractRestController {
      * @return ResponseEntity<Page < IContractProjection>>
      */
 
-    @GetMapping("")
-    public ResponseEntity<Page<IContractProjection>> getALlTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
-        int totalPage = contractProjectionPage.getTotalPages();
-        if (page >= totalPage) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        if (contractProjectionPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
-    }
+//    @GetMapping("")
+//    public ResponseEntity<Page<IContractProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+//                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
+//        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
+//        int totalPage = contractProjectionPage.getTotalPages();
+//        if (page >= totalPage) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
+//    }
 
     /**
      * Created by: ThienNT
@@ -70,7 +68,11 @@ public class ContractRestController {
      */
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Integer id) {
+    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Long id) {
+        Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
+        if (!contractDTO.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Boolean check = iContractService.deleteTransactionHistoryById(id);
         return new ResponseEntity<>(check, HttpStatus.OK);
     }
@@ -86,7 +88,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Contracts> getTransactionHistoryDetail(@PathVariable("id") Integer id) {
+    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") Long id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
@@ -102,7 +104,7 @@ public class ContractRestController {
      * @requestbody contractSearchDTO
      */
 
-    @GetMapping("/search")
+    @GetMapping("")
     public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                               @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                               @RequestBody ContractSearchDTO contractSearchDTO) {
@@ -110,9 +112,6 @@ public class ContractRestController {
         int totalPage = contractProjectionsPage.getTotalPages();
         if (page >= totalPage) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        if (contractProjectionsPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
@@ -124,14 +123,14 @@ public class ContractRestController {
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Contracts contracts=new Contracts();
-        BeanUtils.copyProperties(contractDto,contracts);
-            iContractService.createContract(contracts);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+        Contracts contracts = new Contracts();
+        BeanUtils.copyProperties(contractDto, contracts);
+        iContractService.createContract(contracts);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
