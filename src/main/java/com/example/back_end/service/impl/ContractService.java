@@ -3,10 +3,15 @@ package com.example.back_end.service.impl;
 
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
-import com.example.back_end.repository.ContractRepository;
+import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -82,30 +87,30 @@ public class ContractService implements IContractService {
     }
 
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: get page transaction history from Database
-     * <p>
-     *
-     * @param page
-     * @return Page<IContractProjection>
-     */
+            /**
+             * Created by: ThienNT
+             * Date created: 13/07/2023
+             * Function: get page transaction history from Database
+             * <p>
+             *
+             * @param page
+             * @return Page<IContractProjection>
+             */
 
     @Override
     public Page<IContractProjection> findAllTransactionHistory(Integer page, Integer limit) {
         return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit, Sort.by("startDate").descending()));
     }
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: delete transaction history
-     * <p>
-     *
-     * @param id
-     * @return boolean
-     */
+            /**
+             * Created by: ThienNT
+             * Date created: 13/07/2023
+             * Function: delete transaction history
+             * <p>
+             *
+             * @param id
+             * @return boolean
+             */
 
     @Override
     @Transactional
@@ -119,15 +124,15 @@ public class ContractService implements IContractService {
         return true;
     }
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: search transaction history from Database
-     * <p>
-     *
-     * @param contractSearchDTO
-     * @return ContractDTO
-     */
+            /**
+             * Created by: ThienNT
+             * Date created: 13/07/2023
+             * Function: search transaction history from Database
+             * <p>
+             *
+             * @param contractSearchDTO
+             * @return ContractDTO
+             */
 
     @Override
     public Page<IContractProjection> searchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
@@ -137,19 +142,19 @@ public class ContractService implements IContractService {
         return projectionPage;
     }
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: find transaction history from Database
-     * <p>
-     *
-     * @param id
-     * @return ContractDTO
-     */
+            /**
+             * Created by: ThienNT
+             * Date created: 13/07/2023
+             * Function: find transaction history from Database
+             * <p>
+             *
+             * @param id
+             * @return ContractDTO
+             */
 
     @Override
     public Optional<Contracts> findTransactionHistoryById(Long id) {
-        return iContractRepository.findContractsById(id);
+        return icontractRepository.findContractsById(id);
 
     }
 
