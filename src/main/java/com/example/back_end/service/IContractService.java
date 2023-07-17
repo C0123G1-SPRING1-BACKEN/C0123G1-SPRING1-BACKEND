@@ -29,11 +29,11 @@ public interface IContractService {
 
     Page<IContractProjection> findAllTransactionHistory(Integer page,Integer limit);
 
-    Boolean deleteTransactionHistoryById(Integer id);
+    Boolean deleteTransactionHistoryById(Long id);
 
     Page<IContractProjection> searchTransactionHistory(Integer page,Integer limit,ContractSearchDTO contractSearchDTO);
 
-    Optional<Contracts> findTransactionHistoryById(Integer id);
+    Optional<Contracts> findTransactionHistoryById(Long id);
 
     List<Contracts> findAll();
 

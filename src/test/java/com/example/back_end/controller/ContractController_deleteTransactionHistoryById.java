@@ -2,18 +2,21 @@ package com.example.back_end.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ContractController_deleteTransactionHistoryById {
     @Autowired
     private MockMvc mockMvc;
 
     /**
-     * Xóa đối tượng có tham số [id] = null
+     * Delete transaction history param [id] = null
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -22,17 +25,17 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_1() throws Exception {
+    public void deleteTransactionHistoryById_25() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/delete/{id}", "null")
+                                .delete("/api/employee/contract/delete/")
                 )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Xóa đối tượng có tham số [id] = rỗng ('')
+     * Delete transaction history param  [id] = blank ('')
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -41,17 +44,17 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_2() throws Exception {
+    public void deleteTransactionHistoryById_26() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "")
+                                .delete("/api/employee/contract/delete/{id}", "")
                 )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Xóa đối tượng có tham số [id] = không có trong database
+     *Delete transaction history param  [id] = have not in the database
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -60,17 +63,17 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_3() throws Exception {
+    public void deleteTransactionHistoryById_27() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "99999999999999999")
+                                .delete("/api/employee/contract/delete/{id}", "99999999999999999")
                 )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Xóa đối tượng có tham số [id] = có trong database
+     * Delete transaction history param  [id] = have in the database
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -78,28 +81,28 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_4() throws Exception {
+    public void deleteTransactionHistoryById_28() throws Exception {
+        Long id =1L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "1")
+                                .delete("/api/employee/contract/delete/{id}", id)
                 )
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
 
     /**
-     * Xóa đối tượng có tham số [id] = không đúng định dạng là số nguyên
-     * Create by :ThienNT
+     * Delete transaction history param [id] = incorrect format
      * Date create: 14/07/2023
      *
      * @param
      */
 
     @Test
-    public void deleteTransactionHistoryById_99() throws Exception {
+    public void deleteTransactionHistoryById_98() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "dasadx")
+                                .delete("/api/employee/contract/delete/{id}", "dasadx")
                 )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());

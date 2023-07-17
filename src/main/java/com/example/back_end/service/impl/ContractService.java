@@ -137,7 +137,7 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(Integer id) {
+    public Boolean deleteTransactionHistoryById(Long id) {
         try {
             iContractRepository.deleteContractById(id);
         } catch (Exception e) {
@@ -176,7 +176,7 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(Integer id) {
+    public Optional<Contracts> findTransactionHistoryById(Long id) {
         return iContractRepository.findContractsById(id);
     }
 
