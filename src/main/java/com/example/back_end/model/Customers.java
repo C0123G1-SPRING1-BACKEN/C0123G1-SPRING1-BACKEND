@@ -37,6 +37,8 @@ public class Customers {
     private boolean isDelete;
     @Column(name = "note", columnDefinition = "text")
     private String note;
+    @OneToMany(mappedBy = "customers")
+    private Set<Contracts> contractsSet = new HashSet<>();
 
     public Customers() {
     }
@@ -60,7 +62,7 @@ public class Customers {
         this.note = note;
     }
 
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen) {
+    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -72,6 +74,10 @@ public class Customers {
         this.image = image;
         this.frontCitizen = frondCitizen;
         this.backCitizen = backCitizen;
+        this.quantityContract = quantityContract;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
     }
 
     public String getNote() {
@@ -168,14 +174,6 @@ public class Customers {
 
     public void setBackCitizen(String backCitizen) {
         this.backCitizen = backCitizen;
-    }
-
-    public String getQuantityContract() {
-        return quantityContract;
-    }
-
-    public void setQuantityContract(String quantityContract) {
-        this.quantityContract = quantityContract;
     }
 
     public LocalDateTime getCreateDate() {
