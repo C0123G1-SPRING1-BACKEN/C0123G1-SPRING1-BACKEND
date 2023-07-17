@@ -1,10 +1,7 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.model.CustomerModel;
-import com.example.back_end.service.customer.ICustomerService;
+import com.example.back_end.service.customer.ICustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -19,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class CustomerController {
     @Autowired
-    private ICustomerService customerService;
+    private ICustomersService customerService;
     //    @GetMapping("")
 //    public ResponseEntity<?> findByName(@RequestParam(value = "page", defaultValue = "0")Integer page) {
 //        return new ResponseEntity<>(customerService.findByNameProduct(PageRequest.of(page,3)),HttpStatus.OK);

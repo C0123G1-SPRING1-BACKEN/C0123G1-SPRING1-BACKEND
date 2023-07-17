@@ -2,15 +2,13 @@ package com.example.back_end.service.customer.impl;
 
 import com.example.back_end.dto.CustomerListDTO;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.model.CustomerModel;
 import com.example.back_end.model.Customers;
 import com.example.back_end.repository.customer.IRepositoryCustomer;
-import com.example.back_end.service.customer.ICustomerService;
+import com.example.back_end.service.customer.ICustomersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService implements ICustomerService {
+public class CustomersService implements ICustomersService {
 
     @Autowired
     private IRepositoryCustomer repositoryCustomer;

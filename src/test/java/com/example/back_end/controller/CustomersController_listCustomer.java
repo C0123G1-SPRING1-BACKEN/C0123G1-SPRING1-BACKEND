@@ -1,4 +1,4 @@
-package com.example.back_end.controller.customers;
+package com.example.back_end.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
