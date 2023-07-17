@@ -26,24 +26,10 @@ public class CustomerSaveController_findByIdCustomer {
      */
     @Test
     public void findByIdCustomer_1() throws Exception {
+        Long customerId = null;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/null"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by DatNT
-     * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer ticket which param id = ''
-     * @Throws Exception
-     */
-    @Test
-    public void findByIdCustomer_2() throws Exception {
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/customer/''"))
+                                .get("/api/customer/{id}", null))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -56,9 +42,10 @@ public class CustomerSaveController_findByIdCustomer {
      */
     @Test
     public void findByIdCustomer_3() throws Exception {
+        Long customerId = 123L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/123L"))
+                                .get("/api/customer/{id}", customerId))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -71,9 +58,10 @@ public class CustomerSaveController_findByIdCustomer {
      */
     @Test
     public void findByIdCustomer_4() throws Exception {
+        Long customerId = 1L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/1"))
+                                .get("/api/customer/{id}", customerId))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.id").value(1))

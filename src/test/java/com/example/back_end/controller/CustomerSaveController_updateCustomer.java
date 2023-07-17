@@ -26,7 +26,7 @@ public class CustomerSaveController_updateCustomer {
     /**
      * Create by DatNT
      * Date update 14/07/2023
-     * Test method update with id_customer =1 
+     * Test method update with id_customer = 1
      * @expect successful and status HttpStatus.is2xxSuccessful
      * @throws Exception
      */
