@@ -23,27 +23,27 @@ public class ContractController {
      */
     @Autowired
     private IContractService iContractService;
-//
-//    @GetMapping("/findContractById/{id}")
-//    public ResponseEntity<ContractDto> getContractById(@PathVariable Long id) {
-//        Contracts contract = this.iContractService.findContractById(id);
-//        if (contract==null){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        ContractDto contractDto = new ContractDto();
-//        BeanUtils.copyProperties(contract, contractDto);
-//        return new ResponseEntity<>(contractDto, HttpStatus.OK);
-//    }
-//
-//
-//    @PatchMapping("/update")
-//    public ResponseEntity<ContractDto> updateContract(@RequestBody ContractDto contractDto) {
-//        if (contractDto==null){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        iContractService.saveContract(contractDto);
-//        return new ResponseEntity<>( contractDto,HttpStatus.OK);
-//    }
+
+    @GetMapping("/findContractById/{id}")
+    public ResponseEntity<ContractDto> getContractById(@PathVariable Long id) {
+        Contracts contract = this.iContractService.findContractById(id);
+        if (contract==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        ContractDto contractDto = new ContractDto();
+        BeanUtils.copyProperties(contract, contractDto);
+        return new ResponseEntity<>(contractDto, HttpStatus.OK);
+    }
+
+
+    @PatchMapping("/update")
+    public ResponseEntity<ContractDto> updateContract(@RequestBody ContractDto contractDto) {
+        if (contractDto==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        iContractService.saveContract(contractDto);
+        return new ResponseEntity<>( contractDto,HttpStatus.OK);
+    }
 
     @GetMapping("/top10")
     public ResponseEntity<List<Contracts>> top10NewContract() {

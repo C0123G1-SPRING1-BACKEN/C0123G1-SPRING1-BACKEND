@@ -68,8 +68,8 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
+        this.createTime = createDate;
+        this.updateTime = updateDate;
         this.isDelete = isDelete;
         this.productType = productType;
         this.customers = customers;
