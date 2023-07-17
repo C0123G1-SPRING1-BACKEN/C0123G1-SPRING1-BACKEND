@@ -38,7 +38,6 @@ public class RegisterPawn {
 
     @ManyToOne
     @JoinColumn
-    @Valid
     private ProductType productType;
 
     @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT now()", updatable = false)

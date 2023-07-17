@@ -17,4 +17,7 @@ public interface IRegisterPawnRepository extends JpaRepository<RegisterPawn, Lon
     void createRegisterPawn(@Param("name")String name,@Param("phone")String phone,@Param("email")String email , @Param("address") String address,
                             @Param("contend_note") String contendNote,@Param("product_type_id") Long product_type_id);
 
+
+
+
 }

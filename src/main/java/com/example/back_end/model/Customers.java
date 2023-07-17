@@ -24,29 +24,9 @@ public class Customers {
     @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
     private LocalDateTime updateDate;
     private boolean isDelete;
-    @Column(name = "note", columnDefinition = "text")
-    private String note;
+
 
     public Customers() {
-    }
-
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.citizenCode = citizenCode;
-        this.image = image;
-        this.frondCitizen = frondCitizen;
-        this.backCitizen = backCitizen;
-        this.quantityContract = quantityContract;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-        this.note = note;
     }
 
     public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
@@ -65,15 +45,11 @@ public class Customers {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isDelete = isDelete;
+
     }
 
-    public String getNote() {
-        return note;
-    }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+
 
     public Long getId() {
         return id;

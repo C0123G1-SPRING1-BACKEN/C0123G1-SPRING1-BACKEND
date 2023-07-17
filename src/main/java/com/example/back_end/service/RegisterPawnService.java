@@ -34,4 +34,5 @@ public class RegisterPawnService implements IRegisterPawnService {
                 registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContendNote(), registerPawn.getProductType().getId());
     }
 
+
 }

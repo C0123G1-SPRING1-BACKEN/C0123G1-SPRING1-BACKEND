@@ -2,10 +2,7 @@ package com.example.back_end.dto;
 
 import com.example.back_end.model.ProductType;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 public class RegisterDTO {
@@ -37,8 +34,7 @@ public class RegisterDTO {
     private String contendNote;
 
     private boolean status = false;
-
-
+    @NotNull
     private ProductType productType;
 
 

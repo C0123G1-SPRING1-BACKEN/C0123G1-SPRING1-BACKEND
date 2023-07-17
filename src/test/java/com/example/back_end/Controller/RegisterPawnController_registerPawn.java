@@ -797,4 +797,29 @@ public class RegisterPawnController_registerPawn {
     }
 
 
+    /**
+     * register pawn  productType null !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_productType_16() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909111111");
+        registerDTO.setEmail("nguyenthangfa2001@gmail");
+        registerDTO.setContendNote("ghi chú trong này");
+
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
 }
