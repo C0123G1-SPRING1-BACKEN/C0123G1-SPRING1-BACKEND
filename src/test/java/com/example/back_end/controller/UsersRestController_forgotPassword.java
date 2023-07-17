@@ -61,7 +61,7 @@ public class UsersRestController_forgotPassword {
     @Test
     public void checkEmail_97() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setEmail("nguyenthangfa2001@gmail.com");
+        usersDto.setEmail("hovien30122017@gmail.com");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/checkEmail")
@@ -110,8 +110,8 @@ public class UsersRestController_forgotPassword {
     @Test
     public void checkCode_97() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setId(2L);
-        usersDto.setVerificationCode(853331);
+        usersDto.setId(1L);
+        usersDto.setVerificationCode(774465);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/checkCode")
@@ -126,6 +126,22 @@ public class UsersRestController_forgotPassword {
      */
     @Test
     public void newPassword_99() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/user/newPassword")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * update new password empty
+     * @throws Exception
+     */
+    @Test
+    public void newPassword_96() throws Exception {
         UsersDto usersDto = new UsersDto();
         usersDto.setId(2L);
         usersDto.setPassword("");

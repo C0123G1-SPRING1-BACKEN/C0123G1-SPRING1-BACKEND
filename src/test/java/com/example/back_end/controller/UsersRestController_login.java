@@ -20,8 +20,28 @@ public class UsersRestController_login {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
+
     /**
      * login null
+     *
+     * @throws Exception
+     */
+    @Test
+    public void login_91() throws Exception {
+
+        UsersDto usersDto = new UsersDto();
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/authenticate")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * login empty
+     *
      * @throws Exception
      */
     @Test
@@ -40,8 +60,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * login wrong username
+     *
      * @throws Exception
      */
     @Test
@@ -60,16 +82,18 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
-     * login wrong password
+     * login  username null
+     *
      * @throws Exception
      */
     @Test
-    public void login_97() throws Exception {
+    public void login_95() throws Exception {
 
         UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thangfa");
-        usersDto.setPassword("123456");
+        usersDto.setPassword("thang123");
+
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -79,15 +103,59 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+    /**
+     * login  password  null
+     *
+     * @throws Exception
+     */
+    @Test
+    public void login_94() throws Exception {
+
+        UsersDto usersDto = new UsersDto();
+        usersDto.setUsername("thang123");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/authenticate")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * login wrong password
+     *
+     * @throws Exception
+     */
+    @Test
+    public void login_97() throws Exception {
+
+        UsersDto usersDto = new UsersDto();
+        usersDto.setUsername("thang");
+        usersDto.setPassword("thang12321");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/authenticate")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
     /**
      * login success
+     *
      * @throws Exception
      */
     @Test
     public void login_96() throws Exception {
 
         UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thangfa");
+        usersDto.setUsername("thang");
         usersDto.setPassword("thang12345");
 
 
@@ -99,4 +167,6 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+
 }

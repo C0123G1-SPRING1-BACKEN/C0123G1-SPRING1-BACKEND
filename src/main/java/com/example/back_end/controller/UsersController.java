@@ -45,6 +45,7 @@ public class UsersController {
     private UsersService usersService;
     @Autowired
     private EmailService emailService;
+
     class ErrorInfo {
         private String error;
         private Long id;
@@ -70,6 +71,7 @@ public class UsersController {
             this.id = id;
         }
     }
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> loginAuthentication(@RequestBody JwtRequest authenticationRequest) throws Exception {
         try {
@@ -118,7 +120,7 @@ public class UsersController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             ErrorInfo errorInfo = new ErrorInfo("Xác nhận mã thất bại!!", users.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
         }
@@ -128,15 +130,20 @@ public class UsersController {
     @PatchMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
 
-        if (user.getPassword().length() < 8 || user.getPassword().length() > 20) {
-            ErrorInfo errorInfo=new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!",user.getId());
+if (user.getPassword() == null){
+    ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được để trống", user.getId());
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
+}
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 50) {
+            ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 50 kí tự!!", user.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
         }
         try {
             usersService.saveNewPassword(user);
             return ResponseEntity.ok("Đổi mật khẩu thành công!");
         } catch (Exception e) {
-            ErrorInfo errorInfo=new ErrorInfo("Đổi mật khẩu thất bại!!",user.getId());
+            ErrorInfo errorInfo = new ErrorInfo("Đổi mật khẩu thất bại!!", user.getId());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorInfo);
         }
     }
