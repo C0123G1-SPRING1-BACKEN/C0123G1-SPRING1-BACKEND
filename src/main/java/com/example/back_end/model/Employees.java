@@ -11,20 +11,20 @@ public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 50)
     private String name;
     @Column(nullable = false)
     private String birthDay;
     @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true,length = 50)
     private String email;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
-    private Long salary;
-    @Column(nullable = false,unique = false)
+    private String salary;
+    @Column(nullable = false,unique = true)
     private String citizenCode;
     @Column(nullable = false)
     private String image;
@@ -41,7 +41,7 @@ public class Employees {
     public Employees() {
     }
 
-    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, Long salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
+    public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
@@ -113,11 +113,11 @@ public class Employees {
         this.address = address;
     }
 
-    public Long getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Long salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
