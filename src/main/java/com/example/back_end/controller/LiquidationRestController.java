@@ -72,7 +72,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/customers/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
+    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
         ICustomerDto iCustomerDto=  customerService.findByIdCustomer(id);
         if (iCustomerDto.equals(id)){
             return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
@@ -90,7 +90,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/contracts/{id}")
-    public ResponseEntity<IContractDto> getByIdCustomer(@PathVariable("id") Long id) {
+    public ResponseEntity<IContractDto> getByIdContract(@PathVariable("id") Long id) {
         IContractDto iContractDto=  contractsService.findContractById(id);
         if (iContractDto.equals(id)){
             return new ResponseEntity<>(iContractDto,HttpStatus.BAD_REQUEST);

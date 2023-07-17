@@ -30,7 +30,7 @@ import java.util.Optional;
 @RestController
 
 @CrossOrigin("*")
-public class CreateContractRestController {
+public class ContractController {
     @Autowired
     private IContractService iContractService;
 
