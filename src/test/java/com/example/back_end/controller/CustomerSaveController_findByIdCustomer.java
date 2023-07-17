@@ -58,7 +58,7 @@ public class CustomerSaveController_findByIdCustomer {
     public void findByIdCustomer_3() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/123"))
+                                .get("/api/customer/123L"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -81,7 +81,7 @@ public class CustomerSaveController_findByIdCustomer {
                 .andExpect(jsonPath("$.birthday").value("2000-10-05"))
                 .andExpect(jsonPath("$.gender").value(1))
                 .andExpect(jsonPath("$.phoneNumber").value("0987678902"))
-                .andExpect(jsonPath("$.email").value("toan.nang@gmail.com"))
+                .andExpect(jsonPath("$.email").value("toan.nang99@gmail.com"))
                 .andExpect(jsonPath("$.address").value("19 Hai Chau, Da Nang"))
                 .andExpect(jsonPath("$.citizenCode").value("123456789012"))
                 .andExpect(jsonPath("$.image").value("https://pvb.com/avatarr.jpg"))

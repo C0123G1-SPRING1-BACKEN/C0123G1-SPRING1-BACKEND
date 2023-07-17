@@ -27,13 +27,13 @@ public class CustomerControllerSave {
      * Function : find customer with corresponding id of customer
      * <p>
      * @param id
-     * @return HttpStatus.NOT_FOUND if result= null else then return customerSaveDto and HttpStatus.OK
+     * @return HttpStatus.BAD_REQUEST if result= null else then return customerSaveDto and HttpStatus.OK
      */
     @GetMapping("/{id}")
     public ResponseEntity<?> findByIdCustomer(@PathVariable Long id) {
         CustomerSaveDto customerSaveDto = customerServiceCreateUpdate.findByIdCustomer(id);
         if (customerSaveDto == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else
             return new ResponseEntity<>(customerSaveDto, HttpStatus.OK);
     }
