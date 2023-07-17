@@ -110,13 +110,19 @@ public class UsersController {
     @PostMapping("/checkCode")
     public ResponseEntity<?> checkCode(@RequestBody Users user) {
         Users users = usersService.findById(user.getId());
-        if (users.getVerificationCode().toString().equals(user.getVerificationCode().toString())) {
-            return ResponseEntity.ok(users.getId());
-        } else {
+        try {
+            if (users.getVerificationCode().toString().equals(user.getVerificationCode().toString())) {
+                return ResponseEntity.ok(users.getId());
+            } else {
+                ErrorInfo errorInfo = new ErrorInfo("Xác nhận mã thất bại!!", users.getId());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
 
+            }
+        }catch (Exception e){
             ErrorInfo errorInfo = new ErrorInfo("Xác nhận mã thất bại!!", users.getId());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorInfo);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
         }
+
     }
 
     @PatchMapping("/newPassword")

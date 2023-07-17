@@ -111,7 +111,7 @@ public class UsersRestController_forgotPassword {
     public void checkCode_97() throws Exception {
         UsersDto usersDto = new UsersDto();
         usersDto.setId(2L);
-        usersDto.setVerificationCode(415650);
+        usersDto.setVerificationCode(853331);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/checkCode")
