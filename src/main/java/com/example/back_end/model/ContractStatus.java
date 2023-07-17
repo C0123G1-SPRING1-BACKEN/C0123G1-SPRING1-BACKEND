@@ -14,6 +14,10 @@ public class ContractStatus {
     public ContractStatus() {
     }
 
+    public ContractStatus(Long id) {
+        this.id = id;
+    }
+
     public ContractStatus(Long id, String name) {
         this.id = id;
         this.name = name;

@@ -16,6 +16,10 @@ public class ContractType {
         this.name = name;
     }
 
+    public ContractType(Long id) {
+        this.id = id;
+    }
+
     public ContractType() {
     }
 

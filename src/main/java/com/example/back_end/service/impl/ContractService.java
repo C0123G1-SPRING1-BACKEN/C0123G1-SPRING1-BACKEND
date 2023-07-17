@@ -120,8 +120,8 @@ public class ContractService implements IContractService {
                 contracts.getStartDate(),
                 contracts.getEndDate(),
                 contracts.getProfit(),
-                contracts.getContractStatus().getId(),
-                contracts.getContractType().getId(),
                 contracts.getEmployees().getId());
     }
+
+
 }

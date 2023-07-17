@@ -30,7 +30,7 @@ import java.util.Optional;
 @RestController
 
 @CrossOrigin("*")
-public class CreateContractRestController {
+public class ContractController {
     @Autowired
     private IContractService iContractService;
 
@@ -117,7 +117,7 @@ public class CreateContractRestController {
 
     @PostMapping("/createContract")
     public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+                if (bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Contracts contracts=new Contracts();

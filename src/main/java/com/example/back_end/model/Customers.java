@@ -38,6 +38,10 @@ public class Customers {
     @Column(name = "note", columnDefinition = "text")
     private String note;
 
+    public Customers(Long id) {
+        this.id = id;
+    }
+
     public Customers() {
     }
 

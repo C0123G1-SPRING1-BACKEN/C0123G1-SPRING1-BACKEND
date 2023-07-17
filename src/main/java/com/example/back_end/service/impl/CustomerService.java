@@ -26,7 +26,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public ICustomerDto findByIdCustomer(String id) {
+    public ICustomerDto findByIdCustomer(Long id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
 }

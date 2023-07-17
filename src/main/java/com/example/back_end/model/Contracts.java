@@ -41,13 +41,13 @@ public class Contracts {
     @JoinColumn
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn
     private Customers customers;
     @ManyToOne
     @JoinColumn
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn
     private Employees employees;
     @ManyToOne
     @JoinColumn

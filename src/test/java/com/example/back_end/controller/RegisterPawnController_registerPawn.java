@@ -1,12 +1,10 @@
-package com.example.back_end.Controller;
+package com.example.back_end.controller;
 
-import com.example.back_end.dto.ProductTypeDTO;
 import com.example.back_end.dto.RegisterDTO;
 import com.example.back_end.model.ProductType;
-import com.example.back_end.model.RegisterPawn;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

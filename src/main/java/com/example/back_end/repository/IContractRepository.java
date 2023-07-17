@@ -32,41 +32,41 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
     void deleteContractById(@Param("id") Integer id);
 
 
+    @Query(value = "SELECT c.id                 AS id," +
+            "       c.contract_code      AS contractCode," +
+            "       c.product_name       AS productName," +
+            "       c.customers_id       AS customers," +
+            "       c.start_date         AS startDate," +
+            "       c.contract_type_id   AS contractType," +
+            "       c.contract_status_id AS contractStatus," +
+            "  c2.name" +
+            " FROM contracts AS c" +
+            "         INNER JOIN customers c2 ON c.customers_id = c2.id" +
+            " WHERE c.is_delete = false AND c.product_name like :product_names" +
+            "  OR (c.start_date BETWEEN :from_date AND :to_date)" +
+            "   AND c2.name LIKE :customer_name" +
+            "   AND c.contract_type_id = :type_id" +
+            "   AND c.contract_status_id = :status_id", nativeQuery = true)
+    Page<IContractProjection> searchTransactionHistory(Pageable pageable, @Param("customer_name") String customerName,
+                                                       @Param("product_names") String productNames,
+                                                       @Param("from_date") String fromDate,
+                                                       @Param("to_date") String toDate,
+                                                       @Param("type_id") Long typeId,
+                                                       @Param("status_id") Long statusId);
 
-        @Query(value = "SELECT c.id                 AS id," +
-                "       c.contract_code      AS contractCode," +
-                "       c.product_name       AS productName," +
-                "       c.customers_id       AS customers," +
-                "       c.start_date         AS startDate," +
-                "       c.contract_type_id   AS contractType," +
-                "       c.contract_status_id AS contractStatus," +
-                "  c2.name" +
-                " FROM contracts AS c" +
-                "         INNER JOIN customers c2 ON c.customers_id = c2.id" +
-                " WHERE c.is_delete = false AND c.product_name like :product_names" +
-                "  OR (c.start_date BETWEEN :from_date AND :to_date)" +
-                "   AND c2.name LIKE :customer_name" +
-                "   AND c.contract_type_id = :type_id" +
-                "   AND c.contract_status_id = :status_id", nativeQuery = true)
-        Page<IContractProjection> searchTransactionHistory(Pageable pageable, @Param("customer_name") String customerName,
-                                                           @Param("product_names") String productNames,
-                                                           @Param("from_date") String fromDate,
-                                                           @Param("to_date") String toDate,
-                                                           @Param("type_id") Long typeId,
-                                                           @Param("status_id") Long statusId);
+    @Query(value = "SELECT p FROM Contracts AS p")
+    List<Contracts> findAllContracts();
 
-        @Query(value = "SELECT p FROM Contracts AS p")
-        List<Contracts> findAllContracts();
 
-        @Transactional
-        @Modifying
-        @Query(value = "INSERT INTO contracts(customer_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employee_id) " +
-                "VALUES (:customerId,:contractCode,:productName,:productTypeId,:image,:loans,:startDate,:endDate,:profit,:contractStatusId,:contractTypeId,:employeeId)", nativeQuery = true)
-        void createContract(@Param("customerId") Long customerId, @Param("contractCode") String contractCode,
-                            @Param("productName") String productName, @Param("productTypeId") Long productTypeId,
-                            @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
-                            @Param("endDate") String endDate, @Param("profit") Long profit, @Param("contractStatusId") Long contractStatusId,
-                            @Param("contractTypeId") Long contractTypeId, @Param("employeeId") Long employeeId);
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO contracts(customers_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employees_id) " +
+            "VALUES (:customers,:contractCode,:productName,:productType,:image,:loans,:startDate,:endDate,:profit,1,1,:employees)", nativeQuery = true)
+    void createContract(@Param("customers") Long customers, @Param("contractCode") String contractCode,
+                        @Param("productName") String productName, @Param("productType") Long productType,
+                        @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
+                        @Param("endDate") String endDate, @Param("profit") Long profit, @Param("employees") Long employees);
+
 
 }
 

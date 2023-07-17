@@ -1,10 +1,7 @@
 package com.example.back_end.controller;
 
 
-import com.example.back_end.model.ContractStatus;
-import com.example.back_end.model.Customers;
-import com.example.back_end.model.Employees;
-import com.example.back_end.model.ProductType;
+import com.example.back_end.model.*;
 import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,20 +20,23 @@ public class ProductTypeRestController {
     @Autowired
     private IProductTypeService iProductTypeService;
 
+
     @GetMapping("/contract/productType")
     public ResponseEntity<List<ProductType>> getAll() {
         List<ProductType> kindOfPawnsList = iProductTypeService.getAll();
         return new ResponseEntity<>(kindOfPawnsList, HttpStatus.OK);
     }
-//    @GetMapping("/contract/employee")
-//    public ResponseEntity<List<Employees>> getAllEmployee() {
-//        List<Employees> employeesList = iProductTypeService.();
-//        return new ResponseEntity<>(employeesList, HttpStatus.OK);
-//    }
-//    @GetMapping("/contractStatus")
-//    public ResponseEntity<List<ContractStatus>> getAllContractStatus() {
-//        List<ContractStatus> contractStatusList = iProductTypeService.findAllContractStatus();
-//        return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
-//    }
+
+    @GetMapping("/contract/contractStatus")
+    public ResponseEntity<List<ContractStatus>> getAllContractStatus() {
+        List<ContractStatus> contractStatusList = iProductTypeService.getAllContractStatus();
+        return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
+    }
+    @GetMapping("/contract/contractType")
+    public ResponseEntity<List<ContractType>> getAllContractType() {
+        List<ContractType> contractStatusList = iProductTypeService.getAllContractType();
+        return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
+    }
+
 
 }
