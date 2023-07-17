@@ -78,6 +78,28 @@ public class Contracts {
         this.contractType = contractType;
     }
 
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+
+
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
+
     public Long getId() {
         return id;
     }
@@ -142,20 +164,34 @@ public class Contracts {
         this.endDate = endDate;
     }
 
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+
     public LocalDateTime getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+
     }
 
     public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
+
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+
     }
 
     public boolean isDelete() {
