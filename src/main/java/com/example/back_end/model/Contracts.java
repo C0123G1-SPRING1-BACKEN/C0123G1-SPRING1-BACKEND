@@ -19,6 +19,8 @@ public class Contracts {
     @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
     @Column(nullable = false)
+
+
     private Long loans;
     @Column(nullable = false)
     private Long profit;
@@ -37,6 +39,7 @@ public class Contracts {
 
     @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
+
     @ManyToOne
     @JoinColumn
     private ProductType productType;
@@ -55,33 +58,6 @@ public class Contracts {
 
 
     public Contracts(){
-    }
-
-    public Contracts(Long id) {
-        this.id = id;
-    }
-
-    public Contracts(String contractCode) {
-        this.contractCode = contractCode;
-    }
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
     }
 
     public Long getId() {
@@ -211,6 +187,4 @@ public class Contracts {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
-
-
 }
