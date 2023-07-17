@@ -57,6 +57,12 @@ public class Employees {
         this.users = users;
     }
 
+    public Employees(Employees employees) {
+    }
+
+    public Employees(Long employeeId) {
+    }
+
     public Long getId() {
         return id;
     }

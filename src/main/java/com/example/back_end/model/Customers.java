@@ -74,6 +74,12 @@ public class Customers {
         this.backCitizen = backCitizen;
     }
 
+    public Customers(Customers customers) {
+    }
+
+    public Customers(Long customerId) {
+    }
+
     public String getNote() {
         return note;
     }
