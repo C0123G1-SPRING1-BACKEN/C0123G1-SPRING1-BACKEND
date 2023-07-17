@@ -19,8 +19,9 @@ public class EmployeeController_getListEmployee {
     private MockMvc mockMvc;
 
     /**
+     * Create By : DongPV
      * Danh sach rong
-     *
+     * Date Create : 14/07/2023
      * @throws Exception
      */
     @Test
@@ -44,17 +45,17 @@ public class EmployeeController_getListEmployee {
                         MockMvcRequestBuilders.get("/api/employee?page=1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("totalPages").value(3))
-                .andExpect(jsonPath("totalElements").value(15))
-                .andExpect(jsonPath("content[0].name").value("Lê Văn Hai"))
-                .andExpect(jsonPath("content[0].birthDay").value("17/10/2000"))
+                .andExpect(jsonPath("totalPages").value(4))
+                .andExpect(jsonPath("totalElements").value(17))
+                .andExpect(jsonPath("content[0].name").value("Ngô Ngọc Sơn"))
+                .andExpect(jsonPath("content[0].birthDay").value("27/05/1995"))
                 .andExpect(jsonPath("content[0].gender").value(1))
-                .andExpect(jsonPath("content[0].email").value("levanhai@gmail.com"))
-                .andExpect(jsonPath("content[0].phoneNumber").value("0964297433"))
-                .andExpect(jsonPath("content[0].address").value("15 Điện Biên Phủ"))
-                .andExpect(jsonPath("content[0].salary").value("15000000"))
-                .andExpect(jsonPath("content[0].citizenCode").value("1578523693"))
-                .andExpect(jsonPath("content[0].image").value("https://www.inhuydat.com/uploads/hinhthe/IMG_2457_copy.jpg"))
+                .andExpect(jsonPath("content[0].email").value("ngongocson@gmail.com"))
+                .andExpect(jsonPath("content[0].phoneNumber").value("0974123785"))
+                .andExpect(jsonPath("content[0].address").value("50 Nguyễn Công Hoan"))
+                .andExpect(jsonPath("content[0].salary").value("20000000"))
+                .andExpect(jsonPath("content[0].citizenCode").value("157852369312"))
+                .andExpect(jsonPath("content[0].image").value("https://thanglon66.com/chup-hinh-chan-dung-gia-bao-nhieu/imager_8069.jpg"))
                 .andExpect(jsonPath("content[0].users.id").value(1));
     }
 }

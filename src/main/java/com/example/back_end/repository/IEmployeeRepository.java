@@ -29,4 +29,9 @@ public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
                         @Param("citizen_code") String citizenCode,
                         @Param("image") String image);
 
+
+    boolean findEmployeesByEmail(String email);
+    boolean findEmployeesByPhone(String phone);
+    boolean findEmployeesByCitizenCode(String citizenCode);
+
 }

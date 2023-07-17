@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.EmployeeDTO;
+import com.example.back_end.repository.IEmployeeRepository;
 import com.example.back_end.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,16 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService iEmployeeService;
 
+    @Autowired
+    private IEmployeeRepository iEmployeeRepository;
+
+    /**
+     * created by : DongPV
+     * Date created : 13/07/2023
+     * @param pageable
+     * @param search
+     * @return HttpStatus.BAD_REQUEST , HttpStatus.OK
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
     public ResponseEntity<Page<EmployeeDTO>> findAllByName(@PageableDefault(sort = {"id"},direction = Sort.Direction.DESC, size = 5)Pageable pageable,
@@ -49,5 +60,26 @@ public class EmployeeController {
         }
         iEmployeeService.createEmployee(employeeDTO);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-email/{email}")
+    public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
+        boolean exists = iEmployeeRepository.findEmployeesByEmail(email);
+        return ResponseEntity.ok(exists);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-identityCard/{identityCard}")
+    public ResponseEntity<Boolean> checkIdentityCardExistence(@PathVariable("identityCard") String identityCard) {
+        boolean exists = iEmployeeRepository.findEmployeesByCitizenCode(identityCard);
+        return ResponseEntity.ok(exists);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-phone/{phone}")
+    public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone") String phone) {
+        boolean exists = iEmployeeRepository.findEmployeesByPhone(phone);
+        return ResponseEntity.ok(exists);
     }
 }

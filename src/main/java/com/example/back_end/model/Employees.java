@@ -15,14 +15,14 @@ public class Employees {
     private String name;
     private String birthDay;
     private Integer gender;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true)
     private String email;
-    @Column(nullable = false,unique = false,length = 10)
+    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
     private String salary;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = true)
     private String citizenCode;
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
