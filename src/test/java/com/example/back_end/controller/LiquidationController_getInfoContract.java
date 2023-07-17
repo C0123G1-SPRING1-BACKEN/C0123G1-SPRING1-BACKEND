@@ -30,7 +30,7 @@ public class LiquidationController_getInfoContract {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/contracts/{id}", "null"))
+                                "/api/employee/liquidation/contract/{id}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -48,11 +48,10 @@ public class LiquidationController_getInfoContract {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/contracts/{id}", ""))
+                                "/api/employee/liquidation/contract/{id}", ""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
     /**
      * Create By : KhangPVa
      * Date Create : 14/07/2023
@@ -66,13 +65,9 @@ public class LiquidationController_getInfoContract {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/contracts/{id}", "34", "abc"))
+                                "/api/employee/liquidation/contract/{id}", "6"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("id").value(34))
-                .andExpect(jsonPath("name").value("Nguyễn Thị Đẹp"))
-                .andExpect(jsonPath("citizenCode").value("2000-10-17"))
-                .andExpect(jsonPath("quantityContract").value(3));
+                .andExpect(status().is4xxClientError());
     }
 
 
@@ -89,12 +84,11 @@ public class LiquidationController_getInfoContract {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/contracts/{id}/{name}", "1", "Huỳnh Đức Định"))
+                                "/api/employee/liquidation/contract/{id}", "1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("id").value(1))
-                .andExpect(jsonPath("name").value("Huỳnh Đức Định"))
-                .andExpect(jsonPath("citizenCode").value("201964254"))
-                .andExpect(jsonPath("quantityContract").value(4));
+                .andExpect(jsonPath("productName").value("Iphone X"))
+                .andExpect(jsonPath("productType").value(1))
+                .andExpect(jsonPath("loans").value(123));
     }
 }
