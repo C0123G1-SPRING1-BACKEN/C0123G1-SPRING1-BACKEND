@@ -9,14 +9,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ContractController_deleteTransactionHistoryById {
+public class ContractController_getAllTransactionHistory {
     @Autowired
     private MockMvc mockMvc;
 
     /**
-     * Delete transaction history param [id] = null
+     * List Transaction History have param [page]=null and [limit]=null
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -25,17 +26,16 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_25() throws Exception {
+    public void getAllTransactionHistory_7() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/employee/contract/delete/")
-                )
+                                .get("/api/employee/contract?page=l&limit="))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Delete transaction history param  [id] = blank ('')
+     * List Transaction History have param [page]='' and [limit]=''
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -44,17 +44,16 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_26() throws Exception {
+    public void getAllTransactionHistory_8() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/employee/contract/delete/{id}", "")
-                )
+                                .get("/api/employee/contract?page=''&limit=''"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     *Delete transaction history param  [id] = have not in the database
+     * List Transaction History have param [page] and [limit]=have in the database
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -63,50 +62,65 @@ public class ContractController_deleteTransactionHistoryById {
      */
 
     @Test
-    public void deleteTransactionHistoryById_27() throws Exception {
+    public void getAllTransactionHistory_9() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/employee/contract/delete/{id}", "99999999999999999")
-                )
+                                .get("/api/employee/contract?page=9999999999999999999999999&limit=5"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Delete transaction history param  [id] = have in the database
+     * List Transaction History size =0
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
      * @param
+     * @throws Exception
      */
 
     @Test
-    public void deleteTransactionHistoryById_28() throws Exception {
-        Long id =1L;
+    public void getAllTransactionHistory_10() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/employee/contract/delete/{id}", id)
-                )
+                                .get("/api/employee/contract?page=0&limit=5"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * List Transaction History size >0
+     * Create by :ThienNT
+     * Date create: 14/07/2023
+     *
+     * @param
+     * @throws
+     */
+
+    @Test
+    public void getAllTransactionHistory_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/contract?page=0&limit=5"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
 
     /**
-     * Delete transaction history param [id] = incorrect format
+     * List Transaction History has param [page] and [limit]= incorrect format
+     * Create by :ThienNT
      * Date create: 14/07/2023
      *
      * @param
+     * @throws
      */
 
     @Test
-    public void deleteTransactionHistoryById_98() throws Exception {
+    public void getAllTransactionHistory_99() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/employee/contract/delete/{id}", "dasadx")
-                )
+                                .get("/api/employee/contract?page=xvca&limit=5"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
 }
-

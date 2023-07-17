@@ -1,6 +1,5 @@
 package com.example.back_end.controller;
 
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -9,68 +8,64 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ContractController_getTransactionHistoryDetail {
+public class CustomersController_deleteCustomer {
     @Autowired
     private MockMvc mockMvc;
-
     /**
-     * Tìm đối tượng có tham số [id] = null
-     * Create by :ThienNT
-     * Date create: 14/07/2023
-     *
-     * @param id
+     * Created by: QuocNHA
+     * Date created: 14/07/2023
      * @throws Exception
      */
-
     @Test
-    public void getTransactionHistoryDetail_1() throws Exception {
+    public void deleteCustomerById_25() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "null")
-                )
+                        MockMvcRequestBuilders.delete("/api/customer/{id}", "null"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * Created by: QuocNHA
+     * Date created: 14/07/2023
+     * @throws Exception
+     */
+    @Test
+    public void deleteCustomerById_26() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.delete("/api/customer/{id}", ""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Tìm đối tượng có tham số [id] = rỗng ('')
-     * Create by :ThienNT
-     * Date create: 14/07/2023
-     *
-     * @param id
+     * Created by: QuocNHA
+     * Date created: 14/07/2023
      * @throws Exception
      */
-
     @Test
-    public void getTransactionHistoryDetail_2() throws Exception {
+    public void deleteCustomerById_27() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "")
-                )
+                        MockMvcRequestBuilders.delete("/api/customer/{id}", "a"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Tìm đối tượng có tham số [id] = không có trong database
-     * Create by :ThienNT
-     * Date create: 14/07/2023
-     *
-     * @param id
+     * Created by: QuocNHA
+     * Date created: 14/07/2023
      * @throws Exception
      */
-
     @Test
-    public void getTransactionHistoryDetail_3() throws Exception {
+    public void deleteCustomerById_28() throws Exception {
+        Long customerId = 1L;
         this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "99999999999999999")
-                )
+                        MockMvcRequestBuilders.delete(
+                                "/api/customer/{id}", customerId))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 }

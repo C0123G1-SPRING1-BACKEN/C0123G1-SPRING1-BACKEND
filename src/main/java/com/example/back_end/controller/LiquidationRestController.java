@@ -27,7 +27,7 @@ import javax.validation.Valid;
  * Date created: 13/07/2023
  * Function: create liquidation
  *
- * @param LiquidaytionDto
+// * @param LiquidaytionDto
  * @return Liquidation
  */
 
@@ -80,14 +80,14 @@ public class LiquidationRestController {
         return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
     }
 
-    @GetMapping("/customers/search")
-    public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
-        if (customerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
-    }
+//    @GetMapping("/customers/search")
+//    public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+//        Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
+//        if (customerDtoPage.isEmpty()) {
+//            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
+//    }
 
     @GetMapping("/contract/{id}")
     public ResponseEntity<IContractDto> getByIdContract(@PathVariable("id") Long id) {

@@ -1,36 +1,86 @@
 package com.example.back_end.service.impl;
 
 
-import com.example.back_end.model.Contracts;
-import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
-import com.example.back_end.repository.IContractRepository;
+import com.example.back_end.dto.ContractDto;
+import com.example.back_end.model.*;
+import com.example.back_end.repository.ContractRepository;
 import com.example.back_end.service.IContractService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by: DinhHD
- * Date created: 13/07/2023
- * Function: do about pawn interface, customer selection interface
- * <p>
- * // * @param Contracts
- *
- * @return createContract()
- */
-
 @Service
 public class ContractService implements IContractService {
+    /**
+     * Create by : TriPD
+     * Date created : 13/07/2023
+     * Function : findContractById(),updateContract()
+     *
+     * @param : id
+     * return: new Contract
+     */
     @Autowired
-    private IContractRepository iContractRepository;
+    private IContractRepository icontractRepository;
+
+
+    @Override
+    public Contracts findContractById(Long id) {
+        return icontractRepository.findContractById(id);
+    }
+
+    @Transactional
+    @Override
+    public void saveContract(ContractDto contractDto) {
+        Contracts contract = new Contracts();
+//        BeanUtils.copyProperties(contractDto,contract);
+//        contractRepository.saveContract(contract);
+        contract.setProductName(contractDto.getProductName());
+        contract.setContractCode(contractDto.getContractCode());
+        contract.setLoans(contractDto.getLoans());
+        contract.setProfit(contractDto.getProfit());
+        contract.setImage(contractDto.getImage());
+        contract.setStartDate(contractDto.getStartDate());
+        contract.setEndDate(contractDto.getEndDate());
+//        contract.setCreateDate(contractDto.getCreateDate());
+//        contract.setUpdateDate(contractDto.getUpdateDate());
+//        contract.setDelete(contractDto.isDelete());
+        contract.setProductType(new ProductType(contractDto.getProductType()));
+        contract.setCustomers(new Customers(contractDto.getCustomers()));
+        contract.setContractStatus(new ContractStatus(contractDto.getContractStatus()));
+        contract.setEmployees(new Employees(contractDto.getEmployees()));
+        contract.setContractType(new ContractType(contractDto.getContractType()));
+
+        icontractRepository.saveContract(
+                contract.getContractCode(),
+                contract.getProductName(),
+                contract.getLoans(),
+                contract.getProfit(),
+                contract.getImage(),
+                contract.getStartDate(),
+                contract.getEndDate(),
+                contract.isDelete(),
+                contract.getProductType().getId(),
+                contract.getCustomers().getId(),
+                contract.getContractStatus().getId(),
+                contract.getEmployees().getId(),
+                contract.getContractType().getId(),
+                contract.getId()
+        );
+
+    }
+
+
+    @Override
+    public List<Contracts> showTop10NewContract() {
+
+        return icontractRepository.showTop10NewContract();
+
+    }
+
 
     /**
      * Created by: ThienNT
@@ -44,7 +94,7 @@ public class ContractService implements IContractService {
 
     @Override
     public Page<IContractProjection> findAllTransactionHistory(Integer page, Integer limit) {
-        return iContractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit, Sort.by("startDate").descending()));
+        return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit, Sort.by("startDate").descending()));
     }
 
     /**
@@ -59,9 +109,9 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(Integer id) {
+    public Boolean deleteTransactionHistoryById(Long id) {
         try {
-            iContractRepository.deleteContractById(id);
+            icontractRepository.deleteContractById(id);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -81,7 +131,7 @@ public class ContractService implements IContractService {
 
     @Override
     public Page<IContractProjection> searchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> projectionPage = iContractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
+        Page<IContractProjection> projectionPage = icontractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
                 "%" + contractSearchDTO.getCustomerName() + "%", "%" + contractSearchDTO.getProductName() + "%",
                 contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
         return projectionPage;
@@ -98,20 +148,21 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(Integer id) {
+    public Optional<Contracts> findTransactionHistoryById(Long id) {
         return iContractRepository.findContractsById(id);
+
     }
 
     @Override
     public List<Contracts> findAll() {
-        return iContractRepository.findAllContracts();
+        return icontractRepository.findAllContracts();
     }
 
     @Transactional
     @Override
     public void createContract(Contracts contracts) {
-        iContractRepository.createContract(
-                contracts.getCustomers().getId(),
+        icontractRepository.createContract(
+               contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),
@@ -123,5 +174,7 @@ public class ContractService implements IContractService {
                 contracts.getContractStatus().getId(),
                 contracts.getContractType().getId(),
                 contracts.getEmployees().getId());
+
+
     }
 }

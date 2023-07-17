@@ -16,8 +16,16 @@ public class UsersDto implements Validator {
     private String password;
     private Integer verificationCode;
     private Roles roles;
-
+private  String email;
     public UsersDto() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public UsersDto(Long id, String username, String password, Integer verificationCode, Roles roles) {

@@ -21,6 +21,12 @@ public class ProductType {
         this.name = name;
     }
 
+    public ProductType(ProductType productType) {
+    }
+
+    public ProductType(Long productTypeId) {
+    }
+
     public Long getId() {
         return id;
     }

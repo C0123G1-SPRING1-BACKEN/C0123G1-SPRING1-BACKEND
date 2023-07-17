@@ -1,7 +1,6 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.ICustomerDto;
-import com.example.back_end.model.Customers;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,9 +23,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/employee/contract/customer")
 @CrossOrigin("*")
-public class CustomerRestController {
+public class PageCustomerRestController {
     @Autowired
     private ICustomerService iCustomerService;
+
 
     @GetMapping("")
     public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
@@ -37,14 +37,14 @@ public class CustomerRestController {
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/contract/search")
-    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
-        if (iCustomerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
-    }
+//    @GetMapping("/contract/search")
+//    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+//        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
+//        if (iCustomerDtoPage.isEmpty()) {
+//            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
+//    }
 
     @GetMapping("/contract/{id}")
     public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {

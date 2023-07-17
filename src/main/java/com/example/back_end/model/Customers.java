@@ -2,6 +2,8 @@ package com.example.back_end.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Customers {
@@ -37,6 +39,24 @@ public class Customers {
     private boolean isDelete;
     @Column(name = "note", columnDefinition = "text")
     private String note;
+    @OneToMany(mappedBy = "customers")
+    private Set<Contracts> contractsSet = new HashSet<>();
+
+    public String getQuantityContract() {
+        return quantityContract;
+    }
+
+    public void setQuantityContract(String quantityContract) {
+        this.quantityContract = quantityContract;
+    }
+
+    public Set<Contracts> getContractsSet() {
+        return contractsSet;
+    }
+
+    public void setContractsSet(Set<Contracts> contractsSet) {
+        this.contractsSet = contractsSet;
+    }
 
     public Customers() {
     }
@@ -76,6 +96,12 @@ public class Customers {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isDelete = isDelete;
+    }
+
+    public Customers(Customers customers) {
+    }
+
+    public Customers(Long customerId) {
     }
 
     public String getNote() {
@@ -172,14 +198,6 @@ public class Customers {
 
     public void setBackCitizen(String backCitizen) {
         this.backCitizen = backCitizen;
-    }
-
-    public String getQuantityContract() {
-        return quantityContract;
-    }
-
-    public void setQuantityContract(String quantityContract) {
-        this.quantityContract = quantityContract;
     }
 
     public LocalDateTime getCreateDate() {
