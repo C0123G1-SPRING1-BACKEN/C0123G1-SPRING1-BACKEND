@@ -113,7 +113,6 @@ public class RedeemContractController_findOpenContractById {
                         .content(this.objectMapper.writeValueAsString(contracts))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-
                 .andExpect(status().is4xxClientError());
 
     }

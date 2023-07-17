@@ -16,7 +16,8 @@ public class RedeemingService implements IRedeemingService {
     private IRedeemingRepository iRedeemingRepository;
 
     @Override
-    public void redeem(Long id, String redeemDate) {
+    public void redeems(Long id, String redeemDate) {
+        System.out.println(id);
         iRedeemingRepository.redeem(id, redeemDate);
     }
 

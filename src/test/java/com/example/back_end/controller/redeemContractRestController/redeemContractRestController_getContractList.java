@@ -39,6 +39,7 @@ public class redeemContractRestController_getContractList {
 
     /**
      * Danh sach size < 0
+     * page là null
      *
      * @ throws Exception
      * vì param page em để default value là 0 nên khi đường dẫn không có tham số là page thì vẫn trả về successful
@@ -48,7 +49,23 @@ public class redeemContractRestController_getContractList {
     public void getListOpenContract_5() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/redeem/chooseContract/p"))
+                                .get("/api/employee/redeem/chooseContract/page=20"))
                 .andDo(print()).andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * Danh sach size < 0
+     * page là null
+     *
+     * @ throws Exception
+     * vì param page em để default value là 0 nên khi đường dẫn không có tham số là page thì vẫn trả về successful
+     * nên muốn trả về 4xx thì sẽ là sai URL hoặc sai tên param truyền vào
+     */
+    @Test
+    public void getListOpenContract_3() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/redeem/chooseContract/"))
+                .andDo(print()).andExpect(status().is2xxSuccessful());
     }
 }

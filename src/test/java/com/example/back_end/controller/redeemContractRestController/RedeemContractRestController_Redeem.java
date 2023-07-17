@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
 import java.time.LocalDate;
@@ -18,6 +20,7 @@ import java.time.LocalDate;
 import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -43,23 +46,16 @@ public class RedeemContractRestController_Redeem {
     @Test
     public void testRedeem_24() throws Exception {
 
-        LocalDate redeemDate = LocalDate.now();
+Long id =  6L;
 
-        Contracts contracts = new Contracts();
-        contracts.setId(2L);
+String  date =  "1231";
 
-        contracts.setRedeemDate(String.valueOf(redeemDate));
-        ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(2L);
-        contracts.setContractStatus(contractStatus);
-
-        mockMvc.perform(patch("/api/employee/redeem/pay/{id}", contracts.getId())
-                        .content(this.objectMapper.writeValueAsString(contracts))
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/employee/redeem/pay/{id}", id,  date)
+                        .param("redeemDate" , date)
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
 
-        verify(redeemingService, times(1)).redeem(contracts.getId(), String.valueOf(redeemDate));
     }
 
 

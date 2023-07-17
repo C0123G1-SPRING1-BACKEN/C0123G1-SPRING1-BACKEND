@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IRedeemingService {
-    void redeem(Long id, String redeemDate);
+    void redeems(Long id, String redeemDate);
 
     Page<OpenContractDTO> findPageConTract(Pageable page);
 
