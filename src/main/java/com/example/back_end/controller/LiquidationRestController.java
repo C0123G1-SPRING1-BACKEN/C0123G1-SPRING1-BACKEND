@@ -71,11 +71,11 @@ public class LiquidationRestController {
         return new ResponseEntity<>(contractsDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/customers/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
         ICustomerDto iCustomerDto=  customerService.findByIdCustomer(id);
-        if (iCustomerDto.equals(id)){
-            return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
+        if (iCustomerDto==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
     }
@@ -89,11 +89,11 @@ public class LiquidationRestController {
         return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/contracts/{id}")
-    public ResponseEntity<IContractDto> getByIdCustomer(@PathVariable("id") Long id) {
+    @GetMapping("/contract/{id}")
+    public ResponseEntity<IContractDto> getByIdContract(@PathVariable("id") Long id) {
         IContractDto iContractDto=  contractsService.findContractById(id);
-        if (iContractDto.equals(id)){
-            return new ResponseEntity<>(iContractDto,HttpStatus.BAD_REQUEST);
+        if (iContractDto==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iContractDto,HttpStatus.OK);
     }

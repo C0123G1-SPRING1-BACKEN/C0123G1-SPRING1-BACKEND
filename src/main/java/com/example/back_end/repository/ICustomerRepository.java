@@ -20,5 +20,5 @@ public interface ICustomerRepository extends JpaRepository<Customers, Long> {
     Page<ICustomerDto> searchCustomer(Pageable pageable, @Param("name") String name);
 
     @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.quantity_contract as quantityContract FROM customers as c WHERE c.id=:id", nativeQuery = true)
-    ICustomerDto findByIdCustomer(@Param("id") String id);
+    ICustomerDto findByIdCustomer(@Param("id") Long id);
 }

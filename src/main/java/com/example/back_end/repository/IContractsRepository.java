@@ -25,9 +25,9 @@ public interface IContractsRepository extends JpaRepository<Contracts, Long> {
             "       c.loans                                      as loans,\n" +
             "       (SELECT COUNT(*) FROM contracts GROUP BY id) AS total\n" +
             "from contracts c\n" +
-            "where c.product_name like :productName\n" +
+            "where c.product_name like concat('%',:productName,'%') \n" +
             "  and c.product_type_id = :productType\n" +
-            "  and c.loans like :loans", nativeQuery = true)
+            "  and c.loans like concat('%',:loans,'%')", nativeQuery = true)
     Page<IContractDto> searchProduct(Pageable pageable, @Param("productName") String productName, @Param("productType") String productType, @Param("loans") String loans);
 }
 
