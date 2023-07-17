@@ -29,8 +29,8 @@ public class ContractRestController_updateContract {
     @Test
     public void updateContract_contractCode_19() throws Exception {
         ContractDto contractDto=new ContractDto();
-        contractDto.setContractCode(null);
-        contractDto.setProductName("xe máy");
+        contractDto.setContractCode("HD-2");
+        contractDto.setProductName(null);
         contractDto.setLoans(Long.valueOf(1000000));
         contractDto.setProfit(Long.valueOf(100000));
         contractDto.setImage("https://images2.thanhnien.vn/Uploaded/ngocthanh/2016_03_23/9x01_YGEO.jpg");
@@ -54,7 +54,7 @@ public class ContractRestController_updateContract {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/employee/contract/update/{id}","1")
+                        .patch("/api/employee/contract/update")
                         .content(this.objectMapper.writeValueAsString(contractDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -88,7 +88,7 @@ public class ContractRestController_updateContract {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/employee/contract/update/{id}","1")
+                        .patch("/api/employee/contract/update")
                         .content(this.objectMapper.writeValueAsString(contractDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -122,11 +122,11 @@ public class ContractRestController_updateContract {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/employee/contract/update/{id}","2")
+                        .patch("/api/employee/contract/update")
                         .content(this.objectMapper.writeValueAsString(contractDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 }
 

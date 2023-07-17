@@ -2,15 +2,13 @@ package com.example.back_end.service.impl;
 
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
-import com.example.back_end.repository.ContractRepository;
+import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ContractService implements IContractService {
@@ -23,19 +21,20 @@ public class ContractService implements IContractService {
      * return: new Contract
      */
     @Autowired
-    private ContractRepository contractRepository;
+    private IContractRepository icontractRepository;
 
 
     @Override
     public Contracts findContractById(Long id) {
-        return contractRepository.findContractById(id);
+        return icontractRepository.findContractById(id);
     }
 
-@Transactional
+    @Transactional
     @Override
-    public Contracts saveContract(ContractDto contractDto) {
+    public void saveContract(ContractDto contractDto) {
         Contracts contract = new Contracts();
-        contract.setId(contractDto.getId());
+//        BeanUtils.copyProperties(contractDto,contract);
+//        contractRepository.saveContract(contract);
         contract.setProductName(contractDto.getProductName());
         contract.setContractCode(contractDto.getContractCode());
         contract.setLoans(contractDto.getLoans());
@@ -45,15 +44,14 @@ public class ContractService implements IContractService {
         contract.setEndDate(contractDto.getEndDate());
 //        contract.setCreateDate(contractDto.getCreateDate());
 //        contract.setUpdateDate(contractDto.getUpdateDate());
-        contract.setDelete(contractDto.isDelete());
+//        contract.setDelete(contractDto.isDelete());
         contract.setProductType(new ProductType(contractDto.getProductType()));
         contract.setCustomers(new Customers(contractDto.getCustomers()));
         contract.setContractStatus(new ContractStatus(contractDto.getContractStatus()));
         contract.setEmployees(new Employees(contractDto.getEmployees()));
         contract.setContractType(new ContractType(contractDto.getContractType()));
 
-        return contractRepository.saveContract(
-                contract.getId(),
+        icontractRepository.saveContract(
                 contract.getContractCode(),
                 contract.getProductName(),
                 contract.getLoans(),
@@ -66,8 +64,8 @@ public class ContractService implements IContractService {
                 contract.getCustomers().getId(),
                 contract.getContractStatus().getId(),
                 contract.getEmployees().getId(),
-                contract.getContractType().getId()
-
+                contract.getContractType().getId(),
+                contract.getId()
         );
 
     }
@@ -75,6 +73,6 @@ public class ContractService implements IContractService {
 
     @Override
     public List<Contracts> showTop10NewContract() {
-        return contractRepository.showTop10NewContract();
+        return icontractRepository.showTop10NewContract();
     }
 }

@@ -17,5 +17,5 @@ public interface IContractService {
    List<Contracts> showTop10NewContract();
 
 
-   Contracts saveContract(ContractDto contractDto);
+   void saveContract(ContractDto contractDto);
 }
