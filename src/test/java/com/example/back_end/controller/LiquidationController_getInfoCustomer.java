@@ -64,7 +64,6 @@ public class LiquidationController_getInfoCustomer {
 
     @Test
     public void getInfoCustomer_id_3() throws Exception {
-
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
                                 "/api/employee/liquidation/customer/{id}", "4"))
