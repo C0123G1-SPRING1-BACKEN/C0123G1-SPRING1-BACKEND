@@ -29,7 +29,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/employee/profit")
+@RequestMapping("/api/profit-interest")
 public class ProfitController {
     @Autowired
     private IProfitService iProfitService;

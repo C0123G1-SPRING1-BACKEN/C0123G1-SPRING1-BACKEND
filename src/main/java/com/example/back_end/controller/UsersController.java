@@ -4,8 +4,8 @@ import com.example.back_end.config.JwtTokenUtil;
 import com.example.back_end.model.Users;
 import com.example.back_end.reponse.JwtRequest;
 import com.example.back_end.reponse.JwtResponse;
-import com.example.back_end.service.impl.UsersService;
 import com.example.back_end.service.impl.EmailService;
+import com.example.back_end.service.impl.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;

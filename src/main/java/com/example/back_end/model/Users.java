@@ -1,8 +1,5 @@
 package com.example.back_end.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 
 @Entity
