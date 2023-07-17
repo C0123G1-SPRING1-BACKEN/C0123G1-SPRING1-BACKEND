@@ -67,7 +67,7 @@ public class LiquidationController_getInfoCustomer {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/customer/{id}", "2"))
+                                "/api/employee/liquidation/customer/{id}", "4"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }

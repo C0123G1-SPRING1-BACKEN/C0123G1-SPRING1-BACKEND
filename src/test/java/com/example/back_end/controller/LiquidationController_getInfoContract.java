@@ -65,7 +65,7 @@ public class LiquidationController_getInfoContract {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/contract/{id}", "2"))
+                                "/api/employee/liquidation/contract/{id}", "6"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
