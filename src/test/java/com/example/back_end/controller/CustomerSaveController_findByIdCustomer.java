@@ -66,27 +66,11 @@ public class CustomerSaveController_findByIdCustomer {
     /**
      * Create by DatNT
      * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer id contained in the database but server error
+     * This a method use check the return findByIdCustomer id contained in the database id = 1
      * @Throws Exception
      */
     @Test
     public void findByIdCustomer_4() throws Exception {
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/customer/1"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by DatNT
-     * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer which param id = 1
-     * @Throws Exception
-     */
-    @Test
-    public void findByIdCustomer_5() throws Exception {
-
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/customer/1"))
