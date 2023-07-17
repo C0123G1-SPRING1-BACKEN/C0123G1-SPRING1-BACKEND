@@ -34,6 +34,95 @@ public class LiquidationController_searchContract {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search contract Trường hợp Trả về list có size = 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchContract_5_1() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/contracts/search?productName=null&productType=1&loans=123"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search contract Trường hợp Trả về list có size = 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchContract_5_2() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/contracts/search?productName=null&productType=null&loans=123"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search contract Trường hợp Trả về list có size = 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchContract_5_3() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/contracts/search?productName=Iphone X&productType=null&loans=123"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search contract Trường hợp Trả về list có size = 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchContract_5_4() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/contracts/search?productName=Iphone X&productType=null&loans=null"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search contract Trường hợp Trả về list có size = 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchContract_5_5() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/contracts/search?productName=Iphone X&productType=null&loans=123"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
 
     /**
      * Create By : KhangPVa
