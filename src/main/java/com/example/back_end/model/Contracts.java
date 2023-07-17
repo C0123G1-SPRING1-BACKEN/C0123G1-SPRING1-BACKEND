@@ -60,6 +60,50 @@ public class Contracts {
     public Contracts(){
     }
 
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createTime = createDate;
+        this.updateTime = updateDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+
+
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
+
+
+
     public Long getId() {
         return id;
     }

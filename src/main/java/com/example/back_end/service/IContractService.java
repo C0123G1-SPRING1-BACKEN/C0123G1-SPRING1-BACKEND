@@ -25,7 +25,9 @@ public interface IContractService {
    List<Contracts> showTop10NewContract();
 
 
-   Contracts saveContract(ContractDto contractDto);
+
+   void saveContract(ContractDto contractDto);
+
 
     Page<IContractProjection> findAllTransactionHistory(Integer page,Integer limit);
 
@@ -38,5 +40,6 @@ public interface IContractService {
     List<Contracts> findAll();
 
     void createContract(Contracts contracts);
+
 
 }
