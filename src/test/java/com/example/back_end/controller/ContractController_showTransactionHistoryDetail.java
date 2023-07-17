@@ -1,5 +1,6 @@
 package com.example.back_end.controller;
 
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,12 +13,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ContractController_getALlTransactionHistory {
+public class ContractController_showTransactionHistoryDetail {
     @Autowired
     private MockMvc mockMvc;
 
     /**
-     * Danh sách có tham số null
+     * Find transaction history have param [id] = null
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -26,16 +27,17 @@ public class ContractController_getALlTransactionHistory {
      */
 
     @Test
-    public void getALlTransactionHistory_7() throws Exception {
+    public void showTransactionHistoryDetail_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=null&limit=null"))
+                                .get("/api/employee/contract/detail/{id}", "null")
+                )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Danh sách có tham số rỗng
+     * Find transaction history have param [id] = blank ('')
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -44,16 +46,17 @@ public class ContractController_getALlTransactionHistory {
      */
 
     @Test
-    public void getALlTransactionHistory_8() throws Exception {
+    public void showTransactionHistoryDetail_2() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=''&limit=''"))
+                                .get("/api/employee/contract/detail/{id}", "")
+                )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Danh sách có tham số page lớn hơn số page thực tế có trong database
+     * Find transaction history have param [id] = have not in the database
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
@@ -62,65 +65,50 @@ public class ContractController_getALlTransactionHistory {
      */
 
     @Test
-    public void getALlTransactionHistory_9() throws Exception {
+    public void showTransactionHistoryDetail_3() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=9999999999999999999999999&limit=5"))
+                                .get("/api/employee/contract/detail/{id}", "99999999999999999")
+                )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
     /**
-     * Danh sách có rỗng
+     * Find transaction history have param [id] = have in the database
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
      * @param
-     * @throws Exception
      */
 
     @Test
-    public void getALlTransactionHistory_10() throws Exception {
+    public void showTransactionHistoryDetail_4() throws Exception {
+        Long id = 1L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=0&limit=5"))
-                .andDo(print())
-                .andExpect(status().is(204));
-    }
-
-    /**
-     * Danh sách trả về size>0
-     * Create by :ThienNT
-     * Date create: 14/07/2023
-     *
-     * @param
-     * @throws
-     */
-
-    @Test
-    public void getALlTransactionHistory_11() throws Exception {
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=0&limit=5"))
+                                .get("/api/employee/contract/detail/{id}", id)
+                )
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
 
     /**
-     * Danh sách có tham số không dinh dang
+     * Find transaction history have param [id] = incorrect format
      * Create by :ThienNT
      * Date create: 14/07/2023
      *
      * @param
-     * @throws
      */
 
     @Test
-    public void getALlTransactionHistory_99() throws Exception {
+    public void showTransactionHistoryDetail_96() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract?page=xvca&limit=5"))
+                                .get("/api/employee/contract/detail/{id}", "dasadx")
+                )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
 }

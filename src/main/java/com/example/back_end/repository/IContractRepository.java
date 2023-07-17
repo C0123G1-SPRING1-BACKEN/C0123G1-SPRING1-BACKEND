@@ -23,13 +23,13 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
 
     @Query(value = "SELECT * FROM contracts AS c" +
             "    WHERE c.is_delete = false AND c.id=:contract_id", nativeQuery = true)
-    Optional<Contracts> findContractsById(@Param("contract_id") Integer id);
+    Optional<Contracts> findContractsById(@Param("contract_id") Long id);
 
 
     @Transactional
     @Modifying
     @Query(value = "UPDATE contracts AS c SET  c.is_delete=true WHERE c.id=:id", nativeQuery = true)
-    void deleteContractById(@Param("id") Integer id);
+    void deleteContractById(@Param("id") Long id);
 
 
 
