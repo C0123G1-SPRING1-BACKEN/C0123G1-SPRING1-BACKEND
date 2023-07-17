@@ -47,7 +47,8 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=2023-07-13&page=0&profitType="))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -65,7 +66,7 @@ public class ProfitController_getAllContract {
     }
 
     /**
-     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn , trường hợp trả về size = 0
      * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Không có dữ liệu
      * @throws Exception
@@ -79,7 +80,7 @@ public class ProfitController_getAllContract {
     }
 
     /**
-     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn
+     * Lấy ra tất cả hợp đồng trong khoảng ngày được chọn, trường hợp size trả về > 0,
      * @ param startDate , endDate có giá trị đúng , page mặc định là trang 0, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profit rỗng)
      * @return Trả về mảng JSON, chứa đầy đủ các record trong table, đảm bảo các yếu tố:
      * - Tổng số phần tử.
@@ -91,7 +92,9 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-06-06&endDate=2023-08-28&page=0&profitType=interest"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
+                .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
     }
 
     /**
@@ -107,7 +110,8 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=&endDate=2023-07-13&page=0&profitType=interest"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -123,7 +127,8 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=&page=0&profitType=interest"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -139,7 +144,9 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=&endDate=&page=0&profitType=interest"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
+                .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
     }
 
     /**
@@ -155,7 +162,9 @@ public class ProfitController_getAllContract {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-23&endDate=2023-08-10&page=0&profitType=interest"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0005"))
+                .andExpect(jsonPath("content[1].contractCode").value("HD-0009"));
     }
 
     /**

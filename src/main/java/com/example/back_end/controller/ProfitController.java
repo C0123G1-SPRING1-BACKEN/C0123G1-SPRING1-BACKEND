@@ -39,9 +39,9 @@ public class ProfitController {
                                                        @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-        Pageable pageable = PageRequest.of(page, 2);
+        Pageable pageable = PageRequest.of(page, 8);
         Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, pageable, profitType);
-        if (contractPage.getTotalElements() == 0) {
+        if (contractPage.getTotalElements() ==0 ||contractPage.getContent().size() == 0) {
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractPage, HttpStatus.OK);
@@ -63,6 +63,9 @@ public class ProfitController {
                                                          @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                          @RequestParam(value = "profitType", defaultValue = "interest") String profitType){
         List<IStatistics> statisticsList = iProfitService.statisticsProfit(startDate,endDate,profitType);
+        if(statisticsList.size() == 0){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>(statisticsList,HttpStatus.OK);
     }
 
