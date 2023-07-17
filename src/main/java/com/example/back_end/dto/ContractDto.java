@@ -12,16 +12,19 @@ import java.time.LocalDateTime;
 
 public class ContractDto {
 
-
+    @NotNull
     private Long id;
 
     @NotBlank
+    @NotNull
     private String productName;
-
+    @NotBlank
 
     private String contractCode;
+    @NotNull
 
     private Long loans;
+    @NotNull
 
     private Long profit;
 
@@ -32,7 +35,6 @@ public class ContractDto {
     private String startDate;
 
     private String endDate;
-
 
 
     private LocalDateTime createDate;
