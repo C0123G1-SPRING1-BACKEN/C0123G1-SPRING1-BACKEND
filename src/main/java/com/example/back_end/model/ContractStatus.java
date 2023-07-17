@@ -8,7 +8,10 @@ public class ContractStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     @Column(nullable = false,unique = true)
+
     private String name;
 
     public ContractStatus() {
@@ -18,6 +21,13 @@ public class ContractStatus {
         this.id = id;
         this.name = name;
     }
+
+    public ContractStatus(ContractStatus contractStatus) {
+    }
+
+    public ContractStatus(Long contractStatusId) {
+    }
+
 
     public Long getId() {
         return id;

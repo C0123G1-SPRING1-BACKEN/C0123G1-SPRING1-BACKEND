@@ -98,6 +98,12 @@ public class Customers {
         this.isDelete = isDelete;
     }
 
+    public Customers(Customers customers) {
+    }
+
+    public Customers(Long customerId) {
+    }
+
     public String getNote() {
         return note;
     }
