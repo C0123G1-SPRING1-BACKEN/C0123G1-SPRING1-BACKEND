@@ -19,16 +19,16 @@ import java.util.Optional;
 
 @Service
 public class PostsService implements IPostsService {
+    @Autowired
+    private IPostsRepository iPostsRepository;
     /**
      * Created by: HuyNH
      * Date created: 13/07/2023
-     * Function: display list posts into Database, delete post
-     *   @param id
+     * Function: display list posts into Database, pageable
+     *   @param pageable,titleSearch
      *      @return list, object
      *
      */
-    @Autowired
-    private IPostsRepository iPostsRepository;
     @Override
     public Page<PostsDTO> getAllPosts(Pageable pageable, String titleSearch) {
         List<PostsDTO> postsDTOList = new ArrayList<>();
@@ -42,6 +42,14 @@ public class PostsService implements IPostsService {
         return new PageImpl<>(postsDTOList, pageable, postsPage.getTotalElements());
     }
 
+    /**
+     * Created by: HuyNH
+     * Date created: 17/07/2023
+     * Function: delete posts into Database
+     *   @param id
+     *      @return object
+     *
+     */
     @Override
     public void delete(Long id) {
         iPostsRepository.delete(id);
@@ -52,7 +60,14 @@ public class PostsService implements IPostsService {
         return iPostsRepository.findById(id);
     }
 
-
+    /**
+     * Created by: HuyNH
+     * Date created: 18/07/2023
+     * Function: create posts into Database
+     *   @param postsDTO
+     *      @return object
+     *
+     */
     @Override
     public void createPosts(PostsDTO postsDTO) {
         Posts posts = new Posts();

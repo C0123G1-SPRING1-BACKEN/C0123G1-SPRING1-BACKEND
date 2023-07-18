@@ -23,19 +23,19 @@ import java.util.Optional;
 @RequestMapping("/api/posts")
 @CrossOrigin("*")
 public class PostsController {
-    /**
-     * Created by: HuyNH
-     * Date created: 13/07/2023
-     * Function: display list posts into Database, delete post
-     *
-     * @param id
-     * @return list, object
-     */
     @Autowired
     private IPostsService iPostsService;
     @Autowired
     private IEmployeesService iEmployeesService;
 
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list employees into Database
+     *
+     * @param
+     * @return list
+     */
     @GetMapping("/allEmployees")
     public ResponseEntity<List<Employees>> getAllEmployees() {
         List<Employees> employees = iEmployeesService.getAllEmployees();
@@ -44,7 +44,15 @@ public class PostsController {
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
-    //    @ResponseStatus(HttpStatus.OK)
+
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list posts into Database, pageable
+     *
+     * @param pageable, titleSearch
+     * @return list, object
+     */
     @GetMapping("")
     public ResponseEntity<Page<PostsDTO>> getPosts(@PageableDefault(sort = "create_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                    @RequestParam(required = false, defaultValue = "") String titleSearch) {
@@ -55,12 +63,28 @@ public class PostsController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list posts into Database, pageable
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping("delete/{id}")
     public ResponseEntity<List<Posts>> deletePost(@PathVariable Long id) {
         iPostsService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list posts into Database, pageable
+     *
+     * @param id
+     * @return object
+     */
     @GetMapping("detailPosts/{id}")
     public ResponseEntity<Posts> detailPosts(@PathVariable Long id) {
         Optional<Posts> posts = iPostsService.findByIdPosts(id);
@@ -70,6 +94,14 @@ public class PostsController {
         return new ResponseEntity<>(posts.get(), HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNH
+     * Date created: 17/07/2023
+     * Function: display list posts into Database, pageable
+     *
+     * @param postsDTO
+     * @return
+     */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/createPosts")
     public ResponseEntity<?> createPosts(@Valid @RequestBody PostsDTO postsDTO, BindingResult bindingResult) {

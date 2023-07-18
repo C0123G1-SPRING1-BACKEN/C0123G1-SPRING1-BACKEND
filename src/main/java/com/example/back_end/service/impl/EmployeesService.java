@@ -9,6 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class EmployeesService implements IEmployeesService {
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list employees into Database
+     *   @param
+     *      @return list
+     *
+     */
     @Autowired
     private IEmployeesRepository iEmployeesRepository;
     @Override
