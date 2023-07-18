@@ -3,7 +3,6 @@ package com.example.back_end.service.impl;
 
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
-import com.example.back_end.projections.ContractDTO;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.repository.IContractRepository;
@@ -166,7 +165,7 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         icontractRepository.createContract(
-                contracts.getCustomers().getId(),
+               contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),
