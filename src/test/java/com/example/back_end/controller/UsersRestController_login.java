@@ -1,7 +1,6 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.UsersDto;
-import com.example.back_end.model.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class UsersRestController_login {
     @Autowired
     private ObjectMapper objectMapper;
     /**
-     *
+     * login null
      * @throws Exception
      */
     @Test
@@ -41,7 +40,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login wrong username
+     * @throws Exception
+     */
     @Test
     public void login_98() throws Exception {
 
@@ -58,7 +60,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login wrong password
+     * @throws Exception
+     */
     @Test
     public void login_97() throws Exception {
 
@@ -75,7 +80,10 @@ public class UsersRestController_login {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * login success
+     * @throws Exception
+     */
     @Test
     public void login_96() throws Exception {
 

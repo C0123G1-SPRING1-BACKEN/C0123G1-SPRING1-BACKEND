@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
     @Query(value = "select * from employees where name like concat('%', :search, '%') ", nativeQuery = true)
@@ -28,5 +30,6 @@ public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
                         @Param("salary") String salary,
                         @Param("citizen_code") String citizenCode,
                         @Param("image") String image);
+
 
 }
