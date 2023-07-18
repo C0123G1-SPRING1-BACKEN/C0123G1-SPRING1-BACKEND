@@ -26,6 +26,8 @@ public class RegisterPawn {
     private String email;
 
     @Column(length = 500)
+
+
     private String address;
 
     @Column(length = 1000)

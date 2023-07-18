@@ -1,19 +1,22 @@
 package com.example.back_end.service.impl;
 
+import com.example.back_end.config.JwtUserDetails;
 import com.example.back_end.model.Users;
 import com.example.back_end.repository.IUserRepository;
 import com.example.back_end.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by: VienH
@@ -36,7 +39,11 @@ public class UsersService implements UserDetailsService, IUsersService {
         if (users == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        return new User(users.getUsername(), users.getPassword(), new ArrayList<>());
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        String role = users.getRoles().getRoleName();
+        authorities.add(new SimpleGrantedAuthority(role));
+
+        return new JwtUserDetails(users.getUsername(), users.getPassword(), authorities);
     }
 
     @Override
@@ -65,7 +72,6 @@ public class UsersService implements UserDetailsService, IUsersService {
     public void saveNewPassword(Users user) {
         Users users = findById(user.getId());
         String password = passwordEncoder.encode(user.getPassword());
-        users.setPassword(password);
-        iUserRepository.saveNewPassword(users.getId(), users.getPassword());
+        iUserRepository.saveNewPassword(users.getId(),password);
     }
 }

@@ -12,12 +12,15 @@
 
 package com.example.back_end.service;
 
+import com.example.back_end.dto.IStatistics;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.repository.IProfitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProfitServiceImpl implements IProfitService {
@@ -42,11 +45,26 @@ public class ProfitServiceImpl implements IProfitService {
     public Long getTotalProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
             case "interest":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
             case "liquidation":
                 return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate);
             case "foresee":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
+            default:
+                return null;
+        }
+
+    }
+
+    @Override
+    public List<IStatistics> statisticsProfit(String startDate, String endDate, String profitType) {
+        switch (profitType) {
+            case "interest":
+                return  iProfitRepository.statisticsProfit(startDate,endDate,3L);
+            case "liquidation":
+                return  iProfitRepository.statisticsProfitLiquidation(startDate,endDate);
+            case "foresee":
+                return  iProfitRepository.statisticsProfit(startDate,endDate,2L);
             default:
                 return null;
         }

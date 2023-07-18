@@ -13,7 +13,7 @@ public class Posts {
     private String title;
     @Column(nullable = false)
     private String image;
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "LONGTEXT")
     private String content;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     private LocalDateTime createDate;

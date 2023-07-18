@@ -190,34 +190,6 @@ public class RegisterPawnController_registerPawn {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-//    /**
-//     * register pawn id of type product null
-//     *
-//     * @throws Exception
-//     * test van chua duoc
-//     */
-//    @Test
-//    public void registerPawn_productType_15() throws Exception {
-//        RegisterDTO registerDTO = new RegisterDTO();
-//        registerDTO.setName("Nguyen Duc Thang");
-//        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
-//        registerDTO.setPhone("0909121911");
-//        registerDTO.setEmail("nguyenthang001@gmail.com");
-//        registerDTO.setContendNote("Ghi chu o trong nay");
-//
-//        ProductType productType = new ProductType();
-//        productType.setId(null);
-//        registerDTO.setProductType(null);
-//
-//
-//        this.mockMvc
-//                .perform(MockMvcRequestBuilders
-//                        .post("/api/register/create")
-//                        .content(this.objectMapper.writeValueAsString(registerDTO))
-//                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-//                .andDo(print())
-//                .andExpect(status().is4xxClientError());
-//    }
 
     /**
      * register pawn name don't over 100 character !!!
@@ -650,6 +622,169 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setPhone("0909129111");
         registerDTO.setEmail("nguyenthangfa21@gmail.com");
         registerDTO.setContendNote(null);
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * register pawn  name   contain special characters  !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_name_99() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909129111");
+        registerDTO.setEmail("nguyenthangfa21@gmail.com");
+        registerDTO.setContendNote("ghi chú trong này");
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * register pawn  phone   contain special characters  !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_phone_99() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
+        registerDTO.setEmail("nguyenthangfa21@gmail.com");
+        registerDTO.setContendNote("ghi chú trong này");
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * register pawn  phone   contain special characters  !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_email_99() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909111111");
+        registerDTO.setEmail("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
+        registerDTO.setContendNote("ghi chú trong này");
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * register pawn  name double-ended whitespace !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_name_98() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName(" Nguyen Duc Thang ");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909111111");
+        registerDTO.setEmail("nguyenthangfa2001@gmail");
+        registerDTO.setContendNote("ghi chú trong này");
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * register pawn  phone double-ended whitespace !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_phone_98() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone(" 0909111111 ");
+        registerDTO.setEmail("nguyenthangfa2001@gmail");
+        registerDTO.setContendNote("ghi chú trong này");
+
+        ProductType productType = new ProductType();
+        productType.setId(2L);
+        registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * register pawn  email double-ended whitespace !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_email_98() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909111111");
+        registerDTO.setEmail("   nguyenthangfa2001@gmail   ");
+        registerDTO.setContendNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
