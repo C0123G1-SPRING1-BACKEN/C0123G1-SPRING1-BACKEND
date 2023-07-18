@@ -231,4 +231,6 @@ public class Contracts {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
+
+
 }

@@ -13,8 +13,13 @@ public interface IRegisterPawnRepository extends JpaRepository<RegisterPawn, Lon
 
    @Transactional
    @Modifying
-   @Query(value = "INSERT INTO register_pawn (name,phone,email,address,contend_note,product_type_id,status) value (:name,:phone,:email,:address,:contend_note,:product_type_id,false) ",nativeQuery = true)
+   @Query(value = "INSERT INTO register_pawn (name,phone,email,address,content_note,product_type_id,status) value (:name,:phone,:email,:address,:content_note,:product_type_id,false) ",nativeQuery = true)
     void createRegisterPawn(@Param("name")String name,@Param("phone")String phone,@Param("email")String email , @Param("address") String address,
-                            @Param("contend_note") String contendNote,@Param("product_type_id") Long product_type_id);
+                            @Param("content_note") String contentNote,@Param("product_type_id") Long product_type_id);
 
+
+   @Transactional
+   @Modifying
+   @Query(value = "UPDATE register_pawn r SET r.status = true WHERE r.id = :id",nativeQuery = true)
+    void confirmRegisterPawn(@Param("id") Long id);
 }

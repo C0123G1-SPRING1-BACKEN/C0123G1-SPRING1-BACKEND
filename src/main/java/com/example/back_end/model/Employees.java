@@ -14,6 +14,7 @@ public class Employees {
     @Column(nullable = false,length = 50)
     private String name;
     private String birthDay;
+    @Column(nullable = false)
     private Integer gender;
     @Column(nullable = false,unique = true)
     private String email;
@@ -24,6 +25,7 @@ public class Employees {
     private String salary;
     @Column(nullable = false,unique = true)
     private String citizenCode;
+    @Column(nullable = false)
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @CreationTimestamp
