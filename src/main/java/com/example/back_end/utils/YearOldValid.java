@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Documented
 @Constraint(validatedBy = DateOfBirthValidator.class)
 public @interface YearOldValid {
-    String message() default "Bạn nhập ngày tháng năm sinh chưa chính xác. Vui lòng kiểm tra lại";
+    String message() default "Bạn nhập ngày tháng năm sinh chưa chính xác. Hệ thống quy định người dùng trên 18 tuổi. Vui lòng kiểm tra lại";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
