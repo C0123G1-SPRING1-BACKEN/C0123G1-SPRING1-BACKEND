@@ -1,6 +1,6 @@
 package com.example.back_end.dto;
 
-import javax.persistence.Column;
+
 import java.time.LocalDateTime;
 
 public class CustomerDto {

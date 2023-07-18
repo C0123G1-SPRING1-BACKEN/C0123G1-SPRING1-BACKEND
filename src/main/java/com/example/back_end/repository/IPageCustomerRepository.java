@@ -11,13 +11,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPageCustomerRepository extends JpaRepository<Customers, Long> {
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode FROM customers as c  ",
+    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.email as email FROM customers as c  ",
             nativeQuery = true)
     Page<ICustomerDto> findByCustomer(Pageable pageable);
 
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode FROM customers as c WHERE c.name LIKE concat('%',:name,'%') ",
+    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.email as email FROM customers as c WHERE c.name LIKE concat('%',:name,'%') ",
             nativeQuery = true)
     Page<ICustomerDto> searchCustomer(Pageable pageable, @Param("name") String name);
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode FROM customers as c WHERE c.id=:id",nativeQuery = true)
+    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.email as email FROM customers as c WHERE c.id=:id",nativeQuery = true)
     ICustomerDto findByIdCustomer(@Param("id")Long id );
 }

@@ -40,7 +40,7 @@ public class PageCustomerRestController {
     @GetMapping("/contract/search")
     public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
         Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
-        if (iCustomerDtoPage.isEmpty()) {
+        if (iCustomerDtoPage.isEmpty() && iCustomerDtoPage==null) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);

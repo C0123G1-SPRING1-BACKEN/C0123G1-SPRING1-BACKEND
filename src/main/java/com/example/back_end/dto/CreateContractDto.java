@@ -1,36 +1,32 @@
 package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
-public class CreateContractDto {
+public class CreateContractDto implements Validator {
 
     private Long id;
-    @NotBlank(message = "Không được để trống !")
+
     private String productName;
-    @NotBlank(message = "Không được để trống !")
+
     private String contractCode;
     @NotNull(message = "Không được để trống !")
-    @Min(value = 0 , message = "Lớn hơn 0")
+    @Min(value = 500000, message = "Lớn hơn 500000")
     private Long loans;
-    @NotNull(message = "Không được để trống !")
-    private Long profit;
-    @NotBlank(message = "Không được để trống !")
 
+    private Long profit;
     private String image;
     @NotBlank(message = "Không được để trống !")
-
+//    @FutureOrPresent(message = "Ngày tạo phải là hiện tại hoặc tương lai")
     private String startDate;
+//    @FutureOrPresent(message = "Ngày tạo phải là  hiện tại hoặc tương lai ")
     @NotBlank(message = "Không được để trống !")
-
     private String endDate;
 
     private ProductType productType;
-
 
     private Customers customers;
 
@@ -164,5 +160,15 @@ public class CreateContractDto {
 
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.back_end.service;
 
 import com.example.back_end.model.Contracts;
+import com.example.back_end.model.Users;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
@@ -20,4 +21,5 @@ public interface IContractService {
     List<Contracts> findAll();
 
     void createContract(Contracts contracts);
+
 }

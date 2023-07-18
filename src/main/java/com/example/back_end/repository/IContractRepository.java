@@ -2,6 +2,7 @@ package com.example.back_end.repository;
 
 
 import com.example.back_end.model.Contracts;
+import com.example.back_end.model.Users;
 import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,8 +68,8 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
                         @Param("endDate") String endDate, @Param("profit") Long profit, @Param("employees") Long employees);
 
-
 }
+
 
 
 //    double soTienVay = 10000000; // Số tiền vay

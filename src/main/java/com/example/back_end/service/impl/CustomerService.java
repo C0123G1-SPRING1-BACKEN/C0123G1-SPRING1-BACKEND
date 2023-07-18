@@ -2,6 +2,7 @@ package com.example.back_end.service.impl;
 
 
 import com.example.back_end.dto.ICustomerDto;
+import com.example.back_end.model.Customers;
 import com.example.back_end.repository.IPageCustomerRepository;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,6 @@ public class CustomerService implements ICustomerService {
     public ICustomerDto findByIdCustomer(Long id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
+
+
 }

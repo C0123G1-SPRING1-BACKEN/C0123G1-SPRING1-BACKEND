@@ -2,6 +2,7 @@ package com.example.back_end.service.impl;
 
 
 import com.example.back_end.model.Contracts;
+import com.example.back_end.model.Customers;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.repository.IContractRepository;
@@ -14,6 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.text.ParseException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,18 +117,33 @@ public class ContractService implements IContractService {
     @Transactional
     @Override
     public void createContract(Contracts contracts) {
-        iContractRepository.createContract(
-               contracts.getCustomers().getId(),
-                contracts.getContractCode(),
-                contracts.getProductName(),
-                contracts.getProductType().getId(),
-                contracts.getImage(),
-                contracts.getLoans(),
-                contracts.getStartDate(),
-                contracts.getEndDate(),
-                contracts.getProfit(),
-                contracts.getEmployees().getId());
+        Long loans = contracts.getLoans();
+        Double percent =  0.00065; // Lãi suất hàng ngày (0.065%)
+        String startDate = contracts.getStartDate();
+        String endDate = contracts.getEndDate();
+
+        LocalDateTime date1 = LocalDate.parse(startDate).atStartOfDay();
+        LocalDateTime date2 = LocalDate.parse(endDate).atStartOfDay();
+        Long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+        System.out.println("Days: " + daysBetween);
+//        tính tổng tiền
+        Long profits = (long) (loans * percent * daysBetween);
+        System.out.println("Liền lãi: " + profits);
+        if (contracts.getProfit().equals(profits)){
+            iContractRepository.createContract(
+                    contracts.getCustomers().getId(),
+                    contracts.getContractCode(),
+                    contracts.getProductName(),
+                    contracts.getProductType().getId(),
+                    contracts.getImage(),
+                    contracts.getLoans(),
+                    contracts.getStartDate(),
+                    contracts.getEndDate(),
+                    contracts.getProfit(),
+                    contracts.getEmployees().getId());
+        }else {
+            System.out.println("Lỗi");
+        }
+
     }
-
-
 }

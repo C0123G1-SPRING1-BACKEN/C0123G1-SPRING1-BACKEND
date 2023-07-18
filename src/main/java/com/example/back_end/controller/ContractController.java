@@ -5,6 +5,7 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.service.IContractService;
+import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,15 +15,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Created by: DinhHD
  * Date created: 13/07/2023
  * Function: do about pawn interface, customer selection interface
+ * <p>
+ * // * @param Contracts
  *
-// * @param Contracts
  * @return createContracts()
  */
 
@@ -33,6 +41,9 @@ import java.util.Optional;
 public class ContractController {
     @Autowired
     private IContractService iContractService;
+
+    @Autowired
+    private EmailService emailService;
 
     /**
      * Created by: ThienNT
@@ -116,13 +127,34 @@ public class ContractController {
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult){
-                if (bindingResult.hasErrors()){
+    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Contracts contracts=new Contracts();
-        BeanUtils.copyProperties(contractDto,contracts);
-            iContractService.createContract(contracts);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+        Contracts contracts = new Contracts();
+        BeanUtils.copyProperties(contractDto, contracts);
+        iContractService.createContract(contracts);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        String startDateFormatted = dateFormat.format(contracts.getStartDate());
+//        String endDateFormatted = dateFormat.format(contracts.getEndDate());
+        emailService.sendMail(contracts.getCustomers().getEmail(), "Xin chào " + contracts.getCustomers().getName() + ", cảm ơn bạn đã ghé Pawn Shop ! ", "Bạn đã cầm món đồ có tên : "+ contracts.getProductName() + "\n " +
+                "\n -Với giá là:" + contracts.getLoans()+ " VNĐ"+
+                "\n -Có thời hạn chuộc lại từ :"+contracts.getStartDate() +
+                "\n -Đến ngày hết hạn là :" +contracts.getStartDate()+
+                "\n -Với tổng số tiền lãi là " +contracts.getProfit()+" VND"+
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "---------------------------------------" + "\n" +
+                "Name :Pawn Shop\n" +
+                "Mobile : 0782391943\n" +
+                "Email : pawnshopC0123@gmail.com\n" +
+                "Address :\u200B2\u200B80\u200B \u200BTrần Hưng Đạo\u200B streets, \u200BSơn Trà\u200B District, Da Nang");
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
+
 }
