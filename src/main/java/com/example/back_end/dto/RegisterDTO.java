@@ -31,7 +31,7 @@ public class RegisterDTO {
 
     @Size(max = 1000, message = "Nội Dung Ghi Chú  Của Bạn Không Được Quá 1000 Ký Tự !!!")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
-    private String contendNote;
+    private String contentNote;
 
     private boolean status = false;
     @NotNull
@@ -41,23 +41,23 @@ public class RegisterDTO {
     public RegisterDTO() {
     }
 
-    public RegisterDTO(String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType) {
+    public RegisterDTO(String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.contendNote = contendNote;
+        this.contentNote = contentNote;
         this.status = status;
         this.productType = productType;
     }
 
-    public RegisterDTO(Long id, String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType) {
+    public RegisterDTO(Long id, String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.contendNote = contendNote;
+        this.contentNote = contentNote;
         this.status = status;
         this.productType = productType;
     }
@@ -102,12 +102,12 @@ public class RegisterDTO {
         this.address = address;
     }
 
-    public String getContendNote() {
-        return contendNote;
+    public String getContentNote() {
+        return contentNote;
     }
 
-    public void setContendNote(String contendNote) {
-        this.contendNote = contendNote;
+    public void setContentNote(String contentNote) {
+        this.contentNote = contentNote;
     }
 
     public boolean isStatus() {

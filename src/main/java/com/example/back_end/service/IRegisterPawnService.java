@@ -7,4 +7,5 @@ public interface IRegisterPawnService {
     void createRegisterPawn(RegisterDTO registerDTO);
 
 
+    void confirmRegister(Long id);
 }

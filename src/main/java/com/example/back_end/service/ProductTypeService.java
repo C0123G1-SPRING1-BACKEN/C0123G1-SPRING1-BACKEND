@@ -17,4 +17,7 @@ public class ProductTypeService implements IProductTypeService {
     public List<ProductType> getAll() {
         return productTypeRepository.getAll();
     }
+
+
+
 }

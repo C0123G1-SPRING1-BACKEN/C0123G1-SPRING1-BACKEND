@@ -85,6 +85,14 @@ public class RegisterPawnController {
         return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> confirmRegister (@PathVariable("id") Long id) {
+        iRegisterPawnService.confirmRegister(id);
+         return new ResponseEntity<>(HttpStatus.OK) ;
+    }
+
+
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
