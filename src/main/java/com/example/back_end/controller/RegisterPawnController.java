@@ -76,7 +76,7 @@ public class RegisterPawnController {
      */
     @GetMapping("")
     public ResponseEntity<?> findByNameRegisterPawn(@RequestParam(required = false, defaultValue = "") String name,
-                                                    @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
+                                                    @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 100) Pageable pageable) {
         return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(name, pageable), HttpStatus.OK);
     }
 }
