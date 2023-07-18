@@ -44,7 +44,7 @@ public class RegisterPawnService implements IRegisterPawnService {
      * @param: register
      */
     @Override
-    public Page<RegisterPawn> findByNameRegisterPawn(String name, Pageable pageable) {
-        return registerPawnRepository.findByNameRegisterPawn(name,pageable) ;
+    public Page<RegisterPawn> findByNameRegisterPawn( Pageable pageable) {
+        return registerPawnRepository.findByNameRegisterPawn(pageable) ;
     }
 }

@@ -66,17 +66,18 @@ public class RegisterPawnController {
         });
         return errors;
     }
+
     /**
      * Created by: QuocNHA
      * Date created: 13/07/2023
      * Function: register pawn
      *
-     * @param: registerDTO
      * @return
+     * @param: registerDTO
      */
     @GetMapping("")
-    public ResponseEntity<?> findByNameRegisterPawn(@RequestParam(required = false, defaultValue = "") String name,
-                                                    @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 100) Pageable pageable) {
-        return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(name, pageable), HttpStatus.OK);
+    public ResponseEntity<?> findByNameRegisterPawn(
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
+        return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(pageable), HttpStatus.OK);
     }
 }

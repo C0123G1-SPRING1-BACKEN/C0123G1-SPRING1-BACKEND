@@ -5,11 +5,13 @@ import com.example.back_end.model.RegisterPawn;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 public interface IRegisterPawnService {
     void createRegisterPawn(RegisterDTO registerDTO);
 
-    Page<RegisterPawn> findByNameRegisterPawn(String name, Pageable pageable);
+    Page<RegisterPawn> findByNameRegisterPawn(Pageable pageable);
 
 
 
