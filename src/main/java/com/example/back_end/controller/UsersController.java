@@ -81,7 +81,8 @@ public class UsersController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
+//            throw new Exception("Incorrect username or password", e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
         Users users = usersService.findByUsername(authenticationRequest.getUsername());
         final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
@@ -130,11 +131,11 @@ public class UsersController {
     @PatchMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
 
-if (user.getPassword() == null){
-    ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được để trống", user.getId());
+        if (user.getPassword() == null) {
+            ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được để trống", user.getId());
 
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
-}
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
+        }
         if (user.getPassword().length() < 8 || user.getPassword().length() > 50) {
             ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 50 kí tự!!", user.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
