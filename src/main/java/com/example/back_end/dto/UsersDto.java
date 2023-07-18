@@ -12,12 +12,21 @@ public class UsersDto implements Validator {
     @NotBlank
     private String username;
     @NotBlank
-    @Size(min = 8,max = 20)
+    @Size(min = 8,max = 50)
     private String password;
     private Integer verificationCode;
     private Roles roles;
+    private String email;
 
     public UsersDto() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public UsersDto(Long id, String username, String password, Integer verificationCode, Roles roles) {
@@ -77,4 +86,6 @@ public class UsersDto implements Validator {
     public void validate(Object target, Errors errors) {
 
     }
+
+
 }

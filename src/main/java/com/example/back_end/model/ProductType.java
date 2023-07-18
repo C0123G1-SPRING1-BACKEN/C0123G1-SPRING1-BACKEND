@@ -10,7 +10,7 @@ public class ProductType {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
 
     public ProductType() {
@@ -19,6 +19,12 @@ public class ProductType {
     public ProductType(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public ProductType(ProductType productType) {
+    }
+
+    public ProductType(Long productTypeId) {
     }
 
     public Long getId() {
