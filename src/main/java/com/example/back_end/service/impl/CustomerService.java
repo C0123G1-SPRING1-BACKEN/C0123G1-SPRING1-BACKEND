@@ -2,7 +2,6 @@ package com.example.back_end.service.impl;
 
 
 import com.example.back_end.dto.ICustomerDto;
-import com.example.back_end.repository.IPageCustomerRepository;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
