@@ -10,9 +10,9 @@ import javax.validation.constraints.Size;
 public class EmployeeDTO {
 
     private Long id;
-    @Size(max = 50)
+    @Size(max = 50,min = 2)
     @NotBlank(message = "Không được để trống !")
-    @Pattern(regexp = "^[^!@#$%^&*()+=\\[\\]{};':\"\\\\|.<>?`~]+$", message = "Không chứa kí tự số và kí tự đặc biệt")
+    @Pattern(regexp = "^[^!@#$%^&*()+=\\[\\]{};':\"\\\\|.<>?`~/]+$", message = "Không chứa kí tự số và kí tự đặc biệt")
     private String name;
     private String birthDay;
     private Integer gender;
@@ -20,13 +20,14 @@ public class EmployeeDTO {
     @NotBlank(message = "Vui lòng nhập địa chỉ email")
     @Email(message = "Nhập đúng định dạng abc@gmail.com")
     private String email;
-    @Size(max = 10)
+    @Pattern(regexp = "^(\\+?84|0)(3[2-9]|5[2689]|7[06-9]|8[1-9]|9[0-9])[0-9]{7}$")
     @NotBlank(message = "Không được để trống !")
     private String phoneNumber;
+    @Size(min = 4,max = 100)
     @NotBlank(message = "Không được để trống !")
     private String address;
     @NotBlank(message = "Không được để trống !")
-    @Pattern(regexp = "^\\d+$", message = "Tiền không được nhập số âm")
+    @Pattern(regexp = "^\\d+(\\.\\d+)?$", message = "Tiền không được nhập số âm")
     private String salary;
     @NotBlank(message = "Không được để trống !")
     @Pattern(regexp = "^[0-9]{12}$", message = "Nhập không đúng định dạng CMND/Hộ chiếu")
