@@ -4,12 +4,8 @@ package com.example.back_end.service;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.Contracts;
 
-import java.time.LocalDateTime;
-
-import com.example.back_end.model.Contracts;
-import com.example.back_end.projections.ContractDTO;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -30,11 +26,11 @@ public interface IContractService {
    void saveContract(ContractDto contractDto);
 
 
-    Page<IContractProjection> findAllTransactionHistory(Integer page,Integer limit);
+    Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit);
 
     Boolean deleteTransactionHistoryById(String id);
 
-    Page<IContractProjection> showListAndSearchTransactionHistory(Integer page,Integer limit,ContractSearchDTO contractSearchDTO);
+    Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO);
 
     Optional<Contracts> findTransactionHistoryById(String id);
 

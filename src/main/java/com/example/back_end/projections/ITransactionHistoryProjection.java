@@ -1,8 +1,6 @@
 package com.example.back_end.projections;
 
-import com.example.back_end.model.Customers;
-
-public interface IContractProjection {
+public interface ITransactionHistoryProjection {
 
     String getId();
 

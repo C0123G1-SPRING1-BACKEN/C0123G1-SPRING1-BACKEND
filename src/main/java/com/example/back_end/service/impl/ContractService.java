@@ -4,7 +4,7 @@ package com.example.back_end.service.impl;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +97,7 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> findAllTransactionHistory(Integer page, Integer limit) {
+    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
         return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit));
     }
 
@@ -134,10 +134,10 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> projectionPage = icontractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
-                "%" + contractSearchDTO.getCustomerName() + "%", "%" + contractSearchDTO.getProductName() + "%",
-                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
+    public Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
+        Page<ITransactionHistoryProjection> projectionPage = icontractRepository.searchTransactionHistory(PageRequest.of(page, limit),
+                 contractSearchDTO.getCustomerName() ,  contractSearchDTO.getProductName() ,
+                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(),contractSearchDTO.getContractStatus());
         return projectionPage;
     }
 
@@ -165,7 +165,7 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         icontractRepository.createContract(
-               contracts.getCustomers().getId(),
+                contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),

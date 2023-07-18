@@ -3,7 +3,8 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,11 @@ public class ContractRestController {
      */
 
     @GetMapping("")
-    public ResponseEntity<Page<IContractProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
+    public ResponseEntity<Page<ITransactionHistoryProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                                        @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
+        Page<ITransactionHistoryProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
         int totalPage = contractProjectionPage.getTotalPages();
-        if (page >= totalPage) {
+        if (page >= totalPage || page < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
@@ -92,17 +93,18 @@ public class ContractRestController {
      * @requestbody contractSearchDTO
      */
 
-//    @GetMapping("")
-//    public ResponseEntity<Page<IContractProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-//                                                                                         @RequestParam(name = "limit", defaultValue = "5") Integer limit,
-//                                                                                         @RequestBody ContractSearchDTO contractSearchDTO) {
-//        Page<IContractProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
-//        int totalPage = contractProjectionsPage.getTotalPages();
-//        if (page >= totalPage) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
-//    }
+    @PostMapping("/search-transaction-history")
+    public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                                                   @RequestParam(name = "limit", defaultValue = "5") Integer limit,
+                                                                                                   @RequestBody ContractSearchDTO contractSearchDTO) {
+        Page<ITransactionHistoryProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
+        int totalPage = contractProjectionsPage.getTotalPages();
+        if (page > totalPage || page<0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
+    }
+
     @GetMapping("/list")
     public ResponseEntity<List<Contracts>> getAllContract() {
         List<Contracts> contractsList = iContractService.findAll();
