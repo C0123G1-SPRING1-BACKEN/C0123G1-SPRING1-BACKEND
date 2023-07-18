@@ -30,8 +30,8 @@ public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
                         @Param("image") String image);
 
 
-    boolean findEmployeesByEmail(String email);
-    boolean findEmployeesByPhone(String phone);
-    boolean findEmployeesByCitizenCode(String citizenCode);
+    boolean existsByEmail(String email);
+    boolean existsByPhoneNumber(String phoneNumber);
+    boolean existsByCitizenCode(String citizenCode);
 
 }

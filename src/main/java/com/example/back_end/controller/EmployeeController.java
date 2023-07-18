@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -54,7 +55,7 @@ public class EmployeeController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create-employee")
-    public ResponseEntity<?> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO, BindingResult bindingResult){
+    public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDTO employeeDTO, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
         }
@@ -65,21 +66,21 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-email/{email}")
     public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
-        boolean exists = iEmployeeRepository.findEmployeesByEmail(email);
+        boolean exists = iEmployeeRepository.existsByEmail(email);
         return ResponseEntity.ok(exists);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/check-identityCard/{identityCard}")
-    public ResponseEntity<Boolean> checkIdentityCardExistence(@PathVariable("identityCard") String identityCard) {
-        boolean exists = iEmployeeRepository.findEmployeesByCitizenCode(identityCard);
+    @GetMapping("/check-citizen-code/{citizen-code}")
+    public ResponseEntity<Boolean> checkCitizenCodeExistence(@PathVariable("citizen-code") String citizenCode) {
+        boolean exists = iEmployeeRepository.existsByCitizenCode(citizenCode);
         return ResponseEntity.ok(exists);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/check-phone/{phone}")
-    public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone") String phone) {
-        boolean exists = iEmployeeRepository.findEmployeesByPhone(phone);
+    @GetMapping("/check-phone/{phone-number}")
+    public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone-number") String phoneNumber) {
+        boolean exists = iEmployeeRepository.existsByPhoneNumber(phoneNumber);
         return ResponseEntity.ok(exists);
     }
 }
