@@ -1,5 +1,9 @@
 package com.example.back_end.controller;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
@@ -12,11 +16,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by: DinhHD
@@ -29,7 +35,6 @@ import java.util.Optional;
 
 @RequestMapping("/api/employee/contract")
 @RestController
-
 @CrossOrigin("*")
 public class ContractRestController {
     @Autowired
@@ -136,8 +141,11 @@ public class ContractRestController {
 
     /**
      * Create by : TriPD
-     * Date created : 13/07/2023
-     * Function : findContractById(),updateContract()
+     * Date created : 18/07/2023
+     * Function : findContractById()
+     *
+     * @Param: id
+     * @Return: object
      */
 
     @GetMapping("/findContractById/{id}")
@@ -151,19 +159,46 @@ public class ContractRestController {
         return new ResponseEntity<>(contractDto, HttpStatus.OK);
     }
 
+    /**
+     * Create by : TriPD
+     * Date created : 18/07/2023
+     * Function : updateContract()
+     *
+     * @Param: contractDto
+     * @Return: void
+     */
 
     @PatchMapping("/update")
-    public ResponseEntity<ContractDto> updateContract(@RequestBody ContractDto contractDto) {
-        if (contractDto == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> updateContract( @RequestBody ContractDto contractDto) {
+//        if (bindingResult.hasErrors()) {
+//            List<String> errors = bindingResult.getFieldErrors()
+//                    .stream()
+//                    .map(FieldError::getDefaultMessage)
+//                    .collect(Collectors.toList());
+//
+//            return ResponseEntity.badRequest().body(errors);
+//        }
+        try {
+            iContractService.saveContract(contractDto);
+            return ResponseEntity.ok(contractDto);
+        }catch (Exception e){
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(".....");
         }
-        iContractService.saveContract(contractDto);
-        return new ResponseEntity<>(contractDto, HttpStatus.OK);
+
     }
 
+    /**
+     * Create by : TriPD
+     * Date created : 18/07/2023
+     * Function : top10NewContract()
+     *
+     * @Param: pageable
+     * @Return: Page<Contracts>
+     */
+
     @GetMapping("/top10")
-    public ResponseEntity<List<Contracts>> top10NewContract() {
-        List<Contracts> contracts = this.iContractService.showTop10NewContract();
+    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault(sort = "create_date",direction = Sort.Direction.DESC)Pageable pageable) {
+        Page<Contracts> contracts = this.iContractService.showTop10NewContract(pageable);
         if (contracts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -24,11 +24,11 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
             "JOIN contract_status cs on contracts.contract_status_id = cs.id\n" +
             "JOIN contract_type ct on contracts.contract_type_id = ct.id\n" +
             "JOIN employees e on contracts.employees_id = e.id\n" +
-            "JOIN product_type pt on contracts.product_type_id = pt.id WHERE contracts.id= :id", nativeQuery = true)
+            "JOIN product_type pt on contracts.product_type_id = pt.id WHERE contracts.is_delete=false and contracts.id= :id", nativeQuery = true)
     Contracts findContractById(@Param("id") Long id);
 
-    @Query(value = "select * from contracts order by create_date desc  limit 10;", nativeQuery = true)
-    List<Contracts> showTop10NewContract();
+    @Query(value = "select * from contracts", nativeQuery = true)
+    Page<Contracts> showTop10NewContract(Pageable pageable);
 
     @Transactional
     @Modifying

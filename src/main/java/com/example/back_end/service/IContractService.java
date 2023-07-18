@@ -10,6 +10,7 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public interface IContractService {
 
    
 
-   List<Contracts> showTop10NewContract();
+   Page<Contracts> showTop10NewContract(Pageable pageable);
 
 
 

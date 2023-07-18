@@ -47,10 +47,10 @@ public class RegisterPawnController {
     }
 
 
-    @GetMapping("/product-type")
-    public ResponseEntity<List<ProductType>> getList() {
-        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/product-type")
+//    public ResponseEntity<List<ProductType>> getList() {
+//        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
+//    }
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

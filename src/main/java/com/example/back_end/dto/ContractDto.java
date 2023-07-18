@@ -5,21 +5,21 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+
 import java.time.LocalDateTime;
 
 public class ContractDto {
 
-    @NotNull
+
     private Long id;
 
     @NotBlank
-    @NotNull
     private String productName;
-    @NotBlank
 
+    @NotBlank
     private String contractCode;
     @NotNull
 
@@ -27,31 +27,38 @@ public class ContractDto {
     @NotNull
 
     private Long profit;
+    @NotBlank
 
 
     private String image;
-
+    @NotNull
 
     private String startDate;
 
+    @NotNull
     private String endDate;
 
 
     private LocalDateTime createDate;
+
 
     private LocalDateTime updateDate;
 
 
     private boolean isDelete;
 
+    @NotNull
 
     private ProductType productType;
+    @NotNull
 
 
     private Customers customers;
 
 
+
     private ContractStatus contractStatus;
+
 
 
     private Employees employees;

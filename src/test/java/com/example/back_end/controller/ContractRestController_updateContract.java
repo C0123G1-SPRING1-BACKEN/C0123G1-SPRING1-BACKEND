@@ -63,7 +63,7 @@ public class ContractRestController_updateContract {
     @Test
     public void updateContract_contractCode_20() throws Exception {
         ContractDto contractDto=new ContractDto();
-        contractDto.setContractCode("");
+        contractDto.setContractCode(null);
         contractDto.setProductName("xe máy");
         contractDto.setLoans(Long.valueOf(1000000));
         contractDto.setProfit(Long.valueOf(100000));
