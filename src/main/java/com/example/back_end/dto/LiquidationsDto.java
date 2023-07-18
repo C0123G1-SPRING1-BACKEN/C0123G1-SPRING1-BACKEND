@@ -3,12 +3,17 @@ package com.example.back_end.dto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class LiquidationsDto {
     private Long id;
+
+    @NotNull(message = "Vui lòng chọn khách hàng.")
     private Customers customers;
+    @NotNull(message = "Vui lòng chọn sản phẩm.")
     private Contracts contracts;
+    @NotNull
     private Long totalPrice;
     private LocalDateTime createTime;
 

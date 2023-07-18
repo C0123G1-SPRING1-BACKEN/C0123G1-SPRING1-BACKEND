@@ -1,13 +1,13 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.ICustomersDto;
+import com.example.back_end.dto.ICustomerDto;
 import com.example.back_end.dto.IContractDto;
-import com.example.back_end.model.Contracts;
-import com.example.back_end.model.Customers;
+import com.example.back_end.dto.LiquidationsDto;
 import com.example.back_end.model.Liquidations;
 import com.example.back_end.service.ICustomerService;
 import com.example.back_end.service.contracts.IContractsService;
 import com.example.back_end.service.liquidations.ILiquidationsService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -16,7 +16,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 /**
@@ -24,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
  * Date created: 13/07/2023
  * Function: create liquidation
  *
- * @param LiquidaytionDto
+// * @param LiquidaytionDto
  * @return Liquidation
  */
 
@@ -40,17 +43,23 @@ public class LiquidationRestController {
     private IContractsService contractsService;
 
     @PostMapping("")
-    public void createLiquidation(@RequestBody Liquidations liquidations) {
+    public ResponseEntity<?> createLiquidation(@Valid @RequestBody LiquidationsDto liquidationsDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Liquidations liquidations=new Liquidations();
+        BeanUtils.copyProperties(liquidationsDto,liquidations);
         liquidationsService.save(liquidations);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<Page<ICustomersDto>> getListCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomersDto> customersDtoPage = customerService.findAllCustomer(pageable);
-        if (customersDtoPage.isEmpty()) {
-            return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
+    public ResponseEntity<Page<ICustomerDto>> getListCustomer(@PageableDefault(size = 3) Pageable pageable) {
+        Page<ICustomerDto> customerDtoPage = customerService.findByCustomer(pageable);
+        if (customerDtoPage.isEmpty()) {
+            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(customersDtoPage, HttpStatus.OK);
+        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
     }
 
     @GetMapping("/contracts")
@@ -62,23 +71,31 @@ public class LiquidationRestController {
         return new ResponseEntity<>(contractsDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/customers/{id}")
-        public Customers findById(Long id){
-       return customerService.findByIdCustomer(id);
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
+        ICustomerDto iCustomerDto=  customerService.findByIdCustomer(id);
+        if (iCustomerDto==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
     }
 
     @GetMapping("/customers/search")
-    public ResponseEntity<Page<ICustomersDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomersDto> customersDtoPage = customerService.searchCustomers(pageable, name);
-        if (customersDtoPage.isEmpty()) {
-            return new ResponseEntity<>(customersDtoPage, HttpStatus.NOT_FOUND);
+    public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
+        if (customerDtoPage.isEmpty()) {
+            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(customersDtoPage, HttpStatus.OK);
+        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/contracts/{id}")
-    public Contracts findContractById(@PathVariable Long id) {
-        return contractsService.findContractById(id);
+    @GetMapping("/contract/{id}")
+    public ResponseEntity<IContractDto> getByIdContract(@PathVariable("id") Long id) {
+        IContractDto iContractDto=  contractsService.findContractById(id);
+        if (iContractDto==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iContractDto,HttpStatus.OK);
     }
 
     @GetMapping("/contracts/search")
