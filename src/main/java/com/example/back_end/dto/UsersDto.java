@@ -85,4 +85,7 @@ private  String email;
     public void validate(Object target, Errors errors) {
 
     }
+
+    public void setEmail(String s) {
+    }
 }

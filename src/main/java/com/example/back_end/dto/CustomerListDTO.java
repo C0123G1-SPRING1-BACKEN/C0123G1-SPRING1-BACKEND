@@ -1,14 +1,14 @@
 package com.example.back_end.dto;
 
+import com.example.back_end.model.Contracts;
 
 import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
-
-
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
-public class CustomerDto {
-    @NotNull
+public class CustomerListDTO {
     private Long id;
     private String name;
     private String birthday;
@@ -18,37 +18,20 @@ public class CustomerDto {
     private String address;
     private String citizenCode;
     private String image;
-    private String frontCitizen;
-    private String backCitizen;
-    private String quantityContract;
-
     private LocalDateTime createDate;
-
     private LocalDateTime updateDate;
-    private boolean isDelete;
-
     private String note;
+    private Integer quantityContract;
 
-    public CustomerDto() {
+    public CustomerListDTO() {
     }
 
-    public CustomerDto(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.citizenCode = citizenCode;
-        this.image = image;
-        this.frontCitizen = frontCitizen;
-        this.backCitizen = backCitizen;
+    public Integer getQuantityContract() {
+        return quantityContract;
+    }
+
+    public void setQuantityContract(Integer quantityContract) {
         this.quantityContract = quantityContract;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-        this.note = note;
     }
 
     public Long getId() {
@@ -123,30 +106,6 @@ public class CustomerDto {
         this.image = image;
     }
 
-    public String getFrontCitizen() {
-        return frontCitizen;
-    }
-
-    public void setFrontCitizen(String frontCitizen) {
-        this.frontCitizen = frontCitizen;
-    }
-
-    public String getBackCitizen() {
-        return backCitizen;
-    }
-
-    public void setBackCitizen(String backCitizen) {
-        this.backCitizen = backCitizen;
-    }
-
-    public String getQuantityContract() {
-        return quantityContract;
-    }
-
-    public void setQuantityContract(String quantityContract) {
-        this.quantityContract = quantityContract;
-    }
-
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -163,14 +122,6 @@ public class CustomerDto {
         this.updateDate = updateDate;
     }
 
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
-    }
-
     public String getNote() {
         return note;
     }
@@ -178,4 +129,5 @@ public class CustomerDto {
     public void setNote(String note) {
         this.note = note;
     }
+
 }

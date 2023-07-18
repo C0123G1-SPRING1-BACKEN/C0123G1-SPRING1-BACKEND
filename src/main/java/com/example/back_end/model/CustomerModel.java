@@ -1,70 +1,63 @@
-package com.example.back_end.dto;
+package com.example.back_end.model;
 
-
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
-
-
+import javax.persistence.*;
 import java.time.LocalDateTime;
-
-public class CustomerDto {
-    @NotNull
-    private Long id;
-    private String name;
+@Entity
+@Table(name = "customer")
+public class CustomerModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idCustomer;
+    private String nameCustomer;
     private String birthday;
     private int gender;
-    private String phoneNumber;
+    private String phone;
     private String email;
     private String address;
-    private String citizenCode;
+    private String codeCitizen;
     private String image;
-    private String frontCitizen;
+    private String frondCitizen;
     private String backCitizen;
     private String quantityContract;
-
     private LocalDateTime createDate;
-
     private LocalDateTime updateDate;
     private boolean isDelete;
 
-    private String note;
-
-    public CustomerDto() {
+    public CustomerModel() {
     }
 
-    public CustomerDto(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
-        this.id = id;
-        this.name = name;
+    public CustomerModel(int idCustomer, String nameCustomer, String birthday, int gender, String phone, String email, String address, String codeCitizen, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+        this.idCustomer = idCustomer;
+        this.nameCustomer = nameCustomer;
         this.birthday = birthday;
         this.gender = gender;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.email = email;
         this.address = address;
-        this.citizenCode = citizenCode;
+        this.codeCitizen = codeCitizen;
         this.image = image;
-        this.frontCitizen = frontCitizen;
+        this.frondCitizen = frondCitizen;
         this.backCitizen = backCitizen;
         this.quantityContract = quantityContract;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isDelete = isDelete;
-        this.note = note;
     }
 
-    public Long getId() {
-        return id;
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
     public String getBirthday() {
@@ -83,12 +76,12 @@ public class CustomerDto {
         this.gender = gender;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -107,12 +100,12 @@ public class CustomerDto {
         this.address = address;
     }
 
-    public String getCitizenCode() {
-        return citizenCode;
+    public String getCodeCitizen() {
+        return codeCitizen;
     }
 
-    public void setCitizenCode(String citizenCode) {
-        this.citizenCode = citizenCode;
+    public void setCodeCitizen(String codeCitizen) {
+        this.codeCitizen = codeCitizen;
     }
 
     public String getImage() {
@@ -123,12 +116,12 @@ public class CustomerDto {
         this.image = image;
     }
 
-    public String getFrontCitizen() {
-        return frontCitizen;
+    public String getFrondCitizen() {
+        return frondCitizen;
     }
 
-    public void setFrontCitizen(String frontCitizen) {
-        this.frontCitizen = frontCitizen;
+    public void setFrondCitizen(String frondCitizen) {
+        this.frondCitizen = frondCitizen;
     }
 
     public String getBackCitizen() {
@@ -163,19 +156,11 @@ public class CustomerDto {
         this.updateDate = updateDate;
     }
 
-    public boolean isDelete() {
+    public boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setDelete(boolean delete) {
-        isDelete = delete;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
+    public void setIsDelete(boolean isDelete) {
+        this.isDelete = isDelete;
     }
 }
