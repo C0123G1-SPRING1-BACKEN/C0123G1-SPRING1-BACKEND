@@ -86,6 +86,4 @@ private  String email;
 
     }
 
-    public void setEmail(String s) {
-    }
 }

@@ -19,8 +19,6 @@ public class Contracts {
     @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
     private String contractCode;
     @Column(nullable = false)
-
-
     private Long loans;
     @Column(nullable = false)
     private Long profit;
