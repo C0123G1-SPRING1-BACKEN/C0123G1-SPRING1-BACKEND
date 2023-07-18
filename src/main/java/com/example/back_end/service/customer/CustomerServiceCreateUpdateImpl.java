@@ -33,8 +33,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getCitizenCode(),
                 customers.getImage(),
                 customers.getFrontCitizen(),
-                customers.getBackCitizen(),
-                customers.isDelete()
+                customers.getBackCitizen()
                 );
     }
 
@@ -60,8 +59,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getCitizenCode(),
                 customers.getImage(),
                 customers.getFrontCitizen(),
-                customers.getBackCitizen(),
-                customers.isDelete()
+                customers.getBackCitizen()
                 );
     }
 
@@ -79,5 +77,44 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
         CustomerSaveDto customerSaveDto =new CustomerSaveDto();
         BeanUtils.copyProperties(customers, customerSaveDto);
         return customerSaveDto;
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by email check duplicate
+     *
+     * @param email
+     * @return boolean
+     */
+    @Override
+    public boolean existsByEmail(String email) {
+        return customerRepositoryCreateUpdate.existsByEmail(email);
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by citizenCode check duplicate
+     *
+     * @param citizenCode
+     * @return boolean
+     */
+    @Override
+    public boolean existsByCitizenCode(String citizenCode) {
+        return customerRepositoryCreateUpdate.existsByCitizenCode(citizenCode);
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by phoneNumber check duplicate
+     *
+     * @param phoneNumber
+     * @return boolean
+     */
+    @Override
+    public boolean existsByPhoneNumber(String phoneNumber) {
+        return customerRepositoryCreateUpdate.existsByPhoneNumber(phoneNumber);
     }
 }

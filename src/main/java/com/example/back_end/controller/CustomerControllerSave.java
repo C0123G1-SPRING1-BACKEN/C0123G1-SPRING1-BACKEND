@@ -93,4 +93,25 @@ public class CustomerControllerSave {
             }
         }
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-email/{email}")
+    public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
+        boolean exists = customerServiceCreateUpdate.existsByEmail(email);
+        return ResponseEntity.ok(exists);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-citizen-code/{citizen-code}")
+    public ResponseEntity<Boolean> checkCitizenCodeExistence(@PathVariable("citizen-code") String citizenCode) {
+        boolean exists = customerServiceCreateUpdate.existsByCitizenCode(citizenCode);
+        return ResponseEntity.ok(exists);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-phone/{phone-number}")
+    public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone-number") String phoneNumber) {
+        boolean exists = customerServiceCreateUpdate.existsByPhoneNumber(phoneNumber);
+        return ResponseEntity.ok(exists);
+    }
 }

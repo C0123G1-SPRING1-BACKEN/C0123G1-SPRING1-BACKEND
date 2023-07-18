@@ -46,8 +46,6 @@ public class CustomerSaveController_updateCustomer {
 //        customerSaveDto.setImage("https://pvb.com/avatarr.jpg");
 //        customerSaveDto.setFrontCitizen("https://pvb.com/mattruoc.jpg");
 //        customerSaveDto.setBackCitizen("https://pvb.com/matsau.jpg");
-//        customerSaveDto.setDelete(false);
-//
 //        this.mockMvc
 //                .perform(MockMvcRequestBuilders
 //                        .patch("/api/customer/{id}", customerId)
@@ -79,7 +77,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -105,7 +103,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -132,7 +130,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -159,7 +157,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -185,7 +183,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -211,7 +209,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -237,7 +235,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -263,7 +261,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setCitizenCode("123456789012");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -289,7 +287,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setCitizenCode("123456789012");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -315,7 +313,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setCitizenCode("123456789012");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -341,7 +339,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -376,7 +374,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -403,7 +401,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -430,7 +428,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -457,7 +455,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -484,7 +482,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -511,7 +509,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -538,7 +536,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -565,7 +563,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -592,7 +590,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -626,7 +624,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -653,7 +651,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -680,7 +678,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -707,7 +705,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -734,7 +732,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -761,7 +759,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -788,7 +786,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -815,7 +813,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-ga");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -842,7 +840,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -877,7 +875,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -904,7 +902,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -931,7 +929,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -958,7 +956,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -985,7 +983,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1012,7 +1010,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1039,7 +1037,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://a.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1066,7 +1064,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://i.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1093,7 +1091,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://i.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1128,7 +1126,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1155,7 +1153,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1182,7 +1180,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1209,7 +1207,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1236,7 +1234,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1263,7 +1261,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://aimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/th.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1290,7 +1288,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22_22i.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1317,7 +1315,7 @@ public class CustomerSaveController_updateCustomer {
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22_22i.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
