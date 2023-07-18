@@ -22,23 +22,19 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private  JwtTokenUtil jwtTokenUtil;
+    private JwtTokenUtil jwtTokenUtil;
+
     @Autowired
-    private  UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
+
     @Autowired
-    private  AuthenticationManager authenticationManager;
-
-
-
-
-
+    private AuthenticationManager authenticationManager;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
         final String authorizationHeader = request.getHeader("Authorization");
-
         String username = null;
         String jwtToken = null;
 
@@ -54,9 +50,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+<<<<<<< HEAD
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             JwtUserDetails jwtUserDetails = (JwtUserDetails) userDetails;
             if (jwtTokenUtil.validateToken(jwtToken, jwtUserDetails)) {
+=======
+            JwtUserDetails userDetails = (JwtUserDetails) userDetailsService.loadUserByUsername(username);
+
+            if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+>>>>>>> b5cf7a886df87d43e1c31aa51c8e876e97597eb9
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -67,12 +69,4 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
-    private String getJwtFromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7);
-        }
-        return null;
-    }
 }
-
