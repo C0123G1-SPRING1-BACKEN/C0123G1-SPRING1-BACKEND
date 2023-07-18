@@ -1,8 +1,7 @@
 package com.example.back_end.service.impl;
 
-import com.example.back_end.dto.ICustomerDto;
 
-import com.example.back_end.repository.ICustomerRepository;
+import com.example.back_end.dto.ICustomerDto;
 import com.example.back_end.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
-    private ICustomerRepository iCustomerRepository;
+    private ICustomerService iCustomerRepository;
 
     @Override
     public Page<ICustomerDto> findByCustomer(Pageable pageable) {
@@ -26,7 +25,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public ICustomerDto findByIdCustomer(String id) {
+    public ICustomerDto findByIdCustomer(Long id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
 }

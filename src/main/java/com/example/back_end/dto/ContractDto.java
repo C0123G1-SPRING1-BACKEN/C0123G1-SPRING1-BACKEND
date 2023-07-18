@@ -1,49 +1,68 @@
 package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ContractDto {
 
+    @NotNull
     private Long id;
-    @NotBlank(message = "Không được để trống !")
+
+    @NotBlank
+    @NotNull
     private String productName;
-    @NotBlank(message = "Không được để trống !")
+    @NotBlank
+
     private String contractCode;
-    @NotNull(message = "Không được để trống !")
+    @NotNull
+
     private Long loans;
-    @NotNull(message = "Không được để trống !")
+    @NotNull
+
     private Long profit;
-    @NotBlank(message = "Không được để trống !")
+
 
     private String image;
-    @NotBlank(message = "Không được để trống !")
+
 
     private String startDate;
-    @NotBlank(message = "Không được để trống !")
 
     private String endDate;
-@NotNull(message = "Không được để trống !")
-    private ProductType productType;
-    @NotNull(message = "Không được để trống !")
 
-    private Customers customer;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
+
+
+    private boolean isDelete;
+
+
+    private ProductType productType;
+
+
+    private Customers customers;
+
 
     private ContractStatus contractStatus;
 
-    private Employees employee;
+
+    private Employees employees;
+
 
     private ContractType contractType;
 
     public ContractDto() {
     }
 
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, ProductType productType, Customers customer, ContractStatus contractStatus, Employees employee, ContractType contractType) {
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -52,15 +71,49 @@ public class ContractDto {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
         this.productType = productType;
-        this.customer = customer;
+        this.customers = customers;
         this.contractStatus = contractStatus;
-        this.employee = employee;
+        this.employees = employees;
         this.contractType = contractType;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
+    }
+
+    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
     }
 
     public void setId(Long id) {
@@ -123,6 +176,30 @@ public class ContractDto {
         this.endDate = endDate;
     }
 
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
+
     public ProductType getProductType() {
         return productType;
     }
@@ -131,12 +208,12 @@ public class ContractDto {
         this.productType = productType;
     }
 
-    public Customers getCustomer() {
-        return customer;
+    public Customers getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customers customer) {
-        this.customer = customer;
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
     }
 
     public ContractStatus getContractStatus() {
@@ -147,12 +224,12 @@ public class ContractDto {
         this.contractStatus = contractStatus;
     }
 
-    public Employees getEmployee() {
-        return employee;
+    public Employees getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(Employees employee) {
-        this.employee = employee;
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
     public ContractType getContractType() {
@@ -162,4 +239,5 @@ public class ContractDto {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
+
 }

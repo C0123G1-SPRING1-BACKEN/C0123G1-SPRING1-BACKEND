@@ -29,9 +29,4 @@ public interface IEmployeeRepository extends JpaRepository<Employees, Integer> {
                         @Param("citizen_code") String citizenCode,
                         @Param("image") String image);
 
-
-    boolean existsByEmail(String email);
-    boolean existsByPhoneNumber(String phoneNumber);
-    boolean existsByCitizenCode(String citizenCode);
-
 }

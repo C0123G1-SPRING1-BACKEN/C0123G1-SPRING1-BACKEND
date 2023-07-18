@@ -1,7 +1,6 @@
 package com.example.back_end.service.contracts.impl;
 
 import com.example.back_end.dto.IContractDto;
-import com.example.back_end.model.Contracts;
 import com.example.back_end.repository.IContractsRepository;
 import com.example.back_end.service.contracts.IContractsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ContractsServiceImpl implements IContractsService {
     }
 
     @Override
-    public Contracts findContractById(Long id) {
+    public IContractDto findContractById(Long id) {
         return contractsRepository.findContractById(id);
     }
 

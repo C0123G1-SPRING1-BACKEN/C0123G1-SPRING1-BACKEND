@@ -15,5 +15,4 @@ public interface IEmployeeService {
      * @param employeeDTO
      */
     void createEmployee(EmployeeDTO employeeDTO);
-
 }

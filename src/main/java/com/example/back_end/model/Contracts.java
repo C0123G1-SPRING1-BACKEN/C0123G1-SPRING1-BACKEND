@@ -44,13 +44,13 @@ public class Contracts {
     @JoinColumn
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customers_id")
+    @JoinColumn(name = "customer_id")
     private Customers customers;
     @ManyToOne
     @JoinColumn
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employees_id")
+    @JoinColumn(name = "employee_id")
     private Employees employees;
     @ManyToOne
     @JoinColumn
@@ -231,6 +231,4 @@ public class Contracts {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
-
-
 }
