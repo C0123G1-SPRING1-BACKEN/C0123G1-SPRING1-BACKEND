@@ -36,7 +36,7 @@ public class EmployeeController {
      */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<EmployeeDTO>> findAllByName(@PageableDefault(sort = {"id"},direction = Sort.Direction.DESC, size = 5)Pageable pageable,
                                                            @RequestParam(required = false,defaultValue = "") String search){
         Page<EmployeeDTO> employeeDTOS = iEmployeeService.findAllByName(pageable,search);
