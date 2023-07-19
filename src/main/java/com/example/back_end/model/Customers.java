@@ -1,7 +1,11 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Customers {
@@ -35,29 +39,32 @@ public class Customers {
     private LocalDateTime updateDate;
     @Column(columnDefinition = "BIT DEFAULT 0", updatable = true)
     private boolean isDelete;
+    @Column(name = "note", columnDefinition = "text")
+    private String note;
+    @OneToMany(mappedBy = "customers")
+    @JsonBackReference
+    private Set<Contracts> contractsSet = new HashSet<>();
+
+    public String getQuantityContract() {
+        return quantityContract;
+    }
+
+    public void setQuantityContract(String quantityContract) {
+        this.quantityContract = quantityContract;
+    }
+
+    public Set<Contracts> getContractsSet() {
+        return contractsSet;
+    }
+
+    public void setContractsSet(Set<Contracts> contractsSet) {
+        this.contractsSet = contractsSet;
+    }
 
     public Customers() {
     }
 
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.citizenCode = citizenCode;
-        this.image = image;
-        this.frontCitizen = frontCitizen;
-        this.backCitizen = backCitizen;
-        this.quantityContract = quantityContract;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-    }
-
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen) {
+    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -69,6 +76,16 @@ public class Customers {
         this.image = image;
         this.frontCitizen = frondCitizen;
         this.backCitizen = backCitizen;
+        this.quantityContract = quantityContract;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.isDelete = isDelete;
+    }
+
+    public Customers(Customers customers) {
+    }
+
+    public Customers(Long customerId) {
     }
 
     public Long getId() {
@@ -157,14 +174,6 @@ public class Customers {
 
     public void setBackCitizen(String backCitizen) {
         this.backCitizen = backCitizen;
-    }
-
-    public String getQuantityContract() {
-        return quantityContract;
-    }
-
-    public void setQuantityContract(String quantityContract) {
-        this.quantityContract = quantityContract;
     }
 
     public LocalDateTime getCreateDate() {
