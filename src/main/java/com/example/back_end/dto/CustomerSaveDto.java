@@ -36,7 +36,7 @@ public class CustomerSaveDto {
     private String address;
     @NotBlank(message = "Số CCCD không được để trống.")
     @Size(min = 12, max = 12, message = "Bạn cần nhập 12 ký tự")
-    @Pattern(regexp = "^(\\d{12})| $",
+    @Pattern(regexp = "^(\\d{12})$",
             message = "Số CCCD không đúng định dạng.")
     private String citizenCode;
     @NotBlank

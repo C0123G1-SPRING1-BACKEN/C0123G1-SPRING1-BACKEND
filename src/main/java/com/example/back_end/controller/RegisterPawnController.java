@@ -2,7 +2,6 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.RegisterDTO;
 import com.example.back_end.model.ProductType;
-import com.example.back_end.model.RegisterPawn;
 import com.example.back_end.service.IProductTypeService;
 import com.example.back_end.service.IRegisterPawnService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.BindingType;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
