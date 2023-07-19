@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IContractTypeRepository extends JpaRepository<ContractType, Long> {
-    @Query(value = "SELECT p FROM ContractType AS p")
-    List<ContractType> findAll();
+public interface IContractTypeRepository extends JpaRepository< ContractType, Long> {
+    @Query(value = "SELECT * FROM contract_type", nativeQuery = true)
+    List<ContractType> getAllContractType();
 }

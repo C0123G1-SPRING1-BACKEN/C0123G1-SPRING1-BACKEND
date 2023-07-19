@@ -8,7 +8,7 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '1.8'
+	sourceCompatibility = "1.8"
 }
 
 repositories {
@@ -30,8 +30,10 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail'
 
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
