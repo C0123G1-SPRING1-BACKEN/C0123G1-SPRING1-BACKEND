@@ -1,7 +1,6 @@
 package com.example.back_end.service;
 
 import com.example.back_end.dto.RegisterDTO;
-import com.example.back_end.model.Customers;
 import com.example.back_end.model.RegisterPawn;
 import com.example.back_end.repository.IRegisterPawnRepository;
 import org.springframework.beans.BeanUtils;
@@ -31,7 +30,13 @@ public class RegisterPawnService implements IRegisterPawnService {
         RegisterPawn registerPawn = new RegisterPawn();
         BeanUtils.copyProperties(registerDTO, registerPawn);
         registerPawnRepository.createRegisterPawn(registerPawn.getName(), registerPawn.getPhone(),
-                registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContendNote(), registerPawn.getProductType().getId());
+                registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContentNote(), registerPawn.getProductType().getId());
     }
+
+    @Override
+    public void confirmRegister(Long id) {
+        registerPawnRepository.confirmRegisterPawn(id);
+    }
+
 
 }

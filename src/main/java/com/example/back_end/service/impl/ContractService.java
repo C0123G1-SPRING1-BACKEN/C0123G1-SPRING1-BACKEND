@@ -6,13 +6,17 @@ import com.example.back_end.model.*;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.repository.IContractRepository;
+import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.ITransactionHistoryProjection;
+import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -95,8 +99,8 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> findAllTransactionHistory(Integer page, Integer limit) {
-        return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit, Sort.by("startDate").descending()));
+    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
+        return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit));
     }
 
     /**
@@ -111,7 +115,7 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(Long id) {
+    public Boolean deleteTransactionHistoryById(String id) {
         try {
             icontractRepository.deleteContractById(id);
         } catch (Exception e) {
@@ -132,11 +136,10 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Page<IContractProjection> searchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> projectionPage = icontractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
-                "%" + contractSearchDTO.getCustomerName() + "%", "%" + contractSearchDTO.getProductName() + "%",
+    public Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
+        return icontractRepository.searchTransactionHistory(PageRequest.of(page, limit),
+                contractSearchDTO.getCustomerName(), contractSearchDTO.getProductName(),
                 contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
-        return projectionPage;
     }
 
     /**
@@ -150,9 +153,8 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(Long id) {
+    public Optional<Contracts> findTransactionHistoryById(String id) {
         return icontractRepository.findContractsById(id);
-
     }
 
     @Override

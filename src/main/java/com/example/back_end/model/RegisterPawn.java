@@ -6,7 +6,6 @@ import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,14 +30,13 @@ public class RegisterPawn {
     private String address;
 
     @Column(length = 1000)
-    private String contendNote;
+    private String contentNote;
 
 
     private boolean status = false;
 
     @ManyToOne
     @JoinColumn
-    @Valid
     private ProductType productType;
 
     @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
@@ -52,25 +50,25 @@ public class RegisterPawn {
     public RegisterPawn() {
     }
 
-    public RegisterPawn(Long id, String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
+    public RegisterPawn(Long id, String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.contendNote = contendNote;
+        this.contentNote = contentNote;
         this.status = status;
         this.productType = productType;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
 
-    public RegisterPawn(String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
+    public RegisterPawn(String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.contendNote = contendNote;
+        this.contentNote = contentNote;
         this.status = status;
         this.productType = productType;
         this.createTime = createTime;
@@ -117,12 +115,12 @@ public class RegisterPawn {
         this.address = address;
     }
 
-    public String getContendNote() {
-        return contendNote;
+    public String getContentNote() {
+        return contentNote;
     }
 
-    public void setContendNote(String contendNote) {
-        this.contendNote = contendNote;
+    public void setContentNote(String contendNote) {
+        this.contentNote = contendNote;
     }
 
     public boolean isStatus() {
