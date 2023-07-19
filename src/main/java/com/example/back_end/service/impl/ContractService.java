@@ -129,21 +129,24 @@ public class ContractService implements IContractService {
 //        tính tổng tiền
         Long profits = (long) (loans * percent * daysBetween);
         System.out.println("Liền lãi: " + profits);
-        if (contracts.getProfit().equals(profits)){
-            iContractRepository.createContract(
-                    contracts.getCustomers().getId(),
-                    contracts.getContractCode(),
-                    contracts.getProductName(),
-                    contracts.getProductType().getId(),
-                    contracts.getImage(),
-                    contracts.getLoans(),
-                    contracts.getStartDate(),
-                    contracts.getEndDate(),
-                    contracts.getProfit(),
-                    contracts.getEmployees().getId());
-        }else {
-            System.out.println("Lỗi");
+        try{
+            if (contracts.getProfit().equals(profits)){
+                iContractRepository.createContract(
+                        contracts.getCustomers().getId(),
+                        contracts.getContractCode(),
+                        contracts.getProductName(),
+                        contracts.getProductType().getId(),
+                        contracts.getImage(),
+                        contracts.getLoans(),
+                        contracts.getStartDate(),
+                        contracts.getEndDate(),
+                        contracts.getProfit(),
+                        contracts.getEmployees().getId());
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
 
     }
 }
