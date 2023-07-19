@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
     @Modifying
-    @Query(value = "UPDATE contracts SET contract_status_id = 2, redeem_date = :redeemDate WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE contracts SET contract_status_id = 3, redeem_date = :redeemDate WHERE id = :id", nativeQuery = true)
     void redeem(@Param("id") Long id, @Param("redeemDate") String redeemDate);
 
 
@@ -54,7 +54,10 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "       con.contract_code AS contractCode,\n" +
             "       c.name            AS customerName,\n" +
             "       con.product_name  AS productName,\n" +
+            "       con.profit        AS profit,\n" +
             "       con.start_date    AS startDate,\n" +
+            "       con.redeem_date   AS redeemDate,\n" +
+            "       con.end_date      AS endDate,\n" +
             "       con.loans         AS loans\n" +
             "FROM contracts AS con\n" +
             "         INNER JOIN contract_status cs ON con.contract_status_id = cs.id\n" +

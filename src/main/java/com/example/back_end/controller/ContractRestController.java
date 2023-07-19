@@ -145,14 +145,6 @@ public class ContractRestController {
 
     @PatchMapping("/update")
     public ResponseEntity<?> updateContract( @RequestBody ContractDto contractDto) {
-//        if (bindingResult.hasErrors()) {
-//            List<String> errors = bindingResult.getFieldErrors()
-//                    .stream()
-//                    .map(FieldError::getDefaultMessage)
-//                    .collect(Collectors.toList());
-//
-//            return ResponseEntity.badRequest().body(errors);
-//        }
         try {
             iContractService.saveContract(contractDto);
             return ResponseEntity.ok(contractDto);
