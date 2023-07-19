@@ -14,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/employee")
@@ -55,9 +54,9 @@ public class EmployeeController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create-employee")
-    public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDTO employeeDTO, BindingResult bindingResult){
+    public ResponseEntity<EmployeeDTO> createEmployee(@Validated @RequestBody EmployeeDTO employeeDTO, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         iEmployeeService.createEmployee(employeeDTO);
         return new ResponseEntity<>(HttpStatus.OK);
