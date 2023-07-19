@@ -2,7 +2,6 @@ package com.example.back_end.repository;
 
 
 import com.example.back_end.model.Contracts;
-import com.example.back_end.model.Users;
 import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
