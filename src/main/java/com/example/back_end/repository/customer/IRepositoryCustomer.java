@@ -1,6 +1,6 @@
 package com.example.back_end.repository.customer;
 
-import com.example.back_end.model.CustomerModel;
+
 import com.example.back_end.model.Customers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
