@@ -4,6 +4,5 @@ public interface IProfitLiquidation {
     String getContractCode();
     String getLoans();
     String getProceedsOfSale();
-    String getCreateDate();
     String getProfit();
 }

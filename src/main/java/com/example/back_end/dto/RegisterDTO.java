@@ -2,10 +2,7 @@ package com.example.back_end.dto;
 
 import com.example.back_end.model.ProductType;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 public class RegisterDTO {
@@ -13,12 +10,12 @@ public class RegisterDTO {
     private Long id;
 
     @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
-    @Pattern(regexp = "^([A-Z][a-z]*\\s([A-Z][a-z]*\\s)*([A-Z][a-z]*))$", message = "Tên Của Bạn Không Đúng Định Dạng ")
+    @Pattern(regexp = "^([A-Z][a-z]*(\\s[A-Z][a-z]*)*)$", message = "Tên Của Bạn Không Đúng Định Dạng ")
     @NotBlank(message = "Bạn Cần Điền Đủ Thông Tin")
     private String name;
 
     @Size(max = 11, message = "Số Điện Thoại Của Bạn Không Được Quá 11 Số !!!")
-    @Pattern(regexp = "^((\\+84)|0)[0-9]{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
+    @Pattern(regexp = "^((\\+84)|0)\\d{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin ")
     private String phone;
 
@@ -34,34 +31,22 @@ public class RegisterDTO {
 
     @Size(max = 1000, message = "Nội Dung Ghi Chú  Của Bạn Không Được Quá 1000 Ký Tự !!!")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
-    private String contendNote;
+    private String contentNote;
 
     private boolean status = false;
-
-
+    @NotNull
     private ProductType productType;
 
 
     public RegisterDTO() {
     }
 
-    public RegisterDTO(String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType) {
+    public RegisterDTO(String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.contendNote = contendNote;
-        this.status = status;
-        this.productType = productType;
-    }
-
-    public RegisterDTO(Long id, String name, String phone, String email, String address, String contendNote, boolean status, ProductType productType) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.contendNote = contendNote;
+        this.contentNote = contentNote;
         this.status = status;
         this.productType = productType;
     }
@@ -106,12 +91,12 @@ public class RegisterDTO {
         this.address = address;
     }
 
-    public String getContendNote() {
-        return contendNote;
+    public String getContentNote() {
+        return contentNote;
     }
 
-    public void setContendNote(String contendNote) {
-        this.contendNote = contendNote;
+    public void setContentNote(String contentNote) {
+        this.contentNote = contentNote;
     }
 
     public boolean isStatus() {

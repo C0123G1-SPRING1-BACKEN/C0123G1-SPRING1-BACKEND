@@ -36,8 +36,6 @@ public class Employees {
     @JoinColumn
     private Users users;
 
-    public Employees() {
-    }
 
     public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;
@@ -54,6 +52,11 @@ public class Employees {
         this.updateTime = updateTime;
         this.users = users;
     }
+
+    public Employees() {
+    }
+
+
 
     public Long getId() {
         return id;
