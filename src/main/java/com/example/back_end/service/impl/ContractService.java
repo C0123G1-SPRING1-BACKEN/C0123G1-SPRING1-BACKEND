@@ -4,7 +4,7 @@ package com.example.back_end.service.impl;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
+
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
@@ -79,6 +79,11 @@ public class ContractService implements IContractService {
 
     }
 
+    @Override
+    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
+        return null;
+    }
+
 
     @Override
     public Page<Contracts> showTop10NewContract(Pageable pageable) {
@@ -88,20 +93,6 @@ public class ContractService implements IContractService {
     }
 
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: get page transaction history from Database
-     * <p>
-     *
-     * @param page
-     * @return Page<IContractProjection>
-     */
-
-    @Override
-    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
-        return icontractRepository.findAllTransactionHistoryByDeleteIsFalse(PageRequest.of(page, limit));
-    }
 
     /**
      * Created by: ThienNT

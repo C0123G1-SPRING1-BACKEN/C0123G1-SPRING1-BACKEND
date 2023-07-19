@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.BindingType;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,13 +77,13 @@ public class RegisterPawnController {
     }
 
 
-    @GetMapping("/product-type")
-    public ResponseEntity<List<ProductType>> getList() {
-        if (productTypeService.getAll() == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/product-type")
+//    public ResponseEntity<List<ProductType>> getList() {
+//        if (productTypeService.getAll() == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
+//    }
 
     @PatchMapping("/{id}")
     public ResponseEntity<?> confirmRegister (@PathVariable("id") Long id) {
