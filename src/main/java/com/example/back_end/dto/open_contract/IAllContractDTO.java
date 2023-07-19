@@ -12,4 +12,5 @@ public interface IAllContractDTO {
     String getContractType();
     String getProductType();
     String getContractStatus();
+    String getImage();
 }

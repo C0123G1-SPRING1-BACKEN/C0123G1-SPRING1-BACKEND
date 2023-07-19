@@ -10,6 +10,15 @@ public class OpenContractDTO {
     private Long profit;
     private String endDate;
     private String redeemDate;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getContractId() {
         return contractId;

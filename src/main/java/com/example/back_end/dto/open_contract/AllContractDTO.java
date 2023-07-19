@@ -14,6 +14,15 @@ public class AllContractDTO {
     private String contractType;
     private String productType;
     private String contractStatus;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getContractType() {
         return contractType;

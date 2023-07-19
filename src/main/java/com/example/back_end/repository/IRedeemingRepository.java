@@ -45,8 +45,8 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "FROM contracts\n" +
             "         INNER JOIN customers c ON contracts.customers_id = c.id\n" +
             "WHERE contracts.id = :id\n" +
-            "  AND contracts.is_delete = FALSE\n" +
-            "  AND contracts.contract_status_id = 2", nativeQuery = true)
+            "  AND contracts.is_delete = FALSE\n"
+            , nativeQuery = true)
     Contracts findOpenContractById(@Param("id") Long id);
 
 
@@ -75,7 +75,8 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "       con.profit        AS profit,\n" +
             "       con.end_date      AS endDate,\n" +
             "       PT.name           AS productType,\n" +
-            "       cs.name           AS contractStatus\n" +
+            "       cs.name           AS contractStatus,\n" +
+            "       con.image         AS image\n" +
             "\n" +
             "FROM contracts AS con\n" +
             "         INNER JOIN contract_status cs\n" +
@@ -85,8 +86,8 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "\n" +
             "WHERE con.is_delete = FALSE\n" +
             "  AND con.contract_type_id = 1\n" +
-            "AND con.product_type_id LIKE :productType\n" +
-            "AND con.product_name LIKE :productName\n" +
+            "  AND con.product_type_id LIKE '%%'\n" +
+            "  AND con.product_name LIKE '%%'\n" +
             "ORDER BY con.create_time DESC", nativeQuery = true)
     Page<IAllContractDTO> findAllContractDTOS(Pageable pageable, @Param("productName") String productName, @Param("productType") String productType);
 }

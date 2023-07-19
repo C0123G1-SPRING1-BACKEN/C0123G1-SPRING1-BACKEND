@@ -3,7 +3,9 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.open_contract.IOpenContractDTO;
 import com.example.back_end.dto.open_contract.OpenContractDTO;
 import com.example.back_end.model.Contracts;
+import com.example.back_end.model.Customers;
 import com.example.back_end.service.IRedeemingService;
+import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +26,9 @@ public class RedeemingController {
     @Autowired
     private IRedeemingService iRedeemingService;
 
+    @Autowired
+    private EmailService emailService;
+
     /**
      * Created by: HoaTQ
      * Date created: 13/07/2023
@@ -33,11 +38,28 @@ public class RedeemingController {
      * void: update contractStatus to closed
      */
     @Transactional
-    @PatchMapping ("/pay/{id}")
+    @PatchMapping("/pay/{id}")
     public void redeem(@PathVariable("id") Long id, @Param("redeemDate") String redeemDate) {
         iRedeemingService.redeems(id, redeemDate);
-    }
+        Contracts contracts = iRedeemingService.findOpenContract(id);
+        String name = contracts.getCustomers().getName();
+        String product = contracts.getProductName();
 
+        String to = contracts.getCustomers().getEmail();
+        String subject = "Xác nhận chuộc đồ - PawnShop";
+        String body = "Chào " + name + ",\n" +
+                "\n" +
+                "Chúng tôi gửi mail này để xác nhận rằng bạn vừa thanh toán đê nhận lại " + product + " vào ngày " + redeemDate +"\n" +
+                "\n" +
+                "Chúng tôi xin cảm ơn quý khách đã tin tường và sử dụng dịch vụ của chúng tôi.\n" +
+                "\n" +
+                "Pawn Shop\n" +
+                "\n";
+
+        emailService.sendMail(to, subject, body);
+
+
+    }
 
 
     /**
@@ -88,12 +110,12 @@ public class RedeemingController {
     @Transactional
     @GetMapping("/search")
     public ResponseEntity<Page<OpenContractDTO>> getOpenContractSearchList(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                                     @RequestParam(value = "contractCode") String contractCode,
-                                                                     @RequestParam(value = "customerName") String customerName,
-                                                                     @RequestParam(value = "productName") String productName,
-                                                                     @RequestParam(value = "startDate") String startDate) {
+                                                                           @RequestParam(value = "contractCode") String contractCode,
+                                                                           @RequestParam(value = "customerName") String customerName,
+                                                                           @RequestParam(value = "productName") String productName,
+                                                                           @RequestParam(value = "startDate") String startDate) {
         Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Order.desc("create_time")));
-        Page<OpenContractDTO> contractsPage = iRedeemingService.searchPageConTract(pageable, '%' + contractCode + '%', '%' + customerName + '%', '%' + productName + '%','%' + startDate + '%');
+        Page<OpenContractDTO> contractsPage = iRedeemingService.searchPageConTract(pageable, '%' + contractCode + '%', '%' + customerName + '%', '%' + productName + '%', '%' + startDate + '%');
 
         if (contractsPage == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

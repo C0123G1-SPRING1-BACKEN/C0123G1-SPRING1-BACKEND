@@ -26,7 +26,6 @@ public class RedeemingService implements IRedeemingService {
 
     @Override
     public void redeems(Long id, String redeemDate) {
-        System.out.println(id);
         iRedeemingRepository.redeem(id, redeemDate);
     }
 
@@ -92,6 +91,7 @@ public class RedeemingService implements IRedeemingService {
             dto.setEndDate(projection.getEndDate());
             dto.setProductType(projection.getProductType());
             dto.setContractStatus(projection.getContractStatus());
+            dto.setImage(projection.getImage());
             return dto;
         });
     }
