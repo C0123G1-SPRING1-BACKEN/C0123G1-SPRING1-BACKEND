@@ -1,8 +1,6 @@
 package com.example.back_end.service.impl;
 
-import com.example.back_end.dto.EmployeeDTO;
 import com.example.back_end.dto.PostsDTO;
-import com.example.back_end.model.Employees;
 import com.example.back_end.model.Posts;
 import com.example.back_end.repository.IPostsRepository;
 import com.example.back_end.service.IPostsService;
