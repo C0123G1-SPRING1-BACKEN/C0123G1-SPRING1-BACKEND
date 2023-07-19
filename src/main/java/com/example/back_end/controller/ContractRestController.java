@@ -196,7 +196,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/top10")
-    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault(sort = "create_date",direction = Sort.Direction.DESC)Pageable pageable) {
+    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault (sort = "create_time",direction = Sort.Direction.DESC)Pageable pageable) {
         Page<Contracts> contracts = this.iContractService.showTop10NewContract(pageable);
         if (contracts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

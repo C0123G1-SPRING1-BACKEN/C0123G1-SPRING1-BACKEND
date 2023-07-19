@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -44,13 +45,13 @@ public class Contracts {
     @JoinColumn
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customers_id")
     private Customers customers;
     @ManyToOne
     @JoinColumn
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employees_id")
     private Employees employees;
     @ManyToOne
     @JoinColumn
@@ -60,46 +61,6 @@ public class Contracts {
     public Contracts(){
     }
 
-
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.createTime = createDate;
-        this.updateTime = updateDate;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
-    }
-
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-
-
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
-    }
 
     public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
         this.id = id;
@@ -120,7 +81,19 @@ public class Contracts {
         this.contractType = contractType;
     }
 
-
+    public Contracts(Long id, String productName, String contractCode, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
 
     public Long getId() {
         return id;

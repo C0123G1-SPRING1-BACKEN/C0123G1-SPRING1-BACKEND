@@ -42,14 +42,14 @@ public class ContractService implements IContractService {
     @Override
     public void saveContract(ContractDto contractDto) {
         Contracts contract = icontractRepository.findContractById(contractDto.getId());
-        contract.setProductName(contractDto.getProductName());
         contract.setContractCode(contractDto.getContractCode());
+        contract.setProductName(contractDto.getProductName());
         contract.setLoans(contractDto.getLoans());
         contract.setProfit(contractDto.getProfit());
         contract.setImage(contractDto.getImage());
         contract.setStartDate(contractDto.getStartDate());
         contract.setEndDate(contractDto.getEndDate());
-//        contract.setDelete(contractDto.isDelete());
+        contract.setDelete(contractDto.isDelete());
         contract.setProductType(contractDto.getProductType());
         contract.setCustomers(contractDto.getCustomers());
         contract.setContractStatus(contractDto.getContractStatus());
@@ -57,9 +57,9 @@ public class ContractService implements IContractService {
         contract.setContractType(contractDto.getContractType());
 
         icontractRepository.saveContract(
-                contractDto.getContractCode(),
-                contractDto.getProductName(),
-                contractDto.getLoans(),
+                contract.getContractCode(),
+                contract.getProductName(),
+                contract.getLoans(),
                 contract.getProfit(),
                 contract.getImage(),
                 contract.getStartDate(),
@@ -151,7 +151,7 @@ public class ContractService implements IContractService {
 
     @Override
     public Optional<Contracts> findTransactionHistoryById(Long id) {
-        return iContractRepository.findContractsById(id);
+        return icontractRepository.findContractsById(id);
 
     }
 
