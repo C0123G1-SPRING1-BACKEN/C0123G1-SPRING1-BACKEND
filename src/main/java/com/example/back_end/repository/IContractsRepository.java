@@ -12,7 +12,7 @@ public interface IContractsRepository extends JpaRepository<Contracts, Long> {
     @Query(value = "SELECT c.id AS id, c.product_name AS productName, p.name AS productType, c.loans AS loans\n" +
             "FROM contracts c\n" +
             "JOIN product_type p ON c.product_type_id = p.id\n" +
-            "WHERE c.contract_status_id = 3", nativeQuery = true)
+            "WHERE c.contract_status_id = 3 and is_delete =false", nativeQuery = true)
     Page<IContractDto> finAllProduct(Pageable pageable);
 
     @Query(value = "SELECT c.id as id,c.product_name as productName,c.product_type_id as productType, c.loans as loans, (SELECT COUNT(*)  FROM contracts GROUP BY id) AS total\n" +

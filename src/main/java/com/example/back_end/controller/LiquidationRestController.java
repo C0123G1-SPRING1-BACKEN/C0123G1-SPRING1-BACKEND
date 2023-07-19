@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +45,7 @@ public class LiquidationRestController {
     private IContractsService contractsService;
 
     @PostMapping("")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createLiquidation(@Valid @RequestBody LiquidationsDto liquidationsDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -55,6 +57,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/customers")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<ICustomerDto>> getListCustomer(@PageableDefault(size = 6) Pageable pageable) {
         Page<ICustomerDto> customerDtoPage = customerService.findByCustomer(pageable);
         if (customerDtoPage.isEmpty()) {
@@ -64,6 +67,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/contracts")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 6) Pageable pageable) {
         Page<IContractDto> contractsDtoPage = contractsService.findAllProduct(pageable);
         if (contractsDtoPage.isEmpty()) {
@@ -73,6 +77,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/customer/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
         ICustomerDto iCustomerDto = customerService.findByIdCustomer(id);
         if (iCustomerDto == null) {
@@ -82,6 +87,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/customers/search")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 6) Pageable pageable, @RequestParam("name") String name) {
         Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
         if (customerDtoPage.isEmpty() && customerDtoPage == null) {
@@ -100,6 +106,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/contracts/search")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<IContractDto>> getCustomer(@PageableDefault(size = 6) Pageable pageable, @RequestParam("productName") String productName
             , @RequestParam("productType") String productType, @RequestParam("loans") String loans) {
         Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, productName, productType, loans);

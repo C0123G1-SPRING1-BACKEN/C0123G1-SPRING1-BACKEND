@@ -6,6 +6,7 @@ import com.example.back_end.service.details.IEmployeeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +24,7 @@ public class EmployeeDetailController {
     private IEmployeeDetailService employeeDetailRepository;
 
     @GetMapping("detail/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
         EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(id);
         if (employeeDetailDto == null)
@@ -32,6 +34,7 @@ public class EmployeeDetailController {
     }
 
     @PatchMapping("detail/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             employeeDetailRepository.updateEmployeeDetail(id, employeeDetailDto);
