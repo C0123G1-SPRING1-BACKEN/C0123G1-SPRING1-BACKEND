@@ -8,7 +8,7 @@ import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +24,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Created by: DinhHD
- * Date created: 13/07/2023
- * Function: do about pawn interface, customer selection interface
- * <p>
- * // * @param Contracts
- *
- * @return createContracts()
- */
-
 @RequestMapping("/api/employee/contract")
 @RestController
 @CrossOrigin("*")
@@ -41,22 +31,22 @@ public class ContractRestController {
     @Autowired
     private IContractService iContractService;
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: get page transaction history from Database
-     * <p>
-     *
-     * @param page
-     * @return ResponseEntity<Page < IContractProjection>>
-     */
+//    /**
+//     * Created by: ThienNT
+//     * Date created: 13/07/2023
+//     * Function: get page transaction history from Database
+//     * <p>
+//     *
+//     * @param
+//     * @return ResponseEntity<Page < IContractProjection>>
+//     */
 
 //    @GetMapping("")
-//    public ResponseEntity<Page<IContractProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-//                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-//        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
+//    public ResponseEntity<Page<ITransactionHistoryProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+//                                                                                        @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
+//        Page<ITransactionHistoryProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
 //        int totalPage = contractProjectionPage.getTotalPages();
-//        if (page >= totalPage) {
+//        if (page >= totalPage || page < 0) {
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
 //        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
@@ -73,7 +63,7 @@ public class ContractRestController {
      */
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -93,9 +83,9 @@ public class ContractRestController {
      */
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") Long id) {
+    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
-        return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+        return contractDTO.map(contracts -> new ResponseEntity<>(contracts, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     /**
@@ -104,18 +94,18 @@ public class ContractRestController {
      * Function: search transaction history from Database
      * <p>
      *
-     * @param contractSearchDTO
+     * @param
      * @return ResponseEntity<IContractProjection>
      * @requestbody contractSearchDTO
      */
 
-    @GetMapping("")
-    public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit,
-                                                                              @RequestBody ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> contractProjectionsPage = iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
+    @PostMapping("/search-transaction-history")
+    public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                                                   @RequestParam(name = "limit", defaultValue = "5") Integer limit,
+                                                                                                   @RequestBody ContractSearchDTO contractSearchDTO) {
+        Page<ITransactionHistoryProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
         int totalPage = contractProjectionsPage.getTotalPages();
-        if (page >= totalPage) {
+        if (page > totalPage || page<0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
@@ -128,7 +118,7 @@ public class ContractRestController {
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+    public ResponseEntity<HttpStatus> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

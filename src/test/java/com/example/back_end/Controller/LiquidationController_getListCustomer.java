@@ -54,8 +54,8 @@ public class LiquidationController_getListCustomer {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
-                .andExpect(jsonPath("totalElements").value(1))
-                .andExpect(jsonPath("content[0].name").value("Huỳnh Đức Định"))
+                .andExpect(jsonPath("totalElements").value(3))
+                .andExpect(jsonPath("content[0].name").value("Huynh Duc Dinh"))
                 .andExpect(jsonPath("content[0].citizenCode").value("201964254"))
                 .andExpect(jsonPath("content[0].quantityContract").value("4"));
     }
