@@ -20,20 +20,16 @@ import java.util.Optional;
 
 @Repository
 public interface IContractRepository extends JpaRepository<Contracts, Long> {
-    @Query(value = "SELECT * from contracts JOIN customers ON contracts.customers_id = customers.id\n" +
-            "JOIN contract_status cs on contracts.contract_status_id = cs.id\n" +
-            "JOIN contract_type ct on contracts.contract_type_id = ct.id\n" +
-            "JOIN employees e on contracts.employees_id = e.id\n" +
-            "JOIN product_type pt on contracts.product_type_id = pt.id WHERE contracts.is_delete=false and contracts.id= :id", nativeQuery = true)
+    @Query(value = "SELECT * from contracts where contracts.is_delete=false and contracts.id= :id", nativeQuery = true)
     Contracts findContractById(@Param("id") Long id);
 
-    @Query(value = "select * from contracts", nativeQuery = true)
+    @Query(value = "select * from contracts where contracts.is_delete=false", nativeQuery = true)
     Page<Contracts> showTop10NewContract(Pageable pageable);
 
     @Transactional
     @Modifying
     @Query(value = "UPDATE Contracts SET contract_code = :contractCode,product_name = :productName, loans = :loans, profit = :profit, image = :image, start_date = :startDate, end_date = :endDate, is_delete = :isDelete, product_type_id = :productTypeId, customers_id = :customerId, contract_status_id = :contractStatusId, employees_id = :employeeId, contract_type_id = :contractTypeId WHERE Contracts.id = :id", nativeQuery = true)
-    void saveContract(@Param("contractCode") String contractCode,@Param("productName") String productName,@Param("loans") Long loans,
+    void saveContract(@Param("contractCode")String contractCode,@Param("productName") String productName,@Param("loans") Long loans,
                            @Param("profit") Long profit,@Param("image") String image,@Param("startDate") String startDate,@Param("endDate") String endDate,@Param("isDelete") boolean isDelete,
                            @Param("productTypeId") Long productTypeId,@Param("customerId") Long customerId,@Param("contractStatusId") Long contractStatusId,@Param("employeeId") Long employeeId,@Param("contractTypeId") Long contractTypeId,@Param("id")Long id);
 
