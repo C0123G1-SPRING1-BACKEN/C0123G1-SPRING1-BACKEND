@@ -46,7 +46,36 @@ public interface ICustomerRepositoryCreateUpdate extends JpaRepository<Customers
                         @Param("frontCitizen") String frontCitizen,
                         @Param("backCitizen") String backCitizen);
 
-    boolean existsByEmail(String email);
-    boolean existsByPhoneNumber(String phoneNumber);
-    boolean existsByCitizenCode(String citizenCode);
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check email exists or not
+     * @param email
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE email = :email), 'true', 'false')", nativeQuery = true)
+    Boolean existsByEmail(@Param("email") String email);
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check phoneNumber exists or not
+     * @param phoneNumber
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE phone_number = :phoneNumber), 'true', 'false')", nativeQuery = true)
+    Boolean existsByPhoneNumber(String phoneNumber);
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check citizenCode exists or not
+     * @param citizenCode
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE citizen_code = :citizenCode), 'true', 'false')", nativeQuery = true)
+    Boolean existsByCitizenCode(String citizenCode);
 }

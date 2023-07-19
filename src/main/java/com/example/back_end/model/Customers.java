@@ -33,6 +33,7 @@ public class Customers {
     private LocalDateTime createDate;
     @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
     private LocalDateTime updateDate;
+    @Column(columnDefinition = "BIT DEFAULT 0", updatable = true)
     private boolean isDelete;
 
     public Customers() {

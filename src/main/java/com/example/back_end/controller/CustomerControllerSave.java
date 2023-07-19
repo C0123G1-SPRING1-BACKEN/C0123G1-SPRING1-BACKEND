@@ -1,7 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.CustomerSaveDto;
-import com.example.back_end.service.customer.ICustomerServiceCreateUpdate;
+import com.example.back_end.service.customers.ICustomerServiceCreateUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -94,6 +94,16 @@ public class CustomerControllerSave {
         }
     }
 
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkEmailExistence
+     *
+     * @return boolean This function checks if the email exists in the database.
+     * If the email is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param email
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-email/{email}")
     public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
@@ -101,13 +111,32 @@ public class CustomerControllerSave {
         return ResponseEntity.ok(exists);
     }
 
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkCitizenCodeExistence
+     *
+     * @return boolean This function checks if the citizen-code exists in the database.
+     * If the citizen-code is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param citizenCode
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-citizen-code/{citizen-code}")
     public ResponseEntity<Boolean> checkCitizenCodeExistence(@PathVariable("citizen-code") String citizenCode) {
         boolean exists = customerServiceCreateUpdate.existsByCitizenCode(citizenCode);
         return ResponseEntity.ok(exists);
     }
-
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkPhoneExistence
+     *
+     * @return boolean This function checks if the phone-number exists in the database.
+     * If the phone-number is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param phoneNumber
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-phone/{phone-number}")
     public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone-number") String phoneNumber) {
