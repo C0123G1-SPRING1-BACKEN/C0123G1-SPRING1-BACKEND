@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,11 +84,6 @@ public class Customers {
         this.isDelete = isDelete;
     }
 
-    public Customers(Customers customers) {
-    }
-
-    public Customers(Long customerId) {
-    }
 
     public Long getId() {
         return id;

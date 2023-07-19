@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RegisterPawnController_registerPawn {
+ class RegisterPawnController_registerPawn {
 
 
     @Autowired
@@ -32,7 +32,7 @@ public class RegisterPawnController_registerPawn {
      */
 
     @Test
-    public void registerPawn_14() throws Exception {
+     void registerPawn_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("");
         registerDTO.setAddress("");
@@ -58,7 +58,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_14() throws Exception {
+     void registerPawn_name_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -85,7 +85,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_14() throws Exception {
+     void registerPawn_address_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("");
@@ -113,7 +113,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_14() throws Exception {
+     void registerPawn_phone_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -140,7 +140,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_14() throws Exception {
+     void registerPawn_email_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -167,7 +167,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_14() throws Exception {
+     void registerPawn_contendNote_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -194,7 +194,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_16() throws Exception {
+     void registerPawn_name_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
                 "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
@@ -226,7 +226,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_15() throws Exception {
+     void registerPawn_name_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("tran tien dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -253,7 +253,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_16() throws Exception {
+     void registerPawn_phone_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -280,7 +280,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_15() throws Exception {
+     void registerPawn_phone_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -306,7 +306,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_16() throws Exception {
+     void registerPawn_email_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -336,7 +336,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_15() throws Exception {
+     void registerPawn_email_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -363,7 +363,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_16() throws Exception {
+     void registerPawn_address_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddđffff" +
@@ -404,7 +404,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_16() throws Exception {
+     void registerPawn_contendNote_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xu");
@@ -449,7 +449,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_18() throws Exception {
+     void registerPawn_18() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Ho Vien");
         registerDTO.setAddress("Thừa Thiên Huế");
@@ -476,7 +476,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_13() throws Exception {
+     void registerPawn_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName(null);
         registerDTO.setAddress(null);
@@ -503,7 +503,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_13() throws Exception {
+     void registerPawn_name_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName(null);
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -531,7 +531,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_13() throws Exception {
+     void registerPawn_address_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress(null);
@@ -558,7 +558,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_13() throws Exception {
+     void registerPawn_phone_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -585,7 +585,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_13() throws Exception {
+     void registerPawn_email_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -612,7 +612,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_13() throws Exception {
+     void registerPawn_contendNote_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -639,7 +639,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_99() throws Exception {
+     void registerPawn_name_99() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -666,7 +666,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_99() throws Exception {
+     void registerPawn_phone_99() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -693,7 +693,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_99() throws Exception {
+     void registerPawn_email_99() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -721,7 +721,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_98() throws Exception {
+     void registerPawn_name_98() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName(" Nguyen Duc Thang ");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -748,7 +748,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_98() throws Exception {
+     void registerPawn_phone_98() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -775,7 +775,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_98() throws Exception {
+     void registerPawn_email_98() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -803,7 +803,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_productType_16() throws Exception {
+     void registerPawn_productType_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");

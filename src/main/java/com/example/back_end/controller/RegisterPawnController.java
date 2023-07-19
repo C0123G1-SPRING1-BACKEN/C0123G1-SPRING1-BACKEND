@@ -2,17 +2,25 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.RegisterDTO;
 import com.example.back_end.model.ProductType;
+import com.example.back_end.model.RegisterPawn;
 import com.example.back_end.service.IProductTypeService;
 import com.example.back_end.service.IRegisterPawnService;
+import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,65 +43,52 @@ public class RegisterPawnController {
 
     @Autowired
     private IProductTypeService productTypeService;
-
-
+    @NonNull
     @PostMapping("/create")
-    public ResponseEntity<?> createRegisterPawn(
+    public ResponseEntity<Map<String, String>> createRegisterPawn(
             @Validated @RequestBody RegisterDTO registerDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            Map<String, String> list = new HashMap();
-            if (bindingResult.getFieldError("name") != null) {
-                list.put("name", bindingResult.getFieldError("name").getDefaultMessage());
+            Map<String, String> list = new HashMap<>();
+
+            String[] fieldsToCheck = {"name", "phone", "address", "email", "contentNote"};
+
+            for (String field : fieldsToCheck) {
+                @Nullable
+                FieldError fieldError = bindingResult.getFieldError(field);
+                if (fieldError != null) {
+                    list.put(field, fieldError.getDefaultMessage());
+                }
             }
-            if (bindingResult.getFieldError("phone") != null) {
-                list.put("phone", bindingResult.getFieldError("phone").getDefaultMessage());
-
-
-            }
-            if (bindingResult.getFieldError("address") != null) {
-                list.put("address", bindingResult.getFieldError("address").getDefaultMessage());
-
-
-            }
-            if (bindingResult.getFieldError("email") != null) {
-                list.put("email", bindingResult.getFieldError("email").getDefaultMessage());
-
-            }
-            if (bindingResult.getFieldError("contentNote") != null) {
-                list.put("contendNote", bindingResult.getFieldError("contentNote").getDefaultMessage());
-
-            }
-
-
             return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
         }
+
+        Map<String, String> statusCreate = new HashMap<>();
+        statusCreate.put("status", "Đăng Ký Cầm Đồ Thành Công ");
         iRegisterPawnService.createRegisterPawn(registerDTO);
-        return ResponseEntity.ok("Đăng Ký Cầm Đồ Thành Công ");
+        return new ResponseEntity<>(statusCreate, HttpStatus.OK);
     }
 
 
-    @GetMapping("/product-type")
-    public ResponseEntity<List<ProductType>> getList() {
-        if (productTypeService.getAll() == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/product-type")
+//    public ResponseEntity<List<ProductType>> getList() {
+//        if (productTypeService.getAll() == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
+//    }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> confirmRegister (@PathVariable("id") Long id) {
+    public <T> ResponseEntity<T> confirmRegister(@PathVariable("id") Long id) {
         iRegisterPawnService.confirmRegister(id);
-         return new ResponseEntity<>(HttpStatus.OK) ;
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
+        ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
@@ -101,4 +96,17 @@ public class RegisterPawnController {
         return errors;
     }
 
+    /**
+     * Created by: QuocNHA
+     * Date created: 13/07/2023
+     * Function: register pawn
+     *
+     * @return
+     * @param: registerDTO
+     */
+    @GetMapping("")
+    public ResponseEntity<?> findByNameRegisterPawn(
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
+        return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(pageable), HttpStatus.OK);
+    }
 }
