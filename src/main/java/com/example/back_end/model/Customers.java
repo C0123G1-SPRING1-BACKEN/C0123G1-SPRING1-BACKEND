@@ -1,5 +1,7 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -40,6 +42,7 @@ public class Customers {
     @Column(name = "note", columnDefinition = "text")
     private String note;
     @OneToMany(mappedBy = "customers")
+    @JsonBackReference
     private Set<Contracts> contractsSet = new HashSet<>();
 
     public String getQuantityContract() {
