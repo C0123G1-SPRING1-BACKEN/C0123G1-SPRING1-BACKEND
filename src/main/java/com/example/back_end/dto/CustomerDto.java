@@ -1,9 +1,14 @@
 package com.example.back_end.dto;
 
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
+
+
 import java.time.LocalDateTime;
 
 public class CustomerDto {
+    @NotNull
     private Long id;
     private String name;
     private String birthday;
