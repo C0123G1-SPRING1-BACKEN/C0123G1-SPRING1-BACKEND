@@ -109,10 +109,6 @@ public class ContractService implements IContractService {
         return iContractRepository.findContractsById(id);
     }
 
-    @Override
-    public List<Contracts> findAll() {
-        return iContractRepository.findAllContracts();
-    }
 
     @Transactional
     @Override
@@ -146,7 +142,5 @@ public class ContractService implements IContractService {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-
     }
 }

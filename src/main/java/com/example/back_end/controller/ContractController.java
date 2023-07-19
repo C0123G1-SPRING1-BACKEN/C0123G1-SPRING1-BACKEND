@@ -120,12 +120,6 @@ public class ContractController {
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Contracts>> getAllContract() {
-        List<Contracts> contractsList = iContractService.findAll();
-        return new ResponseEntity<>(contractsList, HttpStatus.OK);
-    }
-
     @PostMapping("/createContract")
     public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

@@ -54,8 +54,7 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                                                        @Param("type_id") Long typeId,
                                                        @Param("status_id") Long statusId);
 
-    @Query(value = "SELECT p FROM Contracts AS p")
-    List<Contracts> findAllContracts();
+
 
 
     @Transactional
