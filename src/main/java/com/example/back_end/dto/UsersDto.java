@@ -84,7 +84,7 @@ public class UsersDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        throw new UnsupportedOperationException();
     }
 
 

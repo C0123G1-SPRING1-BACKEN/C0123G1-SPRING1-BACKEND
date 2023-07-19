@@ -14,9 +14,7 @@
 
 package com.example.back_end.controller;
 
-import com.example.back_end.config.JwtUserDetails;
 import com.example.back_end.dto.IStatistics;
-import com.example.back_end.model.Contracts;
 import com.example.back_end.service.IProfitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,10 +23,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -46,7 +42,7 @@ public class ProfitController {
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
         Pageable pageable = PageRequest.of(page, 8);
         Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, pageable, profitType);
-        if (contractPage.getTotalElements() ==0 ||contractPage.getContent().size() == 0) {
+        if (contractPage.getTotalElements() ==0 || contractPage.getContent().size() == 0) {
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractPage, HttpStatus.OK);

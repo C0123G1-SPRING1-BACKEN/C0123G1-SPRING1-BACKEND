@@ -1,7 +1,7 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.dto.UsersDto;
 import com.example.back_end.service.IJWTAuthorization;
-import com.example.back_end.service.impl.JWTAuthorization;
 import com.example.back_end.config.JwtTokenUtil;
 import com.example.back_end.model.Users;
 import com.example.back_end.reponse.JwtRequest;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
-import static org.springframework.web.servlet.function.ServerResponse.status;
 
 /**
  * Created by: VienH
@@ -45,6 +44,8 @@ public class UsersController {
     private UsersService usersService;
     @Autowired
     private EmailService emailService;
+    Random random = new Random();
+
 
     class ErrorInfo {
         private String error;
@@ -73,7 +74,7 @@ public class UsersController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<?> loginAuthentication(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<Object> loginAuthentication(@RequestBody JwtRequest authenticationRequest)  {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
@@ -81,7 +82,6 @@ public class UsersController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         } catch (BadCredentialsException e) {
-//            throw new Exception("Incorrect username or password", e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
         Users users = usersService.findByUsername(authenticationRequest.getUsername());
@@ -92,17 +92,16 @@ public class UsersController {
     }
 
     @PostMapping("/checkEmail")
-    public ResponseEntity<?> checkMail(@RequestBody Users user) {
+    public ResponseEntity<Object> checkMail(@RequestBody UsersDto user) {
         Users users = usersService.findByEmail(user.getEmail());
         if (users != null) {
-            Random random = new Random();
             int randomNumber = random.nextInt(900000) + 100000;
             users.setVerificationCode(randomNumber);
             try {
                 usersService.editUser(users);
                 emailService.sendMail(users.getEmail(), "Mã xác nhận email", "Mã:" + randomNumber);
             } catch (Exception e) {
-
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Kiểm tra email thất bại!!");
             }
             return ResponseEntity.ok(users.getId());
         } else {
@@ -111,7 +110,7 @@ public class UsersController {
     }
 
     @PostMapping("/checkCode")
-    public ResponseEntity<?> checkCode(@RequestBody Users user) {
+    public ResponseEntity<Object> checkCode(@RequestBody UsersDto user) {
         Users users = usersService.findById(user.getId());
         try {
             if (users.getVerificationCode().toString().equals(user.getVerificationCode().toString())) {
@@ -129,8 +128,8 @@ public class UsersController {
     }
 
     @PatchMapping("/newPassword")
-    public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
-
+    public ResponseEntity<Object> createNewPassword(@RequestBody UsersDto user) {
+        Users users= usersService.findById(user.getId());
         if (user.getPassword() == null) {
             ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được để trống", user.getId());
 
@@ -141,7 +140,8 @@ public class UsersController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
         }
         try {
-            usersService.saveNewPassword(user);
+            users.setPassword(user.getPassword());
+            usersService.saveNewPassword(users);
             return ResponseEntity.ok("Đổi mật khẩu thành công!");
         } catch (Exception e) {
             ErrorInfo errorInfo = new ErrorInfo("Đổi mật khẩu thất bại!!", user.getId());

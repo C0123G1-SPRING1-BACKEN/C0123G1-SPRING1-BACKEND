@@ -7,7 +7,6 @@ import com.example.back_end.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -72,6 +71,6 @@ public class UsersService implements UserDetailsService, IUsersService {
     public void saveNewPassword(Users user) {
         Users users = findById(user.getId());
         String password = passwordEncoder.encode(user.getPassword());
-        iUserRepository.saveNewPassword(users.getId(),password);
+        iUserRepository.saveNewPassword(users.getId(), password);
     }
 }
