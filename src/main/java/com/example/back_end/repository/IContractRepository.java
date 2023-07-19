@@ -1,6 +1,7 @@
 package com.example.back_end.repository;
 
 
+import com.example.back_end.model.ContractStatus;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.IContractProjection;
 import org.springframework.data.domain.Page;
@@ -65,7 +66,8 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                         @Param("productName") String productName, @Param("productType") Long productType,
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
                         @Param("endDate") String endDate, @Param("profit") Long profit, @Param("employees") Long employees);
-
+    @Query(value = "SELECT * FROM contracts ",nativeQuery = true)
+    List<Contracts> findAll();
 }
 
 

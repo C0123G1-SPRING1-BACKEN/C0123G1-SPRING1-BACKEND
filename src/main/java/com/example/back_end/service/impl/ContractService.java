@@ -109,6 +109,11 @@ public class ContractService implements IContractService {
         return iContractRepository.findContractsById(id);
     }
 
+    @Override
+    public List<Contracts> findAll() {
+        return iContractRepository.findAll();
+    }
+
 
     @Transactional
     @Override

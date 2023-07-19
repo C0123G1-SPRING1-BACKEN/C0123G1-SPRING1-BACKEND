@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.Contracts;
+import com.example.back_end.model.ProductType;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.service.IContractService;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.util.List;
 import java.util.Optional;
-
 
 
 /**
@@ -127,11 +128,11 @@ public class ContractController {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //        String startDateFormatted = dateFormat.format(contracts.getStartDate());
 //        String endDateFormatted = dateFormat.format(contracts.getEndDate());
-        emailService.sendMail(contracts.getCustomers().getEmail(), "Xin chào " + contracts.getCustomers().getName() + ", cảm ơn bạn đã ghé Pawn Shop ! ", "Bạn đã cầm món đồ có tên : "+ contracts.getProductName() + "\n " +
-                "\n -Với giá là:" + contracts.getLoans()+ " VNĐ"+
-                "\n -Có thời hạn chuộc lại từ :"+contracts.getStartDate() +
-                "\n -Đến ngày hết hạn là :" +contracts.getStartDate()+
-                "\n -Với tổng số tiền lãi là " +contracts.getProfit()+" VND"+
+        emailService.sendMail(contracts.getCustomers().getEmail(), "Xin chào " + contracts.getCustomers().getName() + ", cảm ơn bạn đã ghé Pawn Shop ! ", "Bạn đã cầm món đồ có tên : " + contracts.getProductName() + "\n " +
+                "\n -Với giá là:" + contracts.getLoans() + " VNĐ" +
+                "\n -Có thời hạn chuộc lại từ :" + contracts.getStartDate() +
+                "\n -Đến ngày hết hạn là :" + contracts.getStartDate() +
+                "\n -Với tổng số tiền lãi là " + contracts.getProfit() + " VND" +
                 "\n" +
                 "\n" +
                 "\n" +
@@ -145,6 +146,9 @@ public class ContractController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
-
+    @GetMapping("/list")
+    public ResponseEntity<List<Contracts>> getAllContracts() {
+        List<Contracts> contractsList = iContractService.findAll();
+        return new ResponseEntity<>(contractsList, HttpStatus.OK);
+    }
 }

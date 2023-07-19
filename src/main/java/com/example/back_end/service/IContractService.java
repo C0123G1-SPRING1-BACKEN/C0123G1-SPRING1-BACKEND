@@ -18,7 +18,7 @@ public interface IContractService {
 
     Optional<Contracts> findTransactionHistoryById(Integer id);
 
-
+    List<Contracts> findAll();
     void createContract(Contracts contracts);
 
 }
