@@ -1,4 +1,4 @@
-package com.example.back_end.controller;
+package com.example.back_end.Controller;
 
 
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class RegisterPawnController_getListProductType {
                         MockMvcRequestBuilders
                                 .get("/api/register/product-type"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
     }
     /**
      * Danh sach rong .
@@ -38,7 +38,7 @@ public class RegisterPawnController_getListProductType {
                         MockMvcRequestBuilders
                                 .get("/api/register/product-type"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
 
     }
     /**

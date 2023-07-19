@@ -1,12 +1,9 @@
 package com.example.back_end.Controller;
 
-import com.example.back_end.dto.ProductTypeDTO;
 import com.example.back_end.dto.RegisterDTO;
 import com.example.back_end.model.ProductType;
-import com.example.back_end.model.RegisterPawn;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,13 +32,13 @@ public class RegisterPawnController_registerPawn {
      */
 
     @Test
-    public void registerPawn_16() throws Exception {
+    public void registerPawn_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("");
         registerDTO.setAddress("");
         registerDTO.setPhone("");
         registerDTO.setEmail("");
-        registerDTO.setContendNote("");
+        registerDTO.setContentNote("");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -61,13 +58,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_16() throws Exception {
+    public void registerPawn_name_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909129121");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
 
         ProductType productType = new ProductType();
@@ -88,13 +85,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_16() throws Exception {
+    public void registerPawn_address_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("");
         registerDTO.setPhone("0909129121");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("Ghi chu o trong nay");
+        registerDTO.setContentNote("Ghi chu o trong nay");
 
 
         ProductType productType = new ProductType();
@@ -116,13 +113,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_16() throws Exception {
+    public void registerPawn_phone_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("Ghi chu o trong nay");
+        registerDTO.setContentNote("Ghi chu o trong nay");
 
 
         ProductType productType = new ProductType();
@@ -143,13 +140,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_16() throws Exception {
+    public void registerPawn_email_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909121121");
         registerDTO.setEmail("");
-        registerDTO.setContendNote("Ghi chu o trong nay");
+        registerDTO.setContentNote("Ghi chu o trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -170,13 +167,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_16() throws Exception {
+    public void registerPawn_contendNote_14() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909121121");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("");
+        registerDTO.setContentNote("");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -197,7 +194,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_19() throws Exception {
+    public void registerPawn_name_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
                 "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
@@ -208,7 +205,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909121121");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -229,13 +226,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_17() throws Exception {
+    public void registerPawn_name_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("tran tien dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909121121");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -256,13 +253,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_19() throws Exception {
+    public void registerPawn_phone_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("090912112112121212121212121212121212121212");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -283,13 +280,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_17() throws Exception {
+    public void registerPawn_phone_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("1234567891");
         registerDTO.setEmail("nguyenthangfa2001@gmail.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -309,7 +306,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_19() throws Exception {
+    public void registerPawn_email_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
@@ -318,7 +315,7 @@ public class RegisterPawnController_registerPawn {
                 "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg" +
                 "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg" +
                 "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -339,13 +336,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_17() throws Exception {
+    public void registerPawn_email_15() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0123456789");
         registerDTO.setEmail("nguyenthangfa2001.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -366,7 +363,7 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_19() throws Exception {
+    public void registerPawn_address_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xuddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddđffff" +
@@ -386,7 +383,7 @@ public class RegisterPawnController_registerPawn {
                 "");
         registerDTO.setPhone("0123456789");
         registerDTO.setEmail("nguyenthangfa2001.com");
-        registerDTO.setContendNote("ghi chu trong nay");
+        registerDTO.setContentNote("ghi chu trong nay");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -407,13 +404,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_19() throws Exception {
+    public void registerPawn_contendNote_16() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Tran Tien Dung");
         registerDTO.setAddress("Hoa Xu");
         registerDTO.setPhone("0123456789");
         registerDTO.setEmail("nguyenthangfa2001.com");
-        registerDTO.setContendNote("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" +
+        registerDTO.setContentNote("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" +
                 "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" +
                 "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" +
                 "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" +
@@ -452,13 +449,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_20() throws Exception {
+    public void registerPawn_18() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Ho Vien");
         registerDTO.setAddress("Thừa Thiên Huế");
         registerDTO.setPhone("0768566127");
         registerDTO.setEmail("hovien2201@gmail.com");
-        registerDTO.setContendNote("Cầm sổ đỏ 10 ngày ! sinh viên không có tiền nên cầm . ");
+        registerDTO.setContentNote("Cầm sổ đỏ 10 ngày ! sinh viên không có tiền nên cầm . ");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -479,13 +476,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_15() throws Exception {
+    public void registerPawn_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName(null);
         registerDTO.setAddress(null);
         registerDTO.setPhone(null);
         registerDTO.setEmail(null);
-        registerDTO.setContendNote(null);
+        registerDTO.setContentNote(null);
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -506,13 +503,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_name_15() throws Exception {
+    public void registerPawn_name_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName(null);
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909129121");
         registerDTO.setEmail("nguyenthangfa20011@gmail.com");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -534,13 +531,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_address_15() throws Exception {
+    public void registerPawn_address_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress(null);
         registerDTO.setPhone("0909129121");
         registerDTO.setEmail("nguyenthangfa20011@gmail.com");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -561,13 +558,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_phone_15() throws Exception {
+    public void registerPawn_phone_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone(null);
         registerDTO.setEmail("nguyenthangfa20011@gmail.com");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -588,13 +585,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_email_15() throws Exception {
+    public void registerPawn_email_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909129111");
         registerDTO.setEmail(null);
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -615,13 +612,13 @@ public class RegisterPawnController_registerPawn {
      * @throws Exception
      */
     @Test
-    public void registerPawn_contendNote_15() throws Exception {
+    public void registerPawn_contendNote_13() throws Exception {
         RegisterDTO registerDTO = new RegisterDTO();
         registerDTO.setName("Nguyen Duc Thang");
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909129111");
         registerDTO.setEmail("nguyenthangfa21@gmail.com");
-        registerDTO.setContendNote(null);
+        registerDTO.setContentNote(null);
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -648,7 +645,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909129111");
         registerDTO.setEmail("nguyenthangfa21@gmail.com");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -675,7 +672,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
         registerDTO.setEmail("nguyenthangfa21@gmail.com");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -702,7 +699,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909111111");
         registerDTO.setEmail("/?.<><>!~~~@@#$%^%!#()*%@)*)%%%%%%%%%@#@#@$#@$@$@$@$");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -730,7 +727,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909111111");
         registerDTO.setEmail("nguyenthangfa2001@gmail");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -757,7 +754,7 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone(" 0909111111 ");
         registerDTO.setEmail("nguyenthangfa2001@gmail");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
@@ -784,11 +781,36 @@ public class RegisterPawnController_registerPawn {
         registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
         registerDTO.setPhone("0909111111");
         registerDTO.setEmail("   nguyenthangfa2001@gmail   ");
-        registerDTO.setContendNote("ghi chú trong này");
+        registerDTO.setContentNote("ghi chú trong này");
 
         ProductType productType = new ProductType();
         productType.setId(2L);
         registerDTO.setProductType(productType);
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/register/create")
+                        .content(this.objectMapper.writeValueAsString(registerDTO))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * register pawn  productType null !!!
+     *
+     * @throws Exception
+     */
+    @Test
+    public void registerPawn_productType_16() throws Exception {
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setName("Nguyen Duc Thang");
+        registerDTO.setAddress("Hoa Xuan,Cam Le,Da Nang");
+        registerDTO.setPhone("0909111111");
+        registerDTO.setEmail("nguyenthangfa2001@gmail");
+        registerDTO.setContentNote("ghi chú trong này");
+
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
