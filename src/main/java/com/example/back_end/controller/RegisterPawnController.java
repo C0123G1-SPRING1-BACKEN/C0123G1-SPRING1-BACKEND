@@ -6,6 +6,9 @@ import com.example.back_end.service.IProductTypeService;
 import com.example.back_end.service.IRegisterPawnService;
 import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -90,4 +93,17 @@ public class RegisterPawnController {
         return errors;
     }
 
+    /**
+     * Created by: QuocNHA
+     * Date created: 13/07/2023
+     * Function: register pawn
+     *
+     * @return
+     * @param: registerDTO
+     */
+    @GetMapping("")
+    public ResponseEntity<?> findByNameRegisterPawn(
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
+        return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(pageable), HttpStatus.OK);
+    }
 }
