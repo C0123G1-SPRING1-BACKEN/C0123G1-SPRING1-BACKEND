@@ -5,21 +5,21 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+
 import java.time.LocalDateTime;
 
 public class ContractDto {
 
-    @NotNull
+
     private Long id;
 
     @NotBlank
-    @NotNull
     private String productName;
-    @NotBlank
 
+    @NotBlank
     private String contractCode;
     @NotNull
 
@@ -27,93 +27,49 @@ public class ContractDto {
     @NotNull
 
     private Long profit;
+    @NotBlank
 
 
     private String image;
-
+    @NotNull
 
     private String startDate;
 
+    @NotNull
     private String endDate;
 
 
-    private LocalDateTime createDate;
+    private LocalDateTime createTime;
 
-    private LocalDateTime updateDate;
+
+    private LocalDateTime updateTime;
 
 
     private boolean isDelete;
 
+    @NotNull
 
     private ProductType productType;
 
 
+    @NotNull
     private Customers customers;
 
 
+    @NotNull
     private ContractStatus contractStatus;
 
-
+    @NotNull
     private Employees employees;
 
-
+    @NotNull
     private ContractType contractType;
 
     public ContractDto() {
     }
 
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-    }
-
-    public ContractDto(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
     }
 
     public void setId(Long id) {
@@ -176,20 +132,20 @@ public class ContractDto {
         this.endDate = endDate;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
+    public LocalDateTime getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 
     public boolean isDelete() {
@@ -239,5 +195,4 @@ public class ContractDto {
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
-
 }

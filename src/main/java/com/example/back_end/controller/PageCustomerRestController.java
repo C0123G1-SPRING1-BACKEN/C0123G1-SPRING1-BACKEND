@@ -37,14 +37,7 @@ public class PageCustomerRestController {
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
 
-//    @GetMapping("/contract/search")
-//    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-//        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
-//        if (iCustomerDtoPage.isEmpty()) {
-//            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
-//    }
+
 
     @GetMapping("/contract/{id}")
     public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
