@@ -22,7 +22,7 @@ public class UsersRestController_forgotPassword {
     private ObjectMapper objectMapper;
 
     /**
-     *
+     * check email null
      * @throws Exception
      */
     @Test
@@ -37,7 +37,10 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
+    /**
+     * check email wrong data
+     * @throws Exception
+     */
 
     @Test
     public void checkEmail_98() throws Exception {
@@ -51,10 +54,14 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * check email success
+     * @throws Exception
+     */
     @Test
     public void checkEmail_97() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setEmail("nguyenthangfa2001@gmail.com");
+        usersDto.setEmail("hovien30122017@gmail.com");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/checkEmail")
@@ -63,6 +70,10 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+    /**
+     * check code null
+     * @throws Exception
+     */
     @Test
     public void checkCode_99() throws Exception {
         UsersDto usersDto = new UsersDto();
@@ -75,6 +86,10 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * check code wrong data
+     * @throws Exception
+     */
     @Test
     public void checkCode_98() throws Exception {
         UsersDto usersDto = new UsersDto();
@@ -88,11 +103,15 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * check code success
+     * @throws Exception
+     */
     @Test
     public void checkCode_97() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setId(2L);
-        usersDto.setVerificationCode(415650);
+        usersDto.setId(1L);
+        usersDto.setVerificationCode(774465);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/user/checkCode")
@@ -101,8 +120,28 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+    /**
+     * update new password null
+     * @throws Exception
+     */
     @Test
     public void newPassword_99() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/user/newPassword")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * update new password empty
+     * @throws Exception
+     */
+    @Test
+    public void newPassword_96() throws Exception {
         UsersDto usersDto = new UsersDto();
         usersDto.setId(2L);
         usersDto.setPassword("");
@@ -114,6 +153,10 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * update new password wrong size
+     * @throws Exception
+     */
     @Test
     public void newPassword_98() throws Exception {
         UsersDto usersDto = new UsersDto();
@@ -127,6 +170,10 @@ public class UsersRestController_forgotPassword {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * update new password success
+     * @throws Exception
+     */
     @Test
     public void newPassword_97() throws Exception {
         UsersDto usersDto = new UsersDto();

@@ -86,8 +86,8 @@ public interface IRedeemingRepository extends JpaRepository<Contracts, Long> {
             "\n" +
             "WHERE con.is_delete = FALSE\n" +
             "  AND con.contract_type_id = 1\n" +
-            "  AND con.product_type_id LIKE '%%'\n" +
-            "  AND con.product_name LIKE '%%'\n" +
+            "  AND con.product_type_id LIKE :productType \n" +
+            "  AND con.product_name LIKE :productName\n" +
             "ORDER BY con.create_time DESC", nativeQuery = true)
     Page<IAllContractDTO> findAllContractDTOS(Pageable pageable, @Param("productName") String productName, @Param("productType") String productType);
 }
