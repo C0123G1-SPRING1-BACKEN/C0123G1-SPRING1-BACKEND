@@ -14,26 +14,25 @@ public interface ICustomerRepositoryCreateUpdate extends JpaRepository<Customers
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO customers (name, birthday, gender, phone_number, email, address, citizen_code, image, front_citizen, back_citizen, is_delete) " +
-            "VALUES (:name, :birthday, :gender, :phoneNumber, :email, :address, :citizenCode, :image, :frontCitizen, :backCitizen, :isDelete)",
+    @Query(value = "INSERT INTO customers (name, birthday, gender, phone_number, email, address, citizen_code, image, front_citizen, back_citizen) " +
+            "VALUES (:name, :birthday, :gender, :phoneNumber, :email, :address, :citizenCode, :image, :frontCitizen, :backCitizen)",
             nativeQuery = true)
     void addCustomer(@Param("name") String name,
-                        @Param("birthday") String birthday,
-                        @Param("gender") int gender,
-                        @Param("phoneNumber") String phoneNumber,
-                        @Param("email") String email,
-                        @Param("address") String address,
-                        @Param("citizenCode") String citizenCode,
-                        @Param("image") String image,
-                        @Param("frontCitizen") String frontCitizen,
-                        @Param("backCitizen") String backCitizen,
-                        @Param("isDelete") boolean isDelete);
+                     @Param("birthday") String birthday,
+                     @Param("gender") int gender,
+                     @Param("phoneNumber") String phoneNumber,
+                     @Param("email") String email,
+                     @Param("address") String address,
+                     @Param("citizenCode") String citizenCode,
+                     @Param("image") String image,
+                     @Param("frontCitizen") String frontCitizen,
+                     @Param("backCitizen") String backCitizen);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE customers SET name = :name, birthday = :birthday, gender = :gender, " +
             "phone_number = :phoneNumber, email = :email, address = :address, citizen_code = :citizenCode, " +
-            "image = :image, front_citizen = :frontCitizen, back_citizen = :backCitizen, is_delete = :isDelete " +
+            "image = :image, front_citizen = :frontCitizen, back_citizen = :backCitizen " +
             "WHERE id = :id", nativeQuery = true)
     void updateCustomer(@Param("id") Long id,
                         @Param("name") String name,
@@ -45,6 +44,38 @@ public interface ICustomerRepositoryCreateUpdate extends JpaRepository<Customers
                         @Param("citizenCode") String citizenCode,
                         @Param("image") String image,
                         @Param("frontCitizen") String frontCitizen,
-                        @Param("backCitizen") String backCitizen,
-                        @Param("isDelete") boolean isDelete);
+                        @Param("backCitizen") String backCitizen);
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check email exists or not
+     * @param email
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE email = :email), 'true', 'false')", nativeQuery = true)
+    Boolean existsByEmail(@Param("email") String email);
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check phoneNumber exists or not
+     * @param phoneNumber
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE phone_number = :phoneNumber), 'true', 'false')", nativeQuery = true)
+    Boolean existsByPhoneNumber(String phoneNumber);
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Method to check citizenCode exists or not
+     * @param citizenCode
+     * @return
+     * If email exists, return true, else false
+     */
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM customers WHERE citizen_code = :citizenCode), 'true', 'false')", nativeQuery = true)
+    Boolean existsByCitizenCode(String citizenCode);
 }

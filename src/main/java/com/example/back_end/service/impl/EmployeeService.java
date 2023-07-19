@@ -50,7 +50,7 @@ public class EmployeeService implements IEmployeeService {
                 employees.getEmail(),
                 employees.getPhoneNumber(),
                 employees.getAddress(),
-                employees.getSalary().toString(),
+                employees.getSalary(),
                 employees.getCitizenCode(),
                 employees.getImage()
         );

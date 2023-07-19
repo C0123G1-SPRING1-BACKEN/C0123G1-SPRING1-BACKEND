@@ -6,6 +6,8 @@ import com.example.back_end.model.RegisterPawn;
 import com.example.back_end.repository.IRegisterPawnRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -31,7 +33,25 @@ public class RegisterPawnService implements IRegisterPawnService {
         RegisterPawn registerPawn = new RegisterPawn();
         BeanUtils.copyProperties(registerDTO, registerPawn);
         registerPawnRepository.createRegisterPawn(registerPawn.getName(), registerPawn.getPhone(),
-                registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContendNote(), registerPawn.getProductType().getId());
+                registerPawn.getEmail(), registerPawn.getAddress(), registerPawn.getContentNote(), registerPawn.getProductType().getId());
     }
 
+    @Override
+    public void confirmRegister(Long id) {
+        registerPawnRepository.confirmRegisterPawn(id);
+    }
+
+
+    /**
+     * Created by: QuocNHA
+     * Date created: 13/07/2023
+     * Function: register pawn
+     *
+     * @return
+     * @param: register
+     */
+    @Override
+    public Page<RegisterPawn> findByNameRegisterPawn(Pageable pageable) {
+        return registerPawnRepository.findByNameRegisterPawn(pageable) ;
+    }
 }

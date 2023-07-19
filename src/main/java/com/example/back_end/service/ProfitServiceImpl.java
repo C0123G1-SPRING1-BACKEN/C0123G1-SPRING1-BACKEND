@@ -13,28 +13,31 @@
 package com.example.back_end.service;
 
 import com.example.back_end.dto.IStatistics;
-import com.example.back_end.model.Contracts;
 import com.example.back_end.repository.IProfitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
 public class ProfitServiceImpl implements IProfitService {
+    private  static final String PROFIT_INTEREST  = "interest";
+    private  static final String PROFIT_LIQUIDATION  = "liquidation";
+    private  static final String PROFIT_FORESEE  = "foresee";
     @Autowired
     private IProfitRepository iProfitRepository;
 
     @Override
     public <T> Page<T> findAllContract(String startDate, String endDate,Pageable pageable, String profitType) {
         switch (profitType) {
-            case "interest":
+            case PROFIT_INTEREST:
                 return (Page<T>) iProfitRepository.getAllContractInterest(startDate,endDate,pageable);
-            case "liquidation":
+            case PROFIT_LIQUIDATION:
                 return (Page<T>) iProfitRepository.getAllLiquidation(startDate,endDate,pageable);
-            case "foresee":
+            case PROFIT_FORESEE:
                 return (Page<T>) iProfitRepository.getAllContractForesee(startDate,endDate,pageable);
             default:
                 return null;
@@ -44,11 +47,11 @@ public class ProfitServiceImpl implements IProfitService {
     @Override
     public Long getTotalProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
-            case "interest":
+            case PROFIT_INTEREST:
                 return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
-            case "liquidation":
+            case PROFIT_LIQUIDATION:
                 return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate);
-            case "foresee":
+            case PROFIT_FORESEE:
                 return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
             default:
                 return null;
@@ -59,14 +62,14 @@ public class ProfitServiceImpl implements IProfitService {
     @Override
     public List<IStatistics> statisticsProfit(String startDate, String endDate, String profitType) {
         switch (profitType) {
-            case "interest":
+            case PROFIT_INTEREST:
                 return  iProfitRepository.statisticsProfit(startDate,endDate,3L);
-            case "liquidation":
+            case PROFIT_LIQUIDATION:
                 return  iProfitRepository.statisticsProfitLiquidation(startDate,endDate);
-            case "foresee":
+            case PROFIT_FORESEE:
                 return  iProfitRepository.statisticsProfit(startDate,endDate,2L);
             default:
-                return null;
+                return Collections.emptyList();
         }
     }
 }

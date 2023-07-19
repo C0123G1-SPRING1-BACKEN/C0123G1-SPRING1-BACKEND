@@ -1,61 +1,43 @@
 package com.example.back_end.controller;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
+import com.example.back_end.model.ContractStatus;
+import com.example.back_end.model.ContractType;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
+import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-
-/**
- * Created by: DinhHD
- * Date created: 13/07/2023
- * Function: do about pawn interface, customer selection interface
- * <p>
- * // * @param Contracts
- *
- * @return createContracts()
- */
+import java.util.stream.Collectors;
 
 @RequestMapping("/api/employee/contract")
 @RestController
-
 @CrossOrigin("*")
 public class ContractRestController {
+
     @Autowired
     private IContractService iContractService;
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: get page transaction history from Database
-     * <p>
-     *
-     * @param page
-     * @return ResponseEntity<Page < IContractProjection>>
-     */
-
-//    @GetMapping("")
-//    public ResponseEntity<Page<IContractProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-//                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-//        Page<IContractProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
-//        int totalPage = contractProjectionPage.getTotalPages();
-//        if (page >= totalPage) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
-//    }
+    @Autowired
+    private IProductTypeService iProductTypeService;
 
     /**
      * Created by: ThienNT
@@ -68,7 +50,8 @@ public class ContractRestController {
      */
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Long id) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -88,9 +71,10 @@ public class ContractRestController {
      */
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") Long id) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
-        return contractDTO.map(iContractProjection -> new ResponseEntity<>(iContractProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+        return contractDTO.map(contracts -> new ResponseEntity<>(contracts, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     /**
@@ -99,31 +83,34 @@ public class ContractRestController {
      * Function: search transaction history from Database
      * <p>
      *
-     * @param contractSearchDTO
+     * @param
      * @return ResponseEntity<IContractProjection>
      * @requestbody contractSearchDTO
      */
 
-    @GetMapping("")
-    public ResponseEntity<Page<IContractProjection>> searchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                                              @RequestParam(name = "limit", defaultValue = "5") Integer limit,
-                                                                              @RequestBody ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> contractProjectionsPage = iContractService.searchTransactionHistory(page, limit, contractSearchDTO);
+    @PostMapping("/transaction-history")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                                                   @RequestParam(name = "limit", defaultValue = "5") Integer limit,
+                                                                                                   @RequestBody ContractSearchDTO contractSearchDTO) {
+        Page<ITransactionHistoryProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
         int totalPage = contractProjectionsPage.getTotalPages();
-        if (page >= totalPage) {
+        if (page > totalPage || page < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<Contracts>> getAllContract() {
         List<Contracts> contractsList = iContractService.findAll();
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<HttpStatus> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -135,11 +122,15 @@ public class ContractRestController {
 
     /**
      * Create by : TriPD
-     * Date created : 13/07/2023
-     * Function : findContractById(),updateContract()
+     * Date created : 18/07/2023
+     * Function : findContractById()
+     *
+     * @Param: id
+     * @Return: object
      */
 
     @GetMapping("/findContractById/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<ContractDto> getContractById(@PathVariable Long id) {
         Contracts contract = this.iContractService.findContractById(id);
         if (contract == null) {
@@ -150,22 +141,64 @@ public class ContractRestController {
         return new ResponseEntity<>(contractDto, HttpStatus.OK);
     }
 
+    /**
+     * Create by : TriPD
+     * Date created : 18/07/2023
+     * Function : updateContract()
+     *
+     * @Param: contractDto
+     * @Return: void
+     */
 
     @PatchMapping("/update")
-    public ResponseEntity<ContractDto> updateContract(@RequestBody ContractDto contractDto) {
-        if (contractDto == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<?> updateContract( @RequestBody ContractDto contractDto) {
+        try {
+            iContractService.saveContract(contractDto);
+            return ResponseEntity.ok(contractDto);
+        }catch (Exception e){
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(".....");
         }
-        iContractService.saveContract(contractDto);
-        return new ResponseEntity<>(contractDto, HttpStatus.OK);
+
     }
 
+    /**
+     * Create by : TriPD
+     * Date created : 18/07/2023
+     * Function : top10NewContract()
+     *
+     * @Param: pageable
+     * @Return: Page<Contracts>
+     */
+
     @GetMapping("/top10")
-    public ResponseEntity<List<Contracts>> top10NewContract() {
-        List<Contracts> contracts = this.iContractService.showTop10NewContract();
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault (sort = "create_time",direction = Sort.Direction.DESC)Pageable pageable) {
+        Page<Contracts> contracts = this.iContractService.showTop10NewContract(pageable);
         if (contracts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contracts, HttpStatus.OK);
     }
+
+    @GetMapping("/list-contract-status")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<List<ContractStatus>> getALlContractStatus() {
+        List<ContractStatus> contractStatusList = this.iProductTypeService.getAllContractStatus();
+        if (contractStatusList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
+    }
+
+    @GetMapping("/list-contract-type")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<List<ContractType>> getALlContractType() {
+        List<ContractType> contractTypeList = this.iProductTypeService.getAllContractType();
+        if (contractTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractTypeList, HttpStatus.OK);
+    }
+
 }

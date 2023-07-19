@@ -24,6 +24,12 @@ public class PostsRestController_detailPosts {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * GET có tham số id = null
+     *
+     * @throws Exception
+     */
+
     @Test
     public void detailPosts_2() throws Exception {
 
@@ -33,6 +39,12 @@ public class PostsRestController_detailPosts {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * GET có tham số id rỗng
+     *
+     * @throws Exception
+     */
+
     @Test
     public void detailPosts_3() throws Exception {
 
@@ -42,6 +54,12 @@ public class PostsRestController_detailPosts {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * GET có tham số id không tồn tại trong Database
+     *
+     * @throws Exception
+     */
+
     @Test
     public void detailPosts_4() throws Exception {
 
@@ -51,4 +69,9 @@ public class PostsRestController_detailPosts {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+    /**
+     * GET có tham số id tồn tại trong Database
+     *
+     * @throws Exception
+     */
 }
