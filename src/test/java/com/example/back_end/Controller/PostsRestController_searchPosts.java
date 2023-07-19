@@ -12,66 +12,45 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PostsRestController_detailPosts {
+public class PostsRestController_searchPosts {
     @Autowired
     private MockMvc mockMvc;
+
     @Test
-    public void detailPosts_1() throws Exception {
+    public void searchPosts_1() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/detailPosts/{id}", "null"))
+                                .get("/api/posts/findPostsByName/{title}", (Object) null))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-    /**
-     * GET có tham số id = null
-     *
-     * @throws Exception
-     */
-
     @Test
-    public void detailPosts_2() throws Exception {
+    public void searchPosts_2() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/detailPosts/{id}", ""))
+                                .get("/api/posts/findPostsByName/{title}",""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-    /**
-     * GET có tham số id rỗng
-     *
-     * @throws Exception
-     */
-
     @Test
-    public void detailPosts_3() throws Exception {
+    public void searchPosts_3() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/detailPosts/{id}", "15"))
+                                .get("/api/posts/findPostsByName/?{title}","abcd"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-    /**
-     * GET có tham số id không tồn tại trong Database
-     *
-     * @throws Exception
-     */
 
     @Test
-    public void detailPosts_4() throws Exception {
+    public void searchPosts_4() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/detailPosts/{id}", "11"))
+                                .get("/api/posts/findPostsByName/{title}","Dịch vụ"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
-    /**
-     * GET có tham số id tồn tại trong Database
-     *
-     * @throws Exception
-     */
 }
