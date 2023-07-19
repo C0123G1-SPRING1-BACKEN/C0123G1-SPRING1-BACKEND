@@ -26,7 +26,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%') \n" +
             "WHEN :startDate != '' and :endDate != '' then c.start_date between COALESCE(:startDate,c.start_date) and COALESCE(:endDate,c.start_date)\n" +
             "        END \n" +
-            "    )",
+            "    ) ORDER BY c.start_date DESC",
             countQuery = "select count(*) from contracts as c " +
                     " inner join contract_status cs on c.contract_status_id = cs.id " +
                     "where cs.id = 3 and ( \n" +
@@ -55,7 +55,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%') \n" +
             "WHEN :startDate != '' and :endDate != '' then c.start_date between COALESCE(:startDate,c.start_date) and COALESCE(:endDate,c.start_date)\n" +
             "        END\n" +
-            "    )",
+            "    )ORDER BY c.start_date DESC",
             countQuery = "select count(*) from contracts as c " +
                     " inner join contract_status cs on c.contract_status_id = cs.id " +
                     "where cs.id = 2 and ( \n" +
@@ -115,7 +115,8 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%')\n" +
             "WHEN :startDate != '' and :endDate != '' then l.create_time between COALESCE(:startDate,l.create_time) and COALESCE(:endDate,l.create_time)\n" +
             "          END\n" +
-            "GROUP BY month(l.create_time)", nativeQuery = true)
+            "GROUP BY month(l.create_time)" +
+            "ORDER BY month ASC", nativeQuery = true)
     List<IStatistics> statisticsProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
     @Query(value = "select sum(c.profit)\n" +
