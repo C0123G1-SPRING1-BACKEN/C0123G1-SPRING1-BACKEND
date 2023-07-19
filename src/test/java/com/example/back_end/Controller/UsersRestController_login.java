@@ -1,4 +1,4 @@
-package com.example.back_end.controller;
+package com.example.back_end.Controller;
 
 import com.example.back_end.dto.UsersDto;
 import com.fasterxml.jackson.databind.ObjectMapper;

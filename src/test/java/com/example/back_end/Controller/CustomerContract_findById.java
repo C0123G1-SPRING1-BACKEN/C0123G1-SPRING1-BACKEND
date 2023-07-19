@@ -1,4 +1,4 @@
-package com.example.back_end.controller;
+package com.example.back_end.Controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,61 +12,69 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PostsRestController_deletePost {
+public class CustomerContract_findById {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Create By : DinhHD
+     * Date Create : 14/07/2023
+     * Customer findById = null
+     *
+     * @throws Exception
+     */
     @Test
-    public void getPosts_25() throws Exception {
-
+    public void findByIdCustomer_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "null"))
+                                .get("/api/employee/contract/customer/contract/","null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * Create By : DinhHD
+     * Date Create : 14/07/2023
+     * Customer findById =""
+     *
+     * @throws Exception
+     */
     @Test
-    public void getPosts_26() throws Exception {
-
+    public void findByIdCustomer_2() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", ""))
+                                .get("/api/employee/contract/customer/contract/",""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * Create By : DinhHD
+     * Date Create : 14/07/2023
+     * Customer findById = Không tòn tại tỏng db
+     *
+     * @throws Exception
+     */
     @Test
-    public void getPosts_27() throws Exception {
-
+    public void findByIdCustomer_3() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "20"))
+                                .get("/api/employee/contract/customer/contract/12"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-    @Test
-    public void getPosts_27_1() throws Exception {
 
+
+    /**
+     * Create By : DinhHD
+     * Date Create : 14/07/2023
+     * Customer findById = Successful
+     *
+     * @throws Exception
+     */
+    @Test
+    public void findByIdCustomer_4() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "ab"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-    @Test
-    public void getPosts_27_2() throws Exception {
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "-5L"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-    @Test
-    public void getPosts_28() throws Exception {
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "12"))
+                                .get("/api/employee/contract/customer/contract/1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

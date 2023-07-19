@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -118,21 +122,33 @@ public class ContractController {
     }
 
     @PostMapping("/createContract")
-    public ResponseEntity<?> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+    public ResponseEntity<CreateContractDto> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Contracts contracts = new Contracts();
         BeanUtils.copyProperties(contractDto, contracts);
         iContractService.createContract(contracts);
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//        String startDateFormatted = dateFormat.format(contracts.getStartDate());
-//        String endDateFormatted = dateFormat.format(contracts.getEndDate());
+        //Format Giá tiền (000,000,000,)
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        String profit = (numberFormat.format(contracts.getProfit()));
+        String loans = (numberFormat.format(contracts.getLoans()));
+        System.out.println("Đầu ra tiền cho vay: " + loans);
+        System.out.println("Đầu ra tiền lãi: " + profit);
+        //Format Ngày tháng năm(dd/MM/yyyy)
+        DateTimeFormatter dateTimer = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(contracts.getStartDate());
+        LocalDate endDate = LocalDate.parse(contracts.getEndDate());
+        String start = startDate.format(dateTimer);
+        String end = endDate.format(dateTimer);
+        System.out.println("Ngày bắt đầu: " + start);
+        System.out.println("Ngày kết thúc: " + end);
+
         emailService.sendMail(contracts.getCustomers().getEmail(), "Xin chào " + contracts.getCustomers().getName() + ", cảm ơn bạn đã ghé Pawn Shop ! ", "Bạn đã cầm món đồ có tên : " + contracts.getProductName() + "\n " +
-                "\n -Với giá là:" + contracts.getLoans() + " VNĐ" +
-                "\n -Có thời hạn chuộc lại từ :" + contracts.getStartDate() +
-                "\n -Đến ngày hết hạn là :" + contracts.getStartDate() +
-                "\n -Với tổng số tiền lãi là " + contracts.getProfit() + " VND" +
+                "\n -Với giá là:" + loans + " VNĐ" +
+                "\n -Ngày bắt đầu hợp đồng là :" + start +
+                "\n -Đến ngày kết thúc hợp đồng là :" + end +
+                "\n -Với tổng số tiền lãi là " + profit + " VND" +
                 "\n" +
                 "\n" +
                 "\n" +
@@ -151,4 +167,6 @@ public class ContractController {
         List<Contracts> contractsList = iContractService.findAll();
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
     }
+
+
 }

@@ -29,29 +29,12 @@ public class PageCustomerRestController {
 
 
     @GetMapping("")
-    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
-        if (iCustomerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/contract/search")
-    public ResponseEntity<Page<ICustomerDto>> searchCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.searchCustomer(pageable, name);
+    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 2) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findAllBySearchCustomer(pageable ,name);
         if (iCustomerDtoPage.isEmpty() && iCustomerDtoPage==null) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/contract/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
-      ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
-      if (iCustomerDto==null){
-          return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-      }
-        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
-    }
 }

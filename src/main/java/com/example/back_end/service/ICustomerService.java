@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ICustomerService {
-    Page<ICustomerDto> findByCustomer(Pageable pageable);
+    Page<ICustomerDto> findAllBySearchCustomer(Pageable pageable, String name);
 
-    Page<ICustomerDto> searchCustomer(Pageable pageable, String name);
-    ICustomerDto findByIdCustomer(Long id);
+
+
 
 }

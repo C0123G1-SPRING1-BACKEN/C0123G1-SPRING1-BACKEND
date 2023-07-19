@@ -1,6 +1,7 @@
 package com.example.back_end.dto;
 
 import com.example.back_end.model.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -9,7 +10,8 @@ import javax.validation.constraints.*;
 public class CreateContractDto implements Validator {
 
     private Long id;
-
+    @NotBlank(message = "Không được để trống !")
+    @Pattern(regexp = "^[A-Z][a-z]*(\\s[A-Z][a-z]*)||(\\s[0-9]*)+$", message = "Chữ đầu tiên phải viết hoa")
     private String productName;
 
     private String contractCode;
@@ -22,7 +24,8 @@ public class CreateContractDto implements Validator {
     @NotBlank(message = "Không được để trống !")
 //    @FutureOrPresent(message = "Ngày tạo phải là hiện tại hoặc tương lai")
     private String startDate;
-//    @FutureOrPresent(message = "Ngày tạo phải là  hiện tại hoặc tương lai ")
+    //    @FutureOrPresent(message = "Ngày tạo phải là  hiện tại hoặc tương lai ")
+
     @NotBlank(message = "Không được để trống !")
     private String endDate;
 

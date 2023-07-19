@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -119,17 +121,29 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         Long loans = contracts.getLoans();
-        Double percent =  0.00065; // Lãi suất hàng ngày (0.065%)
-        String startDate = contracts.getStartDate();
-        String endDate = contracts.getEndDate();
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        String profit = (numberFormat.format(contracts.getProfit()));
+        String loan = (numberFormat.format(loans));
+//        tỷ lệ lãi suất là 2% trên tháng, thì lãi suất cần tính cho 1 ngày là 2%/30 = 0,067%.
+        Double percent =  0.067; // Lãi suất hàng ngày (0.067%)
 
-        LocalDateTime date1 = LocalDate.parse(startDate).atStartOfDay();
-        LocalDateTime date2 = LocalDate.parse(endDate).atStartOfDay();
-        Long daysBetween = ChronoUnit.DAYS.between(date1, date2);
-        System.out.println("Days: " + daysBetween);
+        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate=LocalDate.parse(contracts.getStartDate());
+        LocalDate endDate=LocalDate.parse(contracts.getEndDate());
+        String start= startDate.format(dateTimeFormatter);
+        String end= endDate.format(dateTimeFormatter);
+
+        Long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+
 //        tính tổng tiền
         Long profits = (long) (loans * percent * daysBetween);
-        System.out.println("Liền lãi: " + profits);
+        String profitLoans = (numberFormat.format(profits));
+        System.out.println("Tiền cho vay: "+loan);
+        System.out.println("Ngày bắt đầu: "+start);
+        System.out.println("Ngày kết thúc: "+end);
+        System.out.println("Tổng số ngày: " + daysBetween);
+        System.out.println("Liền lãi BE: " + profitLoans);
+        System.out.println("Liền lãi FE: " + profit);
 
             if (contracts.getProfit().equals(profits)){
                 iContractRepository.createContract(
@@ -144,9 +158,8 @@ public class ContractService implements IContractService {
                         contracts.getProfit(),
                         contracts.getEmployees().getId());
             }else {
-                System.out.println("Loiix");
+                System.out.println("Mệnh giá tiền của FE - BE không trùng nhau");
             }
-
 
     }
 }
