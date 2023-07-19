@@ -23,6 +23,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class ProfitController {
     private IProfitService iProfitService;
 
     @GetMapping("")
-    private <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+    public  <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                        @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                        @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
@@ -48,7 +49,8 @@ public class ProfitController {
     }
 
     @GetMapping("/total-profit")
-    private ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Long> getTotalProfit( @RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                 @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                 @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
         Long totalProfit = iProfitService.getTotalProfit(startDate, endDate, profitType);
@@ -59,7 +61,7 @@ public class ProfitController {
     }
 
     @GetMapping("/statistics-profit")
-    private ResponseEntity<List<IStatistics>> statisticsProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+    public ResponseEntity<List<IStatistics>> statisticsProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                          @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                          @RequestParam(value = "profitType", defaultValue = "interest") String profitType){
         List<IStatistics> statisticsList = iProfitService.statisticsProfit(startDate,endDate,profitType);
