@@ -6,7 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IEmployeesRepository extends JpaRepository<Employees,Long> {
-    @Query(value = "select * employees",nativeQuery = true)
-    List<Employees> getAll();
+public interface IEmployeesRepository extends JpaRepository<Employees, Long> {
+    /**
+     * Created by: HuyNH
+     * Date created: 13/07/2023
+     * Function: display list employees into Database
+     *   @param
+     *      @return list
+     *
+     */
+    @Query(value = "select * from employees",nativeQuery = true)
+    List<Employees> getAllEmployees();
 }

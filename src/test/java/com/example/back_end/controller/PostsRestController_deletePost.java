@@ -66,7 +66,7 @@ public class PostsRestController_deletePost {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .delete("/api/posts/delete/{id}", "12"))
+                                .delete("/api/posts/delete/{id}", "6"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

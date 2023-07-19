@@ -1,35 +1,31 @@
-package com.example.back_end.model;
+package com.example.back_end.dto;
 
-import javax.persistence.*;
+import com.example.back_end.model.Employees;
+
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "posts")
-public class Posts {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PostsDTO {
     private Long id;
-    @Column(nullable = false)
+    @NotBlank
     private String title;
-    @Column(nullable = false)
-    private String image;
-    @Column(nullable = false,columnDefinition = "LONGTEXT")
+    @NotBlank
     private String content;
-    @Column(columnDefinition = "DATETIME DEFAULT now()")
+
     private LocalDateTime createDate;
-    @ManyToOne
-    @JoinColumn(name = "employees_id", referencedColumnName = "id")
+    @NotBlank
+    private String image;
     private Employees employees;
 
-    public Posts() {
+    public PostsDTO() {
     }
 
-    public Posts(Long id, String title, String image, String content, LocalDateTime createDate, Employees employees) {
+    public PostsDTO(Long id, String title, String content, LocalDateTime createDate, String image, Employees employees) {
         this.id = id;
         this.title = title;
-        this.image = image;
         this.content = content;
         this.createDate = createDate;
+        this.image = image;
         this.employees = employees;
     }
 
@@ -49,14 +45,6 @@ public class Posts {
         this.title = title;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getContent() {
         return content;
     }
@@ -71,6 +59,14 @@ public class Posts {
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Employees getEmployees() {
