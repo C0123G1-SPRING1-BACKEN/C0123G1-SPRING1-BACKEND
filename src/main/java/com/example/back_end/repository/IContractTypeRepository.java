@@ -1,8 +1,6 @@
 package com.example.back_end.repository;
 
 import com.example.back_end.model.ContractType;
-import com.example.back_end.model.Employees;
-import com.example.back_end.model.ProductType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
