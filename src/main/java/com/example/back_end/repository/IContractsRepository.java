@@ -1,5 +1,4 @@
 package com.example.back_end.repository;
-
 import com.example.back_end.dto.IContractDto;
 import com.example.back_end.model.Contracts;
 import org.springframework.data.domain.Page;
