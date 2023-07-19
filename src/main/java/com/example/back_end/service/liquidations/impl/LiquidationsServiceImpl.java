@@ -24,6 +24,6 @@ public class LiquidationsServiceImpl implements ILiquidationsService {
     @Override
     public void save(Liquidations liquidations) {
         System.out.println(liquidations.getCustomers().getId());
-        liquidationsRepository.createLiquidations(liquidations.getContracts().getId(),liquidations.getCustomers().getId(),liquidations.getTotalPrice());
+        liquidationsRepository.createLiquidations(liquidations.getCustomers().getId(),liquidations.getProducts(),liquidations.getTotalPrice());
     }
 }

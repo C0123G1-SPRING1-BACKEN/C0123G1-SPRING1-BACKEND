@@ -3,10 +3,15 @@ package com.example.back_end.service.impl;
 
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
-import com.example.back_end.repository.ContractRepository;
+import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -149,7 +154,7 @@ public class ContractService implements IContractService {
 
     @Override
     public Optional<Contracts> findTransactionHistoryById(Long id) {
-        return iContractRepository.findContractsById(id);
+        return icontractRepository.findContractsById(id);
 
     }
 
