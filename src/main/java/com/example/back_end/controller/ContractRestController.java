@@ -6,10 +6,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
+import com.example.back_end.model.ContractStatus;
+import com.example.back_end.model.ContractType;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
+import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,29 +31,12 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin("*")
 public class ContractRestController {
+
     @Autowired
     private IContractService iContractService;
 
-//    /**
-//     * Created by: ThienNT
-//     * Date created: 13/07/2023
-//     * Function: get page transaction history from Database
-//     * <p>
-//     *
-//     * @param
-//     * @return ResponseEntity<Page < IContractProjection>>
-//     */
-
-//    @GetMapping("")
-//    public ResponseEntity<Page<ITransactionHistoryProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-//                                                                                        @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-//        Page<ITransactionHistoryProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
-//        int totalPage = contractProjectionPage.getTotalPages();
-//        if (page >= totalPage || page < 0) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
-//    }
+    @Autowired
+    private IProductTypeService iProductTypeService;
 
     /**
      * Created by: ThienNT
@@ -99,13 +85,13 @@ public class ContractRestController {
      * @requestbody contractSearchDTO
      */
 
-    @PostMapping("/search-transaction-history")
+    @PostMapping("/transaction-history")
     public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                                                    @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                                                    @RequestBody ContractSearchDTO contractSearchDTO) {
         Page<ITransactionHistoryProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
         int totalPage = contractProjectionsPage.getTotalPages();
-        if (page > totalPage || page<0) {
+        if (page > totalPage || page < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractProjectionsPage, HttpStatus.OK);
@@ -193,4 +179,23 @@ public class ContractRestController {
         }
         return new ResponseEntity<>(contracts, HttpStatus.OK);
     }
+
+    @GetMapping("/list-contract-status")
+    public ResponseEntity<List<ContractStatus>> getALlContractStatus() {
+        List<ContractStatus> contractStatusList = this.iProductTypeService.getAllContractStatus();
+        if (contractStatusList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
+    }
+
+    @GetMapping("/list-contract-type")
+    public ResponseEntity<List<ContractType>> getALlContractType() {
+        List<ContractType> contractTypeList = this.iProductTypeService.getAllContractType();
+        if (contractTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractTypeList, HttpStatus.OK);
+    }
+
 }
