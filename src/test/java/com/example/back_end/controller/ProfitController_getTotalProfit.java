@@ -28,7 +28,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate , endDate có giá trị đúng, với profitType (loại lợi nhuận) = null
      */
     @Test
-    public void getTotalProfit_1() throws Exception {
+    public void getTotalProfit_interest_1() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType=null"))
                         .andDo(print())
@@ -43,7 +43,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate , endDate có giá trị đúng, với profitType = empty (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_2() throws Exception {
+    public void getTotalProfit_interest_2() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType="))
                         .andDo(print())
@@ -61,7 +61,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate , endDate có giá trị đúng, với profitType (loại lợi nhuận) = tham số không tồn tại trong DB
      */
     @Test
-    public void getTotalProfit_3() throws Exception {
+    public void getTotalProfit_interest_3() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType=pawn"))
                         .andDo(print())
@@ -76,7 +76,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate , endDate có giá trị đúng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_4() throws Exception {
+    public void getTotalProfit_interest_4() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-06-06&endDate=2023-06-08&profitType=interest"))
                         .andDo(print())
@@ -91,7 +91,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate , endDate có giá trị đúng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_99() throws Exception {
+    public void getTotalProfit_interest_99() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-06-06&endDate=2023-08-28&profitType=interest"))
                         .andDo(print())
@@ -109,7 +109,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate có giá trị rỗng , endDate có giá trị đúng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_98() throws Exception {
+    public void getTotalProfit_interest_98() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=&endDate=2023-07-13&profitType=interest"))
                         .andDo(print())
@@ -127,7 +127,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate có giá trị đúng , endDate có giá trị rỗng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_97() throws Exception {
+    public void getTotalProfit_interest_97() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=&profitType=interest"))
                         .andDo(print())
@@ -145,7 +145,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate có giá trị rỗng , endDate có giá trị rỗng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_96() throws Exception {
+    public void getTotalProfit_interest_96() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=&endDate=&profitType=interest"))
                         .andDo(print())
@@ -163,7 +163,7 @@ public class ProfitController_getTotalProfit {
      * @ param startDate và endDate có giá trị đúng, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
      */
     @Test
-    public void getTotalProfit_95() throws Exception {
+    public void getTotalProfit_interest_94() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-23&endDate=2023-08-10&profitType=interest"))
                         .andDo(print())
@@ -171,5 +171,21 @@ public class ProfitController_getTotalProfit {
                         .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(596L, profit);
+    }
+    /**
+     * Lấy ra tổng lợi nhuận trong khoảng ngày được chọn
+     *
+     * @return Trả về nội dung lỗi FieldError ở REST
+     * @throws Exception
+     * @ param startDate > endDate, với profitType = interest (loại lợi nhuận,mặc định là interest nếu profitType rỗng)
+     */
+    @Test
+    public void getTotalProfit_interest_95() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/employee/profit/total-profit?startDate=2023-08-01&endDate=2023-07-13&page=0&profitType=interest"))
+                        .andDo(print())
+                        .andExpect(status().is4xxClientError())
+                        .andReturn();
+
     }
 }
