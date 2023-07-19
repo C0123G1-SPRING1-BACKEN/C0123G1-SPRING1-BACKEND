@@ -54,7 +54,15 @@ public class Contracts {
     @ManyToOne
     @JoinColumn
     private ContractType contractType;
+private String redeemDate;
 
+    public String getRedeemDate() {
+        return redeemDate;
+    }
+
+    public void setRedeemDate(String redeemDate) {
+        this.redeemDate = redeemDate;
+    }
 
     public Contracts() {
         // TODO document why this constructor is empty
