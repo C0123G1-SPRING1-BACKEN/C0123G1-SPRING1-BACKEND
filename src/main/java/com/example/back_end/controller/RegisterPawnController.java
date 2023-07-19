@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.RegisterDTO;
 import com.example.back_end.model.ProductType;
+import com.example.back_end.model.RegisterPawn;
 import com.example.back_end.service.IProductTypeService;
 import com.example.back_end.service.IRegisterPawnService;
 import com.sun.istack.Nullable;
@@ -18,6 +19,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,13 +70,13 @@ public class RegisterPawnController {
     }
 
 
-    @GetMapping("/product-type")
-    public ResponseEntity<List<ProductType>> getList() {
-        if (productTypeService.getAll() == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/product-type")
+//    public ResponseEntity<List<ProductType>> getList() {
+//        if (productTypeService.getAll() == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
+//    }
 
     @PatchMapping("/{id}")
     public <T> ResponseEntity<T> confirmRegister(@PathVariable("id") Long id) {
