@@ -10,7 +10,6 @@ import com.example.back_end.service.IContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -40,8 +39,6 @@ public class ContractService implements IContractService {
     @Override
     public void saveContract(ContractDto contractDto) {
         Contracts contract = new Contracts();
-//        BeanUtils.copyProperties(contractDto,contract);
-//        contractRepository.saveContract(contract);
         contract.setProductName(contractDto.getProductName());
         contract.setContractCode(contractDto.getContractCode());
         contract.setLoans(contractDto.getLoans());
@@ -49,9 +46,6 @@ public class ContractService implements IContractService {
         contract.setImage(contractDto.getImage());
         contract.setStartDate(contractDto.getStartDate());
         contract.setEndDate(contractDto.getEndDate());
-//        contract.setCreateDate(contractDto.getCreateDate());
-//        contract.setUpdateDate(contractDto.getUpdateDate());
-//        contract.setDelete(contractDto.isDelete());
         contract.setProductType(new ProductType(contractDto.getProductType()));
         contract.setCustomers(new Customers(contractDto.getCustomers()));
         contract.setContractStatus(new ContractStatus(contractDto.getContractStatus()));
@@ -135,10 +129,9 @@ public class ContractService implements IContractService {
 
     @Override
     public Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
-        Page<ITransactionHistoryProjection> projectionPage = icontractRepository.searchTransactionHistory(PageRequest.of(page, limit),
-                 contractSearchDTO.getCustomerName() ,  contractSearchDTO.getProductName() ,
-                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(),contractSearchDTO.getContractStatus());
-        return projectionPage;
+        return icontractRepository.searchTransactionHistory(PageRequest.of(page, limit),
+                contractSearchDTO.getCustomerName(), contractSearchDTO.getProductName(),
+                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
     }
 
     /**

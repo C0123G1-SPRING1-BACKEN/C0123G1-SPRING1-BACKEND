@@ -97,7 +97,8 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                     "                                   ELSE c.start_date BETWEEN COALESCE(:from_date, c.start_date) AND COALESCE(:to_date, c.start_date)" +
                     "                            END)"
             , nativeQuery = true)
-    Page<ITransactionHistoryProjection> searchTransactionHistory(Pageable pageable, @Param("customer_name") String customerName,
+    Page<ITransactionHistoryProjection> searchTransactionHistory(Pageable pageable,
+                                                                 @Param("customer_name") String customerName,
                                                                  @Param("product_names") String productNames,
                                                                  @Param("from_date") String fromDate,
                                                                  @Param("to_date") String toDate,
