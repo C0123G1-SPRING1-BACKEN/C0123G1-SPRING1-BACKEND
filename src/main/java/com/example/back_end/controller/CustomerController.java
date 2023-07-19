@@ -10,7 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Created by: QuocNHA
+ * Date created: 13/07/2023
+ * Function: customer pawn
+ * @return
+ */
 @Controller
 @RequestMapping("api/customer")
 @CrossOrigin("*")
@@ -20,7 +25,7 @@ public class CustomerController {
 
     @GetMapping("")
     public ResponseEntity<?> findByNameCustomer(@RequestParam(required = false, defaultValue = "") String name,
-                                                @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
+                                                @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
         return new ResponseEntity<>(customerService.findByNameProduct(name, pageable), HttpStatus.OK);
     }
     @DeleteMapping("/{id}")

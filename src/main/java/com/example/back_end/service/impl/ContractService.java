@@ -4,9 +4,6 @@ package com.example.back_end.service.impl;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
 import com.example.back_end.projections.ContractSearchDTO;
-
-import com.example.back_end.repository.IContractRepository;
-import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
@@ -17,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -157,7 +155,7 @@ public class ContractService implements IContractService {
     @Override
     public void createContract(Contracts contracts) {
         icontractRepository.createContract(
-                contracts.getCustomers().getId(),
+               contracts.getCustomers().getId(),
                 contracts.getContractCode(),
                 contracts.getProductName(),
                 contracts.getProductType().getId(),
