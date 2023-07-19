@@ -33,18 +33,14 @@ public class ContractController_searchTransactionHistory {
      */
 
     @Test
-    public void showTransactionHistoryDetail_11() throws Exception {
+    public void searchTransactionHistory_5() throws Exception {
         ContractSearchDTO contractSearchDTO = new ContractSearchDTO();
-        contractSearchDTO.setCustomerName("Dong");
+        contractSearchDTO.setCustomerName("");
         contractSearchDTO.setProductName("");
         contractSearchDTO.setStartDate("");
         contractSearchDTO.setEndDate("");
-        ContractStatus contractStatus = new ContractStatus();
-        contractStatus.setId(0L);
-        contractSearchDTO.setContractStatus(contractStatus.getId());
-        ContractType contractType = new ContractType();
-        contractType.setId(0L);
-        contractSearchDTO.setContractType(contractType.getId());
+        contractSearchDTO.setContractStatus("");
+        contractSearchDTO.setContractType("");
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders

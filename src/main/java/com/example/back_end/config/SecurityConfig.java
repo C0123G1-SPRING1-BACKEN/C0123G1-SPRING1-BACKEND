@@ -23,9 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Autowired
-
     private JwtRequestFilter jwtRequestFilter;
-
 
     @Autowired
     private UsersService userService;
@@ -35,18 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-    }
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/authenticate","/**").permitAll()
-                .antMatchers("/api/user/checkCode").permitAll()
+                .antMatchers("/**","/api/user/authenticate").permitAll()
                 .antMatchers("/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -58,8 +49,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService);
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
+
     @Autowired
     public void setJwtRequestFilter(JwtRequestFilter jwtRequestFilter) {
         this.jwtRequestFilter = jwtRequestFilter;

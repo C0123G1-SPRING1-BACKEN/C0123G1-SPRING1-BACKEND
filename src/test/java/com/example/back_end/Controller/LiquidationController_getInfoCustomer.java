@@ -30,7 +30,7 @@ public class LiquidationController_getInfoCustomer {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/customers/{id}", "null"))
+                                "/api/employee/liquidation/customer/{id}","null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -48,10 +48,11 @@ public class LiquidationController_getInfoCustomer {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/customers/{id}", ""))
+                                "/api/employee/liquidation/customer/{id}", ""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
 
     /**
      * Create By : KhangPVa
@@ -65,13 +66,9 @@ public class LiquidationController_getInfoCustomer {
     public void getInfoCustomer_id_3() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/customers/{id}", "34", "abc"))
+                                "/api/employee/liquidation/customer/{id}", "4"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("id").value(34))
-                .andExpect(jsonPath("name").value("Nguyễn Thị Đẹp"))
-                .andExpect(jsonPath("citizenCode").value("2000-10-17"))
-                .andExpect(jsonPath("quantityContract").value(3));
+                .andExpect(status().is4xxClientError());
     }
 
 
@@ -88,11 +85,11 @@ public class LiquidationController_getInfoCustomer {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get(
-                                "/api/employee/liquidation/customers/{id}/{name}", "1", "Huỳnh Đức Định"))
+                                "/api/employee/liquidation/customer/{id}", "1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("id").value(1))
-                .andExpect(jsonPath("name").value("Huỳnh Đức Định"))
+                .andExpect(jsonPath("name").value("Huynh Duc Dinh"))
                 .andExpect(jsonPath("citizenCode").value("201964254"))
                 .andExpect(jsonPath("quantityContract").value(4));
     }

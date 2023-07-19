@@ -8,14 +8,14 @@ public class ContractSearchDTO {
     private String startDate;
     private String endDate;
 
-    private Long contractType;
+    private String contractType;
 
-    private Long contractStatus;
+    private String contractStatus;
 
     public ContractSearchDTO() {
     }
 
-    public ContractSearchDTO(String productName, String customerName, String startDate, String endDate, Long contractType, Long contractStatus) {
+    public ContractSearchDTO(String productName, String customerName, String startDate, String endDate, String contractType, String contractStatus) {
         this.productName = productName;
         this.customerName = customerName;
         this.startDate = startDate;
@@ -56,19 +56,19 @@ public class ContractSearchDTO {
         this.endDate = endDate;
     }
 
-    public Long getContractType() {
+    public String getContractType() {
         return contractType;
     }
 
-    public void setContractType(Long contractType) {
+    public void setContractType(String contractType) {
         this.contractType = contractType;
     }
 
-    public Long getContractStatus() {
+    public String getContractStatus() {
         return contractStatus;
     }
 
-    public void setContractStatus(Long contractStatus) {
+    public void setContractStatus(String contractStatus) {
         this.contractStatus = contractStatus;
     }
 }

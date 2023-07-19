@@ -26,8 +26,9 @@ import javax.validation.Valid;
  * Created by: KhangPVA
  * Date created: 13/07/2023
  * Function: create liquidation
+ * <p>
+ * // * @param LiquidaytionDto
  *
-// * @param LiquidaytionDto
  * @return Liquidation
  */
 
@@ -44,17 +45,17 @@ public class LiquidationRestController {
 
     @PostMapping("")
     public ResponseEntity<?> createLiquidation(@Valid @RequestBody LiquidationsDto liquidationsDto, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Liquidations liquidations=new Liquidations();
-        BeanUtils.copyProperties(liquidationsDto,liquidations);
+        Liquidations liquidations = new Liquidations();
+        BeanUtils.copyProperties(liquidationsDto, liquidations);
         liquidationsService.save(liquidations);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<Page<ICustomerDto>> getListCustomer(@PageableDefault(size = 3) Pageable pageable) {
+    public ResponseEntity<Page<ICustomerDto>> getListCustomer(@PageableDefault(size = 6) Pageable pageable) {
         Page<ICustomerDto> customerDtoPage = customerService.findByCustomer(pageable);
         if (customerDtoPage.isEmpty()) {
             return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
@@ -63,7 +64,7 @@ public class LiquidationRestController {
     }
 
     @GetMapping("/contracts")
-    public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 3) Pageable pageable) {
+    public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 6) Pageable pageable) {
         Page<IContractDto> contractsDtoPage = contractsService.findAllProduct(pageable);
         if (contractsDtoPage.isEmpty()) {
             return new ResponseEntity<>(contractsDtoPage, HttpStatus.NOT_FOUND);
@@ -71,38 +72,38 @@ public class LiquidationRestController {
         return new ResponseEntity<>(contractsDtoPage, HttpStatus.OK);
     }
 
-    @GetMapping("/customers/{id}")
-    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") String id) {
-        ICustomerDto iCustomerDto=  customerService.findByIdCustomer(id);
-        if (iCustomerDto.equals(id)){
-            return new ResponseEntity<>(iCustomerDto,HttpStatus.BAD_REQUEST);
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
+        ICustomerDto iCustomerDto = customerService.findByIdCustomer(id);
+        if (iCustomerDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(iCustomerDto,HttpStatus.OK);
+        return new ResponseEntity<>(iCustomerDto, HttpStatus.OK);
     }
 
-//    @GetMapping("/customers/search")
-//    public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
-//        Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
-//        if (customerDtoPage.isEmpty()) {
-//            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
-//    }
-
-    @GetMapping("/contracts/{id}")
-    public ResponseEntity<IContractDto> getByIdCustomer(@PathVariable("id") Long id) {
-        IContractDto iContractDto=  contractsService.findContractById(id);
-        if (iContractDto.equals(id)){
-            return new ResponseEntity<>(iContractDto,HttpStatus.BAD_REQUEST);
+    @GetMapping("/customers/search")
+    public ResponseEntity<Page<ICustomerDto>> getCustomer(@PageableDefault(size = 6) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> customerDtoPage = customerService.searchCustomer(pageable, name);
+        if (customerDtoPage.isEmpty() && customerDtoPage == null) {
+            return new ResponseEntity<>(customerDtoPage, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(iContractDto,HttpStatus.OK);
+        return new ResponseEntity<>(customerDtoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/contract/{id}")
+    public ResponseEntity<IContractDto> getByIdContract(@PathVariable("id") Long id) {
+        IContractDto iContractDto = contractsService.findContractById(id);
+        if (iContractDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iContractDto, HttpStatus.OK);
     }
 
     @GetMapping("/contracts/search")
-    public ResponseEntity<Page<IContractDto>> getCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("productName") String productName
-            , @RequestParam("productType") String productType, @RequestParam("loans") Long loans) {
-        Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, "%"+productName+"%", productType, ("%"+loans+"%"));
-        if (contractDtoPage.isEmpty()) {
+    public ResponseEntity<Page<IContractDto>> getCustomer(@PageableDefault(size = 6) Pageable pageable, @RequestParam("productName") String productName
+            , @RequestParam("productType") String productType, @RequestParam("loans") String loans) {
+        Page<IContractDto> contractDtoPage = contractsService.searchProduct(pageable, productName, productType, loans);
+        if (contractDtoPage.isEmpty() && contractDtoPage == null) {
             return new ResponseEntity<>(contractDtoPage, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(contractDtoPage, HttpStatus.OK);

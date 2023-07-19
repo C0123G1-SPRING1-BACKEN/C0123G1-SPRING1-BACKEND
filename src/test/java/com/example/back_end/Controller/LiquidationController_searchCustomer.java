@@ -13,37 +13,43 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RegisterPawnController_getListProductType {
-
+public class LiquidationController_searchCustomer {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    public void getListProductType_5() throws Exception {
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/register/product-type"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
-    }
     /**
-     * Danh sach rong .
-     * @throws Exception
-     */
-    @Test
-    public void getListProductType_6() throws Exception {
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/register/product-type"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
-
-    }
-    /**
-     *  Co danh sach   .
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search customer Trường hợp Trả về list có size = 0
+     *
      * @throws Exception
      */
 
+    @Test
+    public void searchCustomer_5() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/customers/search?name=null"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
+
+    /**
+     * Create By : KhangPVa
+     * Date Create : 14/07/2023
+     * search customer Trường hợp Trả về list có size > 0
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void searchCustomer_6() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/liquidation/customers/search?name=Huynh Duc Dinh"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
 }
