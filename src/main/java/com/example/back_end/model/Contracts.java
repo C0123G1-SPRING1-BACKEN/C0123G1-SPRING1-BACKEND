@@ -40,21 +40,50 @@ public class Contracts {
     private boolean isDelete;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "product_type_id")
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customers_id")
     private Customers customers;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_status_id")
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employees_id")
     private Employees employees;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_type_id")
     private ContractType contractType;
 
+    private String redeemDate;
+
+    public String getRedeemDate() {
+        return redeemDate;
+    }
+
+    public void setRedeemDate(String redeemDate) {
+        this.redeemDate = redeemDate;
+    }
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType, String redeemDate) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+        this.redeemDate = redeemDate;
+    }
 
     public Contracts() {
         // TODO document why this constructor is empty

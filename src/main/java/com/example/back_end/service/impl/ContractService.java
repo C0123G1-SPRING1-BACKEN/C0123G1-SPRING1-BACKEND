@@ -48,7 +48,7 @@ public class ContractService implements IContractService {
         contract.setEndDate(contractDto.getEndDate());
         contract.setProductType(new ProductType(contractDto.getProductType()));
         contract.setCustomers(new Customers(contractDto.getCustomers()));
-        contract.setContractStatus(new ContractStatus(contractDto.getContractStatus()));
+        contract.setContractStatus(new ContractStatus(contractDto.getContractStatus().getId()));
         contract.setEmployees(new Employees(contractDto.getEmployees()));
         contract.setContractType(new ContractType(contractDto.getContractType()));
 

@@ -13,9 +13,8 @@ public class Liquidations {
     @ManyToOne
     @JoinColumn
     private Customers customers;
-    @ManyToOne
-    @JoinColumn
-    private Contracts contracts;
+    @Column(nullable = false)
+    private String products;
     @Column(nullable = false)
     private Long totalPrice;
     @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT now()",updatable = false)
@@ -25,10 +24,10 @@ public class Liquidations {
     public Liquidations() {
     }
 
-    public Liquidations(Long id, Customers customers, Contracts contracts, Long totalPrice, LocalDateTime createTime) {
+    public Liquidations(Long id, Customers customers, String products, Long totalPrice, LocalDateTime createTime) {
         this.id = id;
         this.customers = customers;
-        this.contracts = contracts;
+        this.products = products;
         this.totalPrice = totalPrice;
         this.createTime = createTime;
     }
@@ -49,12 +48,12 @@ public class Liquidations {
         this.customers = customers;
     }
 
-    public Contracts getContracts() {
-        return contracts;
+    public String getProducts() {
+        return products;
     }
 
-    public void setContracts(Contracts contracts) {
-        this.contracts = contracts;
+    public void setProducts(String products) {
+        this.products = products;
     }
 
     public Long getTotalPrice() {
