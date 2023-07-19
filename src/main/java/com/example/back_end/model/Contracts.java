@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name = "contracts")
@@ -14,21 +15,19 @@ public class Contracts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name", columnDefinition = "VARCHAR(250)",nullable = false)
+    @Column(name = "product_name", columnDefinition = "VARCHAR(250)", nullable = false)
     private String productName;
-    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)",nullable = false)
+    @Column(name = "contract_code", columnDefinition = "VARCHAR(250)", nullable = false)
     private String contractCode;
     @Column(nullable = false)
-
-
     private Long loans;
     @Column(nullable = false)
     private Long profit;
-    @Column(name = "image", columnDefinition = "TEXT",nullable = false)
+    @Column(name = "image", columnDefinition = "TEXT", nullable = false)
     private String image;
-    @Column(name = "start_date", columnDefinition = "VARCHAR(25)",nullable = false)
+    @Column(name = "start_date", columnDefinition = "VARCHAR(25)", nullable = false)
     private String startDate;
-    @Column(name = "end_date", columnDefinition = "VARCHAR(25)",nullable = false)
+    @Column(name = "end_date", columnDefinition = "VARCHAR(25)", nullable = false)
     private String endDate;
     @CreationTimestamp
     @Column(name = "create_time", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
@@ -41,27 +40,32 @@ public class Contracts {
     private boolean isDelete;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "product_type_id")
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customers_id")
     private Customers customers;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_status_id")
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employees_id")
     private Employees employees;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_type_id")
     private ContractType contractType;
 
+    private String redeemDate;
 
-    public Contracts(){
+    public String getRedeemDate() {
+        return redeemDate;
     }
 
+    public void setRedeemDate(String redeemDate) {
+        this.redeemDate = redeemDate;
+    }
 
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType, String redeemDate) {
         this.id = id;
         this.productName = productName;
         this.contractCode = contractCode;
@@ -70,38 +74,20 @@ public class Contracts {
         this.image = image;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.createTime = createDate;
-        this.updateTime = updateDate;
-        this.isDelete = isDelete;
-        this.productType = productType;
-        this.customers = customers;
-        this.contractStatus = contractStatus;
-        this.employees = employees;
-        this.contractType = contractType;
-    }
-
-    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
-        this.id = id;
-        this.productName = productName;
-        this.contractCode = contractCode;
-        this.loans = loans;
-        this.profit = profit;
-        this.image = image;
-        this.startDate = startDate;
-        this.endDate = endDate;
-
-
         this.createTime = createTime;
         this.updateTime = updateTime;
-
         this.isDelete = isDelete;
         this.productType = productType;
         this.customers = customers;
         this.contractStatus = contractStatus;
         this.employees = employees;
         this.contractType = contractType;
+        this.redeemDate = redeemDate;
     }
 
+    public Contracts() {
+        // TODO document why this constructor is empty
+    }
 
 
     public Long getId() {
