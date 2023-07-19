@@ -1,4 +1,4 @@
-package com.example.back_end.service.employees;
+package com.example.back_end.service;
 
 import com.example.back_end.model.Employees;
 
