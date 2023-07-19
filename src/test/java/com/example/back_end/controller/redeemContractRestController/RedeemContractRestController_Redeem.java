@@ -106,7 +106,7 @@ String  date =  "1231";
 
         Contracts contracts = new Contracts();
 
-//        contracts.setRedeemDate(String.valueOf(redeemDate));
+        contracts.setRedeemDate(String.valueOf(redeemDate));
         ContractStatus contractStatus = new ContractStatus();
         contractStatus.setId(2L);
         contracts.setContractStatus(contractStatus);
