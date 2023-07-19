@@ -4,7 +4,6 @@ package com.example.back_end.service.impl;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.*;
 import com.example.back_end.projections.ContractSearchDTO;
-import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;

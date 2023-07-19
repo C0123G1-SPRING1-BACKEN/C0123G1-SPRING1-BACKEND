@@ -77,13 +77,13 @@ public class RegisterPawnController {
     }
 
 
-    @GetMapping("/product-type")
-    public ResponseEntity<List<ProductType>> getList() {
-        if (productTypeService.getAll() == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/product-type")
+//    public ResponseEntity<List<ProductType>> getList() {
+//        if (productTypeService.getAll() == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(productTypeService.getAll(), HttpStatus.OK);
+//    }
 
     @PatchMapping("/{id}")
     public ResponseEntity<?> confirmRegister (@PathVariable("id") Long id) {
