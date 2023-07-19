@@ -146,7 +146,5 @@ public class ContractService implements IContractService {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-
     }
 }
