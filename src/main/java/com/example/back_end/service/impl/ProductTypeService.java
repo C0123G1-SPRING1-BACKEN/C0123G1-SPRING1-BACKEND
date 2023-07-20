@@ -40,6 +40,10 @@ public class ProductTypeService implements IProductTypeService {
         return iContractTypeRepository.getAllContractType();
     }
 
+    @Override
+    public List<Customers> getAllCustomer() {
+        return iCustomerRepository.getAllCustomer();
+    }
 
 
 }
