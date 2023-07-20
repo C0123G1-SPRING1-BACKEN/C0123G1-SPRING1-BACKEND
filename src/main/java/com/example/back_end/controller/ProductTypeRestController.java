@@ -40,11 +40,6 @@ public class ProductTypeRestController {
         List<ContractStatus> contractStatusList = iProductTypeService.getAllContractStatus();
         return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
     }
-    @GetMapping("/contract/customers")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<List<Customers>> getAllCustomer(){
-        List<Customers> customersList=iProductTypeService.getAllCustomer();
-        return new ResponseEntity<>(customersList,HttpStatus.OK);
-    }
+
 
 }

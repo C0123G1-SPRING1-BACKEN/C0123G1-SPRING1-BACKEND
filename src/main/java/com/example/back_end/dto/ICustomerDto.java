@@ -7,4 +7,5 @@ public interface ICustomerDto {
     String getName();
     String getCitizenCode();
     String getQuantityContract();
+    String getEmail();
 }

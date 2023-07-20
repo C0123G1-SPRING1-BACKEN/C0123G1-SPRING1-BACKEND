@@ -111,8 +111,6 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
                         @Param("endDate") String endDate, @Param("profit") Long profit, @Param("employees") Long employees);
 
-
-
 }
 
 

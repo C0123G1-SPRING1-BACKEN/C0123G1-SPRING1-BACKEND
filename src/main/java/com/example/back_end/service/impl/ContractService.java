@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -150,20 +153,39 @@ public class ContractService implements IContractService {
     @Transactional
     @Override
     public void createContract(Contracts contracts) {
-        icontractRepository.createContract(
-                contracts.getCustomers().getId(),
-                contracts.getContractCode(),
-                contracts.getProductName(),
-                contracts.getProductType().getId(),
-                contracts.getImage(),
-                contracts.getLoans(),
-                contracts.getStartDate(),
-                contracts.getEndDate(),
-                contracts.getProfit(),
-                contracts.getContractStatus().getId(),
-                contracts.getContractType().getId(),
-                contracts.getEmployees().getId());
+        Long loans = contracts.getLoans();
+//        tỷ lệ lãi suất là 2% trên tháng, thì lãi suất cần tính cho 1 ngày là 2%/30 = 0,067%.
+        Double percent =  0.067; // Lãi suất hàng ngày (0.067%)
 
+        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate=LocalDate.parse(contracts.getStartDate());
+        LocalDate endDate=LocalDate.parse(contracts.getEndDate());
+        String start= startDate.format(dateTimeFormatter);
+        String end= endDate.format(dateTimeFormatter);
+        System.out.println("Ngày bắt đầu: "+start);
+        System.out.println("Ngày kết thúc: "+end);
+        Long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+        System.out.println("Tổng số ngày: " + daysBetween);
+//        tính tổng tiền
+        Long profits = (long) (loans * percent * daysBetween);
+        System.out.println("Liền lãi BE: " + profits);
+        System.out.println("Liền lãi FE: " + contracts.getProfit());
+
+        if (contracts.getProfit().equals(profits)){
+            icontractRepository.createContract(
+                    contracts.getCustomers().getId(),
+                    contracts.getContractCode(),
+                    contracts.getProductName(),
+                    contracts.getProductType().getId(),
+                    contracts.getImage(),
+                    contracts.getLoans(),
+                    contracts.getStartDate(),
+                    contracts.getEndDate(),
+                    contracts.getProfit(),
+                    contracts.getEmployees().getId());
+        }else {
+            System.out.println("Mệnh giá tiền của FE - BE không trùng nhau");
+        }
 
     }
 }
