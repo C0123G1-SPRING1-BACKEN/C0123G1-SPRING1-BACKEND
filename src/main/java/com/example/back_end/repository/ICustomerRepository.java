@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customers, Long> {
-    @Query(value = "SELECT c.id, c.name AS name, c.citizen_code AS citizenCode, c.quantity_contract AS quantityContract\n" +
+    @Query(value = "SELECT c.id, c.name AS name, c.citizen_code AS citizenCode, c.quantity_contract AS quantityContract,c.email\n" +
             "FROM customers AS c\n" +
             "WHERE is_delete = false AND c.name LIKE concat('%', :name, '%') ",
             nativeQuery = true)
