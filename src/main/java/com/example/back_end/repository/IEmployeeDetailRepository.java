@@ -16,9 +16,9 @@ public interface IEmployeeDetailRepository extends JpaRepository<Employees, Long
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE employees SET (name = :name, birth_day = :birth_day, gender =:gender, email = :email," +
-            " phone_number = :phone_number, address = :address, salary = :salary, citizen_code = :citizen_code, image = :image"+
-            "WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE employees SET name = :name, birth_day = :birth_day, gender =:gender, email = :email," +
+            " phone_number = :phone_number, address = :address, salary = :salary, citizen_code = :citizen_code," +
+            " image = :image "+"WHERE id = :id", nativeQuery = true)
     void updateEmployee(@Param("id") Long id,
                         @Param("name") String name,
                         @Param("birth_day") String birthDay,
