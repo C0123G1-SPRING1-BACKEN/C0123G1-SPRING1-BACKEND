@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customers, Long> {
     @Query(value = "SELECT c.id, c.name AS name, c.citizen_code AS citizenCode, c.quantity_contract AS quantityContract\n" +
@@ -23,4 +25,8 @@ public interface ICustomerRepository extends JpaRepository<Customers, Long> {
     @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.email as email FROM customers as c WHERE c.name LIKE concat('%',:name,'%') ",
             nativeQuery = true)
     Page<ICustomerDto> findAllBySearchCustomer(Pageable pageable, @Param("name") String name);
+
+
+    @Query(value = "SELECT * FROM customers AS c WHERE c.is_delete = false", nativeQuery = true)
+    List<Customers> getAllCustomer();
 }

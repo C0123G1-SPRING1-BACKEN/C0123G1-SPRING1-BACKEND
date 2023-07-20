@@ -1,9 +1,11 @@
 package com.example.back_end.service;
 
+import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Users;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -36,5 +38,6 @@ public interface IContractService {
     List<Contracts> findAll();
 
     void createContract(Contracts contracts);
+
 
 }

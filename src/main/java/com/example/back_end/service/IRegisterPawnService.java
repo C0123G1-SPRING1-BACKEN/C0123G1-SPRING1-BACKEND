@@ -13,6 +13,8 @@ public interface IRegisterPawnService {
 
     Page<RegisterPawn> findByNameRegisterPawn(Pageable pageable);
 
+    void confirmRegister(Long id);
+
 
 
 }

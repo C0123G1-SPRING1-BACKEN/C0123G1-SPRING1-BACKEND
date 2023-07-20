@@ -7,6 +7,7 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,6 @@ public class ContractService implements IContractService {
     }
 
 
-
     /**
      * Created by: ThienNT
      * Date created: 13/07/2023
@@ -104,9 +104,9 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(Integer id) {
+    public Boolean deleteTransactionHistoryById(String id) {
         try {
-            iContractRepository.deleteContractById(id);
+            icontractRepository.deleteContractById(id);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -124,14 +124,6 @@ public class ContractService implements IContractService {
      * @return ContractDTO
      */
 
-    @Override
-    public Page<IContractProjection> searchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
-        Page<IContractProjection> projectionPage = iContractRepository.searchTransactionHistory(PageRequest.of(page, limit, Sort.by("startDate").descending()),
-                "%" + contractSearchDTO.getCustomerName() + "%", "%" + contractSearchDTO.getProductName() + "%",
-                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
-        return projectionPage;
-    }
-
     /**
      * Created by: ThienNT
      * Date created: 13/07/2023
@@ -146,7 +138,8 @@ public class ContractService implements IContractService {
     public Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO) {
         return icontractRepository.searchTransactionHistory(PageRequest.of(page, limit),
                 contractSearchDTO.getCustomerName(), contractSearchDTO.getProductName(),
-                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(), contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
+                contractSearchDTO.getStartDate(), contractSearchDTO.getEndDate(),
+                contractSearchDTO.getContractType(), contractSearchDTO.getContractStatus());
     }
 
     /**
@@ -160,13 +153,13 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(Integer id) {
-        return iContractRepository.findContractsById(id);
+    public Optional<Contracts> findTransactionHistoryById(String id) {
+        return icontractRepository.findContractsById(id);
     }
 
     @Override
     public List<Contracts> findAll() {
-        return iContractRepository.findAll();
+        return icontractRepository.findAll();
     }
 
 
@@ -187,41 +180,41 @@ public class ContractService implements IContractService {
         String profit = (numberFormat.format(contracts.getProfit()));
         String loan = (numberFormat.format(loans));
 //        tỷ lệ lãi suất là 2% trên tháng, thì lãi suất cần tính cho 1 ngày là 2%/30 = 0,067%.
-        Double percent =  0.067; // Lãi suất hàng ngày (0.067%)
+        Double percent = 0.067; // Lãi suất hàng ngày (0.067%)
 
-        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate startDate=LocalDate.parse(contracts.getStartDate());
-        LocalDate endDate=LocalDate.parse(contracts.getEndDate());
-        String start= startDate.format(dateTimeFormatter);
-        String end= endDate.format(dateTimeFormatter);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(contracts.getStartDate());
+        LocalDate endDate = LocalDate.parse(contracts.getEndDate());
+        String start = startDate.format(dateTimeFormatter);
+        String end = endDate.format(dateTimeFormatter);
 
         Long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
 
 //        tính tổng tiền
         Long profits = (long) (loans * percent * daysBetween);
         String profitLoans = (numberFormat.format(profits));
-        System.out.println("Tiền cho vay: "+loan);
-        System.out.println("Ngày bắt đầu: "+start);
-        System.out.println("Ngày kết thúc: "+end);
+        System.out.println("Tiền cho vay: " + loan);
+        System.out.println("Ngày bắt đầu: " + start);
+        System.out.println("Ngày kết thúc: " + end);
         System.out.println("Tổng số ngày: " + daysBetween);
         System.out.println("Liền lãi BE: " + profitLoans);
         System.out.println("Liền lãi FE: " + profit);
 
-            if (contracts.getProfit().equals(profits)){
-                iContractRepository.createContract(
-                        contracts.getCustomers().getId(),
-                        contracts.getContractCode(),
-                        contracts.getProductName(),
-                        contracts.getProductType().getId(),
-                        contracts.getImage(),
-                        contracts.getLoans(),
-                        contracts.getStartDate(),
-                        contracts.getEndDate(),
-                        contracts.getProfit(),
-                        contracts.getEmployees().getId());
-            }else {
-                System.out.println("Mệnh giá tiền của FE - BE không trùng nhau");
-            }
+        if (contracts.getProfit().equals(profits)) {
+            icontractRepository.createContract(
+                    contracts.getCustomers().getId(),
+                    contracts.getContractCode(),
+                    contracts.getProductName(),
+                    contracts.getProductType().getId(),
+                    contracts.getImage(),
+                    contracts.getLoans(),
+                    contracts.getStartDate(),
+                    contracts.getEndDate(),
+                    contracts.getProfit(),
+                    contracts.getEmployees().getId());
+        } else {
+            System.out.println("Mệnh giá tiền của FE - BE không trùng nhau");
+        }
 
     }
 }

@@ -1,6 +1,6 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.service.customer.ICustomersService;
+import com.example.back_end.service.customers.ICustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
