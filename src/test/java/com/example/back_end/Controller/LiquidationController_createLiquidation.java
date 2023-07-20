@@ -39,7 +39,7 @@ public class LiquidationController_createLiquidation {
     liquidationsDto.setTotalPrice(Long.valueOf("10000"));
     Contracts contracts=new Contracts();
     contracts.setId(Long.valueOf("1"));
-    liquidationsDto.setContracts(contracts);
+//    liquidationsDto.setContracts(contracts);
 
     this.mockMvc
             .perform(MockMvcRequestBuilders
@@ -93,7 +93,7 @@ public class LiquidationController_createLiquidation {
     liquidationsDto.setCustomers(customers);
     Contracts contracts=new Contracts();
     contracts.setId(Long.valueOf("1"));
-    liquidationsDto.setContracts(contracts);
+//    liquidationsDto.setContracts(contracts);
 
     this.mockMvc
             .perform(MockMvcRequestBuilders
@@ -120,7 +120,7 @@ public class LiquidationController_createLiquidation {
     liquidationsDto.setCustomers(customers);
     Contracts contracts=new Contracts();
     contracts.setId(Long.valueOf("1"));
-    liquidationsDto.setContracts(contracts);
+//    liquidationsDto.setContracts(contracts);
 
     this.mockMvc
             .perform(MockMvcRequestBuilders
