@@ -13,7 +13,6 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
-import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
