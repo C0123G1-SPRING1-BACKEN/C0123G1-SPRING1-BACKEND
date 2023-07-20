@@ -1,6 +1,7 @@
 package com.example.back_end.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product_type")
@@ -19,6 +20,13 @@ public class ProductType {
     public ProductType(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+
+    public ProductType(ProductType productType) {
+    }
+
+    public ProductType(Long productTypeId) {
     }
 
     public Long getId() {

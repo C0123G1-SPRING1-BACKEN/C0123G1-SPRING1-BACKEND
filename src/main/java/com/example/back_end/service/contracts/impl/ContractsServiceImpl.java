@@ -13,19 +13,27 @@ import org.springframework.stereotype.Service;
 public class ContractsServiceImpl implements IContractsService {
     @Autowired
     private IContractsRepository contractsRepository;
+
     @Override
-    public Page<IContractDto> findAllProduct(Pageable pageable) {
-        return contractsRepository.finAllProduct(pageable);
+    public Page<IContractDto> findAllProduct(Pageable pageable, String productName, String productType, String loans) {
+
+        switch (loans) {
+            case "1":
+                return contractsRepository.finAllProduct(pageable, productName, productType, "0", "5000000");
+            case "2":
+                return contractsRepository.finAllProduct(pageable, productName, productType, "5000000", "10000000");
+            case "3":
+                return contractsRepository.finAllProduct(pageable, productName, productType, "10000000", "20000000");
+            case "4":
+                return contractsRepository.finAllProduct(pageable, productName, productType, "20000000", "20000000000");
+            default:
+                return contractsRepository.finAllProduct(pageable, productName, productType, "0", "2000000000000000000000000");
+        }
     }
 
     @Override
     public IContractDto findContractById(Long id) {
         return contractsRepository.findContractById(id);
-    }
-
-    @Override
-    public Page<IContractDto> searchProduct(Pageable pageable, String productName, String productType, String loans) {
-        return contractsRepository.searchProduct(pageable,productName,productType,loans);
     }
 
 }

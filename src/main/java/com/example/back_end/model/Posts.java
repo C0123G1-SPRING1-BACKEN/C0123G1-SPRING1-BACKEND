@@ -13,12 +13,12 @@ public class Posts {
     private String title;
     @Column(nullable = false)
     private String image;
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "LONGTEXT")
     private String content;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     private LocalDateTime createDate;
     @ManyToOne
-    @JoinColumn(name = "posts_id", referencedColumnName = "id")
+    @JoinColumn(name = "employees_id", referencedColumnName = "id")
     private Employees employees;
 
     public Posts() {

@@ -3,26 +3,27 @@ package com.example.back_end.dto;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class LiquidationsDto {
     private Long id;
+
     @NotNull(message = "Vui lòng chọn khách hàng.")
     private Customers customers;
     @NotNull(message = "Vui lòng chọn sản phẩm.")
-    private Contracts contracts;
+    private String products;
+    @NotNull
     private Long totalPrice;
     private LocalDateTime createTime;
 
     public LiquidationsDto() {
     }
 
-    public LiquidationsDto(Long id, Customers customers, Contracts contracts, Long totalPrice, LocalDateTime createTime) {
+    public LiquidationsDto(Long id, Customers customers, String products, Long totalPrice, LocalDateTime createTime) {
         this.id = id;
         this.customers = customers;
-        this.contracts = contracts;
+        this.products = products;
         this.totalPrice = totalPrice;
         this.createTime = createTime;
     }
@@ -43,12 +44,12 @@ public class LiquidationsDto {
         this.customers = customers;
     }
 
-    public Contracts getContracts() {
-        return contracts;
+    public String getProducts() {
+        return products;
     }
 
-    public void setContracts(Contracts contracts) {
-        this.contracts = contracts;
+    public void setProducts(String products) {
+        this.products = products;
     }
 
     public Long getTotalPrice() {

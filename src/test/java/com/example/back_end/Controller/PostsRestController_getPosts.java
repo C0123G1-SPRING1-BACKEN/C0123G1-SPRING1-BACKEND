@@ -17,6 +17,11 @@ public class PostsRestController_getPosts {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Danh sach rong,  page = null
+     *
+     * @throws Exception
+     */
     @Test
     public void getPosts_5() throws Exception {
 
@@ -26,9 +31,24 @@ public class PostsRestController_getPosts {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * Danh sach page = null
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getPosts_5_1() throws Exception {
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/posts?page=null"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
 
     /**
-     * Danh sach rong, size = 0
+     * Có dữ liệu
+     * Danh sach page = 0
      *
      * @throws Exception
      */
@@ -40,8 +60,8 @@ public class PostsRestController_getPosts {
                                 .get("/api/posts?page=0"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("totalPages").value(3))
-                .andExpect(jsonPath("totalElements").value(7))
+                .andExpect(jsonPath("totalPages").value(2))
+                .andExpect(jsonPath("totalElements").value(6))
                 .andExpect(jsonPath("content[0].title").value("Làm thế nào để vay tiền đơn giản tại tiệm cầm đồ"))
                 .andExpect(jsonPath("content[0].content").value("Làm thế nào để vay tiền đơn giản tại tiệm cầm đồ"))
                 .andExpect(jsonPath("content[0].employees.id").value(1))
@@ -49,9 +69,28 @@ public class PostsRestController_getPosts {
                 .andExpect(jsonPath("content[2].content").value("Dịch vụ rút tiền thẻ, đáo hạn thẻ tín dụng nhanh tại Hà Nội"))
                 .andExpect(jsonPath("content[2].employees.id").value(2));
     }
-
     /**
-     * Danh sach size > 0
+     * Có dữ liệu
+     * Danh sach page = 1
+     *
      * @throws Exception
      */
+    @Test
+    public void getPosts_6_1() throws Exception {
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/posts?page=1"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("totalPages").value(2))
+                .andExpect(jsonPath("totalElements").value(6))
+                .andExpect(jsonPath("content[0].title").value("Dịch vụ rút tiền thẻ, đáo hạn thẻ tín dụng nhanh tại Hà Nội"))
+                .andExpect(jsonPath("content[0].content").value("Dịch vụ rút tiền thẻ, đáo hạn thẻ tín dụng nhanh tại Hà Nội"))
+                .andExpect(jsonPath("content[0].employees.id").value(2))
+                .andExpect(jsonPath("content[2].title").value("Dịch vụ rút tiền thẻ, đáo hạn thẻ tín dụng nhanh tại Hà Nội"))
+                .andExpect(jsonPath("content[2].content").value("Dịch vụ rút tiền thẻ, đáo hạn thẻ tín dụng nhanh tại Hà Nội"))
+                .andExpect(jsonPath("content[2].employees.id").value(2));
+    }
+
 }

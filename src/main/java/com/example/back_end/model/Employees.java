@@ -13,11 +13,9 @@ public class Employees {
     private Long id;
     @Column(nullable = false,length = 50)
     private String name;
-    @Column(nullable = false)
     private String birthDay;
-    @Column(nullable = false)
     private Integer gender;
-    @Column(nullable = false,unique = true,length = 50)
+    @Column(nullable = false,unique = true)
     private String email;
     @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
@@ -26,7 +24,6 @@ public class Employees {
     private String salary;
     @Column(nullable = false,unique = true)
     private String citizenCode;
-    @Column(nullable = false)
     private String image;
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @CreationTimestamp
@@ -34,16 +31,11 @@ public class Employees {
     @Column(columnDefinition = "DATETIME DEFAULT now()")
     @UpdateTimestamp
     private LocalDateTime updateTime;
+
     @OneToOne
     @JoinColumn
     private Users users;
 
-    public Employees() {
-    }
-
-    public Employees(Long id) {
-        this.id = id;
-    }
 
     public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;
@@ -61,6 +53,11 @@ public class Employees {
         this.users = users;
     }
 
+    public Employees() {
+    }
+
+
+
     public Long getId() {
         return id;
     }
@@ -69,11 +66,11 @@ public class Employees {
         this.id = id;
     }
 
-    public String getEmployeeName() {
+    public String getName() {
         return name;
     }
 
-    public void setEmployeeName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -155,14 +152,6 @@ public class Employees {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Users getUsers() {

@@ -3,9 +3,11 @@ package com.example.back_end.dto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ProductTypeDTO {
+    @NotNull
 
     private Long id;
 
