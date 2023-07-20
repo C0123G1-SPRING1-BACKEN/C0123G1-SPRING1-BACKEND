@@ -21,12 +21,12 @@ import java.util.Map;
 @RequestMapping("/api/employee")
 public class EmployeeDetailController {
     @Autowired
-    private IEmployeeDetailService employeeDetailRepository;
+    private IEmployeeDetailService employeeDetailService;
 
     @GetMapping("detail/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
-        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(id);
+        EmployeeDetailDto employeeDetailDto = employeeDetailService.findId(id);
         if (employeeDetailDto == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else
@@ -37,7 +37,7 @@ public class EmployeeDetailController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
-            employeeDetailRepository.updateEmployeeDetail(id, employeeDetailDto);
+            employeeDetailService.updateEmployeeDetail(id, employeeDetailDto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             getResponseEntity(bindingResult);
