@@ -1,10 +1,9 @@
 package com.example.back_end.dto;
 
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import com.example.back_end.utils.YearOldValid;
+
+import javax.validation.constraints.*;
 
 public class CustomerSaveDto {
     private Long id;
@@ -18,14 +17,16 @@ public class CustomerSaveDto {
     @NotBlank(message = "Ngày sinh không đươc để trống")
     @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
             message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
+    @YearOldValid
     private String birthday;
+    @NotNull(message = "Giới tính không được để trống")
     private int gender;
     @Size(min = 10, max = 10, message = "Bạn cần nhập 10 ký tự")
     @NotBlank(message = "Số điện thoại không được để trống.")
     @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(0[0-9]{9})$")
     private String phoneNumber;
     @Size(min = 10, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 50, message = "Bạn nhập quá 20 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
     @NotBlank(message = "Email không được để trống.")
     @Email(message = "Email không đúng định dạng")
     private String email;
@@ -35,27 +36,26 @@ public class CustomerSaveDto {
     private String address;
     @NotBlank(message = "Số CCCD không được để trống.")
     @Size(min = 12, max = 12, message = "Bạn cần nhập 12 ký tự")
-    @Pattern(regexp = "^(\\d{12})| *$",
+    @Pattern(regexp = "^(\\d{12})$",
             message = "Số CCCD không đúng định dạng.")
     private String citizenCode;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 100, message = "Bạn nhập quá 100 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 200, message = "Bạn nhập quá 200 ký tự. Vui lòng kiểm tra lại")
     private String image;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 100, message = "Bạn nhập quá 100 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 200, message = "Bạn nhập quá 200 ký tự. Vui lòng kiểm tra lại")
     private String frontCitizen;
     @NotBlank
     @Size(min = 5, message = "Bạn cần nhập tối thiểu 5 ký tự")
-    @Size(max = 100, message = "Bạn nhập quá 100 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 200, message = "Bạn nhập quá 200 ký tự. Vui lòng kiểm tra lại")
     private String backCitizen;
-    private boolean isDelete;
 
     public CustomerSaveDto() {
     }
 
-    public CustomerSaveDto(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, boolean isDelete) {
+    public CustomerSaveDto(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -67,7 +67,6 @@ public class CustomerSaveDto {
         this.image = image;
         this.frontCitizen = frontCitizen;
         this.backCitizen = backCitizen;
-        this.isDelete = isDelete;
     }
 
     public Long getId() {
@@ -136,14 +135,6 @@ public class CustomerSaveDto {
 
     public String getImage() {
         return image;
-    }
-
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
     }
 
     public void setImage(String image) {
