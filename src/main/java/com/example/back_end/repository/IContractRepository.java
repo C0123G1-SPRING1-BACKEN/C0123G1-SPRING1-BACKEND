@@ -1,5 +1,6 @@
 package com.example.back_end.repository;
 
+
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import org.springframework.data.domain.Page;
@@ -9,9 +10,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -111,17 +111,5 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
                         @Param("endDate") String endDate, @Param("profit") Long profit, @Param("employees") Long employees);
 
+
 }
-
-
-//    double soTienVay = 10000000; // Số tiền vay
-//    double laiSuatNgay = 0.00065; // Lãi suất hàng ngày (0.065%)
-//    LocalDate ngayVay = LocalDate.of(2023, 7, 1); // Ngày vay
-//    LocalDate ngayTra = LocalDate.of(2023, 8, 1); // Ngày trả
-//
-//    long soNgayVay = ChronoUnit.DAYS.between(ngayVay, ngayTra); // Số ngày vay
-//
-//    double tienLai = soTienVay * laiSuatNgay * soNgayVay; // Tiền lãi
-//
-//            System.out.println("Tiền lãi: " + tienLai);
-

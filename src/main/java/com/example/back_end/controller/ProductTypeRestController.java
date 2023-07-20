@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 
 import com.example.back_end.model.*;
+import com.example.back_end.model.*;
 import com.example.back_end.repository.IContractStatusRepository;
 import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ProductTypeRestController {
     }
     @GetMapping("/contract/contractType")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<List<ContractType>> getAllEmployee() {
+    public ResponseEntity<List<ContractType>> getAllContractType() {
         List<ContractType> contractTypeList = iProductTypeService.getAllContractType();
         return new ResponseEntity<>(contractTypeList, HttpStatus.OK);
     }
@@ -41,5 +42,11 @@ public class ProductTypeRestController {
         return new ResponseEntity<>(contractStatusList, HttpStatus.OK);
     }
 
+    @GetMapping("/contract/customers")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<List<Customers>> getAllCustomer(){
+        List<Customers> customersList=iProductTypeService.getAllCustomer();
+        return new ResponseEntity<>(customersList,HttpStatus.OK);
+    }
 
 }

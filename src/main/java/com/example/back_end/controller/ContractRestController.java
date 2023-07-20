@@ -1,11 +1,5 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.service.IProductTypeService;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.ContractStatus;
@@ -14,19 +8,26 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
+import com.example.back_end.service.IProductTypeService;
+import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequestMapping("/api/employee/contract")
 @RestController
@@ -38,6 +39,10 @@ public class ContractRestController {
 
     @Autowired
     private IProductTypeService iProductTypeService;
+
+    @Autowired
+    private EmailService emailService;
+
 
     /**
      * Created by: ThienNT
@@ -106,18 +111,6 @@ public class ContractRestController {
     public ResponseEntity<List<Contracts>> getAllContract() {
         List<Contracts> contractsList = iContractService.findAll();
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
-    }
-
-    @PostMapping("/createContract")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<HttpStatus> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        Contracts contracts = new Contracts();
-        BeanUtils.copyProperties(contractDto, contracts);
-        iContractService.createContract(contracts);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
@@ -199,6 +192,50 @@ public class ContractRestController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(contractTypeList, HttpStatus.OK);
+    }
+
+
+
+    @PostMapping("/createContract")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<CreateContractDto> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Contracts contracts = new Contracts();
+        BeanUtils.copyProperties(contractDto, contracts);
+        iContractService.createContract(contracts);
+        //Format Giá tiền (000,000,000,)
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        String profit = (numberFormat.format(contracts.getProfit()));
+        String loans = (numberFormat.format(contracts.getLoans()));
+        System.out.println("Đầu ra tiền cho vay: " + loans);
+        System.out.println("Đầu ra tiền lãi: " + profit);
+        //Format Ngày tháng năm(dd/MM/yyyy)
+        DateTimeFormatter dateTimer = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(contracts.getStartDate());
+        LocalDate endDate = LocalDate.parse(contracts.getEndDate());
+        String start = startDate.format(dateTimer);
+        String end = endDate.format(dateTimer);
+        System.out.println("Ngày bắt đầu: " + start);
+        System.out.println("Ngày kết thúc: " + end);
+
+        emailService.sendMail(contracts.getCustomers().getEmail(), "Xin chào " + contracts.getCustomers().getName() + ", cảm ơn bạn đã ghé Pawn Shop ! ", "Bạn đã cầm món đồ có tên : " + contracts.getProductName() + "\n " +
+                "\n -Với giá là:" + loans + " VNĐ" +
+                "\n -Ngày bắt đầu hợp đồng là :" + start +
+                "\n -Đến ngày kết thúc hợp đồng là :" + end +
+                "\n -Với tổng số tiền lãi là " + profit + " VND" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "---------------------------------------" + "\n" +
+                "Name :Pawn Shop\n" +
+                "Mobile : 0782391943\n" +
+                "Email : pawnshopC0123@gmail.com\n" +
+                "Address :\u200B2\u200B80\u200B \u200BTrần Hưng Đạo\u200B streets, \u200BSơn Trà\u200B District, Da Nang");
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }
