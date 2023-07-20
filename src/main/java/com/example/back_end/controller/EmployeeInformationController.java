@@ -2,16 +2,21 @@ package com.example.back_end.controller;
 
 
 import com.example.back_end.dto.EmployeeDetailDto;
+import com.example.back_end.dto.UsersDto;
+import com.example.back_end.model.ContractType;
+import com.example.back_end.model.Users;
 import com.example.back_end.service.details.IEmployeeDetailService;
 import com.example.back_end.service.impl.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,24 +32,24 @@ public class EmployeeInformationController {
     @Autowired
     private IEmployeeDetailService employeeDetailService;
 
-//    @GetMapping("/detail")
-//    public ResponseEntity<?> getEmployeeDetails(HttpServletRequest request) {
-//        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        if (username == null) {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bạn cần đăng nhập hệ thống.");
-//        }
-//
-//        Users user = usersService.findByUsername(username);
-//        if (user == null) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Không tìm thấy tài khoản.");
-//        }
-//        EmployeeDetailDto employeeDetailDto = employeeDetailService.findByEmailEmployee(user.getEmail());
-//        if (employeeDetailDto != null) {
-//            return ResponseEntity.ok(employeeDetailDto);
-//        }
-//        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//    }
+    @GetMapping("/detail")
+    public ResponseEntity<?> getEmployeeDetails(HttpServletRequest request) {
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (username == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bạn cần đăng nhập hệ thống.");
+        }
+
+        Users user = usersService.findByUsername(username);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Không tìm thấy tài khoản.");
+        }
+        EmployeeDetailDto employeeDetailDto = employeeDetailService.findByEmailEmployee(user.getEmail());
+        if (employeeDetailDto != null) {
+            return ResponseEntity.ok(employeeDetailDto);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
