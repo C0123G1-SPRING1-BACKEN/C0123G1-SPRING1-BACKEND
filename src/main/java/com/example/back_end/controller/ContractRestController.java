@@ -31,26 +31,7 @@ public class ContractRestController {
     @Autowired
     private IContractService iContractService;
 
-//    /**
-//     * Created by: ThienNT
-//     * Date created: 13/07/2023
-//     * Function: get page transaction history from Database
-//     * <p>
-//     *
-//     * @param
-//     * @return ResponseEntity<Page < IContractProjection>>
-//     */
 
-//    @GetMapping("")
-//    public ResponseEntity<Page<ITransactionHistoryProjection>> getAllTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
-//                                                                                        @RequestParam(name = "limit", defaultValue = "5") Integer limit) {
-//        Page<ITransactionHistoryProjection> contractProjectionPage = this.iContractService.findAllTransactionHistory(page, limit);
-//        int totalPage = contractProjectionPage.getTotalPages();
-//        if (page >= totalPage || page < 0) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(contractProjectionPage, HttpStatus.OK);
-//    }
 
     /**
      * Created by: ThienNT
