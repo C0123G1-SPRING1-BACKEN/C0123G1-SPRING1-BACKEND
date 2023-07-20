@@ -1,6 +1,6 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.service.customer.ICustomersService;
+import com.example.back_end.service.customers.ICustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,17 +22,17 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class CustomerController {
     @Autowired
-    private ICustomersService customerService;
+    private ICustomersService customersService;
 
     @GetMapping("")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> findByNameCustomer(@RequestParam(required = false, defaultValue = "") String name,
                                                 @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
-        return new ResponseEntity<>(customerService.findByNameProduct(name, pageable), HttpStatus.OK);
+        return new ResponseEntity<>(customersService.findByNameProduct(name, pageable), HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id")Long id){
-        customerService.deleteById(id);
+        customersService.deleteById(id);
     }
 }

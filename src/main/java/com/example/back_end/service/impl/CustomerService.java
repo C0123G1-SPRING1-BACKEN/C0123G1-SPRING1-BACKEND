@@ -15,13 +15,21 @@ public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository iCustomerRepository;
 
+
     @Override
-    public Page<ICustomerDto> findByCustomer(Pageable pageable,String name) {
-        return iCustomerRepository.findByCustomer(pageable,name);
+    public Page<ICustomerDto> findAllBySearchCustomer(Pageable pageable, String name) {
+        return iCustomerRepository.findAllBySearchCustomer(pageable, name);
+    }
+
+    @Override
+    public Page<ICustomerDto> findByCustomer(Pageable pageable, String name) {
+        return iCustomerRepository.findByCustomer(pageable, name);
     }
 
     @Override
     public ICustomerDto findByIdCustomer(Long id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
+
+
 }

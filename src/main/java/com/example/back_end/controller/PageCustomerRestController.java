@@ -31,9 +31,9 @@ public class PageCustomerRestController {
 
     @GetMapping("")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
-        if (iCustomerDtoPage.isEmpty()) {
+    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findAllBySearchCustomer(pageable ,name);
+        if (iCustomerDtoPage.isEmpty() && iCustomerDtoPage==null) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);

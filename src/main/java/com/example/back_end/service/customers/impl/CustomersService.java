@@ -1,10 +1,10 @@
-package com.example.back_end.service.customer.impl;
+package com.example.back_end.service.customers.impl;
 
 import com.example.back_end.dto.CustomerListDTO;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 import com.example.back_end.repository.customer.IRepositoryCustomer;
-import com.example.back_end.service.customer.ICustomersService;
+import com.example.back_end.service.customers.ICustomersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

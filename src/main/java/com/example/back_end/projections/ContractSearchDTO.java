@@ -1,5 +1,6 @@
 package com.example.back_end.projections;
 
+
 public class ContractSearchDTO {
     private String productName;
 
