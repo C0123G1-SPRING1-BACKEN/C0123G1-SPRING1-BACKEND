@@ -1,8 +1,9 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.CustomerSaveDto;
+
 import com.example.back_end.dto.EmployeeDetailDto;
 import com.example.back_end.service.details.IEmployeeDetailService;
+import com.example.back_end.service.impl.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,38 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/employee")
-public class EmployeeDetailController {
-    @Autowired
-    private IEmployeeDetailService employeeDetailRepository;
+@CrossOrigin("*")
+public class EmployeeInformationController {
 
-    @GetMapping("detail/{id}")
+    @Autowired
+    private UsersService usersService;
+
+    @Autowired
+    private IEmployeeDetailService employeeDetailService;
+
+//    @GetMapping("/detail")
+//    public ResponseEntity<?> getEmployeeDetails(HttpServletRequest request) {
+//        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        if (username == null) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bạn cần đăng nhập hệ thống.");
+//        }
+//
+//        Users user = usersService.findByUsername(username);
+//        if (user == null) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Không tìm thấy tài khoản.");
+//        }
+//        EmployeeDetailDto employeeDetailDto = employeeDetailService.findByEmailEmployee(user.getEmail());
+//        if (employeeDetailDto != null) {
+//            return ResponseEntity.ok(employeeDetailDto);
+//        }
+//        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//    }
+
+    @GetMapping("/detail/{id}")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
-        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(id);
+        EmployeeDetailDto employeeDetailDto = employeeDetailService.findId(id);
         if (employeeDetailDto == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else
@@ -34,7 +58,7 @@ public class EmployeeDetailController {
     @PatchMapping("detail/{id}")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
-            employeeDetailRepository.updateEmployeeDetail(id, employeeDetailDto);
+            employeeDetailService.updateEmployeeDetail(id, employeeDetailDto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             getResponseEntity(bindingResult);
@@ -48,7 +72,8 @@ public class EmployeeDetailController {
         for (FieldError error : errors) {
             if (!map.containsKey(error.getField())) {
                 map.put(error.getField(), error.getDefaultMessage());
-            }
+    }
+
         }
     }
 }

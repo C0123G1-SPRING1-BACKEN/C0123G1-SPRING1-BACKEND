@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface IEmployeeDetailRepository extends JpaRepository<Employees, Long> {
 
-    @Query(nativeQuery = true, value = "select * from employees where id = :id")
-    Employees findWithIdEmployee(@Param("id") Long id);
+    @Query(nativeQuery = true, value = "select * from employees where email = :email")
+    Employees findWithEmailEmployee(@Param("email") String email);
 
     @Modifying
     @Transactional
