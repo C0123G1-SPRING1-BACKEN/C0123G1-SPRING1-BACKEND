@@ -3,7 +3,6 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.ICustomerDto;
 import com.example.back_end.dto.IContractDto;
 import com.example.back_end.dto.LiquidationsDto;
-import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Liquidations;
 import com.example.back_end.service.ICustomerService;
 import com.example.back_end.service.contracts.IContractsService;

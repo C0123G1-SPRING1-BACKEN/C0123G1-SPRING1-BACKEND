@@ -1,14 +1,15 @@
-package com.example.back_end.service.customer;
+package com.example.back_end.service.customers.impl;
 
 import com.example.back_end.dto.CustomerSaveDto;
 import com.example.back_end.model.Customers;
 import com.example.back_end.repository.customer.ICustomerRepositoryCreateUpdate;
+import com.example.back_end.service.customers.ICustomerServiceCreateUpdate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUpdate{
+public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUpdate {
     @Autowired
     private ICustomerRepositoryCreateUpdate customerRepositoryCreateUpdate;
 
@@ -33,8 +34,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getCitizenCode(),
                 customers.getImage(),
                 customers.getFrontCitizen(),
-                customers.getBackCitizen(),
-                customers.isDelete()
+                customers.getBackCitizen()
                 );
     }
 
@@ -60,8 +60,7 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
                 customers.getCitizenCode(),
                 customers.getImage(),
                 customers.getFrontCitizen(),
-                customers.getBackCitizen(),
-                customers.isDelete()
+                customers.getBackCitizen()
                 );
     }
 
@@ -79,5 +78,44 @@ public class CustomerServiceCreateUpdateImpl implements ICustomerServiceCreateUp
         CustomerSaveDto customerSaveDto =new CustomerSaveDto();
         BeanUtils.copyProperties(customers, customerSaveDto);
         return customerSaveDto;
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by email check duplicate
+     *
+     * @param email
+     * @return boolean
+     */
+    @Override
+    public boolean existsByEmail(String email) {
+        return customerRepositoryCreateUpdate.existsByEmail(email);
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by citizenCode check duplicate
+     *
+     * @param citizenCode
+     * @return boolean
+     */
+    @Override
+    public boolean existsByCitizenCode(String citizenCode) {
+        return customerRepositoryCreateUpdate.existsByCitizenCode(citizenCode);
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 13/07/2023
+     * Function : connect database to customer find by phoneNumber check duplicate
+     *
+     * @param phoneNumber
+     * @return boolean
+     */
+    @Override
+    public boolean existsByPhoneNumber(String phoneNumber) {
+        return customerRepositoryCreateUpdate.existsByPhoneNumber(phoneNumber);
     }
 }
