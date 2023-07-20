@@ -1,9 +1,7 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.open_contract.IOpenContractDTO;
 import com.example.back_end.dto.open_contract.OpenContractDTO;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.model.Customers;
 import com.example.back_end.service.IRedeemingService;
 import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/employee/redeem")
@@ -51,7 +48,7 @@ public class RedeemingController {
         String subject = "Xác nhận chuộc đồ - PawnShop";
         String body = "Chào " + name + ",\n" +
                 "\n" +
-                "Chúng tôi gửi mail này để xác nhận rằng bạn vừa thanh toán đê nhận lại " + product + " vào ngày " + redeemDate +"\n" +
+                "Chúng tôi gửi mail này để xác nhận rằng bạn vừa thanh toán đê nhận lại " + product + " vào ngày " + redeemDate + "\n" +
                 "\n" +
                 "Chúng tôi xin cảm ơn quý khách đã tin tường và sử dụng dịch vụ của chúng tôi.\n" +
                 "\n" +
