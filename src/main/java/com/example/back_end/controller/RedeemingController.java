@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -39,6 +40,7 @@ public class RedeemingController {
      */
     @Transactional
     @PatchMapping("/pay/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public void redeem(@PathVariable("id") Long id, @Param("redeemDate") String redeemDate) {
         iRedeemingService.redeems(id, redeemDate);
         Contracts contracts = iRedeemingService.findOpenContract(id);
@@ -71,6 +73,7 @@ public class RedeemingController {
      * return: the list of contract with the contractStatus is open and match the contractId
      */
     @GetMapping("/chose/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Contracts> findById(@PathVariable("id") Long id) {
         return new ResponseEntity<Contracts>(iRedeemingService.findOpenContract(id), HttpStatus.OK);
     }
@@ -88,6 +91,7 @@ public class RedeemingController {
      */
     @Transactional
     @GetMapping("/chooseContract")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<OpenContractDTO>> getOpenContractList(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Order.desc("create_time")));
         Page<OpenContractDTO> contractsPage = iRedeemingService.findPageConTract(pageable);
@@ -109,6 +113,7 @@ public class RedeemingController {
      */
     @Transactional
     @GetMapping("/search")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<OpenContractDTO>> getOpenContractSearchList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                            @RequestParam(value = "contractCode") String contractCode,
                                                                            @RequestParam(value = "customerName") String customerName,

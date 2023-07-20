@@ -3,6 +3,7 @@ package com.example.back_end.controller;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
@@ -12,7 +13,6 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
-import com.example.back_end.service.IProductTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,6 +49,7 @@ public class ContractRestController {
      */
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {
@@ -69,6 +70,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/detail/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") String id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         return contractDTO.map(contracts -> new ResponseEntity<>(contracts, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
@@ -86,6 +88,7 @@ public class ContractRestController {
      */
 
     @PostMapping("/transaction-history")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                                                    @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                                                    @RequestBody ContractSearchDTO contractSearchDTO) {
@@ -98,12 +101,14 @@ public class ContractRestController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<Contracts>> getAllContract() {
         List<Contracts> contractsList = iContractService.findAll();
         return new ResponseEntity<>(contractsList, HttpStatus.OK);
     }
 
     @PostMapping("/createContract")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<HttpStatus> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -124,6 +129,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/findContractById/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<ContractDto> getContractById(@PathVariable Long id) {
         Contracts contract = this.iContractService.findContractById(id);
         if (contract == null) {
@@ -144,6 +150,7 @@ public class ContractRestController {
      */
 
     @PatchMapping("/update")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateContract( @RequestBody ContractDto contractDto) {
         try {
             iContractService.saveContract(contractDto);
@@ -164,6 +171,7 @@ public class ContractRestController {
      */
 
     @GetMapping("/top10")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault (sort = "create_time",direction = Sort.Direction.DESC)Pageable pageable) {
         Page<Contracts> contracts = this.iContractService.showTop10NewContract(pageable);
         if (contracts.isEmpty()) {
@@ -173,6 +181,7 @@ public class ContractRestController {
     }
 
     @GetMapping("/list-contract-status")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ContractStatus>> getALlContractStatus() {
         List<ContractStatus> contractStatusList = this.iProductTypeService.getAllContractStatus();
         if (contractStatusList.isEmpty()) {
@@ -182,6 +191,7 @@ public class ContractRestController {
     }
 
     @GetMapping("/list-contract-type")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ContractType>> getALlContractType() {
         List<ContractType> contractTypeList = this.iProductTypeService.getAllContractType();
         if (contractTypeList.isEmpty()) {
