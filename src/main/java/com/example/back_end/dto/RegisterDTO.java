@@ -10,12 +10,12 @@ public class RegisterDTO {
     private Long id;
 
     @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
-    @Pattern(regexp = "^([A-Z][a-z]*\\s([A-Z][a-z]*\\s)*([A-Z][a-z]*))$", message = "Tên Của Bạn Không Đúng Định Dạng ")
+    @Pattern(regexp = "^([A-Z][a-z]*(\\s[A-Z][a-z]*)*)$", message = "Tên Của Bạn Không Đúng Định Dạng ")
     @NotBlank(message = "Bạn Cần Điền Đủ Thông Tin")
     private String name;
 
     @Size(max = 11, message = "Số Điện Thoại Của Bạn Không Được Quá 11 Số !!!")
-    @Pattern(regexp = "^((\\+84)|0)[0-9]{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
+    @Pattern(regexp = "^((\\+84)|0)\\d{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin ")
     private String phone;
 
@@ -42,17 +42,6 @@ public class RegisterDTO {
     }
 
     public RegisterDTO(String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.contentNote = contentNote;
-        this.status = status;
-        this.productType = productType;
-    }
-
-    public RegisterDTO(Long id, String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType) {
-        this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;

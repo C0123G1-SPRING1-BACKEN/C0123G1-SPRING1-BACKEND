@@ -50,30 +50,6 @@ public class RegisterPawn {
     public RegisterPawn() {
     }
 
-    public RegisterPawn(Long id, String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.contentNote = contentNote;
-        this.status = status;
-        this.productType = productType;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
-
-    public RegisterPawn(String name, String phone, String email, String address, String contentNote, boolean status, ProductType productType, LocalDateTime createTime, LocalDateTime updateTime) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.contentNote = contentNote;
-        this.status = status;
-        this.productType = productType;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     public Long getId() {
         return id;

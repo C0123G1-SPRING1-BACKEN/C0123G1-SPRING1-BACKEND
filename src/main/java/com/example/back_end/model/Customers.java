@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +34,12 @@ public class Customers {
     private String frontCitizen;
     @Column(nullable = false)
     private String backCitizen;
-
     private String quantityContract;
     @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     private LocalDateTime createDate;
     @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
     private LocalDateTime updateDate;
+    @Column(columnDefinition = "BIT DEFAULT 0", updatable = true)
     private boolean isDelete;
     @Column(name = "note", columnDefinition = "text")
     private String note;
@@ -65,25 +66,6 @@ public class Customers {
     public Customers() {
     }
 
-    public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frontCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete, String note) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.citizenCode = citizenCode;
-        this.image = image;
-        this.frontCitizen = frontCitizen;
-        this.backCitizen = backCitizen;
-        this.quantityContract = quantityContract;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.isDelete = isDelete;
-        this.note = note;
-    }
-
     public Customers(Long id, String name, String birthday, int gender, String phoneNumber, String email, String address, String citizenCode, String image, String frondCitizen, String backCitizen, String quantityContract, LocalDateTime createDate, LocalDateTime updateDate, boolean isDelete) {
         this.id = id;
         this.name = name;
@@ -102,14 +84,6 @@ public class Customers {
         this.isDelete = isDelete;
     }
 
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public Long getId() {
         return id;

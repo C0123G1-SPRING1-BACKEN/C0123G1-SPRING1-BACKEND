@@ -4,5 +4,6 @@ public interface IProfitInterest {
     String getContractCode();
     String getLoans();
     String getInterest();
+    String getStartDate();
     String getProfit();
 }
