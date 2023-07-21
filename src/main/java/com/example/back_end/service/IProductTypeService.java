@@ -11,5 +11,6 @@ public interface IProductTypeService {
 
     List<ContractType> getAllContractType();
 
+
     List<Customers> getAllCustomer();
 }
