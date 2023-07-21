@@ -27,8 +27,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ContractService implements IContractService {
@@ -78,11 +77,6 @@ public class ContractService implements IContractService {
 
     }
 
-    @Override
-    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
-        return null;
-    }
-
 
     @Override
     public Page<Contracts> showTop10NewContract(Pageable pageable) {
@@ -104,7 +98,7 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(String id) {
+    public Boolean deleteTransactionHistoryById(Integer id) {
         try {
             icontractRepository.deleteContractById(id);
         } catch (Exception e) {
@@ -114,15 +108,6 @@ public class ContractService implements IContractService {
         return true;
     }
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: search transaction history from Database
-     * <p>
-     *
-     * @param contractSearchDTO
-     * @return ContractDTO
-     */
 
     /**
      * Created by: ThienNT
@@ -153,7 +138,7 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(String id) {
+    public Optional<Contracts> findTransactionHistoryById(Integer id) {
         return icontractRepository.findContractsById(id);
     }
 
@@ -180,7 +165,7 @@ public class ContractService implements IContractService {
         String profit = (numberFormat.format(contracts.getProfit()));
         String loan = (numberFormat.format(loans));
 //        tỷ lệ lãi suất là 2% trên tháng, thì lãi suất cần tính cho 1 ngày là 2%/30 = 0,067%.
-        Double percent =  0.67/100; // Lãi suất hàng ngày (0.067%)
+        Double percent = 0.67 / 100; // Lãi suất hàng ngày (0.067%)
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate startDate = LocalDate.parse(contracts.getStartDate());
@@ -197,7 +182,7 @@ public class ContractService implements IContractService {
         System.out.println("Ngày bắt đầu: " + start);
         System.out.println("Ngày kết thúc: " + end);
         System.out.println("Tổng số ngày: " + daysBetween);
-        System.out.println("Lãi xuất % 1 ngày : "+ percent);
+        System.out.println("Lãi xuất % 1 ngày : " + percent);
         System.out.println("Liền lãi BE: " + profitLoans);
         System.out.println("Liền lãi FE: " + profit);
 
@@ -217,5 +202,25 @@ public class ContractService implements IContractService {
             System.out.println("Mệnh giá tiền của FE - BE không trùng nhau");
         }
 
+    }
+
+    @Override
+    public String randomContract() {
+        List<Integer> number = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            number.add(i);
+        }
+//        Sử dụng hàm Random để ngẫu nhiên hóa danh sách chữ số
+        Random random = new Random();
+        for (int i = number.size() - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            Collections.swap(number, i, j);
+        }
+        // Lấy 5 phần tử đầu tiên của danh sách xáo trộn để tạo thành chuỗi ngẫu nhiên
+        StringBuilder randomString = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            randomString.append(number.get(i));
+        }
+        return randomString.toString();
     }
 }

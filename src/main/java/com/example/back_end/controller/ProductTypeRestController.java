@@ -29,12 +29,14 @@ public class ProductTypeRestController {
         List<ProductType> productTypeList = iProductTypeService.getAllProductType();
         return new ResponseEntity<>(productTypeList, HttpStatus.OK);
     }
+
     @GetMapping("/contract/contractType")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ContractType>> getAllContractType() {
         List<ContractType> contractTypeList = iProductTypeService.getAllContractType();
         return new ResponseEntity<>(contractTypeList, HttpStatus.OK);
     }
+
     @GetMapping("/contract/contractStatus")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ContractStatus>> getAllContractStatus() {
@@ -44,9 +46,9 @@ public class ProductTypeRestController {
 
     @GetMapping("/contract/customers")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<List<Customers>> getAllCustomer(){
-        List<Customers> customersList=iProductTypeService.getAllCustomer();
-        return new ResponseEntity<>(customersList,HttpStatus.OK);
+    public ResponseEntity<List<Customers>> getAllCustomer() {
+        List<Customers> customersList = iProductTypeService.getAllCustomer();
+        return new ResponseEntity<>(customersList, HttpStatus.OK);
     }
 
 }
