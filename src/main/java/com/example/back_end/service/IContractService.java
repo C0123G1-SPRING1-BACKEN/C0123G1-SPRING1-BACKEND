@@ -27,13 +27,11 @@ public interface IContractService {
    void saveContract(ContractDto contractDto);
 
 
-    Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit);
-
-    Boolean deleteTransactionHistoryById(String id);
+    Boolean deleteTransactionHistoryById(Integer id);
 
     Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO);
 
-    Optional<Contracts> findTransactionHistoryById(String id);
+    Optional<Contracts> findTransactionHistoryById(Integer id);
 
     List<Contracts> findAll();
 

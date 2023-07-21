@@ -78,10 +78,6 @@ public class ContractService implements IContractService {
 
     }
 
-    @Override
-    public Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit) {
-        return null;
-    }
 
 
     @Override
@@ -104,7 +100,7 @@ public class ContractService implements IContractService {
 
     @Override
     @Transactional
-    public Boolean deleteTransactionHistoryById(String id) {
+    public Boolean deleteTransactionHistoryById(Integer id) {
         try {
             icontractRepository.deleteContractById(id);
         } catch (Exception e) {
@@ -114,15 +110,6 @@ public class ContractService implements IContractService {
         return true;
     }
 
-    /**
-     * Created by: ThienNT
-     * Date created: 13/07/2023
-     * Function: search transaction history from Database
-     * <p>
-     *
-     * @param contractSearchDTO
-     * @return ContractDTO
-     */
 
     /**
      * Created by: ThienNT
@@ -153,7 +140,7 @@ public class ContractService implements IContractService {
      */
 
     @Override
-    public Optional<Contracts> findTransactionHistoryById(String id) {
+    public Optional<Contracts> findTransactionHistoryById(Integer id) {
         return icontractRepository.findContractsById(id);
     }
 
