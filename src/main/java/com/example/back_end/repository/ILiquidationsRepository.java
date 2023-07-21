@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 public interface ILiquidationsRepository extends JpaRepository<Liquidations, Long> {
     @Modifying
     @Transactional
-    @Query(value = "insert into liquidations (customers_id,products, total_price) values (:customerId, :products, :totalPrice)", nativeQuery = true)
+    @Query(value = "insert into contracts (customers_id,products, total_price) values (:customerId, :products, :totalPrice)", nativeQuery = true)
     void createLiquidations(@Param("customerId") Long customerId, @Param("products") String products, @Param("totalPrice") Long totalPrice);
 
 
