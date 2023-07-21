@@ -12,7 +12,7 @@ public interface IContractsRepository extends JpaRepository<Contracts, Long> {
     @Query(value = "SELECT c.id AS id, c.product_name AS productName, p.name AS productType, c.loans AS loans\n" +
             "FROM contracts c\n" +
             "JOIN product_type p ON c.product_type_id = p.id\n" +
-            "WHERE c.contract_status_id = 3\n" +
+            "WHERE c.contract_status_id = 4\n" +
             "  AND c.product_name LIKE concat('%', :productName, '%')\n" +
             "  AND p.id LIKE concat('%', :productType, '%')\n" +
             "  AND c.loans BETWEEN :startIndex AND :endIndex", nativeQuery = true)
@@ -22,7 +22,7 @@ public interface IContractsRepository extends JpaRepository<Contracts, Long> {
             "            FROM contracts c\n" +
             "            WHERE c.id = :id\n" +
             "             AND c.is_delete = FALSE\n" +
-            "          AND c.contract_status_id = 3", nativeQuery = true)
+            "          AND c.contract_status_id = 4", nativeQuery = true)
     IContractDto findContractById(Long id);
 }
 
