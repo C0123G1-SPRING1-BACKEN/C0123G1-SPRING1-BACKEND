@@ -45,4 +45,5 @@ public class ProductTypeService implements IProductTypeService {
         return iCustomerRepository.getAllCustomer();
     }
 
+
 }
