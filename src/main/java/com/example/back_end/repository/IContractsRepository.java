@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface IContractsRepository extends JpaRepository<Contracts, Long> {
     @Query(value = "SELECT c.id AS id, c.product_name AS productName, p.name AS productType, c.loans AS loans\n" +
             "FROM contracts c\n" +
@@ -24,5 +26,7 @@ public interface IContractsRepository extends JpaRepository<Contracts, Long> {
             "             AND c.is_delete = FALSE\n" +
             "          AND c.contract_status_id = 4", nativeQuery = true)
     IContractDto findContractById(Long id);
+
+    List<Contracts> findByIdIsInAndContractStatus_Id(List<Long> ids, Long contractStatusId);
 }
 

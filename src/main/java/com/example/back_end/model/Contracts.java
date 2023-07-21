@@ -58,6 +58,9 @@ public class Contracts {
 
     private String redeemDate;
 
+    @Column(name = "link_contracts", length = 255)
+    private String linkContracts;
+
     public String getRedeemDate() {
         return redeemDate;
     }
@@ -230,5 +233,13 @@ public class Contracts {
 
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
+    }
+
+    public String getLinkContracts() {
+        return linkContracts;
+    }
+
+    public void setLinkContracts(String linkContracts) {
+        this.linkContracts = linkContracts;
     }
 }
