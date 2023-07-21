@@ -3,7 +3,7 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.open_contract.IOpenContractDTO;
 import com.example.back_end.dto.open_contract.OpenContractDTO;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.model.Customers;
+
 import com.example.back_end.service.IRedeemingService;
 import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -39,8 +40,10 @@ public class RedeemingController {
      */
     @Transactional
     @PatchMapping("/pay/{id}")
-    public void redeem(@PathVariable("id") Long id, @Param("redeemDate") String redeemDate) {
-        iRedeemingService.redeems(id, redeemDate);
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public void redeem(@PathVariable("id") Long id) {
+        LocalDate redeemDate = LocalDate.now();
+        iRedeemingService.redeems(id, String.valueOf(redeemDate));
         Contracts contracts = iRedeemingService.findOpenContract(id);
         String name = contracts.getCustomers().getName();
         String product = contracts.getProductName();
@@ -71,6 +74,7 @@ public class RedeemingController {
      * return: the list of contract with the contractStatus is open and match the contractId
      */
     @GetMapping("/chose/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Contracts> findById(@PathVariable("id") Long id) {
         return new ResponseEntity<Contracts>(iRedeemingService.findOpenContract(id), HttpStatus.OK);
     }
@@ -88,6 +92,7 @@ public class RedeemingController {
      */
     @Transactional
     @GetMapping("/chooseContract")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<OpenContractDTO>> getOpenContractList(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Order.desc("create_time")));
         Page<OpenContractDTO> contractsPage = iRedeemingService.findPageConTract(pageable);
@@ -109,6 +114,7 @@ public class RedeemingController {
      */
     @Transactional
     @GetMapping("/search")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<OpenContractDTO>> getOpenContractSearchList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                            @RequestParam(value = "contractCode") String contractCode,
                                                                            @RequestParam(value = "customerName") String customerName,

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class ShowOpenContractController {
 
     @Transactional
     @GetMapping("/showAllContract")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<AllContractDTO>> getAllContracts(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                 @RequestParam("productName")String productName,
                                                                 @RequestParam("productType")String productType) {
@@ -40,6 +42,7 @@ public class ShowOpenContractController {
     }
 
     @GetMapping("/getProductType")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ProductType>> getProductType(){
          List<ProductType> productTypes =  iRedeemingService.getProductType();
 
