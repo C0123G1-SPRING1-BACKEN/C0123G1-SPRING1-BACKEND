@@ -33,14 +33,14 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
 
     @Query(value = "SELECT *" +
             "   FROM contracts AS c" +
-            "    WHERE c.is_delete = false AND c.contract_code=:id", nativeQuery = true)
+            "    WHERE c.is_delete = false AND c.id=:contract_id", nativeQuery = true)
     Optional<Contracts> findContractsById(@Param("contract_id") Integer id);
 
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE contracts AS c SET  c.is_delete=true WHERE c.id=:id", nativeQuery = true)
-    void deleteContractById(@Param("id") Integer id);
+    @Query(value = "UPDATE contracts AS c SET  c.is_delete=true WHERE c.id=:contract_id", nativeQuery = true)
+    void deleteContractById(@Param("contract_id") Integer id);
 
 
     @Query(value = "SELECT c.id            AS id,\n" +
@@ -68,7 +68,7 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
             "ORDER BY c.start_date DESC ",
             countQuery = "select count(*)" +
                     "FROM contracts AS c" +
-                    "                    INNER JOIN contr   act_type AS ct ON ct.id = c.contract_type_id" +
+                    "                    INNER JOIN contract_type AS ct ON ct.id = c.contract_type_id" +
                     "                 INNER JOIN contract_status AS cs ON cs.id = c.contract_status_id" +
                     "                   INNER JOIN customers c2 ON c.customers_id = c2.id" +
                     "          WHERE c.is_delete = false" +
