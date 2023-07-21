@@ -102,7 +102,7 @@ public class CustomerControllerSave {
      * Create by: DatNT,
      * Date create : 18/07/2023
      * Function : checkEmailExistence
-     *
+     *  
      * @return boolean This function checks if the email exists in the database.
      * If the email is present in the database, it will return true;
      * otherwise, it will return false.

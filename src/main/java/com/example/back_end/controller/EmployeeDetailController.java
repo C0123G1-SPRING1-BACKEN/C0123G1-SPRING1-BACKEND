@@ -1,6 +1,5 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.dto.CustomerSaveDto;
 import com.example.back_end.dto.EmployeeDetailDto;
 import com.example.back_end.service.details.IEmployeeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class EmployeeDetailController {
     private IEmployeeDetailService employeeDetailService;
 
     @GetMapping("detail/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
         EmployeeDetailDto employeeDetailDto = employeeDetailService.findId(id);
         if (employeeDetailDto == null)
@@ -34,7 +33,7 @@ public class EmployeeDetailController {
     }
 
     @PatchMapping("detail/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             employeeDetailService.updateEmployeeDetail(id, employeeDetailDto);

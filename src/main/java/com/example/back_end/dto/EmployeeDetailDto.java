@@ -18,7 +18,7 @@ public class EmployeeDetailDto {
     private Integer gender;
     @NotBlank(message = "Không được để trống !")
     @NotBlank(message = "Vui lòng nhập địa chỉ email")
-    @Email(message = "Nhập đúng định dạng abc@gmail.com")
+    @Email(message = "Nhập đúng định dạng. VD: abc@gmail.com")
     private String email;
     @Size(max = 10)
     @NotBlank(message = "Không được để trống !")
