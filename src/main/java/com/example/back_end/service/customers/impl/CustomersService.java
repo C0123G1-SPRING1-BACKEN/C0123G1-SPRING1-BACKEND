@@ -29,7 +29,7 @@ public class CustomersService implements ICustomersService {
         for (Customers customers : customersPage) {
             customerListDTO = new CustomerListDTO();
             BeanUtils.copyProperties(customers, customerListDTO);
-            int quantityContract = 0;
+            int quantityContract = 1;
             for (Contracts contract : customers.getContractsSet()) {
                 if (!contract.isDelete()) {
                     quantityContract++;
