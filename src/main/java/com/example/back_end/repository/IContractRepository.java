@@ -31,25 +31,16 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
                       @Param("productTypeId") Long productTypeId, @Param("customerId") Long customerId, @Param("contractStatusId") Long contractStatusId, @Param("employeeId") Long employeeId, @Param("contractTypeId") Long contractTypeId, @Param("id") Long id);
 
 
-    @Query(value = "SELECT c.id AS id ,c.contract_code AS contractCode,c.product_name AS productName," +
-            "c2.name AS customers, c.start_date AS startDate,ct.name AS contractType," +
-            "cs.name AS contractStatus FROM contracts AS c" +
-            " INNER JOIN contract_type AS ct ON ct.id = c.contract_type_id" +
-            " INNER JOIN contract_status AS cs ON cs.id = c.contract_status_id" +
-            " INNER JOIN customers c2 on c.customers_id = c2.id " +
-            " WHERE c.is_delete = false ORDER BY start_date desc ", nativeQuery = true)
-    Page<ITransactionHistoryProjection> findAllTransactionHistoryByDeleteIsFalse(Pageable pageable);
-
     @Query(value = "SELECT *" +
             "   FROM contracts AS c" +
-            "    WHERE c.is_delete = false AND c.contract_code=:contract_id", nativeQuery = true)
-    Optional<Contracts> findContractsById(@Param("contract_id") String id);
+            "    WHERE c.is_delete = false AND c.id=:contract_id", nativeQuery = true)
+    Optional<Contracts> findContractsById(@Param("contract_id") Integer id);
 
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE contracts AS c SET  c.is_delete=true WHERE c.contract_code=:id", nativeQuery = true)
-    void deleteContractById(@Param("id") String id);
+    @Query(value = "UPDATE contracts AS c SET  c.is_delete=true WHERE c.id=:contract_id", nativeQuery = true)
+    void deleteContractById(@Param("contract_id") Integer id);
 
 
     @Query(value = "SELECT c.id            AS id,\n" +
@@ -106,7 +97,7 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO contracts(customers_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employees_id) " +
-            "VALUES (:customers,:contractCode,:productName,:productType,:image,:loans,:startDate,:endDate,:profit,1,1,:employees)", nativeQuery = true)
+            "VALUES (:customers,:contractCode,:productName,:productType,:image,:loans,:startDate,:endDate,:profit,2,1,:employees)", nativeQuery = true)
     void createContract(@Param("customers") Long customers, @Param("contractCode") String contractCode,
                         @Param("productName") String productName, @Param("productType") Long productType,
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,

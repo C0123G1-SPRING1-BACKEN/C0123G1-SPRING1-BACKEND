@@ -56,7 +56,7 @@ public class ContractRestController {
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") String id) {
+    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -77,7 +77,7 @@ public class ContractRestController {
 
     @GetMapping("/detail/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") String id) {
+    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         return contractDTO.map(contracts -> new ResponseEntity<>(contracts, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
