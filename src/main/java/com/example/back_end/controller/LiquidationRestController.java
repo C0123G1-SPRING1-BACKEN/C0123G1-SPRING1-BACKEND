@@ -63,21 +63,21 @@ public class LiquidationRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         liquidationsService.save(liquidations);
-//        String name = liquidationsDto.getCustomers().getName();
-//        String product = liquidationsDto.getProducts();
-//        LocalDateTime date= LocalDateTime.now();
-//        String to = liquidationsDto.getCustomers().getEmail();
-//        String subject = "Xác nhận mua đồ - PawnShop";
-//        String body = "Chào " + name + ",\n" +
-//                "\n" +
-//                "Chúng tôi gửi mail này để xác nhận rằng bạn vừa thanh toán đê mua " + product + " vào ngày " + date +"\n" +
-//                "\n" +
-//                "Chúng tôi xin cảm ơn quý khách đã tin tường và sử dụng dịch vụ của chúng tôi.\n" +
-//                "\n" +
-//                "Pawn Shop\n" +
-//                "\n";
-//
-//        emailService.sendMail(to, subject, body);
+        String name = liquidationsDto.getCustomers().getName();
+        String product = liquidationsDto.getProducts();
+        LocalDateTime date= LocalDateTime.now();
+        String to = liquidationsDto.getCustomers().getEmail();
+        String subject = "Xác nhận mua đồ - PawnShop";
+        String body = "Chào " + name + ",\n" +
+                "\n" +
+                "Chúng tôi gửi mail này để xác nhận rằng bạn vừa thanh toán để mua " + product + " vào ngày " + date +"\n" +
+                "\n" +
+                "Chúng tôi xin cảm ơn quý khách đã tin tường và sử dụng dịch vụ của chúng tôi.\n" +
+                "\n" +
+                "Pawn Shop\n" +
+                "\n";
+
+        emailService.sendMail(to, subject, body);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }

@@ -1,5 +1,11 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.service.IProductTypeService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.ContractStatus;
@@ -56,7 +62,7 @@ public class ContractRestController {
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") String id) {
+    public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -77,7 +83,7 @@ public class ContractRestController {
 
     @GetMapping("/detail/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") String id) {
+    public ResponseEntity<Contracts> showTransactionHistoryDetail(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         return contractDTO.map(contracts -> new ResponseEntity<>(contracts, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
