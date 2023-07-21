@@ -8,4 +8,8 @@ public interface IRegisterPawnService {
 
 
     void confirmRegister(Long id);
+
+    boolean existsByEmail(String email);
+
+    boolean existsByPhone(String phone);
 }

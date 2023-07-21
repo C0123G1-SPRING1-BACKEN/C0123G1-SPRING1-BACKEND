@@ -21,4 +21,5 @@ public class ProductTypeService implements IProductTypeService {
         return iProductTypeRepository.findAll();
     }
 
+
 }

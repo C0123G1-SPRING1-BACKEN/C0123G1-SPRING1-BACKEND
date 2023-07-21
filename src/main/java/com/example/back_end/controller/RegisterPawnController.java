@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -89,5 +90,37 @@ public class RegisterPawnController {
         });
         return errors;
     }
+
+    /**
+     * Create by: ThangND,
+     * Date create : 18/07/2023
+     * Function : checkEmailExistence
+     *
+     * @return boolean This function checks if the email exists in the database.
+     * If the email is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param email
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-email/{email}")
+    public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
+        boolean exists =iRegisterPawnService.existsByEmail(email);
+        return ResponseEntity.ok(exists);
+    }
+    /**
+     * Create by: ThangND,
+     * Date create : 18/07/2023
+     * Function : checkEmailExistence
+     * @param phone
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-phone/{phone}")
+    public ResponseEntity<Boolean> checkPhone(@PathVariable("phone") String phone) {
+        boolean exist  =iRegisterPawnService.existsByPhone(phone);
+        return ResponseEntity.ok(exist);
+    }
+
+
+
 
 }

@@ -38,5 +38,15 @@ public class RegisterPawnService implements IRegisterPawnService {
         registerPawnRepository.confirmRegisterPawn(id);
     }
 
+    @Override
+    public boolean existsByEmail(String email) {
+        return registerPawnRepository.existsByEmail(email) ;
+    }
+
+    @Override
+    public boolean existsByPhone(String phone) {
+        return  registerPawnRepository.existsByPhone(phone) ;
+    }
+
 
 }
