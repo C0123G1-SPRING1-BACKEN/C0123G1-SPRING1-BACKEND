@@ -20,6 +20,9 @@ public class Liquidations {
     @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT now()",updatable = false)
     @CreationTimestamp
     private LocalDateTime createTime;
+    @ManyToOne
+    @JoinColumn
+    private Contracts contracts;
 
     public Liquidations() {
     }
@@ -70,5 +73,13 @@ public class Liquidations {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public Contracts getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Contracts contracts) {
+        this.contracts = contracts;
     }
 }
