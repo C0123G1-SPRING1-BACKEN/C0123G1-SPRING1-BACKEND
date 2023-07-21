@@ -27,7 +27,7 @@ public class CustomerSaveController_createCustomer {
      * Create by DatNT
      * Date create 14/07/2023
      * Test method create
-     * @expect successful and status HttpStatus.Created
+     * @expect successful and status HttpStatus.is2xxSuccessful
      * @throws Exception
      */
     @Test
@@ -36,14 +36,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyen Van Anh");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988888988");
+        customerSaveDto.setEmail("codegym123@gmail.com");
         customerSaveDto.setAddress("19 Hai Chau, Hai Chau, Da Nang");
-        customerSaveDto.setCitizenCode("123456789012");
-        customerSaveDto.setImage("avatar.jpg");
-        customerSaveDto.setFrontCitizen("front.jpg");
-        customerSaveDto.setBackCitizen("back.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setCitizenCode("123456789999");
+        customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -66,14 +66,14 @@ public class CustomerSaveController_createCustomer {
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -89,14 +89,14 @@ public class CustomerSaveController_createCustomer {
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -113,14 +113,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -137,14 +137,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -161,13 +160,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setPhoneNumber("0988899902");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -184,13 +183,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -207,13 +206,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -230,13 +229,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -253,13 +252,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -276,13 +275,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -298,14 +297,14 @@ public class CustomerSaveController_createCustomer {
         CustomerSaveDto customerSaveDto = new CustomerSaveDto();
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -330,14 +329,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -354,14 +353,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -379,13 +378,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -402,14 +401,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setPhoneNumber("0988899902");
         customerSaveDto.setEmail("");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -426,14 +425,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -450,14 +449,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
         customerSaveDto.setCitizenCode("");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -474,14 +473,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -498,14 +497,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -522,14 +521,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -553,14 +552,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("nguyennnn223");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -577,14 +576,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("12-2023-12");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -602,13 +601,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("9987654321");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -625,14 +624,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setPhoneNumber("0988899902");
         customerSaveDto.setEmail("@@gmail");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -649,14 +648,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("41234ancb23");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -673,14 +672,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
         customerSaveDto.setCitizenCode("oi232312332");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -697,14 +696,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -721,14 +720,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-ga");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -745,14 +744,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -777,14 +776,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Na");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -801,14 +800,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("12-12");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -826,13 +825,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("9987");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -849,14 +848,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setPhoneNumber("0988899902");
         customerSaveDto.setEmail("b@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -873,14 +872,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -897,14 +896,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
         customerSaveDto.setCitizenCode("232312332");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -921,14 +920,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://a.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -945,14 +944,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://i.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -969,14 +968,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://i.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1001,14 +1000,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat Đatttttttttttttttt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1026,13 +1025,13 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
         customerSaveDto.setPhoneNumber("098478545532");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1049,14 +1048,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
+        customerSaveDto.setPhoneNumber("0988899902");
         customerSaveDto.setEmail("baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbb@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1073,14 +1072,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("số 2223 Nguyễn Văn linh, Đà Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng Nẵng, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1097,14 +1096,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
         customerSaveDto.setCitizenCode("2323123321231434");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
-        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1121,14 +1120,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://aimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thimages.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/th.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1145,14 +1144,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22_22i.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -1169,14 +1168,14 @@ public class CustomerSaveController_createCustomer {
         customerSaveDto.setName("Nguyễn Tiến Đạt");
         customerSaveDto.setBirthday("2000-10-05");
         customerSaveDto.setGender(1);
-        customerSaveDto.setPhoneNumber("0987678902");
-        customerSaveDto.setEmail("toan.nang@gmail.com");
+        customerSaveDto.setPhoneNumber("0988899902");
+        customerSaveDto.setEmail("codegym@gmail.com");
         customerSaveDto.setAddress("19 Hải Châu, Hải Châu, Đà Nẵng");
-        customerSaveDto.setCitizenCode("028789789323");
+        customerSaveDto.setCitizenCode("028799789999");
         customerSaveDto.setImage("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg");
         customerSaveDto.setFrontCitizen("https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22/Thanh/thu-tuc-doi-cmnd-cccd-ma-vach-sang-cccd-gan-chip-8-760x367.jpg");
         customerSaveDto.setBackCitizen("https://images.baodantoc.vn/images.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%Th%C3%A1ng%203es.baodantoc.vn/uploads/2021/Th%C3%A1ng%203/Ng%C3%A0y_22_22i.jpg");
-        customerSaveDto.setDelete(false);
+        
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders

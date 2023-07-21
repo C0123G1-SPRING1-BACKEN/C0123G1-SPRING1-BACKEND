@@ -36,6 +36,9 @@ public class Employees {
     @JoinColumn
     private Users users;
 
+    public Employees(Long id) {
+        this.id = id;
+    }
 
     public Employees(Long id, String name, String birthDay, Integer gender, String email, String phoneNumber, String address, String salary, String citizenCode, String image, LocalDateTime createTime, LocalDateTime updateTime, Users users) {
         this.id = id;

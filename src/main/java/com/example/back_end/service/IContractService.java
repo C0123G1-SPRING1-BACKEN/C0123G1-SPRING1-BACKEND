@@ -1,10 +1,10 @@
 package com.example.back_end.service;
 
-
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.model.Contracts;
-
+import com.example.back_end.model.Users;
 import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.IContractProjection;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,13 +27,11 @@ public interface IContractService {
    void saveContract(ContractDto contractDto);
 
 
-    Page<ITransactionHistoryProjection> findAllTransactionHistory(Integer page, Integer limit);
-
-    Boolean deleteTransactionHistoryById(String id);
+    Boolean deleteTransactionHistoryById(Integer id);
 
     Page<ITransactionHistoryProjection> showListAndSearchTransactionHistory(Integer page, Integer limit, ContractSearchDTO contractSearchDTO);
 
-    Optional<Contracts> findTransactionHistoryById(String id);
+    Optional<Contracts> findTransactionHistoryById(Integer id);
 
     List<Contracts> findAll();
 

@@ -14,4 +14,11 @@ public interface IRegisterPawnService {
     Page<RegisterPawn> findByNameRegisterPawn(Pageable pageable);
 
     void confirmRegister(Long id);
+
+
+
+
+    boolean existsByEmail(String email);
+
+    boolean existsByPhone(String phone);
 }

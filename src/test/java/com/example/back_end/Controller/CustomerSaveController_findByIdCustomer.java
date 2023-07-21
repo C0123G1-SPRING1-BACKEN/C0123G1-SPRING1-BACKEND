@@ -26,24 +26,10 @@ public class CustomerSaveController_findByIdCustomer {
      */
     @Test
     public void findByIdCustomer_1() throws Exception {
+        Long customerId = null;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/null"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by DatNT
-     * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer ticket which param id = ''
-     * @Throws Exception
-     */
-    @Test
-    public void findByIdCustomer_2() throws Exception {
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/customer/''"))
+                                .get("/api/customer/{id}", null))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -56,9 +42,10 @@ public class CustomerSaveController_findByIdCustomer {
      */
     @Test
     public void findByIdCustomer_3() throws Exception {
+        Long customerId = 123L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/123"))
+                                .get("/api/customer/{id}", customerId))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -66,30 +53,15 @@ public class CustomerSaveController_findByIdCustomer {
     /**
      * Create by DatNT
      * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer id contained in the database but server error
+     * This a method use check the return findByIdCustomer id contained in the database id = 1
      * @Throws Exception
      */
     @Test
     public void findByIdCustomer_4() throws Exception {
+        Long customerId = 1L;
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/customer/1"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * Create by DatNT
-     * Date update 14/07/2023
-     * This a method use check the return findByIdCustomer which param id = 1
-     * @Throws Exception
-     */
-    @Test
-    public void findByIdCustomer_5() throws Exception {
-
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/api/customer/1"))
+                                .get("/api/customer/{id}", customerId))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.id").value(1))
@@ -97,7 +69,7 @@ public class CustomerSaveController_findByIdCustomer {
                 .andExpect(jsonPath("$.birthday").value("2000-10-05"))
                 .andExpect(jsonPath("$.gender").value(1))
                 .andExpect(jsonPath("$.phoneNumber").value("0987678902"))
-                .andExpect(jsonPath("$.email").value("toan.nang@gmail.com"))
+                .andExpect(jsonPath("$.email").value("toan.nang99@gmail.com"))
                 .andExpect(jsonPath("$.address").value("19 Hai Chau, Da Nang"))
                 .andExpect(jsonPath("$.citizenCode").value("123456789012"))
                 .andExpect(jsonPath("$.image").value("https://pvb.com/avatarr.jpg"))

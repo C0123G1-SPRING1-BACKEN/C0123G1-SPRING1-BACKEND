@@ -12,12 +12,11 @@ public class UsersDto implements Validator {
     @NotBlank
     private String username;
     @NotBlank
-    @Size(min = 8,max = 50)
+    @Size(min = 8,max = 20)
     private String password;
     private Integer verificationCode;
     private Roles roles;
-    private String email;
-
+private  String email;
     public UsersDto() {
     }
 
@@ -86,6 +85,4 @@ public class UsersDto implements Validator {
     public void validate(Object target, Errors errors) {
 
     }
-
-
 }
