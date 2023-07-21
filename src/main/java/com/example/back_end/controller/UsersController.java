@@ -77,7 +77,7 @@ public class UsersController {
         }
         Users users = usersService.findByUsername(authenticationRequest.getUsername());
         final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails.getUsername(), users.getRoles().getRoleName());
+        final String token = jwtTokenUtil.generateToken(userDetails.getUsername(), users.getRoles().getRoleName(), users.getId());
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

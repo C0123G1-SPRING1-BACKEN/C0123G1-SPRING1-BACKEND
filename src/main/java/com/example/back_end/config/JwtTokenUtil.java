@@ -20,7 +20,7 @@ public class JwtTokenUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-    public String generateToken(String username,String role) {
+    public String generateToken(String username,String role,Long id) {
         Map<String, Object> claims = new HashMap<>();
         SecretKey key = JwtUtils.generateHS512Key(); // Tạo khóa HS512 an toàn
 
@@ -28,6 +28,7 @@ public class JwtTokenUtil {
                 .setClaims(claims)
                 .setSubject(username)
                 .claim("role",role)
+                .claim("id",id)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, key) // Sử dụng khóa để ký JWT token
