@@ -3,7 +3,7 @@ package com.example.back_end.controller;
 import com.example.back_end.dto.open_contract.IOpenContractDTO;
 import com.example.back_end.dto.open_contract.OpenContractDTO;
 import com.example.back_end.model.Contracts;
-import com.example.back_end.model.Customers;
+
 import com.example.back_end.service.IRedeemingService;
 import com.example.back_end.service.impl.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
