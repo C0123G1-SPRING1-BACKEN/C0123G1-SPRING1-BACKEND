@@ -41,8 +41,9 @@ public class RedeemingController {
     @Transactional
     @PatchMapping("/pay/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public void redeem(@PathVariable("id") Long id, @Param("redeemDate") String redeemDate) {
-        iRedeemingService.redeems(id, redeemDate);
+    public void redeem(@PathVariable("id") Long id) {
+        LocalDate redeemDate = LocalDate.now();
+        iRedeemingService.redeems(id, String.valueOf(redeemDate));
         Contracts contracts = iRedeemingService.findOpenContract(id);
         String name = contracts.getCustomers().getName();
         String product = contracts.getProductName();
