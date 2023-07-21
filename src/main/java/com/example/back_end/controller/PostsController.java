@@ -57,8 +57,8 @@ public class PostsController {
     public ResponseEntity<Page<PostsDTO>> getPosts(@PageableDefault(sort = "create_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                    @RequestParam(required = false, defaultValue = "") String titleSearch) {
         Page<PostsDTO> posts = iPostsService.getAllPosts(pageable, titleSearch);
-        if (posts.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (posts.isEmpty()&& posts==null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
