@@ -11,7 +11,7 @@ public class CreateContractDto implements Validator {
 
     private Long id;
     @NotBlank(message = "Không được để trống !")
-    @Pattern(regexp = "^[A-Z][a-z]*(\\s[A-Z][a-z]*)||(\\s[0-9]*)+$", message = "Chữ đầu tiên phải viết hoa")
+    @Pattern(regexp = "^[^!@#$%^&*()+=\\[\\]{};':\"\\\\|.<>?`~]+$", message = "Không chứa kí tự số và kí tự đặc biệt")
     private String productName;
 
     private String contractCode;

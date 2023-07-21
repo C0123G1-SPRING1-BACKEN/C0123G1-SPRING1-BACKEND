@@ -180,7 +180,7 @@ public class ContractService implements IContractService {
         String profit = (numberFormat.format(contracts.getProfit()));
         String loan = (numberFormat.format(loans));
 //        tỷ lệ lãi suất là 2% trên tháng, thì lãi suất cần tính cho 1 ngày là 2%/30 = 0,067%.
-        Double percent = 0.067; // Lãi suất hàng ngày (0.067%)
+        Double percent =  0.67/100; // Lãi suất hàng ngày (0.067%)
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate startDate = LocalDate.parse(contracts.getStartDate());
@@ -197,6 +197,7 @@ public class ContractService implements IContractService {
         System.out.println("Ngày bắt đầu: " + start);
         System.out.println("Ngày kết thúc: " + end);
         System.out.println("Tổng số ngày: " + daysBetween);
+        System.out.println("Lãi xuất % 1 ngày : "+ percent);
         System.out.println("Liền lãi BE: " + profitLoans);
         System.out.println("Liền lãi FE: " + profit);
 

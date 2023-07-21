@@ -103,7 +103,7 @@ public interface IContractRepository extends JpaRepository<Contracts, Long> {
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO contracts(customers_id,contract_code,product_name,product_type_id,image,loans,start_date,end_date,profit,contract_status_id,contract_type_id,employees_id) " +
-            "VALUES (:customers,:contractCode,:productName,:productType,:image,:loans,:startDate,:endDate,:profit,1,1,:employees)", nativeQuery = true)
+            "VALUES (:customers,:contractCode,:productName,:productType,:image,:loans,:startDate,:endDate,:profit,2,1,:employees)", nativeQuery = true)
     void createContract(@Param("customers") Long customers, @Param("contractCode") String contractCode,
                         @Param("productName") String productName, @Param("productType") Long productType,
                         @Param("image") String image, @Param("loans") Long loans, @Param("startDate") String startDate,
