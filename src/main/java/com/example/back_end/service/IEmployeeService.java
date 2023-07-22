@@ -5,8 +5,6 @@ import com.example.back_end.model.Employees;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Optional;
-
 public interface IEmployeeService {
 
     Page<EmployeeDTO> findAllByName(Pageable pageable, String search);

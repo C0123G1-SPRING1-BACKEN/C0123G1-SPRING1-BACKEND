@@ -39,6 +39,7 @@ public class ProfitController {
     private IProfitService iProfitService;
 
     @GetMapping("")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public  <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                        @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
@@ -64,6 +65,7 @@ public class ProfitController {
     }
 
     @GetMapping("/statistics-profit")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<IStatistics>> statisticsProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
                                                          @RequestParam(value = "endDate", defaultValue = "") String endDate,
                                                          @RequestParam(value = "profitType", defaultValue = "interest") String profitType){

@@ -72,6 +72,7 @@ public class UsersService implements UserDetailsService, IUsersService {
     public void saveNewPassword(Users user) {
         Users users = findById(user.getId());
         String password = passwordEncoder.encode(user.getPassword());
-        iUserRepository.saveNewPassword(users.getId(),password);
+        users.setPassword(password);
+        iUserRepository.saveNewPassword(users.getId(), users.getPassword());
     }
 }

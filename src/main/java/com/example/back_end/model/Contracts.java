@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -57,6 +58,9 @@ public class Contracts {
 
     private String redeemDate;
 
+    @Column(name = "link_contracts", length = 255)
+    private String linkContracts;
+
     public String getRedeemDate() {
         return redeemDate;
     }
@@ -89,6 +93,19 @@ public class Contracts {
         // TODO document why this constructor is empty
     }
 
+    public Contracts(Long id, String productName, String contractCode, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
 
     public Long getId() {
         return id;
@@ -216,5 +233,13 @@ public class Contracts {
 
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
+    }
+
+    public String getLinkContracts() {
+        return linkContracts;
+    }
+
+    public void setLinkContracts(String linkContracts) {
+        this.linkContracts = linkContracts;
     }
 }
