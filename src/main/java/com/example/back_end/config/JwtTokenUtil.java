@@ -19,7 +19,7 @@ public class JwtTokenUtil {
 
     @Value("${jwt.secret}")
     private String secret;
-
+    
     public String generateToken(String username,String role,Long id) {
         Map<String, Object> claims = new HashMap<>();
         SecretKey key = JwtUtils.generateHS512Key(); // Tạo khóa HS512 an toàn
