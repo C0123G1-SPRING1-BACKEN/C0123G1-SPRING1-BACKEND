@@ -55,7 +55,7 @@ public class JwtTokenUtil {
     }
     public boolean validateToken(String token, JwtUserDetails userDetails) {
         try {
-            JwtParser parser = Jwts.parser().setSigningKey(secret);
+            JwtParser parser = Jwts.parser().setSigningKey(key);
             Claims claims = parser.parseClaimsJws(token).getBody();
 
             // Kiểm tra tính hợp lệ của token bằng cách so sánh username trong token với thông tin người dùng được truyền vào
