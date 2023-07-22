@@ -40,12 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/checkEmail","/api/user/newPassword","/api/user/checkCode","/api/user/authenticate","/api/posts").permitAll()
+                .antMatchers("/**","/api/user/checkEmail","/api/user/newPassword","/api/user/checkCode","/api/user/authenticate","/api/posts").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

@@ -12,45 +12,47 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.Base64;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 @Component
 public class JwtTokenUtil {
 
     private static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
-    @Value("${jwt.secret}")
-    private String secret;
+    private String secret = "YourSecretKey";
+    Map<String, Object> claims = new HashMap<>();
+    byte[] secretBytes = Base64.getEncoder().encode(secret.getBytes());
+    SecretKey key = new SecretKeySpec(secretBytes, SignatureAlgorithm.HS512.getJcaName());
+    public String generateToken(String username, String role) {
 
-    public String generateToken(String username,String role) {
-        Map<String, Object> claims = new HashMap<>();
-        SecretKey key = JwtUtils.generateHS512Key(); // Tạo khóa HS512 an toàn
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
-                .claim("role",role)
+                .claim("username", username)
+                .claim("role", role)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(SignatureAlgorithm.HS512, key) // Sử dụng khóa để ký JWT token
+                .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
     }
+
     public Claims extractClaims(String token) {
+        byte[] secretBytes = Base64.getEncoder().encode(secret.getBytes());
         return Jwts.parser()
-                .setSigningKey(JwtUtils.generateHS512Key())
+                .setSigningKey(new SecretKeySpec(secretBytes, SignatureAlgorithm.HS512.getJcaName()))
                 .parseClaimsJws(token)
                 .getBody();
     }
 
-    public String getRoleFromToken(String token) {
-        return (String) extractClaims(token).get("role");
-    }
     public String getUsernameFromToken(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(secret)
+                .setSigningKey(key)
                 .parseClaimsJws(token)
                 .getBody();
         return claims.getSubject();
     }
-
     public boolean validateToken(String token, JwtUserDetails userDetails) {
         try {
             JwtParser parser = Jwts.parser().setSigningKey(secret);

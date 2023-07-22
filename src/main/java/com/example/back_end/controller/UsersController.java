@@ -73,7 +73,7 @@ public class UsersController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
         Users users = usersService.findByUsername(authenticationRequest.getUsername());
         final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
