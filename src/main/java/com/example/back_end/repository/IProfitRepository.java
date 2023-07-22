@@ -19,7 +19,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "c.start_date as startDate," +
             "c.profit as profit  from contracts as c " +
             " inner join contract_status cs on c.contract_status_id = cs.id " +
-            "where cs.id = 3 and ( \n" +
+            "where cs.id = 3  and year(c.start_date) like :currentYear and  ( \n" +
             "    CASE \n" +
             "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%' \n" +
             "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%') \n" +
@@ -29,7 +29,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "    ) ORDER BY c.start_date DESC",
             countQuery = "select count(*) from contracts as c " +
                     " inner join contract_status cs on c.contract_status_id = cs.id " +
-                    "where cs.id = 3 and ( \n" +
+                    "where cs.id = 3  and year(c.start_date) like :currentYear and ( \n" +
                     "    CASE \n" +
                     "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%' \n" +
                     "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%') \n" +
@@ -37,7 +37,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
                     "WHEN :startDate != '' and :endDate != '' then c.start_date between COALESCE(:startDate,c.start_date) and COALESCE(:endDate,c.start_date)\n" +
                     "        END \n" +
                     "    )", nativeQuery = true)
-    Page<IProfitInterest> getAllContractInterest(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable);
+    Page<IProfitInterest> getAllContractInterest(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable,@Param("currentYear") String currentYear);
 
     @Query(value = "select " +
             "c.contract_code as contractCode," +
@@ -46,9 +46,9 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "c.start_date as startDate," +
             "c.end_date as endDate," +
             "c.profit as profitForesee  " +
-            "from contracts as c " +
-            " inner join contract_status cs on c.contract_status_id = cs.id " +
-            "where cs.id = 2 and ( \n" +
+            "from contracts as c \n" +
+            " inner join contract_status cs on c.contract_status_id = cs.id \n" +
+            "where cs.id = 2 and year(c.start_date) like :currentYear and ( \n" +
             "    CASE \n" +
             "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%' \n" +
             "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%') \n" +
@@ -58,7 +58,7 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "    )ORDER BY c.start_date DESC",
             countQuery = "select count(*) from contracts as c " +
                     " inner join contract_status cs on c.contract_status_id = cs.id " +
-                    "where cs.id = 2 and ( \n" +
+                    "where cs.id = 2 and year(c.start_date) like :currentYear and ( \n" +
                     "    CASE \n" +
                     "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%' \n" +
                     "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%') \n" +
@@ -66,36 +66,40 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
                     "WHEN :startDate != '' and :endDate != '' then c.start_date between COALESCE(:startDate,c.start_date) and COALESCE(:endDate,c.start_date)\n" +
                     "        END \n" +
                     "    )", nativeQuery = true)
-    Page<IProfitForesee> getAllContractForesee(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable);
+    Page<IProfitForesee> getAllContractForesee(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable,@Param("currentYear") String currentYear);
 
-    @Query(value = "select c.contract_code      as contractCode,\n" +
-            "c.loans              as loans,\n" +
-            "(l.total_price) as proceedsOfSale,\n" +
-            "(l.create_time) as createDate,\n" +
-            "(l.total_price  - c.loans) as profit \n" +
-            "from liquidations as l\n" +
-            "         inner join contracts c on l.contracts_id = c.id\n" +
-            "where CASE\n" +
-            "WHEN :startDate = '' and :endDate = '' THEN l.create_time LIKE '%%'\n" +
-            "WHEN :startDate = '' THEN l.create_time LIKE concat('%', :endDate, '%')\n" +
-            "WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%')\n" +
-            "WHEN :startDate != '' and :endDate != '' then l.create_time between COALESCE(:startDate, l.create_time) and COALESCE(:endDate, l.create_time)\n" +
-            "          END",
-            countQuery = "select count(*) from liquidations as l \n" +
-                    " inner join contracts c on l.contracts_id = c.id \n" +
-                    "where CASE \n" +
-                    "WHEN :startDate = '' and :endDate = '' THEN l.create_time LIKE '%%' \n" +
-                    "WHEN :startDate = '' THEN l.create_time LIKE concat('%', :endDate, '%') \n" +
-                    "WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%') \n" +
-                    "WHEN :startDate != '' and :endDate != '' then l.create_time between COALESCE(:startDate, l.create_time) and COALESCE(:endDate, l.create_time)\n" +
-                    "END", nativeQuery = true)
-    Page<IProfitLiquidation> getAllLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable);
+    @Query(value = "select c.contract_code as contractCode,\n" +
+            "                   c.loans as loans,\n" +
+            "                   (c.loans + c.profit) as proceedsOfSale,\n" +
+            "                   c.start_date as createDate,\n" +
+            "                   c.profit as profit\n" +
+            "            from contracts c\n" +
+            "            inner join contract_status cs on c.contract_status_id = cs.id\n" +
+            "            where cs.id = 5 and year(c.start_date) like :currentYear\n" +
+            "              and CASE\n" +
+            "                      WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%'\n" +
+            "                      WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%')\n" +
+            "                      WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%')\n" +
+            "                      WHEN :startDate != '' and :endDate != ''\n" +
+            "                          then c.start_date between COALESCE(:startDate, c.start_date) and COALESCE(:endDate, c.start_date)\n" +
+            "                END",
+            countQuery = "select count(*) from contracts as c \n" +
+                    "            inner join contract_status cs on c.contract_status_id = cs.id\n" +
+                    "            where cs.id = 5 and year(c.start_date) like :currentYear\n" +
+                    "              and CASE\n" +
+                    "                      WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%'\n" +
+                    "                      WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%')\n" +
+                    "                      WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%')\n" +
+                    "                      WHEN :startDate != '' and :endDate != ''\n" +
+                    "                          then c.start_date between COALESCE(:startDate, c.start_date) and COALESCE(:endDate, c.start_date)\n" +
+                    "                END", nativeQuery = true)
+    Page<IProfitLiquidation> getAllLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable,@Param("currentYear") String currentYear);
 
     @Query(value = "select month(c.start_date) as month,\n" +
             "       sum(c.profit)       as profit\n" +
             "from contracts as c " +
-            " inner join contract_status cs on c.contract_status_id = cs.id " +
-            "where cs.id = :contractStatusId and CASE\n" +
+            " inner join contract_status cs on c.contract_status_id = cs.id \n" +
+            "where cs.id = :contractStatusId and year(c.start_date) like :currentYear and CASE\n" +
             "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%'\n" +
             "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%')\n" +
             "WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%')\n" +
@@ -103,26 +107,28 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "          END\n" +
             "GROUP BY month(c.start_date)" +
             "ORDER BY month ASC", nativeQuery = true)
-    List<IStatistics> statisticsProfit(@Param("startDate") String startDate, @Param("endDate") String endDate, @Param("contractStatusId") Long contractStatusId);
+    List<IStatistics> statisticsProfit(@Param("startDate") String startDate, @Param("endDate") String endDate, @Param("contractStatusId") Long contractStatusId,@Param("currentYear") String currentYear);
 
-    @Query(value = "select month(l.create_time) as month,\n" +
-            "       sum(l.total_price - c.loans)       as profit\n" +
-            "from liquidations l\n" +
-            "inner join contracts c on l.contracts_id = c.id\n" +
-            "where CASE\n" +
-            "WHEN :startDate = '' and :endDate = '' THEN l.create_time LIKE '%%'\n" +
-            "WHEN :startDate = '' THEN l.create_time LIKE concat('%', :endDate, '%')\n" +
-            "WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%')\n" +
-            "WHEN :startDate != '' and :endDate != '' then l.create_time between COALESCE(:startDate,l.create_time) and COALESCE(:endDate,l.create_time)\n" +
-            "          END\n" +
-            "GROUP BY month(l.create_time)" +
+    @Query(value = " select month(c.start_date) as month,\n" +
+            "       sum(c.loans)        as profit\n" +
+            "from contracts c\n" +
+            "inner join contract_status cs on c.contract_status_id = cs.id\n" +
+            "where cs.id = 5 and year(c.start_date) like :currentYear\n" +
+            "  and CASE\n" +
+            "          WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%'\n" +
+            "          WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%')\n" +
+            "          WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%')\n" +
+            "          WHEN :startDate != '' and :endDate != ''\n" +
+            "              then c.start_date between COALESCE(:startDate, c.start_date) and COALESCE(:endDate, c.start_date)\n" +
+            "    END\n" +
+            "GROUP BY month(c.start_date)\n" +
             "ORDER BY month ASC", nativeQuery = true)
-    List<IStatistics> statisticsProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate);
+    List<IStatistics> statisticsProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate,@Param("currentYear") String currentYear);
 
     @Query(value = "select sum(c.profit)\n" +
             "from contracts c\n" +
             "inner join contract_status cs on c.contract_status_id = cs.id \n" +
-            "where cs.id = :contractStatusId and ( \n" +
+            "where cs.id = :contractStatusId  and year(c.start_date) like :currentYear and ( \n" +
             "    CASE \n" +
             "WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%' \n" +
             "WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%') \n" +
@@ -130,16 +136,18 @@ public interface IProfitRepository extends JpaRepository<Contracts, Long> {
             "WHEN :startDate != '' and :endDate != '' then c.start_date between COALESCE(:startDate,c.start_date) and COALESCE(:endDate,c.start_date) \n" +
             "        END\n" +
             "    )", nativeQuery = true)
-    Long getTotalProfitContract(@Param("startDate") String startDate, @Param("endDate") String endDate, @Param("contractStatusId") Long contractStatusId);
+    Long getTotalProfitContract(@Param("startDate") String startDate, @Param("endDate") String endDate, @Param("contractStatusId") Long contractStatusId,@Param("currentYear") String currentYear);
 
     @Query(value = "select sum(c.profit)\n" +
-            "from liquidations l\n" +
-            "         inner join contracts c on l.contracts_id = c.id\n" +
-            "where CASE\n" +
-            "          WHEN :startDate = '' and :endDate = '' THEN l.create_time LIKE '%%'\n" +
-            "          WHEN :startDate = '' THEN l.create_time LIKE concat('%', :endDate, '%')\n" +
-            "          WHEN :endDate = '' THEN l.create_time LIKE concat('%', :startDate, '%')\n" +
-            "          WHEN :startDate != '' and :endDate != '' then l.create_time between COALESCE(:startDate,l.create_time) and COALESCE(:endDate,l.create_time)\n" +
-            "          END", nativeQuery = true)
-    Long getTotalProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate);
+            "       from contracts c\n" +
+            "       inner join contract_status cs on c.contract_status_id = cs.id \n" +
+            "       where cs.id = 5 and year(c.start_date) like :currentYear \n" +
+            "       and CASE\n" +
+            "       WHEN :startDate = '' and :endDate = '' THEN c.start_date LIKE '%%'\n" +
+            "       WHEN :startDate = '' THEN c.start_date LIKE concat('%', :endDate, '%')\n" +
+            "       WHEN :endDate = '' THEN c.start_date LIKE concat('%', :startDate, '%')\n" +
+            "       WHEN :startDate != '' and :endDate != ''\n" +
+            "       then c.start_date between COALESCE(:startDate, c.start_date) and COALESCE(:endDate, c.start_date)\n" +
+            "    END", nativeQuery = true)
+    Long getTotalProfitLiquidation(@Param("startDate") String startDate, @Param("endDate") String endDate,@Param("currentYear") String currentYear);
 }
