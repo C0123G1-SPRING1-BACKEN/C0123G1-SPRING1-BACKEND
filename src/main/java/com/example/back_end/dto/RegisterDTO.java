@@ -9,28 +9,28 @@ public class RegisterDTO {
 
     private Long id;
 
-    @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
-    @Pattern(regexp = "^([A-Z][a-z]*(\\s[A-Z][a-z]*)*)$", message = "Tên Của Bạn Không Đúng Định Dạng ")
-    @NotBlank(message = "Bạn Cần Điền Đủ Thông Tin")
+    @Size(max = 100, message = "Tên của bạn không được quá 100 ký tự")
+    @Pattern(regexp = "^\\p{Lu}\\p{Ll}*(\\s\\p{Lu}\\p{Ll}*)*$", message = "Tên của bạn không đúng định dạng . Ví dụ : Phạm Minh Sơn ")
+    @NotBlank(message = "Bạn cần điền đủ thông tin")
     private String name;
 
-    @Size(max = 11, message = "Số Điện Thoại Của Bạn Không Được Quá 11 Số !!!")
-    @Pattern(regexp = "^((\\+84)|0)\\d{9}$", message = "Bạn Nhập Không Đúng Định Dạng Số Điện Thoại")
-    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin ")
+    @Size(max = 11, message = "Số điện thoại của bạn không được quá 11 số !!!")
+    @Pattern(regexp = "^((\\+84)|0)\\d{9}$", message = "Bạn nhập không đúng định dạng số điện thoại . Vui lòng nhập kiểu 0xxx xxx xxx")
+    @NotBlank(message = "Bạn cần nhập đủ thông tin ")
     private String phone;
 
-    @Email(message = "Email Của Bạn Không Đúng . Làm Ơn Nhập Kiểu :  abc@gmail.com ")
+    @Email(message = "Email của bạn không đúng . Vui lòng nhập kiểu : abc@gmail.com ")
     @Size(max = 100, message = "Tên Của Bạn Không Được Quá 100 Ký Tự")
     @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
     private String email;
 
 
-    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
-    @Size(max = 500, message = "Địa Chỉ Của Bạn Không Được Quá 500 Ký Tự !!!")
+    @NotBlank(message = "Bạn cần nhập đủ thông tin")
+    @Size(max = 500, message = "Địa chỉ của bạn không được quá 500 ký tự !!!")
     private String address;
 
-    @Size(max = 1000, message = "Nội Dung Ghi Chú  Của Bạn Không Được Quá 1000 Ký Tự !!!")
-    @NotBlank(message = "Bạn Cần Nhập Đủ Thông Tin")
+    @Size(max = 1000, message = "Nội dung ghi chú  của bạn không được quá 1000 ký tự !!!")
+    @NotBlank(message = "Bạn cần nhập đủ thông tin")
     private String contentNote;
 
     private boolean status = false;
