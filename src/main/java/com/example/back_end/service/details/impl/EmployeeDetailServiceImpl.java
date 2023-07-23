@@ -35,7 +35,7 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
                 employees.getSalary(),
                 employees.getCitizenCode(),
                 employees.getImage()
-        );
+                );
     }
 
     /**
@@ -43,13 +43,13 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
      * Date create : 19/07/2023
      * Function : connect database to detail employee find by id detail employee
      *
-     * @param email
+     * @param id
      * @return employeeSaveDto
      */
     @Override
-    public EmployeeDetailDto findByEmailEmployee(String email) {
-        Employees employees = employeeDetailRepository.findWithEmailEmployee(email);
-        EmployeeDetailDto employeeDetailDto = new EmployeeDetailDto();
+    public EmployeeDetailDto findByIdEmployee(Long id) {
+        Employees employees = employeeDetailRepository.findWithIdEmployee(id);
+        EmployeeDetailDto employeeDetailDto =new EmployeeDetailDto();
         BeanUtils.copyProperties(employees, employeeDetailDto);
         return employeeDetailDto;
     }
@@ -91,14 +91,5 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
     @Override
     public boolean existsByPhoneNumber(String phoneNumber) {
         return employeeDetailRepository.existsByPhoneNumber(phoneNumber);
-    }
-
-    @Override
-    public EmployeeDetailDto findId(Long id) {
-        Employees employees = employeeDetailRepository.findById(id).orElse(null);
-        EmployeeDetailDto employeeDetailDto = new EmployeeDetailDto();
-        assert employees != null;
-        BeanUtils.copyProperties(employees, employeeDetailDto);
-        return employeeDetailDto;
     }
 }
