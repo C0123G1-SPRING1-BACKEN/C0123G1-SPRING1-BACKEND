@@ -11,20 +11,18 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface IContractService {
 
 
-
-   Contracts findContractById(Long id);
-
-   
-
-   Page<Contracts> showTop10NewContract(Pageable pageable);
+    Contracts findContractById(Long id);
 
 
+    Page<Contracts> showTop10NewContract(Pageable pageable);
 
-   void saveContract(ContractDto contractDto);
+
+    void saveContract(ContractDto contractDto);
 
 
     Boolean deleteTransactionHistoryById(Integer id);
@@ -37,5 +35,6 @@ public interface IContractService {
 
     void createContract(Contracts contracts);
 
+    String randomContract();
 
 }
