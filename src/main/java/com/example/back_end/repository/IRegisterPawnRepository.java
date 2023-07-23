@@ -26,4 +26,9 @@ public interface IRegisterPawnRepository extends JpaRepository<RegisterPawn, Lon
    @Modifying
    @Query(value = "UPDATE register_pawn r SET r.status = true WHERE r.id = :id",nativeQuery = true)
     void confirmRegisterPawn(@Param("id") Long id);
+
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM register_pawn WHERE email = :email), 'true', 'false')", nativeQuery = true)
+    boolean existsByEmail(@Param("email")String email);
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM register_pawn WHERE phone = :phone), 'true', 'false')", nativeQuery = true)
+    boolean existsByPhone( @Param("phone") String phone);
 }

@@ -1,6 +1,5 @@
 package com.example.back_end.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -57,6 +56,9 @@ public class Contracts {
     private ContractType contractType;
 
     private String redeemDate;
+
+    @Column(name = "link_contracts", length = 255)
+    private String linkContracts;
 
     public String getRedeemDate() {
         return redeemDate;
@@ -124,8 +126,9 @@ public class Contracts {
         return contractCode;
     }
 
-    public void setContractCode(String contractCode) {
+    public String setContractCode(String contractCode) {
         this.contractCode = contractCode;
+        return contractCode;
     }
 
     public Long getLoans() {
@@ -156,16 +159,18 @@ public class Contracts {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public String setStartDate(String startDate) {
         this.startDate = startDate;
+        return startDate;
     }
 
     public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public String setEndDate(String endDate) {
         this.endDate = endDate;
+        return endDate;
     }
 
     public LocalDateTime getCreateTime() {
@@ -230,5 +235,13 @@ public class Contracts {
 
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
+    }
+
+    public String getLinkContracts() {
+        return linkContracts;
+    }
+
+    public void setLinkContracts(String linkContracts) {
+        this.linkContracts = linkContracts;
     }
 }

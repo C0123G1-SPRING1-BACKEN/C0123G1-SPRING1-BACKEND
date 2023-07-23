@@ -5,8 +5,6 @@ import com.example.back_end.model.Employees;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-
 public interface IEmployeeService {
 
     Page<EmployeeDTO> findAllByName(Pageable pageable, String search);
@@ -19,4 +17,5 @@ public interface IEmployeeService {
      */
     void createEmployee(EmployeeDTO employeeDTO);
 
+    Employees findById(int id);
 }
