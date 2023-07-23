@@ -56,7 +56,7 @@ public class PostsController {
      * @return list, object
      */
     @GetMapping("")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<PostsDTO>> getPosts(@PageableDefault(sort = "create_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                    @RequestParam(required = false, defaultValue = "") String titleSearch) {
         Page<PostsDTO> posts = iPostsService.getAllPosts(pageable, titleSearch);
