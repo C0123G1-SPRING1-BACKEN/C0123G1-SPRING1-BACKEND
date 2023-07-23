@@ -24,7 +24,7 @@ public class EmployeeDetailController {
     private IEmployeeDetailService employeeDetailRepository;
 
     @GetMapping("detail/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
         EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(id);
         if (employeeDetailDto == null)
@@ -34,7 +34,7 @@ public class EmployeeDetailController {
     }
 
     @PatchMapping("detail/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             employeeDetailRepository.updateEmployeeDetail(id, employeeDetailDto);

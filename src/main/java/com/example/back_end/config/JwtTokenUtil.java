@@ -24,14 +24,14 @@ public class JwtTokenUtil {
     Map<String, Object> claims = new HashMap<>();
     byte[] secretBytes = Base64.getEncoder().encode(secret.getBytes());
     SecretKey key = new SecretKeySpec(secretBytes, SignatureAlgorithm.HS512.getJcaName());
-    public String generateToken(String username, String role) {
-
+    public String generateToken(String username, String role,Long id) {
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
                 .claim("username", username)
                 .claim("role", role)
+                .claim("id", id)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, key)
