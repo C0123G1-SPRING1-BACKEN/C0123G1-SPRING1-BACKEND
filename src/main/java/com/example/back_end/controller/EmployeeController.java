@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.EmployeeDTO;
+import com.example.back_end.model.Employees;
 import com.example.back_end.repository.IEmployeeRepository;
 import com.example.back_end.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<Page<EmployeeDTO>> findAllByName(@PageableDefault(sort = {"id"},direction = Sort.Direction.DESC, size = 5)Pageable pageable,
+    public ResponseEntity<Page<EmployeeDTO>> findAllByName(@PageableDefault(sort = {"id"},direction = Sort.Direction.DESC, size = 10)Pageable pageable,
                                                            @RequestParam(required = false,defaultValue = "") String search){
         Page<EmployeeDTO> employeeDTOS = iEmployeeService.findAllByName(pageable,search);
         if (employeeDTOS.isEmpty()){
@@ -63,6 +64,12 @@ public class EmployeeController {
         }
         iEmployeeService.createEmployee(employeeDTO);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{id}")
+    public Employees findById(@PathVariable("id") int id) {
+        return iEmployeeService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)

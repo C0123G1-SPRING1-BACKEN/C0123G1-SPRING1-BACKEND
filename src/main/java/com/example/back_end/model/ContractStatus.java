@@ -27,8 +27,9 @@ public class ContractStatus {
         return id;
     }
 
-    public void setId(Long id) {
+    public long setId(Long id) {
         this.id = id;
+        return 0;
     }
 
     public String getName() {

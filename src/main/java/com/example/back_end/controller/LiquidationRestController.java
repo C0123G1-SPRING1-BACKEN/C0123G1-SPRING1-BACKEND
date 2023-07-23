@@ -54,9 +54,9 @@ public class LiquidationRestController {
     @Transactional
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createLiquidation(@Valid @RequestBody LiquidationsDto liquidationsDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+//        if (bindingResult.hasErrors()) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
 //        Liquidations liquidations = new Liquidations();
 //        BeanUtils.copyProperties(liquidationsDto, liquidations);
 //        if (bindingResult.hasErrors()) {
@@ -85,11 +85,11 @@ public class LiquidationRestController {
 
     @GetMapping("/customers")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Page<CustomerListDTO>> getListCustomer(@RequestParam(required = false, defaultValue = "") String name,
-                                                               @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable) {
+    public ResponseEntity<Page<CustomerListDTO>> getListCustomer(@RequestParam("name") String name,
+                                                               @PageableDefault(size = 6) Pageable pageable) {
         Page<CustomerListDTO> CustomerListDTO = customersService.findByNameProduct(name, pageable);
-        if (CustomerListDTO.isEmpty() && CustomerListDTO == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (CustomerListDTO == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(CustomerListDTO, HttpStatus.OK);
     }
@@ -100,8 +100,9 @@ public class LiquidationRestController {
     public ResponseEntity<Page<IContractDto>> getListProduct(@PageableDefault(size = 6) Pageable pageable, @RequestParam("productName") String productName
             , @RequestParam("productType") String productType, @RequestParam("loans") String loans) {
         Page<IContractDto> contractsDtoPage = contractsService.findAllProduct(pageable, productName, productType, loans);
-        if (contractsDtoPage.isEmpty() && contractsDtoPage == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (contractsDtoPage == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT
+            );
         }
         return new ResponseEntity<>(contractsDtoPage, HttpStatus.OK);
     }

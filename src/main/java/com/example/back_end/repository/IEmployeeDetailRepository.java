@@ -11,20 +11,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface IEmployeeDetailRepository extends JpaRepository<Employees, Long> {
 
-    @Query(nativeQuery = true, value = "select * from employees where email = :email")
-    Employees findWithEmailEmployee(@Param("email") String email);
+    @Query(nativeQuery = true, value = "select * from employees where id = :id")
+    Employees findWithIdEmployee(@Param("id") Long id);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE employees SET name = :name, birth_day = :birth_day, gender =:gender, email = :email," +
-            " phone_number = :phone_number, address = :address, salary = :salary, citizen_code = :citizen_code," +
-            " image = :image "+"WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE employees SET name = :name, birth_day = :birthDay, gender =:gender, email = :email," +
+            " phone_number = :phoneNumber, address = :address, salary = :salary, citizen_code = :citizen_code, image = :image \n "+
+            "WHERE id = :id", nativeQuery = true)
     void updateEmployee(@Param("id") Long id,
                         @Param("name") String name,
-                        @Param("birth_day") String birthDay,
+                        @Param("birthDay") String birthDay,
                         @Param("gender") Integer gender,
                         @Param("email") String email,
-                        @Param("phone_number") String phoneNumber,
+                        @Param("phoneNumber") String phoneNumber,
                         @Param("address") String address,
                         @Param("salary") String salary,
                         @Param("citizen_code") String citizenCode,

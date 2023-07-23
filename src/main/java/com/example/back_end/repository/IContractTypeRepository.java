@@ -12,4 +12,6 @@ public interface IContractTypeRepository extends JpaRepository< ContractType, Lo
     List<ContractType> getAllContractType();
 
     Optional<ContractType> findById(Long id);
+
+
 }
