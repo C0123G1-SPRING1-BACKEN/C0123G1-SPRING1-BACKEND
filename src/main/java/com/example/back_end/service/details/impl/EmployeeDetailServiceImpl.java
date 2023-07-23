@@ -35,7 +35,7 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
                 employees.getSalary(),
                 employees.getCitizenCode(),
                 employees.getImage()
-                );
+        );
     }
 
     /**
@@ -49,7 +49,7 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
     @Override
     public EmployeeDetailDto findByEmailEmployee(String email) {
         Employees employees = employeeDetailRepository.findWithEmailEmployee(email);
-        EmployeeDetailDto employeeDetailDto =new EmployeeDetailDto();
+        EmployeeDetailDto employeeDetailDto = new EmployeeDetailDto();
         BeanUtils.copyProperties(employees, employeeDetailDto);
         return employeeDetailDto;
     }
@@ -96,7 +96,7 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
     @Override
     public EmployeeDetailDto findId(Long id) {
         Employees employees = employeeDetailRepository.findById(id).orElse(null);
-        EmployeeDetailDto employeeDetailDto =new EmployeeDetailDto();
+        EmployeeDetailDto employeeDetailDto = new EmployeeDetailDto();
         assert employees != null;
         BeanUtils.copyProperties(employees, employeeDetailDto);
         return employeeDetailDto;
