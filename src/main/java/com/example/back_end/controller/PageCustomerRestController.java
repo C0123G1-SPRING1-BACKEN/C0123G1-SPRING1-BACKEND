@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,9 +30,10 @@ public class PageCustomerRestController {
 
 
     @GetMapping("")
-    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 3) Pageable pageable) {
-        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findByCustomer(pageable);
-        if (iCustomerDtoPage.isEmpty()) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Page<ICustomerDto>> getAllCustomer(@PageableDefault(size = 1) Pageable pageable, @RequestParam("name") String name) {
+        Page<ICustomerDto> iCustomerDtoPage = iCustomerService.findAllBySearchCustomer(pageable ,name);
+        if (iCustomerDtoPage.isEmpty() && iCustomerDtoPage==null) {
             return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
@@ -40,6 +42,7 @@ public class PageCustomerRestController {
 
 
     @GetMapping("/contract/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<ICustomerDto> getByIdCustomer(@PathVariable("id") Long id) {
       ICustomerDto iCustomerDto=  iCustomerService.findByIdCustomer(id);
       if (iCustomerDto.equals(id)){

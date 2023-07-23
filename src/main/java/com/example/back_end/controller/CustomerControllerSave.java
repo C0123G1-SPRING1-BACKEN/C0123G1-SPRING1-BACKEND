@@ -5,6 +5,7 @@ import com.example.back_end.service.customers.ICustomerServiceCreateUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +31,7 @@ public class CustomerControllerSave {
      * @return HttpStatus.BAD_REQUEST if result= null else then return customerSaveDto and HttpStatus.OK
      */
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> findByIdCustomer(@PathVariable Long id) {
         CustomerSaveDto customerSaveDto = customerServiceCreateUpdate.findByIdCustomer(id);
         if (customerSaveDto == null)
@@ -47,6 +49,7 @@ public class CustomerControllerSave {
      * @return status Created
      */
     @PostMapping("/")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.createCustomer(customerSaveDto);
@@ -67,6 +70,7 @@ public class CustomerControllerSave {
      * @requestBody CustomerSaveDto includes the customer object
      */
     @PatchMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult,@PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);
@@ -106,6 +110,7 @@ public class CustomerControllerSave {
      */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-email/{email}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
         boolean exists = customerServiceCreateUpdate.existsByEmail(email);
         return ResponseEntity.ok(exists);
@@ -123,6 +128,7 @@ public class CustomerControllerSave {
      */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-citizen-code/{citizen-code}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Boolean> checkCitizenCodeExistence(@PathVariable("citizen-code") String citizenCode) {
         boolean exists = customerServiceCreateUpdate.existsByCitizenCode(citizenCode);
         return ResponseEntity.ok(exists);
@@ -139,6 +145,7 @@ public class CustomerControllerSave {
      */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/check-phone/{phone-number}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone-number") String phoneNumber) {
         boolean exists = customerServiceCreateUpdate.existsByPhoneNumber(phoneNumber);
         return ResponseEntity.ok(exists);

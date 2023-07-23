@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,20 +20,17 @@ public class JwtTokenUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-    public String generateToken(String username, String role) {
-//        Map<String, Object> claims = new HashMap<>();
-//        SecretKey key = JwtUtils.generateHS512Key(); // Tạo khóa HS512 an toàn
-
-        Date now = new Date();
-        Date expirationDate = new Date(now.getTime() + JWT_TOKEN_VALIDITY * 1000);
+    public String generateToken(String username,String role) {
+        Map<String, Object> claims = new HashMap<>();
+        SecretKey key = JwtUtils.generateHS512Key(); // Tạo khóa HS512 an toàn
 
         return Jwts.builder()
-//                .setClaims(claims)
+                .setClaims(claims)
                 .setSubject(username)
-                .claim("role", role)
-                .setIssuedAt(now)
-                .setExpiration(expirationDate)
-                .signWith(SignatureAlgorithm.HS512, this.secret) // Sử dụng khóa để ký JWT token
+                .claim("role",role)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .signWith(SignatureAlgorithm.HS512, key) // Sử dụng khóa để ký JWT token
                 .compact();
     }
     public Claims extractClaims(String token) {
@@ -42,9 +40,12 @@ public class JwtTokenUtil {
                 .getBody();
     }
 
+    public String getRoleFromToken(String token) {
+        return (String) extractClaims(token).get("role");
+    }
     public String getUsernameFromToken(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(this.secret)
+                .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
         return claims.getSubject();
@@ -61,7 +62,6 @@ public class JwtTokenUtil {
             }
         } catch (Exception e) {
             // Xử lý ngoại lệ nếu có
-            throw e;
         }
 
         return false;

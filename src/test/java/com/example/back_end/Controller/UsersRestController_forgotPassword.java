@@ -1,4 +1,4 @@
-package com.example.back_end.controller;
+package com.example.back_end.Controller;
 
 import com.example.back_end.dto.UsersDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,158 +15,161 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UsersRestController_login {
+public class UsersRestController_forgotPassword {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
 
     /**
-     * login null
-     *
+     * check email null
      * @throws Exception
      */
     @Test
-    public void login_91() throws Exception {
-
+    public void checkEmail_99() throws Exception {
         UsersDto usersDto = new UsersDto();
-
+        usersDto.setEmail("");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
+                        .post("/api/user/checkEmail")
                         .content(this.objectMapper.writeValueAsString(usersDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
     /**
-     * login empty
-     *
+     * check email wrong data
      * @throws Exception
      */
+
     @Test
-    public void login_99() throws Exception {
-
+    public void checkEmail_98() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("");
-        usersDto.setPassword("");
-
-
+        usersDto.setEmail("hehe@gmail.com");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
+                        .post("/api/user/checkEmail")
                         .content(this.objectMapper.writeValueAsString(usersDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
-
     /**
-     * login wrong username
-     *
+     * check email success
      * @throws Exception
      */
     @Test
-    public void login_98() throws Exception {
-
+    public void checkEmail_97() throws Exception {
         UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thangthang");
-        usersDto.setPassword("thang123");
-
-
+        usersDto.setEmail("nguyenthangfa2001@gmail.com");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * login  username null
-     *
-     * @throws Exception
-     */
-    @Test
-    public void login_95() throws Exception {
-
-        UsersDto usersDto = new UsersDto();
-        usersDto.setPassword("thang123");
-
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * login  password  null
-     *
-     * @throws Exception
-     */
-    @Test
-    public void login_94() throws Exception {
-
-        UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thang123");
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    /**
-     * login wrong password
-     *
-     * @throws Exception
-     */
-    @Test
-    public void login_97() throws Exception {
-
-        UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thang");
-        usersDto.setPassword("thang12321");
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
-                        .content(this.objectMapper.writeValueAsString(usersDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-
-    /**
-     * login success
-     *
-     * @throws Exception
-     */
-    @Test
-    public void login_96() throws Exception {
-
-        UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("thang");
-        usersDto.setPassword("thang12345");
-
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/user/authenticate")
+                        .post("/api/user/checkEmail")
                         .content(this.objectMapper.writeValueAsString(usersDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
-
-
+    /**
+     * check code null
+     * @throws Exception
+     */
+    @Test
+    public void checkCode_99() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/checkCode")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * check code wrong data
+     * @throws Exception
+     */
+    @Test
+    public void checkCode_98() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        usersDto.setVerificationCode(123456);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/checkCode")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * check code success
+     * @throws Exception
+     */
+    @Test
+    public void checkCode_97() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        usersDto.setVerificationCode(415650);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/user/checkCode")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+    /**
+     * update new password null
+     * @throws Exception
+     */
+    @Test
+    public void newPassword_99() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        usersDto.setPassword("");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/user/newPassword")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * update new password wrong size
+     * @throws Exception
+     */
+    @Test
+    public void newPassword_98() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        usersDto.setPassword("ho12");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/user/newPassword")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * update new password success
+     * @throws Exception
+     */
+    @Test
+    public void newPassword_97() throws Exception {
+        UsersDto usersDto = new UsersDto();
+        usersDto.setId(2L);
+        usersDto.setPassword("thang12345");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/user/newPassword")
+                        .content(this.objectMapper.writeValueAsString(usersDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 }
+// 321383

@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -45,6 +46,7 @@ public class RegisterPawnController {
     private IProductTypeService productTypeService;
     @NonNull
     @PostMapping("/create")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Map<String, String>> createRegisterPawn(
             @Validated @RequestBody RegisterDTO registerDTO, BindingResult bindingResult) {
 
@@ -79,6 +81,7 @@ public class RegisterPawnController {
 //    }
 
     @PatchMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public <T> ResponseEntity<T> confirmRegister(@PathVariable("id") Long id) {
         iRegisterPawnService.confirmRegister(id);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -105,6 +108,7 @@ public class RegisterPawnController {
      * @param: registerDTO
      */
     @GetMapping("")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> findByNameRegisterPawn(
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
         return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(pageable), HttpStatus.OK);

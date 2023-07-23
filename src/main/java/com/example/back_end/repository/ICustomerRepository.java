@@ -7,21 +7,26 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface ICustomerRepository extends JpaRepository<Customers,Long> {
-    @Query(value = "SELECT * FROM customers",nativeQuery = true)
+@Repository
+public interface ICustomerRepository extends JpaRepository<Customers, Long> {
+    @Query(value = "SELECT c.id, c.name AS name, c.citizen_code AS citizenCode, c.quantity_contract AS quantityContract,c.email\n" +
+            "FROM customers AS c\n" +
+            "WHERE is_delete = FALSE AND c.name LIKE concat('%', :name, '%') ",
+            nativeQuery = true)
+    Page<ICustomerDto> findByCustomer(Pageable pageable, @Param("name") String name);
+
+    @Query(value = "SELECT c.id AS customerId,c.name AS name,c.citizen_code AS citizenCode, c.quantity_contract AS quantityContract FROM customers AS c WHERE c.id=:id", nativeQuery = true)
+    ICustomerDto findByIdCustomer(@Param("id") Long customerId);
+
+    @Query(value = "SELECT c.id AS id,c.name AS name,c.citizen_code AS citizenCode, c.email AS email FROM customers AS c WHERE c.name LIKE concat('%',:name,'%') ",
+            nativeQuery = true)
+    Page<ICustomerDto> findAllBySearchCustomer(Pageable pageable, @Param("name") String name);
+
+
+    @Query(value = "SELECT * FROM customers AS c WHERE c.is_delete = FALSE", nativeQuery = true)
     List<Customers> getAllCustomer();
-
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode,c.quantity_contract as quantityContract FROM customers as c  ",
-            nativeQuery = true)
-    Page<ICustomerDto> findByCustomer(Pageable pageable);
-
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code FROM customers as c WHERE c.name LIKE concat('%',:name,'%') ",
-            nativeQuery = true)
-    Page<ICustomerDto> searchCustomer(Pageable pageable, @Param("name") String name);
-
-    @Query(value = "SELECT c.id as id,c.name as name,c.citizen_code as citizenCode, c.quantity_contract as quantityContract FROM customers as c WHERE c.id=:id", nativeQuery = true)
-    ICustomerDto findByIdCustomer(@Param("id") Long id);
 }

@@ -1,5 +1,4 @@
-package com.example.back_end.controller;
-
+package com.example.back_end.Controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,43 +12,53 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LiquidationController_searchCustomer {
+public class CustomerContract_searchCustomer {
     @Autowired
     private MockMvc mockMvc;
 
     /**
-     * Create By : KhangPVa
+     * Create By : DinhHD
      * Date Create : 14/07/2023
-     * search customer Trường hợp Trả về list có size = 0
+     * Customer findById = Successful size >0
      *
      * @throws Exception
      */
-
     @Test
-    public void searchCustomer_5() throws Exception {
+    public void searchCustomer_6_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/liquidation/customers/search?name=null"))
+                                .get("/api/employee/contract/customer/contract/search?name=Phan Văn Đồng"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
-
-
-
     /**
-     * Create By : KhangPVa
+     * Create By : DinhHD
      * Date Create : 14/07/2023
-     * search customer Trường hợp Trả về list có size > 0
+     * Customer findById = Successful size >0
      *
      * @throws Exception
      */
-
     @Test
     public void searchCustomer_6() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/liquidation/customers/search?name=Huynh Duc Dinh"))
+                                .get("/api/employee/contract/customer/contract/search?name=",""))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
+    }
+    /**
+     * Create By : DinhHD
+     * Date Create : 14/07/2023
+     * Customer findById = Successful size < 0
+     *
+     * @throws Exception
+     */
+    @Test
+    public void searchCustomer_2() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/employee/contract/customer/contract/search?name=Huỳnh Đức Định"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 }

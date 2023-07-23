@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,7 @@ public class PostsController {
      * @return list
      */
     @GetMapping("/allEmployees")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<Employees>> getAllEmployees() {
         List<Employees> employees = iEmployeesService.getAllEmployees();
         if (employees.isEmpty()) {
@@ -54,11 +56,12 @@ public class PostsController {
      * @return list, object
      */
     @GetMapping("")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Page<PostsDTO>> getPosts(@PageableDefault(sort = "create_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                    @RequestParam(required = false, defaultValue = "") String titleSearch) {
         Page<PostsDTO> posts = iPostsService.getAllPosts(pageable, titleSearch);
-        if (posts.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (posts.isEmpty() && posts == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
@@ -72,6 +75,7 @@ public class PostsController {
      * @return
      */
     @DeleteMapping("delete/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<Posts>> deletePost(@PathVariable Long id) {
         iPostsService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -86,6 +90,7 @@ public class PostsController {
      * @return object
      */
     @GetMapping("detailPosts/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Posts> detailPosts(@PathVariable Long id) {
         Optional<Posts> posts = iPostsService.findByIdPosts(id);
         if (!posts.isPresent()) {
@@ -104,6 +109,7 @@ public class PostsController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/createPosts")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createPosts(@Valid @RequestBody PostsDTO postsDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
