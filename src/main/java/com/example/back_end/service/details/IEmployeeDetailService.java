@@ -7,6 +7,7 @@ public interface IEmployeeDetailService {
     void updateEmployeeDetail(Long id, EmployeeDetailDto employeeDetailDto);
 
     EmployeeDetailDto findByIdEmployee(Long id);
+    EmployeeDetailDto findIdUserEmployee(Long userId);
 
     boolean existsByEmail(String email);
 
