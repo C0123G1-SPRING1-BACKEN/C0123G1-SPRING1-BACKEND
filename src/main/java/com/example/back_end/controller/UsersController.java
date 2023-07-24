@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.config.JwtTokenUtil;
+import com.example.back_end.config.JwtUserDetails;
 import com.example.back_end.model.Users;
 import com.example.back_end.reponse.JwtRequest;
 import com.example.back_end.reponse.JwtResponse;
@@ -13,10 +14,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Random;
 
 /**
@@ -39,6 +42,7 @@ public class UsersController {
     private UsersService usersService;
     @Autowired
     private EmailService emailService;
+
     class ErrorInfo {
         private String error;
         private Long id;
@@ -64,6 +68,7 @@ public class UsersController {
             this.id = id;
         }
     }
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> loginAuthentication(@RequestBody JwtRequest authenticationRequest) throws Exception {
         try {
@@ -71,15 +76,16 @@ public class UsersController {
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            JwtUserDetails principal = (JwtUserDetails) authentication.getPrincipal();
+            GrantedAuthority authority = principal.getAuthorities().stream().findFirst().orElse(null);
+            final String token = jwtTokenUtil.generateToken(principal.getUsername());
 
+            return ResponseEntity.ok(new JwtResponse(token, principal.getUsername(), authority != null ? authority.getAuthority() : null));
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
-        Users users = usersService.findByUsername(authenticationRequest.getUsername());
-        final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails.getUsername(), users.getRoles().getRoleName(),users.getId());
-
-        return ResponseEntity.ok(new JwtResponse(token));
+//        Users users = usersService.findByUsername(authenticationRequest.getUsername());
+//        final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
     }
 
     @PostMapping("/checkEmail")
@@ -116,14 +122,14 @@ public class UsersController {
     @PatchMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
         if (user.getPassword().length() < 8 || user.getPassword().length() > 20) {
-            ErrorInfo errorInfo=new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!",user.getId());
+            ErrorInfo errorInfo = new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!", user.getId());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
         }
         try {
             usersService.saveNewPassword(user);
             return ResponseEntity.ok("Đổi mật khẩu thành công!");
         } catch (Exception e) {
-            ErrorInfo errorInfo=new ErrorInfo("Đổi mật khẩu thất bại!!",user.getId());
+            ErrorInfo errorInfo = new ErrorInfo("Đổi mật khẩu thất bại!!", user.getId());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorInfo);
         }
     }
