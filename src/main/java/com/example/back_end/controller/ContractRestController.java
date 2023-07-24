@@ -1,10 +1,15 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.config.JwtUserDetails;
+import com.example.back_end.dto.EmployeeDetailDto;
+import com.example.back_end.model.Employees;
 import com.example.back_end.service.IProductTypeService;
+import com.example.back_end.service.details.IEmployeeDetailService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
@@ -47,6 +52,8 @@ public class ContractRestController {
 
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private IEmployeeDetailService employeeDetailRepository;
 
 
     /**
@@ -206,37 +213,45 @@ public class ContractRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-            List<Contracts> contractsList = iContractService.findAll();
+        List<Contracts> contractsList = iContractService.findAll();
 //        tạo list rỗng chứa trùng lặp
         List<Contracts> contractsArrayList = new ArrayList<>();
-            // Kiểm tra mã trùng lặp
-            Set<String> productCodesSet = new HashSet<>();
-            for (Contracts contracts : contractsList) {
-                String productCode = contracts.getContractCode();
+        // Kiểm tra mã trùng lặp
+        Set<String> productCodesSet = new HashSet<>();
+        for (Contracts contracts : contractsList) {
+            String productCode = contracts.getContractCode();
 //                kiểm tra mã hợp đồng tồn tị hay chưa , nếu tồn tại rồi thì sẽ thêm vào list rổng ở trên
-                if (productCodesSet.contains(productCode)) {
-                    contractsArrayList.add(contracts);
-                } else {
-                    productCodesSet.add(productCode);
+            if (productCodesSet.contains(productCode)) {
+                contractsArrayList.add(contracts);
+            } else {
+                productCodesSet.add(productCode);
 
-                }
             }
-
+        }
+//            lấy users id của cái mà mình đăng nhập để lấy id của nhân viên ra
+        Long userId = ((JwtUserDetails) (SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getId();
+        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findIdUserEmployee(userId);
+        Employees employees = new Employees();
+        BeanUtils.copyProperties(employeeDetailDto, employees);
+        contractDto.setEmployees(employees);
         Contracts contracts = new Contracts();
         BeanUtils.copyProperties(contractDto, contracts);
         iContractService.createContract(contracts);
+
         //Format Giá tiền (000,000,000,)
         NumberFormat numberFormat = NumberFormat.getInstance();
         String profit = (numberFormat.format(contracts.getProfit()));
         String loans = (numberFormat.format(contracts.getLoans()));
         System.out.println("Đầu ra tiền cho vay: " + loans);
         System.out.println("Đầu ra tiền lãi: " + profit);
+
         //Format Ngày tháng năm(dd/MM/yyyy)
         DateTimeFormatter dateTimer = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate startDate = LocalDate.parse(contracts.getStartDate());
         LocalDate endDate = LocalDate.parse(contracts.getEndDate());
         String start = startDate.format(dateTimer);
         String end = endDate.format(dateTimer);
+
         System.out.println("Ngày bắt đầu: " + start);
         System.out.println("Ngày kết thúc: " + end);
 
@@ -244,7 +259,7 @@ public class ContractRestController {
                 "\n -Với giá là:" + loans + " VNĐ" +
                 "\n -Ngày bắt đầu hợp đồng là :" + start +
                 "\n -Đến ngày kết thúc hợp đồng là :" + end +
-                "\n -Với tổng số tiền lãi là " + profit + " VND" +
+                "\n -Với tổng số tiền lãi là " + profit + " VNĐ" +
                 "\n" +
                 "\n" +
                 "\n" +
@@ -260,8 +275,7 @@ public class ContractRestController {
 
     @GetMapping("/randomContract")
     public String randomContractCode() {
-      String random= iContractService.randomContract().toString();
-
+        String random = iContractService.randomContract().toString();
         return random;
     }
 }
