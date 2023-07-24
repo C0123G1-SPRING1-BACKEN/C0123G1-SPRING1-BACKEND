@@ -60,7 +60,7 @@ public class ContractRestController {
      */
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Boolean> deleteTransactionHistoryById(@PathVariable("id") Integer id) {
         Optional<Contracts> contractDTO = iContractService.findTransactionHistoryById(id);
         if (!contractDTO.isPresent()) {

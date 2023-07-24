@@ -145,4 +145,10 @@ public class RegisterPawnController {
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = 3) Pageable pageable) {
         return new ResponseEntity<>(iRegisterPawnService.findByNameRegisterPawn(pageable), HttpStatus.OK);
     }
+    @GetMapping("/list")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<?> listRegisterPawn()
+    {
+        return new ResponseEntity<>(iRegisterPawnService.findAll(), HttpStatus.OK);
+    }
 }

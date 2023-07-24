@@ -13,6 +13,8 @@ public interface IEmployeeDetailRepository extends JpaRepository<Employees, Long
 
     @Query(nativeQuery = true, value = "select * from employees where id = :id")
     Employees findWithIdEmployee(@Param("id") Long id);
+    @Query(value = "select e.* from  employees e inner join users as u on e.users_id = u.id where u.id = :userId",nativeQuery = true)
+    Employees findIdUserEmployee(@Param("userId") Long userId);
 
     @Modifying
     @Transactional

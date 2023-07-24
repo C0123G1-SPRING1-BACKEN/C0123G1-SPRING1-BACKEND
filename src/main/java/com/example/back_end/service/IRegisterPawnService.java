@@ -21,4 +21,6 @@ public interface IRegisterPawnService {
     boolean existsByEmail(String email);
 
     boolean existsByPhone(String phone);
+
+    List<RegisterPawn> findAll();
 }
