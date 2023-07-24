@@ -40,25 +40,27 @@ public class ProfitController {
 
     @GetMapping("")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public  <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
-                                                       @RequestParam(value = "endDate", defaultValue = "") String endDate,
-                                                       @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                       @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
+    public <T> ResponseEntity<Page<T>> getAllContract(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+                                                      @RequestParam(value = "endDate", defaultValue = "") String endDate,
+                                                      @RequestParam(value = "years", defaultValue = "") String years,
+                                                      @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                      @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
         Pageable pageable = PageRequest.of(page, 8);
-        Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, pageable, profitType);
-        if (contractPage.getTotalElements() ==0 ||contractPage.getContent().size() == 0) {
-            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
+        Page<T> contractPage = iProfitService.findAllContract(startDate, endDate, years, pageable, profitType);
+        if (contractPage.getTotalElements() == 0 || contractPage.getContent().size() == 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(contractPage, HttpStatus.OK);
     }
 
     @GetMapping("/total-profit")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Long> getTotalProfit( @RequestParam(value = "startDate", defaultValue = "") String startDate,
-                                                @RequestParam(value = "endDate", defaultValue = "") String endDate,
-                                                @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
-        Long totalProfit = iProfitService.getTotalProfit(startDate, endDate, profitType);
-        if(totalProfit == null){
+    public ResponseEntity<Long> getTotalProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
+                                               @RequestParam(value = "endDate", defaultValue = "") String endDate,
+                                               @RequestParam(value = "years", defaultValue = "") String years,
+                                               @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
+        Long totalProfit = iProfitService.getTotalProfit(startDate, endDate, years, profitType);
+        if (totalProfit == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(totalProfit, HttpStatus.OK);
@@ -67,13 +69,14 @@ public class ProfitController {
     @GetMapping("/statistics-profit")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<IStatistics>> statisticsProfit(@RequestParam(value = "startDate", defaultValue = "") String startDate,
-                                                         @RequestParam(value = "endDate", defaultValue = "") String endDate,
-                                                         @RequestParam(value = "profitType", defaultValue = "interest") String profitType){
-        List<IStatistics> statisticsList = iProfitService.statisticsProfit(startDate,endDate,profitType);
-        if(statisticsList.size() == 0){
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                                                              @RequestParam(value = "endDate", defaultValue = "") String endDate,
+                                                              @RequestParam(value = "years", defaultValue = "") String years,
+                                                              @RequestParam(value = "profitType", defaultValue = "interest") String profitType) {
+        List<IStatistics> statisticsList = iProfitService.statisticsProfit(startDate, endDate,years, profitType);
+        if (statisticsList.size() == 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(statisticsList,HttpStatus.OK);
+        return new ResponseEntity<>(statisticsList, HttpStatus.OK);
     }
 
     @ExceptionHandler(RuntimeException.class)
