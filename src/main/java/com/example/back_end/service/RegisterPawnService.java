@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 
 /**
  * Created by: ThangND
@@ -50,6 +52,12 @@ public class RegisterPawnService implements IRegisterPawnService {
     public boolean existsByPhone(String phone) {
         return  registerPawnRepository.existsByPhone(phone) ;
     }
+
+    @Override
+    public List<RegisterPawn> findAll() {
+        return registerPawnRepository.findAll();
+    }
+
     /**
      * Created by: QuocNHA
      * Date created: 13/07/2023

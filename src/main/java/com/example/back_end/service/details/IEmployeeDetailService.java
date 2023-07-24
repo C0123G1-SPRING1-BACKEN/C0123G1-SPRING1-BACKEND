@@ -6,13 +6,12 @@ public interface IEmployeeDetailService {
 
     void updateEmployeeDetail(Long id, EmployeeDetailDto employeeDetailDto);
 
-    EmployeeDetailDto findByEmailEmployee(String email);
+    EmployeeDetailDto findByIdEmployee(Long id);
+    EmployeeDetailDto findIdUserEmployee(Long userId);
 
     boolean existsByEmail(String email);
 
     boolean existsByCitizenCode(String citizenCode);
 
     boolean existsByPhoneNumber(String phoneNumber);
-
-    EmployeeDetailDto findId(Long id);
 }

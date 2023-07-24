@@ -1,11 +1,14 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.config.JwtUserDetails;
+import com.example.back_end.dto.CustomerSaveDto;
 import com.example.back_end.dto.EmployeeDetailDto;
 import com.example.back_end.service.details.IEmployeeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -20,12 +23,13 @@ import java.util.Map;
 @RequestMapping("/api/employee")
 public class EmployeeDetailController {
     @Autowired
-    private IEmployeeDetailService employeeDetailService;
+    private IEmployeeDetailService employeeDetailRepository;
 
-    @GetMapping("detail/{id}")
+    @GetMapping("detail")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<?> detailEmployee(@PathVariable Long id) {
-        EmployeeDetailDto employeeDetailDto = employeeDetailService.findId(id);
+    public ResponseEntity<?> detailEmployee() {
+        Long userId = ((JwtUserDetails) (SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getId();
+        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(userId);
         if (employeeDetailDto == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else
@@ -36,7 +40,7 @@ public class EmployeeDetailController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateEmployee(@Validated @RequestBody EmployeeDetailDto employeeDetailDto, BindingResult bindingResult, @PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
-            employeeDetailService.updateEmployeeDetail(id, employeeDetailDto);
+            employeeDetailRepository.updateEmployeeDetail(id, employeeDetailDto);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             getResponseEntity(bindingResult);

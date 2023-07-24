@@ -56,8 +56,14 @@ public class RedeemingController {
                 "\n" +
                 "Chúng tôi xin cảm ơn quý khách đã tin tường và sử dụng dịch vụ của chúng tôi.\n" +
                 "\n" +
-                "Pawn Shop\n" +
-                "\n";
+                "\n" +
+                "\n" +
+                "\n" +
+                "---------------------------------------" + "\n" +
+                "Name :Pawn Shop\n" +
+                "Mobile : 0782391943\n" +
+                "Email : pawnshopC0123@gmail.com\n" +
+                "Address :\u200B2\u200B80\u200B \u200BTrần Hưng Đạo\u200B streets, \u200BSơn Trà\u200B District, Da Nang";
 
         emailService.sendMail(to, subject, body);
 
