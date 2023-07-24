@@ -32,8 +32,7 @@ import javax.validation.Valid;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequestMapping("/api/employee/contract")
 @RestController
@@ -151,12 +150,12 @@ public class ContractRestController {
 
     @PatchMapping("/update")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<?> updateContract( @RequestBody ContractDto contractDto) {
+    public ResponseEntity<?> updateContract(@RequestBody ContractDto contractDto) {
         try {
             iContractService.saveContract(contractDto);
             return ResponseEntity.ok(contractDto);
-        }catch (Exception e){
-            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(".....");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(".....");
         }
 
     }
@@ -172,7 +171,7 @@ public class ContractRestController {
 
     @GetMapping("/top10")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault (sort = "create_time",direction = Sort.Direction.DESC)Pageable pageable) {
+    public ResponseEntity<Page<Contracts>> top10NewContract(@PageableDefault(sort = "create_time", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Contracts> contracts = this.iContractService.showTop10NewContract(pageable);
         if (contracts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -201,13 +200,28 @@ public class ContractRestController {
     }
 
 
-
     @PostMapping("/createContract")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<CreateContractDto> createContracts(@RequestBody @Valid CreateContractDto contractDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+            List<Contracts> contractsList = iContractService.findAll();
+//        tạo list rỗng chứa trùng lặp
+        List<Contracts> contractsArrayList = new ArrayList<>();
+            // Kiểm tra mã trùng lặp
+            Set<String> productCodesSet = new HashSet<>();
+            for (Contracts contracts : contractsList) {
+                String productCode = contracts.getContractCode();
+//                kiểm tra mã hợp đồng tồn tị hay chưa , nếu tồn tại rồi thì sẽ thêm vào list rổng ở trên
+                if (productCodesSet.contains(productCode)) {
+                    contractsArrayList.add(contracts);
+                } else {
+                    productCodesSet.add(productCode);
+
+                }
+            }
+
         Contracts contracts = new Contracts();
         BeanUtils.copyProperties(contractDto, contracts);
         iContractService.createContract(contracts);
@@ -244,4 +258,10 @@ public class ContractRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping("/randomContract")
+    public String randomContractCode() {
+      String random= iContractService.randomContract().toString();
+
+        return random;
+    }
 }
