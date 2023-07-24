@@ -43,7 +43,7 @@ public class UsersService implements UserDetailsService, IUsersService {
         String role = users.getRoles().getRoleName();
         authorities.add(new SimpleGrantedAuthority(role));
 
-        return new JwtUserDetails(users.getUsername(), users.getPassword(), authorities);
+        return new JwtUserDetails(users.getId(), users.getUsername(), users.getPassword(), authorities);
     }
 
     @Override

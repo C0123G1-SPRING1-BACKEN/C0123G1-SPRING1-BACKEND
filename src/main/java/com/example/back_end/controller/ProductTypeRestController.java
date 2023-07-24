@@ -24,7 +24,7 @@ public class ProductTypeRestController {
     private IProductTypeService iProductTypeService;
 
     @GetMapping("/contract/productType")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<List<ProductType>> getAllProductType() {
         List<ProductType> productTypeList = iProductTypeService.getAllProductType();
         return new ResponseEntity<>(productTypeList, HttpStatus.OK);

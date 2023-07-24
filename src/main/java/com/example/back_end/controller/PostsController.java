@@ -90,7 +90,7 @@ public class PostsController {
      * @return object
      */
     @GetMapping("detailPosts/{id}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<Posts> detailPosts(@PathVariable Long id) {
         Optional<Posts> posts = iPostsService.findByIdPosts(id);
         if (!posts.isPresent()) {

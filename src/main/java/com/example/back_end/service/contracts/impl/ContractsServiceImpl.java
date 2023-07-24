@@ -69,6 +69,7 @@ public class ContractsServiceImpl implements IContractsService {
         ContractStatus contractStatus = this.contractStatusRepository.findById(5L).get();
         contracts.setContractStatus(contractStatus);
         contracts.setCustomers(liquidationsDto.getCustomers());
+        contracts.setEmployees(liquidationsDto.getEmployees());
         contracts.setProductName(expiredContracts.stream().map(Contracts::getProductName).collect(Collectors.joining(",")));
         contracts.setLoans(expiredContracts.stream().mapToLong(Contracts::getLoans).sum());
         contracts.setProfit(expiredContracts.stream().mapToLong(Contracts::getProfit).sum());

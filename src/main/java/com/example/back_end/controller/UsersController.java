@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.config.JwtTokenUtil;
+import com.example.back_end.config.JwtUserDetails;
 import com.example.back_end.model.Users;
 import com.example.back_end.reponse.JwtRequest;
 import com.example.back_end.reponse.JwtResponse;
@@ -13,10 +14,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Random;
 
 /**
@@ -39,31 +42,14 @@ public class UsersController {
     private UsersService usersService;
     @Autowired
     private EmailService emailService;
+
     class ErrorInfo {
         private String error;
         private Long id;
 
-        public ErrorInfo(String error, Long id) {
-            this.error = error;
-            this.id = id;
-        }
 
-        public String getError() {
-            return error;
-        }
-
-        public void setError(String error) {
-            this.error = error;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
-        }
     }
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> loginAuthentication(@RequestBody JwtRequest authenticationRequest) throws Exception {
         try {
@@ -71,15 +57,16 @@ public class UsersController {
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            JwtUserDetails principal = (JwtUserDetails) authentication.getPrincipal();
+            GrantedAuthority authority = principal.getAuthorities().stream().findFirst().orElse(null);
+            final String token = jwtTokenUtil.generateToken(principal.getUsername());
 
+            return ResponseEntity.ok(new JwtResponse(token, principal.getUsername(), authority != null ? authority.getAuthority() : null));
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
-        Users users = usersService.findByUsername(authenticationRequest.getUsername());
-        final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails.getUsername(), users.getRoles().getRoleName(),users.getId());
-
-        return ResponseEntity.ok(new JwtResponse(token));
+//        Users users = usersService.findByUsername(authenticationRequest.getUsername());
+//        final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
     }
 
     @PostMapping("/checkEmail")
@@ -91,13 +78,22 @@ public class UsersController {
             users.setVerificationCode(randomNumber);
             try {
                 usersService.editUser(users);
-                emailService.sendMail(users.getEmail(), "Mã xác nhận email", "Mã:" + randomNumber);
+                emailService.sendMail(users.getEmail(), "Mã xác nhận email", "Chào bạn,Mã xác thực email trong quy trình lấy lại mật khẩu của bạn:" + randomNumber +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "---------------------------------------" + "\n" +
+                        "Name :Pawn Shop\n" +
+                        "Mobile : 0782391943\n" +
+                        "Email : pawnshopC0123@gmail.com\n" +
+                        "Address :\u200B2\u200B80\u200B \u200BTrần Hưng Đạo\u200B streets, \u200BSơn Trà\u200B District, Da Nang");
             } catch (Exception e) {
 
             }
             return ResponseEntity.ok(users.getId());
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email không tồn tại!!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email không đúng!!");
         }
     }
 
@@ -108,23 +104,21 @@ public class UsersController {
             return ResponseEntity.ok(users.getId());
         } else {
 
-            ErrorInfo errorInfo = new ErrorInfo("Xác nhận mã thất bại!!", users.getId());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorInfo);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Xác nhận mã thất bại!!");
         }
     }
 
     @PatchMapping("/newPassword")
     public ResponseEntity<?> createNewPassword(@RequestBody Users user) {
         if (user.getPassword().length() < 8 || user.getPassword().length() > 20) {
-            ErrorInfo errorInfo=new ErrorInfo("Mật khẩu không được ít hơn 8 hoăc lớn hơn 20 kí tự!!",user.getId());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorInfo);
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mật khẩu không được ít hơn 8 hoăc nhiều hơn 50 kí tự!!");
         }
         try {
             usersService.saveNewPassword(user);
             return ResponseEntity.ok("Đổi mật khẩu thành công!");
         } catch (Exception e) {
-            ErrorInfo errorInfo=new ErrorInfo("Đổi mật khẩu thất bại!!",user.getId());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorInfo);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Đổi mật khẩu thất bại!!");
         }
     }
 }
