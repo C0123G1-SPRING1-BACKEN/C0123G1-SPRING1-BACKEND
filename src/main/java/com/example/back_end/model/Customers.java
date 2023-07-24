@@ -1,6 +1,7 @@
 package com.example.back_end.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -38,6 +39,7 @@ public class Customers {
     @Column(name = "create_date", columnDefinition = "DATETIME DEFAULT now()", updatable = false)
     private LocalDateTime createDate;
     @Column(name = "update_date", columnDefinition = "DATETIME DEFAULT now()", updatable = true)
+    @UpdateTimestamp
     private LocalDateTime updateDate;
     @Column(columnDefinition = "BIT DEFAULT 0", updatable = true)
     private boolean isDelete;
