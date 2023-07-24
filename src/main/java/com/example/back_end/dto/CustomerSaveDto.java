@@ -12,8 +12,8 @@ public class CustomerSaveDto {
     @Size(max = 50, message = "Bạn nhập quá 50 ký tự. Vui lòng kiểm tra lại")
     @Pattern(regexp = "^[a-zA-ZÀ-ỹ\\s ]*$", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String name;
-    @Size(min = 12, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 12, message = "Bạn nhập quá 12 ký tự. Vui lòng kiểm tra lại")
+//    @Size(min = 12, message = "Bạn cần nhập tối thiểu 10 ký tự")
+//    @Size(max = 12, message = "Bạn nhập quá 12 ký tự. Vui lòng kiểm tra lại")
     @NotBlank(message = "Ngày sinh không đươc để trống")
     @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
             message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
@@ -32,7 +32,7 @@ public class CustomerSaveDto {
     private String email;
     @NotBlank
     @Size(min = 10, message = "Bạn cần nhập tối thiểu 10 ký tự")
-    @Size(max = 100, message = "Bạn nhập quá 100 ký tự. Vui lòng kiểm tra lại")
+    @Size(max = 200, message = "Bạn nhập quá 100 ký tự. Vui lòng kiểm tra lại")
     private String address;
     @NotBlank(message = "Số CCCD không được để trống.")
     @Size(min = 12, max = 12, message = "Bạn cần nhập 12 ký tự")
