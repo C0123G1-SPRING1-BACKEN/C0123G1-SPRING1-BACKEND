@@ -54,13 +54,13 @@ public class EmployeeDetailServiceImpl implements IEmployeeDetailService {
         return employeeDetailDto;
     }
 
-    @Override
-    public EmployeeDetailDto findIdUserEmployee(Long userId) {
-        Employees employees = employeeDetailRepository.findIdUserEmployee(userId);
-        EmployeeDetailDto employeeDetailDto =new EmployeeDetailDto();
-        BeanUtils.copyProperties(employees, employeeDetailDto);
-        return employeeDetailDto;
-    }
+//    @Override
+//    public EmployeeDetailDto findIdUserEmployee(Long userId) {
+//        Employees employees = employeeDetailRepository.findIdUserEmployee(userId);
+//        EmployeeDetailDto employeeDetailDto =new EmployeeDetailDto();
+//        BeanUtils.copyProperties(employees, employeeDetailDto);
+//        return employeeDetailDto;
+//    }
 
     /**
      * Create by: DatNT,

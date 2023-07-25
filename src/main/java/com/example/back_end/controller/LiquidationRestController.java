@@ -70,7 +70,7 @@ public class LiquidationRestController {
 //        }
 //        liquidationsService.save(liquidations);
         Long userId = ((JwtUserDetails) (SecurityContextHolder.getContext().getAuthentication().getPrincipal())).getId();
-        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findIdUserEmployee(userId);
+        EmployeeDetailDto employeeDetailDto = employeeDetailRepository.findByIdEmployee(userId);
         Employees employees = new Employees();
         BeanUtils.copyProperties(employeeDetailDto,employees);
         liquidationsDto.setEmployees(employees);
