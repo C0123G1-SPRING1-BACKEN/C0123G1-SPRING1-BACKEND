@@ -28,6 +28,9 @@ public class ProfitServiceImpl implements IProfitService {
     private  static final String PROFIT_INTEREST  = "interest";
     private  static final String PROFIT_LIQUIDATION  = "liquidation";
     private  static final String PROFIT_FORESEE  = "foresee";
+    private static final Long confirmed = 2L;
+    private static final Long redeemed = 3L;
+    private static final Long liquidated = 5L;
     @Autowired
     private IProfitRepository iProfitRepository;
 
@@ -63,11 +66,11 @@ public class ProfitServiceImpl implements IProfitService {
         String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
             case PROFIT_INTEREST:
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L,currentYear);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,redeemed,currentYear);
             case PROFIT_LIQUIDATION:
                 return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate,currentYear);
             case PROFIT_FORESEE:
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L,currentYear);
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,confirmed,currentYear);
             default:
                 return null;
         }
@@ -79,11 +82,11 @@ public class ProfitServiceImpl implements IProfitService {
         String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
             case PROFIT_INTEREST:
-                return  iProfitRepository.statisticsProfit(startDate,endDate,3L,currentYear);
+                return  iProfitRepository.statisticsProfit(startDate,endDate,redeemed,currentYear);
             case PROFIT_LIQUIDATION:
                 return  iProfitRepository.statisticsProfitLiquidation(startDate,endDate,currentYear);
             case PROFIT_FORESEE:
-                return  iProfitRepository.statisticsProfit(startDate,endDate,2L,currentYear);
+                return  iProfitRepository.statisticsProfit(startDate,endDate,confirmed,currentYear);
             default:
                 return Collections.emptyList();
         }

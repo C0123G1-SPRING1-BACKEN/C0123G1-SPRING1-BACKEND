@@ -11,6 +11,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface IProfitRepository extends JpaRepository<Contracts, Long> {
+    Long confirmed = 2L;
+    Long redeemed = 3L;
+    Long liquidated = 5L;
 
     @Query(value = "SELECT c.contract_code AS contractCode,\n" +
             "       c.loans AS loans,\n" +
