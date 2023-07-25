@@ -22,18 +22,12 @@ public class JwtTokenUtil {
     private static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     private final String secret = "bNjWIq9nGC";
-//    Map<String, Object> claims = new HashMap<>();
-//    byte[] secretBytes = Base64.getEncoder().encode(secret.getBytes());
-//    SecretKey key = new SecretKeySpec(secretBytes, SignatureAlgorithm.HS512.getJcaName());
+
 
     public String generateToken(String username) {
 
         return Jwts.builder()
-//                .setClaims(new HashMap<>())
                 .setSubject(username)
-//                .claim("username", username)
-//                .claim("role", role)
-//                .claim("id", id)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)
@@ -66,7 +60,7 @@ public class JwtTokenUtil {
                 return true;
             }
         } catch (Exception e) {
-            // Xử lý ngoại lệ nếu có
+            throw e;
         }
 
         return false;

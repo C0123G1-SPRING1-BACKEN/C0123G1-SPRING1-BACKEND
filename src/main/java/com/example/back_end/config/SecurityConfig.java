@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Autowired
@@ -47,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .antMatchers("/api/user/authenticate","/api/user/checkCode",
                         "/api/user/confirmPassword","/api/user/checkEmail",
                         "/api/user/newPassword","/api/posts", "/api/posts/detailPosts/**",
-                        "/api/employee/type/contract/productType").permitAll()
+                        "/api/employee/type/contract/productType","/api/register/create/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

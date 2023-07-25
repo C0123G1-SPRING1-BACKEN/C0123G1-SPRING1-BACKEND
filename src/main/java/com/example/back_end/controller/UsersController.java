@@ -16,10 +16,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.Random;
 
 /**
@@ -65,8 +63,6 @@ public class UsersController {
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Đăng nhập thất bại");
         }
-//        Users users = usersService.findByUsername(authenticationRequest.getUsername());
-//        final UserDetails userDetails = usersService.loadUserByUsername(authenticationRequest.getUsername());
     }
 
     @PostMapping("/checkEmail")
