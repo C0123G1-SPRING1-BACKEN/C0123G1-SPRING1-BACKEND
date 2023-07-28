@@ -1,7 +1,6 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.config.JwtUserDetails;
-import com.example.back_end.dto.CustomerSaveDto;
 import com.example.back_end.dto.EmployeeDetailDto;
 import com.example.back_end.service.details.IEmployeeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
