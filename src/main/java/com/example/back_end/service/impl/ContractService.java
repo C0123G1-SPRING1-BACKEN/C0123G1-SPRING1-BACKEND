@@ -7,6 +7,7 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.IMinAndMaxProjection;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.repository.IContractRepository;
 import com.example.back_end.service.IContractService;
@@ -222,5 +223,10 @@ public class ContractService implements IContractService {
             randomString.append(number.get(i));
         }
         return randomString.toString();
+    }
+
+    @Override
+    public Optional<IMinAndMaxProjection> findMinDateAndMaxDate() {
+        return icontractRepository.findByStartDate();
     }
 }

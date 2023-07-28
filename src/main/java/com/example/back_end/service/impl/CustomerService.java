@@ -15,7 +15,6 @@ public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository iCustomerRepository;
 
-
     @Override
     public Page<ICustomerDto> findAllBySearchCustomer(Pageable pageable, String name) {
         return iCustomerRepository.findAllBySearchCustomer(pageable, name);
@@ -30,6 +29,5 @@ public class CustomerService implements ICustomerService {
     public ICustomerDto findByIdCustomer(Long id) {
         return iCustomerRepository.findByIdCustomer(id);
     }
-
 
 }

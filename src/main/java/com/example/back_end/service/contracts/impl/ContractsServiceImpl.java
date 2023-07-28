@@ -4,6 +4,7 @@ import com.example.back_end.dto.IContractDto;
 import com.example.back_end.dto.LiquidationsDto;
 import com.example.back_end.model.ContractStatus;
 import com.example.back_end.model.Contracts;
+import com.example.back_end.projections.IMinAndMaxProjection;
 import com.example.back_end.repository.IContractStatusRepository;
 import com.example.back_end.repository.IContractTypeRepository;
 import com.example.back_end.repository.IContractsRepository;
@@ -82,4 +83,5 @@ public class ContractsServiceImpl implements IContractsService {
         expiredContracts.forEach(ec -> ec.setContractStatus(contractStatus));
         this.contractsRepository.saveAll(expiredContracts);
     }
+
 }

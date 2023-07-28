@@ -1,20 +1,12 @@
 package com.example.back_end.controller;
 
-import com.example.back_end.config.JwtUserDetails;
-import com.example.back_end.dto.EmployeeDetailDto;
-import com.example.back_end.service.IProductTypeService;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.FieldError;
 import com.example.back_end.dto.ContractDto;
 import com.example.back_end.dto.CreateContractDto;
 import com.example.back_end.model.ContractStatus;
 import com.example.back_end.model.ContractType;
 import com.example.back_end.model.Contracts;
 import com.example.back_end.projections.ContractSearchDTO;
+import com.example.back_end.projections.IMinAndMaxProjection;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import com.example.back_end.service.IContractService;
 import com.example.back_end.service.IProductTypeService;
@@ -103,7 +95,7 @@ public class ContractRestController {
 
     @PostMapping("/transaction-history")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
+        public ResponseEntity<Page<ITransactionHistoryProjection>> showListAndSearchTransactionHistory(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                                                    @RequestParam(name = "limit", defaultValue = "5") Integer limit,
                                                                                                    @RequestBody ContractSearchDTO contractSearchDTO) {
         Page<ITransactionHistoryProjection> contractProjectionsPage = iContractService.showListAndSearchTransactionHistory(page, limit, contractSearchDTO);
@@ -209,21 +201,21 @@ public class ContractRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-            List<Contracts> contractsList = iContractService.findAll();
+        List<Contracts> contractsList = iContractService.findAll();
 //        tạo list rỗng chứa trùng lặp
         List<Contracts> contractsArrayList = new ArrayList<>();
-            // Kiểm tra mã trùng lặp
-            Set<String> productCodesSet = new HashSet<>();
-            for (Contracts contracts : contractsList) {
-                String productCode = contracts.getContractCode();
+        // Kiểm tra mã trùng lặp
+        Set<String> productCodesSet = new HashSet<>();
+        for (Contracts contracts : contractsList) {
+            String productCode = contracts.getContractCode();
 //                kiểm tra mã hợp đồng tồn tị hay chưa , nếu tồn tại rồi thì sẽ thêm vào list rổng ở trên
-                if (productCodesSet.contains(productCode)) {
-                    contractsArrayList.add(contracts);
-                } else {
-                    productCodesSet.add(productCode);
+            if (productCodesSet.contains(productCode)) {
+                contractsArrayList.add(contracts);
+            } else {
+                productCodesSet.add(productCode);
 
-                }
             }
+        }
 
         Contracts contracts = new Contracts();
         BeanUtils.copyProperties(contractDto, contracts);
@@ -263,8 +255,15 @@ public class ContractRestController {
 
     @GetMapping("/randomContract")
     public String randomContractCode() {
-      String random= iContractService.randomContract().toString();
+        String random = iContractService.randomContract().toString();
 
         return random;
+    }
+
+    @GetMapping("/minAndMAxDate")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    ResponseEntity<IMinAndMaxProjection> getMinAndMaxDate() {
+        Optional<IMinAndMaxProjection> optional = iContractService.findMinDateAndMaxDate();
+        return optional.map(iMinAndMaxProjection -> new ResponseEntity<>(iMinAndMaxProjection, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 }

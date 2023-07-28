@@ -107,7 +107,7 @@ public class PostsController {
      * @param postsDTO
      * @return
      */
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(value = HttpStatus.CREATED,reason = "Ok")
     @PostMapping("/createPosts")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createPosts(@Valid @RequestBody PostsDTO postsDTO, BindingResult bindingResult) {

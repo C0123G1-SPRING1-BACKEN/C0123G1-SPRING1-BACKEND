@@ -5,6 +5,7 @@ import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Users;
 import com.example.back_end.projections.ContractSearchDTO;
 import com.example.back_end.projections.IContractProjection;
+import com.example.back_end.projections.IMinAndMaxProjection;
 import com.example.back_end.projections.ITransactionHistoryProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,5 +37,7 @@ public interface IContractService {
     void createContract(Contracts contracts);
 
     String randomContract();
+
+    Optional<IMinAndMaxProjection>findMinDateAndMaxDate();
 
 }

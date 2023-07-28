@@ -1,4 +1,4 @@
-package com.example.back_end.Controller;
+package com.example.back_end.controller;
 
 
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ public class ContractController_getTransactionHistoryDetail {
     public void getTransactionHistoryDetail_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/contract/detail/{id}", "null")
+                                .get("/api/employee/contract/detail/")
                 )
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
