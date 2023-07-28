@@ -117,5 +117,4 @@ public class PostsController {
         iPostsService.createPosts(postsDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }

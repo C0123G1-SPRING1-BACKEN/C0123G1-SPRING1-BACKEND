@@ -81,3 +81,127 @@ public class Posts {
         this.employees = employees;
     }
 }
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "course_like",
+//            joinColumns = @JoinColumn(name = "student_id"),
+//            inverseJoinColumns = @JoinColumn(name = "course_id"))
+//    Set<Course> likedCourses;
+
+//@Embeddable
+//class CourseRatingKey implements Serializable {
+//
+//    @Column(name = "student_id")
+//    Long studentId;
+//
+//    @Column(name = "course_id")
+//    Long courseId;
+//
+//@Entity
+//class CourseRating {
+//
+//    @EmbeddedId
+//    CourseRatingKey id;
+//
+//    @ManyToOne
+//    @MapsId("studentId")
+//    @JoinColumn(name = "student_id")
+//    Student student;
+//
+//    @ManyToOne
+//    @MapsId("courseId")
+//    @JoinColumn(name = "course_id")
+//    Course course;
+//
+//    int rating;
+
+
+
+//@Entity
+//@Table(name = "users")
+//public class User {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id")
+//    private Long id;
+//    //...
+//
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "address_id", referencedColumnName = "id")
+//    private Address address; // biến address này sẽ trùng  với giá trị  mappedBy trong Class User
+//
+//// ... getters and setters
+
+//@Entity
+//@Table(name = "address")
+//public class Address {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id")
+//    private Long id;
+//    //...
+//
+//    @OneToOne(mappedBy = "address")
+//    private User user;
+//
+////... getters and setters
+
+
+//@Entity
+//@Table(name = "student")
+//public class Student {
+//
+//    @Id
+//    @Column(name = "id")
+//    private Long id;
+//
+//    @ManyToMany         (cascade = CascadeType.ALL) co the co or khong
+//    @JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
+//    @JsonManagedReference
+//    private Set<Course> likedCourses;
+//}
+//
+//@Entity
+//@Table(name = "course")
+//public class Course {
+//
+//    @Id
+//    @Column(name = "id")
+//    private Long id;
+//
+//    @ManyToMany(mappedBy = "likedCourses")
+//    @JsonBackReference
+//    private Set<Student> likes;
+//}
+//@Embeddable
+//class CourseRatingKey implements Serializable {
+//
+//    @Column(name = "student_id")
+//    Long studentId;
+//
+//    @Column(name = "course_id")
+//    Long courseId;
+//
+//    // standard constructors, getters, and setters
+//    // hashcode and equals implementation
+//}
+//@Entity
+//@Table(name = "student_course")
+//public class StudentCourse {
+//
+//    @EmbeddedId
+//    private CourseRatingKey id;
+//
+//    @ManyToOne
+//    @MapsId("student_id")
+//    @JoinColumn(name = "student_id")
+//    private Student student;
+//
+//    @ManyToOne
+//    @MapsId("course_id")
+//    @JoinColumn(name = "course_id")
+//    private Course course;
+//}

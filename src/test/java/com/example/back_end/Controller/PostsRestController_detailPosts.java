@@ -1,4 +1,4 @@
-package com.example.back_end.Controller;
+package com.example.back_end.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +65,7 @@ public class PostsRestController_detailPosts {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/detailPosts/{id}", "11"))
+                                .get("/api/posts/detailPosts/{id}", "5"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

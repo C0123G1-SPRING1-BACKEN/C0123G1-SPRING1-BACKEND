@@ -21,7 +21,7 @@ public class PostsRestController_searchPosts {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/findPostsByName/{title}", (Object) null))
+                                .get("/api/posts?titleSearch=${title}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -30,7 +30,7 @@ public class PostsRestController_searchPosts {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/findPostsByName/{title}",""))
+                                .get("/api/posts?titleSearch=${title}",""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -39,7 +39,7 @@ public class PostsRestController_searchPosts {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/findPostsByName/?{title}","abcd"))
+                                .get("/api/posts?titleSearch=${title}","abcd"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -49,7 +49,7 @@ public class PostsRestController_searchPosts {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/posts/findPostsByName/{title}","Dịch vụ"))
+                                .get("/api/posts?titleSearch=${title}","vay"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
