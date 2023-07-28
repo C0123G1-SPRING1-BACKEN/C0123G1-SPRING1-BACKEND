@@ -31,17 +31,21 @@ public class ProfitServiceImpl implements IProfitService {
     @Autowired
     private IProfitRepository iProfitRepository;
 
-    public String checkCurrentDate (String startDate,String endDate){
-        String currentYear = "";
-        if(startDate.equals("") && endDate.equals("")){
-          return   String.valueOf(LocalDateTime.now().getYear());
+    public String checkCurrentDate (String startDate,String endDate,String years){
+        String currentYear = "2023";
+        if(!years.equals("")){
+            return years;
         }else {
-            return currentYear;
+            if(startDate.equals("") && endDate.equals("")){
+                return   String.valueOf(LocalDateTime.now().getYear());
+            }else {
+                return currentYear;
+            }
         }
     }
     @Override
-    public <T> Page<T> findAllContract(String startDate, String endDate,Pageable pageable, String profitType) {
-        String currentYear = checkCurrentDate(startDate,endDate);
+    public <T> Page<T> findAllContract(String startDate, String endDate,String years,Pageable pageable, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
             case PROFIT_INTEREST:
                 return (Page<T>) iProfitRepository.getAllContractInterest(startDate,endDate,pageable,currentYear);
@@ -55,8 +59,8 @@ public class ProfitServiceImpl implements IProfitService {
     }
 
     @Override
-    public Long getTotalProfit(String startDate, String endDate, String profitType) {
-        String currentYear = checkCurrentDate(startDate,endDate);
+    public Long getTotalProfit(String startDate, String endDate,String years, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
             case PROFIT_INTEREST:
                 return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L,currentYear);
@@ -71,8 +75,8 @@ public class ProfitServiceImpl implements IProfitService {
     }
 
     @Override
-    public List<IStatistics> statisticsProfit(String startDate, String endDate, String profitType) {
-        String currentYear = checkCurrentDate(startDate,endDate);
+    public List<IStatistics> statisticsProfit(String startDate, String endDate,String years, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
             case PROFIT_INTEREST:
                 return  iProfitRepository.statisticsProfit(startDate,endDate,3L,currentYear);
