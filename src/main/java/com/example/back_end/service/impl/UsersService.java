@@ -43,7 +43,7 @@ public class UsersService implements UserDetailsService, IUsersService {
         String role = users.getRoles().getRoleName();
         authorities.add(new SimpleGrantedAuthority(role));
 
-        return new JwtUserDetails(users.getUsername(), users.getPassword(), authorities);
+        return new JwtUserDetails(users.getId(), users.getUsername(), users.getPassword(), authorities);
     }
 
     @Override
@@ -72,6 +72,7 @@ public class UsersService implements UserDetailsService, IUsersService {
     public void saveNewPassword(Users user) {
         Users users = findById(user.getId());
         String password = passwordEncoder.encode(user.getPassword());
-        iUserRepository.saveNewPassword(users.getId(),password);
+        users.setPassword(password);
+        iUserRepository.saveNewPassword(users.getId(), users.getPassword());
     }
 }

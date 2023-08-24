@@ -25,7 +25,7 @@ public class RegisterPawnController_getListProductType {
                         MockMvcRequestBuilders
                                 .get("/api/register/product-type"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
     /**
      * Danh sach rong .
@@ -38,7 +38,7 @@ public class RegisterPawnController_getListProductType {
                         MockMvcRequestBuilders
                                 .get("/api/register/product-type"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
 
     }
     /**

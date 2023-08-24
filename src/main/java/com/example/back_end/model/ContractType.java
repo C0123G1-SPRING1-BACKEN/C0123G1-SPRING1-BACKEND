@@ -16,21 +16,20 @@ public class ContractType {
         this.name = name;
     }
 
+    public ContractType(Long id) {
+        this.id = id;
+    }
+
     public ContractType() {
-    }
-
-    public ContractType(ContractType contractType) {
-    }
-
-    public ContractType(Long contractTypeId) {
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public long setId(Long id) {
         this.id = id;
+        return 0;
     }
 
     public String getName() {

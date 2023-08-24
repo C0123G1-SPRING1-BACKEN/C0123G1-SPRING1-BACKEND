@@ -13,43 +13,64 @@
 package com.example.back_end.service;
 
 import com.example.back_end.dto.IStatistics;
-import com.example.back_end.model.Contracts;
 import com.example.back_end.repository.IProfitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
 public class ProfitServiceImpl implements IProfitService {
+    private  static final String PROFIT_INTEREST  = "interest";
+    private  static final String PROFIT_LIQUIDATION  = "liquidation";
+    private  static final String PROFIT_FORESEE  = "foresee";
+    private static final Long confirmed = 2L;
+    private static final Long redeemed = 3L;
+    private static final Long liquidated = 5L;
     @Autowired
     private IProfitRepository iProfitRepository;
 
+    public String checkCurrentDate (String startDate,String endDate,String years){
+        String currentYear = "2023";
+        if(!years.equals("")){
+            return years;
+        }else {
+            if(startDate.equals("") && endDate.equals("")){
+                return   String.valueOf(LocalDateTime.now().getYear());
+            }else {
+                return currentYear;
+            }
+        }
+    }
     @Override
-    public <T> Page<T> findAllContract(String startDate, String endDate,Pageable pageable, String profitType) {
+    public <T> Page<T> findAllContract(String startDate, String endDate,String years,Pageable pageable, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
-            case "interest":
-                return (Page<T>) iProfitRepository.getAllContractInterest(startDate,endDate,pageable);
-            case "liquidation":
-                return (Page<T>) iProfitRepository.getAllLiquidation(startDate,endDate,pageable);
-            case "foresee":
-                return (Page<T>) iProfitRepository.getAllContractForesee(startDate,endDate,pageable);
+            case PROFIT_INTEREST:
+                return (Page<T>) iProfitRepository.getAllContractInterest(startDate,endDate,pageable,currentYear);
+            case PROFIT_LIQUIDATION:
+                return (Page<T>) iProfitRepository.getAllLiquidation(startDate,endDate,pageable,currentYear);
+            case PROFIT_FORESEE:
+                return (Page<T>) iProfitRepository.getAllContractForesee(startDate,endDate,pageable,currentYear);
             default:
                 return null;
         }
     }
 
     @Override
-    public Long getTotalProfit(String startDate, String endDate, String profitType) {
+    public Long getTotalProfit(String startDate, String endDate,String years, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
-            case "interest":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,3L);
-            case "liquidation":
-                return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate);
-            case "foresee":
-                return  iProfitRepository.getTotalProfitContract(startDate,endDate,2L);
+            case PROFIT_INTEREST:
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,redeemed,currentYear);
+            case PROFIT_LIQUIDATION:
+                return  iProfitRepository.getTotalProfitLiquidation(startDate,endDate,currentYear);
+            case PROFIT_FORESEE:
+                return  iProfitRepository.getTotalProfitContract(startDate,endDate,confirmed,currentYear);
             default:
                 return null;
         }
@@ -57,16 +78,17 @@ public class ProfitServiceImpl implements IProfitService {
     }
 
     @Override
-    public List<IStatistics> statisticsProfit(String startDate, String endDate, String profitType) {
+    public List<IStatistics> statisticsProfit(String startDate, String endDate,String years, String profitType) {
+        String currentYear = checkCurrentDate(startDate,endDate,years);
         switch (profitType) {
-            case "interest":
-                return  iProfitRepository.statisticsProfit(startDate,endDate,3L);
-            case "liquidation":
-                return  iProfitRepository.statisticsProfitLiquidation(startDate,endDate);
-            case "foresee":
-                return  iProfitRepository.statisticsProfit(startDate,endDate,2L);
+            case PROFIT_INTEREST:
+                return  iProfitRepository.statisticsProfit(startDate,endDate,redeemed,currentYear);
+            case PROFIT_LIQUIDATION:
+                return  iProfitRepository.statisticsProfitLiquidation(startDate,endDate,currentYear);
+            case PROFIT_FORESEE:
+                return  iProfitRepository.statisticsProfit(startDate,endDate,confirmed,currentYear);
             default:
-                return null;
+                return Collections.emptyList();
         }
     }
 }

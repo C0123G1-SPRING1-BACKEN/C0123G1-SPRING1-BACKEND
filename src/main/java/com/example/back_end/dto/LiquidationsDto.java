@@ -2,6 +2,7 @@ package com.example.back_end.dto;
 
 import com.example.back_end.model.Contracts;
 import com.example.back_end.model.Customers;
+import com.example.back_end.model.Employees;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -12,20 +13,21 @@ public class LiquidationsDto {
     @NotNull(message = "Vui lòng chọn khách hàng.")
     private Customers customers;
     @NotNull(message = "Vui lòng chọn sản phẩm.")
-    private Contracts contracts;
+    private String products;
     @NotNull
     private Long totalPrice;
     private LocalDateTime createTime;
-
+ private Employees employees;
     public LiquidationsDto() {
     }
 
-    public LiquidationsDto(Long id, Customers customers, Contracts contracts, Long totalPrice, LocalDateTime createTime) {
+    public LiquidationsDto(Long id, Customers customers, String products, Long totalPrice, LocalDateTime createTime, Employees employees) {
         this.id = id;
         this.customers = customers;
-        this.contracts = contracts;
+        this.products = products;
         this.totalPrice = totalPrice;
         this.createTime = createTime;
+        this.employees = employees;
     }
 
     public Long getId() {
@@ -44,12 +46,12 @@ public class LiquidationsDto {
         this.customers = customers;
     }
 
-    public Contracts getContracts() {
-        return contracts;
+    public String getProducts() {
+        return products;
     }
 
-    public void setContracts(Contracts contracts) {
-        this.contracts = contracts;
+    public void setProducts(String products) {
+        this.products = products;
     }
 
     public Long getTotalPrice() {
@@ -66,5 +68,13 @@ public class LiquidationsDto {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public Employees getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 }

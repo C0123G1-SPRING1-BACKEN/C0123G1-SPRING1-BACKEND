@@ -1,10 +1,11 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.dto.CustomerSaveDto;
-import com.example.back_end.service.customer.ICustomerServiceCreateUpdate;
+import com.example.back_end.service.customers.ICustomerServiceCreateUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -27,13 +28,14 @@ public class CustomerControllerSave {
      * Function : find customer with corresponding id of customer
      * <p>
      * @param id
-     * @return HttpStatus.NOT_FOUND if result= null else then return customerSaveDto and HttpStatus.OK
+     * @return HttpStatus.BAD_REQUEST if result= null else then return customerSaveDto and HttpStatus.OK
      */
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> findByIdCustomer(@PathVariable Long id) {
         CustomerSaveDto customerSaveDto = customerServiceCreateUpdate.findByIdCustomer(id);
         if (customerSaveDto == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else
             return new ResponseEntity<>(customerSaveDto, HttpStatus.OK);
     }
@@ -47,6 +49,7 @@ public class CustomerControllerSave {
      * @return status Created
      */
     @PostMapping("/")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> createCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.createCustomer(customerSaveDto);
@@ -67,6 +70,7 @@ public class CustomerControllerSave {
      * @requestBody CustomerSaveDto includes the customer object
      */
     @PatchMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public ResponseEntity<?> updateCustomer(@Validated @RequestBody CustomerSaveDto customerSaveDto, BindingResult bindingResult,@PathVariable Long id) {
         if (!bindingResult.hasErrors()) {
             customerServiceCreateUpdate.updateCustomer(id, customerSaveDto);
@@ -92,5 +96,58 @@ public class CustomerControllerSave {
                 map.put(error.getField(), error.getDefaultMessage());
             }
         }
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkEmailExistence
+     *  
+     * @return boolean This function checks if the email exists in the database.
+     * If the email is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param email
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-email/{email}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Boolean> checkEmailExistence(@PathVariable("email") String email) {
+        boolean exists = customerServiceCreateUpdate.existsByEmail(email);
+        return ResponseEntity.ok(exists);
+    }
+
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkCitizenCodeExistence
+     *
+     * @return boolean This function checks if the citizen-code exists in the database.
+     * If the citizen-code is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param citizenCode
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-citizen-code/{citizen-code}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Boolean> checkCitizenCodeExistence(@PathVariable("citizen-code") String citizenCode) {
+        boolean exists = customerServiceCreateUpdate.existsByCitizenCode(citizenCode);
+        return ResponseEntity.ok(exists);
+    }
+    /**
+     * Create by: DatNT,
+     * Date create : 18/07/2023
+     * Function : checkPhoneExistence
+     *
+     * @return boolean This function checks if the phone-number exists in the database.
+     * If the phone-number is present in the database, it will return true;
+     * otherwise, it will return false.
+     * @param phoneNumber
+     */
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/check-phone/{phone-number}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public ResponseEntity<Boolean> checkPhoneExistence(@PathVariable("phone-number") String phoneNumber) {
+        boolean exists = customerServiceCreateUpdate.existsByPhoneNumber(phoneNumber);
+        return ResponseEntity.ok(exists);
     }
 }

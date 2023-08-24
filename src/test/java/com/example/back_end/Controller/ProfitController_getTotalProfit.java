@@ -31,8 +31,8 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_1() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType=null"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -46,9 +46,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_2() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType="))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(246L, profit);
     }
@@ -64,8 +64,8 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_3() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=2023-07-13&profitType=pawn"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -79,8 +79,8 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_4() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-06-06&endDate=2023-06-08&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -94,9 +94,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_99() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-06-06&endDate=2023-08-28&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(2409L, profit);
     }
@@ -112,9 +112,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_98() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=&endDate=2023-07-13&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(246L, profit);
     }
@@ -130,9 +130,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_97() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-13&endDate=&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(246L, profit);
     }
@@ -148,9 +148,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_96() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=&endDate=&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(2409L, profit);
     }
@@ -166,9 +166,9 @@ public class ProfitController_getTotalProfit {
     public void getTotalProfit_95() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit/total-profit?startDate=2023-07-23&endDate=2023-08-10&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andReturn();
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
         Long profit = Long.parseLong(mvcResult.getResponse().getContentAsString());
         assertEquals(596L, profit);
     }

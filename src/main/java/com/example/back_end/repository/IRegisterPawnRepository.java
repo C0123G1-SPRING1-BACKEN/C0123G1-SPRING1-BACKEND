@@ -1,6 +1,8 @@
 package com.example.back_end.repository;
 
 import com.example.back_end.model.RegisterPawn;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,9 +18,17 @@ public interface IRegisterPawnRepository extends JpaRepository<RegisterPawn, Lon
     void createRegisterPawn(@Param("name")String name,@Param("phone")String phone,@Param("email")String email , @Param("address") String address,
                             @Param("content_note") String contentNote,@Param("product_type_id") Long productTypeId);
 
+    @Query(value = "select * from register_pawn", nativeQuery = true)
+    Page<RegisterPawn> findByNameRegisterPawn(Pageable pageable);
+
 
    @Transactional
    @Modifying
    @Query(value = "UPDATE register_pawn r SET r.status = true WHERE r.id = :id",nativeQuery = true)
     void confirmRegisterPawn(@Param("id") Long id);
+
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM register_pawn WHERE email = :email), 'true', 'false')", nativeQuery = true)
+    boolean existsByEmail(@Param("email")String email);
+    @Query(value = "SELECT IF(EXISTS(SELECT * FROM register_pawn WHERE phone = :phone), 'true', 'false')", nativeQuery = true)
+    boolean existsByPhone( @Param("phone") String phone);
 }

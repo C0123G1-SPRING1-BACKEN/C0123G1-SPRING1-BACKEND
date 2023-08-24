@@ -10,10 +10,10 @@ public class Users {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username",nullable = false,unique = true,length = 20)
+    @Column(name = "username", nullable = false, unique = true, length = 20)
     private String username;
 
-    @Column(name = "password",nullable = false , length = 20)
+    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;
     @Column(name = "verification_code")
     private Integer verificationCode;

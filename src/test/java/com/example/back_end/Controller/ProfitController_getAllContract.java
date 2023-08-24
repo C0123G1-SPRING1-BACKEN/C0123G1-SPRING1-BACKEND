@@ -31,8 +31,8 @@ public class ProfitController_getAllContract {
     public void getAllContract_7() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=2023-07-13&page=0&profitType=null"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -48,9 +48,9 @@ public class ProfitController_getAllContract {
     public void getAllContract_8() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=2023-07-13&page=0&profitType="))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -64,8 +64,8 @@ public class ProfitController_getAllContract {
     public void getAllContract_9() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=2023-07-13&page=0&profitType=pawn"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -79,8 +79,8 @@ public class ProfitController_getAllContract {
     public void getAllContract_10() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-06-06&endDate=2023-06-08&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -96,10 +96,10 @@ public class ProfitController_getAllContract {
     public void getAllContract_11() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-06-06&endDate=2023-08-28&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
-                        .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
+                .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
     }
 
     /**
@@ -115,9 +115,9 @@ public class ProfitController_getAllContract {
     public void getAllContract_99() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=&endDate=2023-07-13&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -133,9 +133,9 @@ public class ProfitController_getAllContract {
     public void getAllContract_98() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-13&endDate=&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"));
     }
 
     /**
@@ -151,10 +151,10 @@ public class ProfitController_getAllContract {
     public void getAllContract_97() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=&endDate=&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
-                        .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0003"))
+                .andExpect(jsonPath("content[3].contractCode").value("HD-0009"));
     }
 
     /**
@@ -170,10 +170,10 @@ public class ProfitController_getAllContract {
     public void getAllContract_96() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-23&endDate=2023-08-10&page=0&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is2xxSuccessful())
-                        .andExpect(jsonPath("content[0].contractCode").value("HD-0005"))
-                        .andExpect(jsonPath("content[1].contractCode").value("HD-0009"));
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("content[0].contractCode").value("HD-0005"))
+                .andExpect(jsonPath("content[1].contractCode").value("HD-0009"));
     }
 
     /**
@@ -187,7 +187,7 @@ public class ProfitController_getAllContract {
     public void getAllContract_95() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/employee/profit?startDate=2023-07-23&endDate=2023-08-10&page=1&profitType=interest"))
-                        .andDo(print())
-                        .andExpect(status().is4xxClientError());
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 }

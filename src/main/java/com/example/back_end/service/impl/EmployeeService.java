@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService implements IEmployeeService {
@@ -50,9 +51,14 @@ public class EmployeeService implements IEmployeeService {
                 employees.getEmail(),
                 employees.getPhoneNumber(),
                 employees.getAddress(),
-                employees.getSalary().toString(),
+                employees.getSalary(),
                 employees.getCitizenCode(),
                 employees.getImage()
         );
+    }
+
+    @Override
+    public Employees findById(int id) {
+        return iEmployeeRepository.findById(id);
     }
 }

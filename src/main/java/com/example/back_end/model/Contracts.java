@@ -40,26 +40,71 @@ public class Contracts {
     private boolean isDelete;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "product_type_id")
     private ProductType productType;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customers_id")
     private Customers customers;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_status_id")
     private ContractStatus contractStatus;
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employees_id")
     private Employees employees;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "contract_type_id")
     private ContractType contractType;
 
+    private String redeemDate;
+
+    @Column(name = "link_contracts", length = 255)
+    private String linkContracts;
+
+    public String getRedeemDate() {
+        return redeemDate;
+    }
+
+    public void setRedeemDate(String redeemDate) {
+        this.redeemDate = redeemDate;
+    }
+
+    public Contracts(Long id, String productName, String contractCode, Long loans, Long profit, String image, String startDate, String endDate, LocalDateTime createTime, LocalDateTime updateTime, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType, String redeemDate) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.loans = loans;
+        this.profit = profit;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+        this.redeemDate = redeemDate;
+    }
 
     public Contracts() {
         // TODO document why this constructor is empty
     }
 
+    public Contracts(Long id, String productName, String contractCode, String startDate, String endDate, boolean isDelete, ProductType productType, Customers customers, ContractStatus contractStatus, Employees employees, ContractType contractType) {
+        this.id = id;
+        this.productName = productName;
+        this.contractCode = contractCode;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isDelete = isDelete;
+        this.productType = productType;
+        this.customers = customers;
+        this.contractStatus = contractStatus;
+        this.employees = employees;
+        this.contractType = contractType;
+    }
 
     public Long getId() {
         return id;
@@ -81,8 +126,9 @@ public class Contracts {
         return contractCode;
     }
 
-    public void setContractCode(String contractCode) {
+    public String setContractCode(String contractCode) {
         this.contractCode = contractCode;
+        return contractCode;
     }
 
     public Long getLoans() {
@@ -113,16 +159,18 @@ public class Contracts {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public String setStartDate(String startDate) {
         this.startDate = startDate;
+        return startDate;
     }
 
     public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public String setEndDate(String endDate) {
         this.endDate = endDate;
+        return endDate;
     }
 
     public LocalDateTime getCreateTime() {
@@ -187,5 +235,13 @@ public class Contracts {
 
     public void setContractType(ContractType contractType) {
         this.contractType = contractType;
+    }
+
+    public String getLinkContracts() {
+        return linkContracts;
+    }
+
+    public void setLinkContracts(String linkContracts) {
+        this.linkContracts = linkContracts;
     }
 }

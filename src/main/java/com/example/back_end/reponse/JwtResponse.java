@@ -4,10 +4,17 @@ package com.example.back_end.reponse;
 public class JwtResponse {
     private String token;
 
-    public JwtResponse() {}
+    private String username;
 
-    public JwtResponse(String token) {
+    private String role;
+
+    public JwtResponse() {
+    }
+
+    public JwtResponse(String token, String username, String role) {
         this.token = token;
+        this.username = username;
+        this.role = role;
     }
 
     public String getToken() {
@@ -16,5 +23,21 @@ public class JwtResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

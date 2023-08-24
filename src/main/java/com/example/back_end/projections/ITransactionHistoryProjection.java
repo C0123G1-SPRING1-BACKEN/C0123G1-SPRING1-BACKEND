@@ -1,5 +1,6 @@
 package com.example.back_end.projections;
 
+
 public interface ITransactionHistoryProjection {
 
     String getId();

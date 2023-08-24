@@ -13,7 +13,7 @@ public interface IUserRepository extends JpaRepository<Users,Long> {
     @Query(value = "select u from users u where u.username=:username ",nativeQuery = true)
     Users getByUsername(@Param("username") String username);
     @Modifying
-    @Query(value = "UPDATE users SET password = :password,verification_code = 0 WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE users SET password = :password WHERE id = :id", nativeQuery = true)
     void saveNewPassword(@Param("id") Long id, @Param("password") String password);
 
 }
